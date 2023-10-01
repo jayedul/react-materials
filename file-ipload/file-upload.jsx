@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import style from './upload.module.scss';
-import { __, getFileId } from '../../utilities/helpers.jsx';
+import { __, getFileId } from '../helpers.jsx';
 import { ListFile } from '../file-list.jsx';
 
 /**

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { __ } from '../../utilities/helpers.jsx';
+import { __ } from '../helpers.jsx';
 
 import style from './exp.module.scss';
 

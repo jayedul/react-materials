@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import { DropDown } from './dropdown/dropdown.jsx';
 import { FileUpload } from './file-ipload/file-upload.jsx';
-import { __ } from '../utilities/helpers.jsx';
+import { __ } from './helpers.jsx';
 import { DateField } from './date-time.jsx';
 import { ExpandableContent } from './ExpandableContent/expandable-content.jsx';
 import { TextEditor } from './text-editor/text-editor.jsx';

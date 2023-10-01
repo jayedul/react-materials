@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 import style from './warning.module.scss';
-import { __ } from '../../utilities/helpers.jsx';
+import { __ } from '../helpers.jsx';
 import { LoadingIcon } from '../loading-icon/loading-icon.jsx';
 import { Modal } from '../modal.jsx';
 import { Conditional } from '../conditional.jsx';

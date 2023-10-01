@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import { Popup } from '../popup/index.jsx';
 import style from './dropdown.module.scss';
-import { __ } from '../../utilities/helpers.jsx';
+import { __ } from '../helpers.jsx';
 import { Conditional } from '../conditional.jsx';
 
 const content_style = {

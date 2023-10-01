@@ -1,5 +1,5 @@
 import React from 'react';
-import { DoAction } from '../utilities/hooks.jsx';
+import { DoAction } from './hooks.jsx';
 import { ToastWrapper } from './toast/toast.jsx';
 import { WarningWrapper } from './warning/warning.jsx';
 

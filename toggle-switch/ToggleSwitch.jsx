@@ -1,5 +1,5 @@
 import React from 'react';
-import { getRandomString } from '../../utilities/helpers.jsx';
+import { getRandomString } from '../helpers.jsx';
 
 import style from './switch.module.scss';
 

@@ -4,7 +4,7 @@ import meet from '../../images/meet.svg';
 import zoom from '../../images/zoom.svg';
 
 import style from './card.module.scss';
-import { __, sprintf } from '../../utilities/helpers.jsx';
+import { __, sprintf } from '../helpers.jsx';
 
 const icons = {
     meet,

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ImageZoom from 'react-image-zooom';
 
 import { CoverImage } from '../image/image.jsx';
-import { getFileId, scrollLock } from '../../utilities/helpers.jsx';
+import { getFileId, scrollLock } from '../helpers.jsx';
 import { PDFViewer } from '../pdf-viewer.jsx';
 
 import { IconImage } from '../dynamic-svg/icon-image.jsx';

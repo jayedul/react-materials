@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Modal } from './modal.jsx';
-import { __, copyToClipboard } from '../utilities/helpers.jsx';
+import { __, copyToClipboard } from './helpers.jsx';
 
 import facebook from '../images/brands/facebook.svg';
 import linkedin from '../images/brands/linkedin.svg';

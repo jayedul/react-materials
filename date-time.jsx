@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from './text-field/text-field.jsx';
-import { __ } from '../utilities/helpers.jsx';
+import { __ } from './helpers.jsx';
 
 export function DateField(props) {
 	let { onChange, className, inputClassName, value } = props;

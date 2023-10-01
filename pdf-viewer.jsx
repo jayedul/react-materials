@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import { CircularProgress } from './circular.jsx';
-import { __ } from '../utilities/helpers.jsx';
+import { __ } from './helpers.jsx';
 
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';

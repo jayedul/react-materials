@@ -1,5 +1,5 @@
 import React from 'react';
-import { getFileId } from '../utilities/helpers.jsx';
+import { getFileId } from './helpers.jsx';
 import { Conditional } from './conditional.jsx';
 
 export function ListFile({ files, style = {}, onRemove }) {

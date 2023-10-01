@@ -1,7 +1,7 @@
 import React from 'react';
 
 import style from './image.module.scss';
-import { generateBackgroundColor, getInitials } from '../../utilities/helpers.jsx';
+import { generateBackgroundColor, getInitials } from '../helpers.jsx';
 
 export function CoverImage(props) {
     const {

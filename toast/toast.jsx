@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useRef, useState } from 'react';
 
-import { __, getRandomString } from '../../utilities/helpers.jsx';
+import { __, getRandomString } from '../helpers.jsx';
 import style from './toast.module.scss';
 import { Ripple } from '../dynamic-svg/ripple.jsx';
 
