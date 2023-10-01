@@ -1,5 +1,3 @@
-@import '../../styles/mixins';
-
 .tag {
     display: flex;
     column-gap: 20px;
@@ -13,7 +11,7 @@
         border-radius: 10px;
         cursor: pointer;
         font-size: 15px;
-        @include fontWeight(500);
+        font-family: CrewHRM-Figtree-Medium;
         line-height: 25px;
         white-space: nowrap;
         display: flex;
@@ -64,7 +62,7 @@
             line-height: 24px;
             height: 28px;
             color: var(--crewhrm-color-text);
-            @include fontWeight(500);
+            font-family: CrewHRM-Figtree-Medium;
 
             &.active {
                 color: white;
