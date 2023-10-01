@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import logo from '../../images/logo.svg';
+import logo from '../static/images/logo.svg';
 import style from './style.module.scss';
 
 export function StickyBar({ title, children, canBack, midWidth }) {

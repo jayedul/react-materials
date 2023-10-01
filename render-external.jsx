@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { isFirstLetterCapitalized } from "../utilities/helpers.jsx";
+import { isFirstLetterCapitalized } from "./helpers.jsx";
 
 export function RenderExternal({component: Comp, payload={}}) {
 

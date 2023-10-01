@@ -1,7 +1,7 @@
 import React from 'react';
 
-import meet from '../../images/meet.svg';
-import zoom from '../../images/zoom.svg';
+import meet from '../static/images/meet.svg';
+import zoom from '../static/images/zoom.svg';
 
 import style from './card.module.scss';
 import { __, sprintf } from '../helpers.jsx';

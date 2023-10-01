@@ -2,9 +2,9 @@ import React from 'react';
 
 import style from './intro.module.scss';
 
-import megaphone from '../../images/megaphone.png';
-import designer_working from '../../images/designer-working.png';
-import being_creative from '../../images/being-creative.png';
+import megaphone from '../static/images/megaphone.png';
+import designer_working from '../static/images/designer-working.png';
+import being_creative from '../static/images/being-creative.png';
 
 const images = {
     megaphone,
