@@ -69,21 +69,6 @@ $attrs: 'font-size', 'margin', 'margin-top', 'margin-bottom', 'margin-left', 'ma
     }
 }
 
-// Flex content justify
-@include looper('justify-content', 'space-between', 'space-around', 'center', 'end', 'flex-end');
-
-// Align self
-@include looper('align-self', 'center', 'auto');
-
-// Cursors
-@include looper('cursor', 'pointer', 'default', 'not-allowed');
-
-// Vertical alignments
-@include looper('vertical-align', 'middle', 'top');
-
-// Positions
-@include looper('position', 'absolute', 'fixed', 'static', 'relative', 'sticky');
-
 // Borders
 $borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right';
 @each $border in $borders {
@@ -112,14 +97,15 @@ $borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right'
     }
 }
 
-// Flex flows
 @include looper('flex-direction', 'column', 'row', 'row-reverse', 'column-reverse');
-
-// Flex wrap
 @include looper('flex-wrap', 'wrap', 'nowrap');
-
-// Background sizes
 @include looper('background-size', 'cover');
+@include looper('overflow', 'auto', 'hidden');
+@include looper('justify-content', 'space-between', 'space-around', 'center', 'end', 'flex-end');
+@include looper('align-self', 'center', 'auto');
+@include looper('cursor', 'pointer', 'default', 'not-allowed');
+@include looper('vertical-align', 'middle', 'top');
+@include looper('position', 'absolute', 'fixed', 'static', 'relative', 'sticky');
 
 // Autos
 $autos: 'width', 'height', 'margin';
@@ -139,12 +125,6 @@ $aligns: 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch';
 }
 @include alignItems('.align-items');
 
-$overflows: 'auto', 'hidden';
-@each $overflow in $overflows {
-    .overflow-#{$overflow} {
-        overflow: #{$overflow};
-    }
-}
 
 // Change flex-direction from row to column at specific breakpoints
 @mixin break-point($name, $to) {
