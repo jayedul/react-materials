@@ -58,4 +58,27 @@ export const attachment_formats = {
 	}
 };
 
+
+// Do not edit or delete keys. Only can add more.
+export const business_types = {
+    agriculture_naturalresources: __('Agriculture & Natural Resources'),
+    extraction_mining: __('Extraction & Mining'),
+    energy_utilities: __('Energy & Utilities'),
+    construction_infrastructure: __('Construction & Infrastructure'),
+    manufacturing_production: __('Manufacturing & Production'),
+    wholesale_distribution: __('Wholesale & Distribution'),
+    retail_consumergoods: __('Retail & Consumer Goods'),
+    transportation_logistics: __('Transportation & Logistics'),
+    technology_communication: __('Technology & Communication'),
+    finance_insurance: __('Finance & Insurance'),
+    realestate_property: __('Real Estate & Property'),
+    professionalservices: __('Professional Services'),
+    healthcare_wellness: __('Healthcare & Wellness'),
+    entertainment_media: __('Entertainment & Media'),
+    hospitality_tourism: __('Hospitality & Tourism'),
+    education_training: __('Education & Training'),
+    nonprofit_socialservices: __('Non-Profit & Social Services'),
+    government_publicservices: __('Government & Public Services')
+};
+
 export const date_formats = ['DD MMM, YYYY', 'Y-MM-D', 'MM/D/Y', 'D/MM/Y'];
