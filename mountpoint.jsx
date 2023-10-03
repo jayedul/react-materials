@@ -2,6 +2,7 @@ import React from 'react';
 import { getHooks } from './hooks.jsx';
 import { ToastWrapper } from './toast/toast.jsx';
 import { WarningWrapper } from './warning/warning.jsx';
+import { RenderExternal } from './render-external.jsx';
 
 export function MountPoint({ children }) {
 	return (
@@ -13,13 +14,13 @@ export function MountPoint({ children }) {
 	);
 }
 
-export function DoAction(props) {
+function DoAction(props) {
 	let { position, action, payload = {} } = props;
 	let handlers = getHooks(action + (position ? '_' + position : ''), 'action_hooks');
 
 	return handlers.map((handler) => {
-		let { data:{component: Comp}, key } = handler;
-		return <Comp key={key} {...payload} />;
+		let { data:{component}, key } = handler;
+		return <RenderExternal key={key} component={component} payload={payload}/>
 	});
 }
 
