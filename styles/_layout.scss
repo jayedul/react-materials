@@ -64,7 +64,9 @@ $attrs: 'font-size', 'margin', 'margin-top', 'margin-bottom', 'margin-left', 'ma
         &,
         &[type] {
             border-radius: #{$i}px;
-            overflow: hidden;
+			&:not(.overflow-auto) {
+				overflow: hidden;
+			}
         }
     }
 }
