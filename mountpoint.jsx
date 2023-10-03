@@ -14,8 +14,8 @@ export function MountPoint({ children }) {
 	);
 }
 
-function DoAction(props) {
-	let { position, action, payload = {} } = props;
+function DoAction({ position, action, payload = {} }) {
+	
 	let handlers = getHooks(action + (position ? '_' + position : ''), 'action_hooks');
 
 	return handlers.map((handler) => {
@@ -24,14 +24,12 @@ function DoAction(props) {
 	});
 }
 
-export function Slot(props) {
-	const { children, name } = props;
-
+export function Slot({ children, name, payload }) {
 	return (
 		<>
-			<DoAction position="before" action={name} />
+			<DoAction position="before" action={name} payload={payload}/>
 			{children}
-			<DoAction position="after" action={name} />
+			<DoAction position="after" action={name} payload={payload}/>
 		</>
 	);
 }
