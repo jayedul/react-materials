@@ -5,10 +5,10 @@ import { DropDown } from './dropdown/dropdown.jsx';
 import { __ } from './helpers.jsx';
 import { countries_array } from './data.jsx';
 
-export function AddressFields({values:{street_address='', city, zip_code, province, country_code}, className, onChange}) {
+export function AddressFields({values:{street_address, city, zip_code, province, country_code}, className, onChange}) {
 	return <div>
 		<TextField
-			value={street_address}
+			value={street_address || ''}
 			className={className + 'margin-bottom-10'.classNames()}
 			onChange={(v) => onChange('street_address', v)}
 			placeholder={__('Street Address')}
@@ -17,7 +17,7 @@ export function AddressFields({values:{street_address='', city, zip_code, provin
 		<div className={'d-flex align-items-center column-gap-10 margin-bottom-10'.classNames()}>
 			<div className={'flex-1'.classNames()}>
 				<TextField
-					value={city}
+					value={city || ''}
 					className={className}
 					onChange={(v) => onChange('city', v)}
 					placeholder={__('City')}
@@ -25,7 +25,7 @@ export function AddressFields({values:{street_address='', city, zip_code, provin
 			</div>
 			<div className={'flex-1'.classNames()}>
 				<TextField
-					value={province}
+					value={province || ''}
 					className={className}
 					onChange={(v) => onChange('province', v)}
 					placeholder={__('Province')}
@@ -36,7 +36,7 @@ export function AddressFields({values:{street_address='', city, zip_code, provin
 		<div className={'d-flex align-items-center column-gap-10'.classNames()}>
 			<div className={'flex-1'.classNames()}>
 				<TextField
-					value={zip_code}
+					value={zip_code || ''}
 					className={className}
 					onChange={(v) => onChange('zip_code', v)}
 					placeholder={__('Postal/Zip Code')}
