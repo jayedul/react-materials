@@ -1,6 +1,5 @@
 import moment from 'moment-timezone';
 
-import icons from './static/icons/crewhrm/style.module.scss';
 import { countries_object } from './data.jsx';
 
 export const patterns = {
@@ -88,15 +87,6 @@ export function replaceUrlsWithAnchors(text, props = {}) {
 	replacedText = replacedText.replaceAll('\n', '<br/>');
 
 	return replacedText;
-}
-
-export function getSocialIcon(url) {
-	const { host } = new URL(url);
-	const brand = host.slice(0, host.indexOf('.'));
-	const class_name = 'ch-icon-' + brand;
-	const final_class = `ch-icon ${icons[class_name] ? class_name : 'ch-icon-anchor'}`.classNames();
-
-	return final_class;
 }
 
 export function copyToClipboard(text, addToast) {

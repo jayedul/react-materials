@@ -1,5 +1,5 @@
 import React from 'react';
-import { DoAction } from './hooks.jsx';
+import { getHooks } from './hooks.jsx';
 import { ToastWrapper } from './toast/toast.jsx';
 import { WarningWrapper } from './warning/warning.jsx';
 
@@ -11,6 +11,16 @@ export function MountPoint({ children }) {
 			</ToastWrapper>
 		</div>
 	);
+}
+
+export function DoAction(props) {
+	let { position, action, payload = {} } = props;
+	let handlers = getHooks(action + (position ? '_' + position : ''), 'action_hooks');
+
+	return handlers.map((handler) => {
+		let { data:{component: Comp}, key } = handler;
+		return <Comp key={key} {...payload} />;
+	});
 }
 
 export function Slot(props) {

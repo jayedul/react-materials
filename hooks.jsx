@@ -1,4 +1,3 @@
-import React from 'react';
 import { getRandomString } from './helpers.jsx';
 
 function enqueueHook(handler, data={}, priority, pointer) {
@@ -10,7 +9,7 @@ function enqueueHook(handler, data={}, priority, pointer) {
 	});
 }
 
-function getHooks(handler, pointer) {
+export function getHooks(handler, pointer) {
 	let hooks = window.CrewHRM[pointer].filter((hook) => hook.handler === handler);
 
 	// Get unique array and Sort by priority
@@ -35,16 +34,6 @@ export function addAction(action, component, priority = 10) {
 
 export function addFilter(action, callback, priority = 10) {
 	enqueueHook(action, {callback}, priority, 'filter_hooks');
-}
-
-export function DoAction(props) {
-	let { position, action, payload = {} } = props;
-	let handlers = getHooks(action + (position ? '_' + position : ''), 'action_hooks');
-
-	return handlers.map((handler) => {
-		let { data:{component: Comp}, key } = handler;
-		return <Comp key={key} {...payload} />;
-	});
 }
 
 export function applyFilters(filter_name, data, ...args) {

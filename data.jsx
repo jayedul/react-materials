@@ -1,4 +1,4 @@
-import moment, { tz } from 'moment-timezone';
+import { tz } from 'moment-timezone';
 import { __ } from "./helpers.jsx";
 
 export const genders = {
