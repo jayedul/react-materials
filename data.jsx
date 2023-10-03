@@ -1,3 +1,4 @@
+import moment, { tz } from 'moment-timezone';
 import { __ } from "./helpers.jsx";
 
 export const genders = {
@@ -58,7 +59,6 @@ export const attachment_formats = {
 	}
 };
 
-
 // Do not edit or delete keys. Only can add more.
 export const business_types = {
     agriculture_naturalresources: __('Agriculture & Natural Resources'),
@@ -81,4 +81,43 @@ export const business_types = {
     government_publicservices: __('Government & Public Services')
 };
 
+export const time_formats = {
+    _12: __('12 Hours'),
+    _24: __('24 Hours')
+};
+
+export const timezones_array = tz.names().map((z) => {
+	return { id: z, label: z };
+});
+
 export const date_formats = ['DD MMM, YYYY', 'Y-MM-D', 'MM/D/Y', 'D/MM/Y'];
+
+export const attendance_types = {
+	on_site: __('On-Site'),
+    remote: __('Fully Remote'),
+    hybrid: __('Hybrid')
+};
+
+// Prepare country data
+const _countries_array = [];
+const _countries_object = {};
+const A = 65;
+const Z = 90;
+const countryName = new Intl.DisplayNames(['en'], { type: 'region' });
+for (let i = A; i <= Z; ++i) {
+	for (let j = A; j <= Z; ++j) {
+		let code = String.fromCharCode(i) + String.fromCharCode(j);
+		let name = countryName.of(code);
+		if (code !== name) {
+
+			_countries_array.push({
+				id: code,
+				label: name
+			});
+
+			_countries_object[code] = name;
+		}
+	}
+}
+export const countries_array = _countries_array;
+export const countries_object = _countries_object;

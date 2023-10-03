@@ -98,33 +98,6 @@ export function getSocialIcon(url) {
 	return final_class;
 }
 
-export function getCountries(ret_array = false, lang = 'en') {
-	const A = 65;
-	const Z = 90;
-	const countryName = new Intl.DisplayNames([lang], { type: 'region' });
-	const countries = {};
-	const countries_array = [];
-
-	for (let i = A; i <= Z; ++i) {
-		for (let j = A; j <= Z; ++j) {
-			let code = String.fromCharCode(i) + String.fromCharCode(j);
-			let name = countryName.of(code);
-			if (code !== name) {
-				if (ret_array) {
-					countries_array.push({
-						id: code,
-						label: name
-					});
-				} else {
-					countries[code] = name;
-				}
-			}
-		}
-	}
-
-	return ret_array ? countries_array : countries;
-}
-
 export function copyToClipboard(text, addToast) {
 	navigator.clipboard
 		.writeText(text)
@@ -406,8 +379,3 @@ export function isFirstLetterCapitalized(str) {
 }
 
 export const is_production = process.env.NODE_ENV === 'production';
-export const countries_array = getCountries(true);
-export const countries_object = getCountries(false);
-export const timezones_array = tz.names().map((z) => {
-	return { id: z, label: z };
-});
