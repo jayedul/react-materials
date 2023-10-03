@@ -1,6 +1,7 @@
-import moment, { tz } from 'moment-timezone';
+import moment from 'moment-timezone';
 
 import icons from './static/icons/crewhrm/style.module.scss';
+import { countries_object } from './data.jsx';
 
 export const patterns = {
 	email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
