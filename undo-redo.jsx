@@ -1,6 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-const _primary = '_primary_';
 export const ContextHistoryFields = createContext();
 
 function addToHistory(obj_value, { index, history }) {
@@ -20,13 +19,11 @@ function addToHistory(obj_value, { index, history }) {
 	};
 }
 
-export function UndoRedo({ segment = _primary }) {
-	const { onUndoRedo, historyLength: length, index: indexes } = useContext(ContextHistoryFields);
-	const historyLength = length[segment];
-	const index = indexes[segment];
+export function UndoRedo() {
+	const { onUndoRedo, historyLength, index } = useContext(ContextHistoryFields);
 
 	const unDoRedo = (shift) => {
-		onUndoRedo(shift, segment);
+		onUndoRedo(shift);
 	};
 
 	const detectUndoRedoShortcut = useCallback(
@@ -73,45 +70,26 @@ export function UndoRedo({ segment = _primary }) {
 	);
 }
 
-export function HistoryFields({ defaultValues = {}, children, segmented = false }) {
-	let _history;
+export function HistoryFields({ defaultValues = {}, children }) {
+	
+	const [state, setState] = useState({
+		index: 0,
+		history: [defaultValues]
+	});
 
-	// Prepare segmented
-	if (!segmented) {
-		_history = {
-			[_primary]: {
-				index: 0,
-				history: [defaultValues]
-			}
-		};
-	} else {
-		_history = {};
-		for (let k in defaultValues) {
-			_history[k] = {
-				index: 0,
-				history: [defaultValues[k]]
-			};
-		}
-	}
-
-	const [state, setState] = useState(_history);
-
-	const onChange = (name, value, segment = _primary) => {
-		const { index = 0, history = [] } = state[segment];
+	const onChange = (name, value) => {
+		const { index = 0, history = [] } = state;
 		const obj_value = typeof name === 'object' ? name : { [name]: value };
 
 		// Finally update state
 		setState({
 			...state,
-			[segment]: {
-				...state[segment],
-				...addToHistory(obj_value, { index, history })
-			}
+			...addToHistory(obj_value, { index, history })
 		});
 	};
 
-	const onUndoRedo = (shift, segment = _primary) => {
-		const { index, history = [] } = state[segment];
+	const onUndoRedo = (shift) => {
+		const { index, history = [] } = state;
 		const historyLength = history.length;
 
 		if ((shift === 1 && index >= historyLength - 1) || (shift === -1 && index <= 0)) {
@@ -121,58 +99,31 @@ export function HistoryFields({ defaultValues = {}, children, segmented = false 
 
 		setState({
 			...state,
-			[segment]: {
-				...state[segment],
-				index: index + shift
-			}
+			index: index + shift
 		});
 	};
 
-	const clearHistory = (segment = _primary) => {
-		const { index, history } = state[segment];
+	const clearHistory = (replaceWith) => {
+		const { index, history } = state;
 
 		setState({
 			...state,
-			[segment]: {
-				index: 0,
-				history: [history[index] || {}]
-			}
+			index: 0,
+			history: [replaceWith || history[index] || {}]
 		});
 	};
-
-	// Prepare values to pass to children
-	let _values = {};
-	let _length = {};
-	let _index = {};
-	let _go_next = {};
-	for (let segment in state) {
-		let { history, index } = state[segment];
-
-		_values[segment] = history[index];
-		_length[segment] = history.length;
-		_index[segment] = index;
-		_go_next[segment] = index > 0;
-	}
-
-	// Normalize payload if not segmented
-	if (!segmented) {
-		_values = _values[_primary];
-		_go_next = _go_next[_primary];
-
-		// Length and index is not necessary to normalize as it used internally here
-	}
 
 	const payload = {
 		// These to for child components to store value on change and access them
 		onChange,
 		clearHistory,
-		values: _values,
-		can_go_next: _go_next,
+		values: state.history[state.index] || {},
+		can_go_next: state.index>0,
 
 		// These three are supposed to be used internally by UndoRedo component
 		onUndoRedo,
-		index: _index,
-		historyLength: _length
+		index: state.index,
+		historyLength: state.history.length
 	};
 
 	return (
