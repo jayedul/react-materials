@@ -1,4 +1,6 @@
 import React from 'react';
+
+import './prototypes.jsx';
 import { getHooks } from './hooks.jsx';
 import { ToastWrapper } from './toast/toast.jsx';
 import { WarningWrapper } from './warning/warning.jsx';
