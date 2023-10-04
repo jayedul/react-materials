@@ -359,14 +359,4 @@ export function formatDate( date_string, format = window.CrewHRM.date_format ) {
 	return moment(date_string).format(format);
 }
 
-export function isFirstLetterCapitalized(str) {
-  if (typeof str !== 'string' || str.length === 0) {
-    // Handle invalid input
-    return false;
-  }
-
-  const firstLetter = str.charAt(0);
-  return firstLetter === firstLetter.toUpperCase();
-}
-
 export const is_production = process.env.NODE_ENV === 'production';

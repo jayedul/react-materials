@@ -1,17 +1,22 @@
 import React, { useEffect, useRef } from "react";
-import { isFirstLetterCapitalized } from "./helpers.jsx";
+
+function isFunctionNameCapitalized(func) {
+  if (typeof func === 'function') {
+    const functionName = func.name;
+    if (functionName.length > 0) {
+      const firstChar = functionName.charAt(0);
+      return /^[A-Z]/.test(firstChar); // Check if it starts with a capital letter, so it is a React component.
+    }
+  }
+  return false;
+}
 
 export function RenderExternal({component: Comp, payload={}}) {
 
 	const reff = useRef();
-
-	const func_string = Comp.toString();
-	const is_component = func_string.indexOf('function ')===0 && isFirstLetterCapitalized(func_string.replace('function ', ''));
+	const is_component = isFunctionNameCapitalized(Comp);
 
 	useEffect(()=>{
-
-		console.log(is_component, func_string);
-
 		if ( ! is_component && reff && reff.current) {
 			Comp(reff.current, payload);
 		}
