@@ -4,8 +4,9 @@ import { TextField } from './text-field/text-field.jsx';
 import { DropDown } from './dropdown/dropdown.jsx';
 import { __ } from './helpers.jsx';
 import { countries_array } from './data.jsx';
+import { input_class } from './classes.jsx';
 
-export function AddressFields({values:{street_address, city, zip_code, province, country_code}, className, onChange}) {
+export function AddressFields({values:{street_address, city, zip_code, province, country_code}, className=input_class, onChange}) {
 	return <div>
 		<TextField
 			value={street_address || ''}

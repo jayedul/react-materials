@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Conditional } from '../conditional.jsx';
 import style from './text-field.module.scss';
+import { input_class } from '../classes.jsx';
 
 export function TextField(props) {
     const {
@@ -12,7 +13,7 @@ export function TextField(props) {
         onChange,
         onIconClick: clickHandler,
         placeholder,
-        className = '',
+        className = input_class,
         inputClassName = '',
         pattern,
         value,

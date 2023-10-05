@@ -1,9 +1,10 @@
 import React from 'react';
 import { TextField } from './text-field/text-field.jsx';
 import { __ } from './helpers.jsx';
+import { input_class } from './classes.jsx';
 
 export function DateField(props) {
-	let { onChange, className, inputClassName, value } = props;
+	let { onChange, className=input_class, inputClassName, value } = props;
 
 	return (
 		<TextField

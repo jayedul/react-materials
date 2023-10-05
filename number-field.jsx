@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
+import { input_class } from './classes.jsx';
 
 export function NumberField(props) {
-	const { onChange, className = '', value, max, min, disabled } = props;
+	const { onChange, className = input_class, value, max, min, disabled } = props;
 	const ref = useRef();
 	const [state, setState] = useState({
 		focused: false

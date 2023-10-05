@@ -98,6 +98,20 @@ export const attendance_types = {
     hybrid: __('Hybrid')
 };
 
+export const experience_levels = {
+    beginner: __('Beginner'),
+    intermidiate: __('Intermidiate'),
+    adanced: __('Advanced')
+};
+
+export const salary_types = {
+    hourly: __('Hourly'),
+    daily: __('Daily'),
+    weekly: __('Weekly'),
+    monthly: __('Monthly'),
+    yearly: __('Yearly')
+};
+
 // Prepare country data
 const _countries_array = [];
 const _countries_object = {};
