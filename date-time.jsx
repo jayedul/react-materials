@@ -8,56 +8,47 @@ export function DateField(props) {
 
 	return (
 		<TextField
-			/* iconClass={"ch-icon ch-icon-calendar".classNames()} */
 			type="date"
 			pattern="\d{4}-\d{2}-\d{2}"
-			icon_position="right"
 			{...{ onChange, className, inputClassName, value: value || '' }}
 		/>
 	);
 }
 
-export function TimeField(props) {
-	let { onChange, className, inputClassName } = props;
-
-	return (
-		<TextField
-			iconClass={'ch-icon ch-icon-clock-1'.classNames()}
-			type="time"
-			icon_position="right"
-			{...{ onChange, className, inputClassName }}
-		/>
-	);
-}
-
-export function DateTimeField(props) {}
-
 export function DateTimePeriodField(props) {
-	let { onChange, className, inputClassName, labelClassName } = props;
+	let { onChange, labelClassName } = props;
 
-	const setVal = () => {};
+	const [state, setState] = useState({
+		date: '',
+		time_start: '',
+		time_end: ''
+	});
+
+	const setVal = (name, value) => {
+		setState({
+			...state,
+			[name]: value
+		});
+
+	};
 
 	return (
 		<div data-crewhrm-selector="date-time-period" className={'d-flex'.classNames()}>
 			<div className={'flex-5 margin-right-20'.classNames()}>
 				<span className={labelClassName}>{__('Date')}</span>
-				<DateField onChange={(v) => setVal('date', v)} {...{ className, inputClassName }} />
+				<DateField onChange={(v) => setVal('date', v)}/>
 			</div>
 			<div className={'flex-6'.classNames()}>
 				<span className={labelClassName}>{__('Time')}</span>
 				<div className={'d-flex align-items-center'.classNames()}>
 					<div className={'flex-1'.classNames()}>
-						<TimeField
-							onChange={(v) => setVal('time_from', v)}
-							{...{ className, inputClassName }}
-						/>
+						<TextField type="time" onChange={v=>setVal('time_start', v)}/>
 					</div>
-					<div className={'margin-left-10 margin-right-10'.classNames()}>-</div>
+					<div className={'margin-left-10 margin-right-10'.classNames()}>
+						-
+					</div>
 					<div className={'flex-1'.classNames()}>
-						<TimeField
-							onChange={(v) => setVal('time_to', v)}
-							{...{ className, inputClassName }}
-						/>
+						<TextField type="time" onChange={v=>setVal('time_end', v)}/>
 					</div>
 				</div>
 			</div>
