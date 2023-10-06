@@ -3,7 +3,8 @@ export function request(action, payload = {}, callback, progressCallback) {
 	payload = {
 		...payload,
 		action: window.CrewHRM.app_name + '_' + action,
-		nonce: window.CrewHRM.nonce
+		nonce: window.CrewHRM.nonce,
+		nonce_action: window.CrewHRM.nonce_action
 	};
 
 	// Build form data
