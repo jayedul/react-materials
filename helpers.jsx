@@ -1,5 +1,3 @@
-import moment from 'moment-timezone';
-
 import { countries_object } from './data.jsx';
 
 export const patterns = {
@@ -355,8 +353,56 @@ export function validateValues(values={}, rules=[]) {
 	return true;
 }
 
-export function formatDate( date_string, format = window.CrewHRM.date_format ) {
-	return moment(date_string).format(format);
+export function formatDate( date, pattern = window.CrewHRM.date_format ) {
+
+	if ( typeof date === 'string' ) {
+		date = new Date(date);
+
+	} else if( ! isNaN( date ) ) {
+		date = getLocalFromUnix( date );
+
+	} else if( ! ( date instanceof Date ) ) {
+		return null;
+	}
+
+	const months = [
+		"January", "February", "March", "April", "May", "June",
+		"July", "August", "September", "October", "November", "December"
+	];
+
+	const days = [
+		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+	];
+
+	let formattedDate = pattern;
+	formattedDate = formattedDate.replace("F", months[date.getMonth()]);
+	formattedDate = formattedDate.replace("M", months[date.getMonth()].substring(0, 3));
+	formattedDate = formattedDate.replace("j", date.getDate());
+	formattedDate = formattedDate.replace("d", String(date.getDate()).padStart(2, '0'));
+	formattedDate = formattedDate.replace("l", days[date.getDay()]);
+	formattedDate = formattedDate.replace("D", days[date.getDay()].substring(0, 3));
+	formattedDate = formattedDate.replace("Y", date.getFullYear());
+	formattedDate = formattedDate.replace("g", date.getHours() % 12 || 12);
+	formattedDate = formattedDate.replace("i", String(date.getMinutes()).padStart(2, '0'));
+	formattedDate = formattedDate.replace("A", date.getHours() >= 12 ? 'PM' : 'AM');
+
+	return formattedDate;
+}
+
+export function getUnixTimestamp(date = new Date()) {
+	return Math.floor(date.getTime() / 1000);
+}
+
+export function getLocalFromUnix(unixTimestampInSeconds) {
+
+	// Create a Date object from the Unix timestamp in UTC
+	const utcDate = new Date(unixTimestampInSeconds * 1000);
+
+	// Get the local timezone offset in minutes
+	const timezoneOffsetMinutes = utcDate.getTimezoneOffset();
+
+	// Adjust the Date object for the local timezone offset
+	return new Date(utcDate.getTime() + (timezoneOffsetMinutes * 60 * 1000));
 }
 
 export const is_production = process.env.NODE_ENV === 'production';

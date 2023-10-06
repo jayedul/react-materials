@@ -1,4 +1,3 @@
-import { tz } from 'moment-timezone';
 import { __ } from "./helpers.jsx";
 
 export const genders = {
@@ -85,10 +84,6 @@ export const time_formats = {
     _12: __('12 Hours'),
     _24: __('24 Hours')
 };
-
-export const timezones_array = tz.names().map((z) => {
-	return { id: z, label: z };
-});
 
 export const date_formats = ['DD MMM, YYYY', 'Y-MM-D', 'MM/D/Y', 'D/MM/Y'];
 
