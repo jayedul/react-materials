@@ -18,6 +18,8 @@ export function WpDashboardFullPage(props) {
         wrapper.style.paddingLeft = 0;
         wrapper.style.paddingRight = 0;
         wrapper.style.paddingBottom = 0;
+		
+		setTimeout(()=>ref.current.scrollIntoView(true), 500);
 
 		setHeight();
 		window.addEventListener('resize', setHeight);
