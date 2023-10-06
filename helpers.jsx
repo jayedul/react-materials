@@ -355,13 +355,17 @@ export function validateValues(values={}, rules=[]) {
 
 export function formatDate( date, pattern = window.CrewHRM.date_format ) {
 
-	if ( typeof date === 'string' ) {
-		date = new Date(date);
+	if ( ! ( date instanceof Date ) ) {
 
-	} else if( ! isNaN( date ) ) {
-		date = getLocalFromUnix( date );
+		if ( typeof date === 'string' ) {
+			date = new Date(date);
 
-	} else if( ! ( date instanceof Date ) ) {
+		} else if( ! isNaN( date ) ) {
+			date = getLocalFromUnix( parseInt( date ) );
+		} 
+	}
+	
+	if( ! date || isNaN( date ) || ! ( date instanceof Date ) ) {
 		return null;
 	}
 
@@ -376,11 +380,11 @@ export function formatDate( date, pattern = window.CrewHRM.date_format ) {
 
 	let formattedDate = pattern;
 	formattedDate = formattedDate.replace("F", months[date.getMonth()]);
-	formattedDate = formattedDate.replace("M", months[date.getMonth()].substring(0, 3));
+	formattedDate = formattedDate.replace("M", months[date.getMonth()]?.substring(0, 3));
 	formattedDate = formattedDate.replace("j", date.getDate());
 	formattedDate = formattedDate.replace("d", String(date.getDate()).padStart(2, '0'));
 	formattedDate = formattedDate.replace("l", days[date.getDay()]);
-	formattedDate = formattedDate.replace("D", days[date.getDay()].substring(0, 3));
+	formattedDate = formattedDate.replace("D", days[date.getDay()]?.substring(0, 3));
 	formattedDate = formattedDate.replace("Y", date.getFullYear());
 	formattedDate = formattedDate.replace("g", date.getHours() % 12 || 12);
 	formattedDate = formattedDate.replace("i", String(date.getMinutes()).padStart(2, '0'));
