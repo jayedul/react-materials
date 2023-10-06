@@ -25,8 +25,10 @@ export function WpDashboardFullPage(props) {
     }, []);
 
     return (
-        <div ref={ref} className={'wrapper'.classNames(style)}>
-            {children}
+        <div ref={ref} className={'wrapper'.classNames(style) + 'd-flex w-full'.classNames()}>
+			<div className={'flex-1'.classNames()}>
+            	{children}
+			</div>
         </div>
     );
 }
