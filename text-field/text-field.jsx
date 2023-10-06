@@ -21,7 +21,7 @@ export function TextField(props) {
         maxLength = null,
         expandable = false,
 		disabled,
-		readonly
+		readOnly
     } = props;
 
     const input_ref = useRef();
@@ -98,7 +98,7 @@ export function TextField(props) {
         type,
         pattern,
 		disabled,
-		readonly,
+		readOnly,
         placeholder,
         ref: input_ref,
         value: !inputDelay ? value : text,

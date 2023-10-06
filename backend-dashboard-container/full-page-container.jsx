@@ -1,9 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import style from './style.module.scss';
 
 export function WpDashboardFullPage(props) {
+
     const { children } = props;
+
+	const ref = useRef();
+
+	const setHeight=()=>{
+		ref.current.style.minHeight = window.innerHeight+'px';
+	}
 
     useEffect(() => {
         const wrapper = document.getElementById('wpcontent');
@@ -11,10 +18,14 @@ export function WpDashboardFullPage(props) {
         wrapper.style.paddingLeft = 0;
         wrapper.style.paddingRight = 0;
         wrapper.style.paddingBottom = 0;
+
+		setHeight();
+		window.addEventListener('resize', setHeight);
+		return ()=>window.removeEventListener('resize', setHeight);
     }, []);
 
     return (
-        <div data-crewhrm-selector="wp-dashboard" className={'wrapper'.classNames(style)}>
+        <div ref={ref} className={'wrapper'.classNames(style)}>
             {children}
         </div>
     );
