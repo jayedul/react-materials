@@ -19,7 +19,9 @@ export function TextField(props) {
         value,
         inputDelay,
         maxLength = null,
-        expandable = false
+        expandable = false,
+		disabled,
+		readonly
     } = props;
 
     const input_ref = useRef();
@@ -95,6 +97,8 @@ export function TextField(props) {
     const attr = {
         type,
         pattern,
+		disabled,
+		readonly,
         placeholder,
         ref: input_ref,
         value: !inputDelay ? value : text,
@@ -117,6 +121,7 @@ export function TextField(props) {
                 } ${state.focused ? 'active' : ''}`.classNames() +
                 className
             }
+			style={type==='textarea' ? {height: '100px'} : {}}
         >
             <Conditional show={iconClass}>
                 <i className={iconClass} onClick={() => onIconClick()}></i>
@@ -138,7 +143,7 @@ export function TextField(props) {
                 </Conditional>
 
                 <Conditional show={type === 'textarea'}>
-                    <textarea {...attr}></textarea>
+                    <textarea {...attr} style={{resize: 'none'}}></textarea>
                 </Conditional>
             </Conditional>
         </div>
