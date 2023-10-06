@@ -9,7 +9,7 @@ export function WpDashboardFullPage(props) {
 	const ref = useRef();
 
 	const setHeight=()=>{
-		ref.current.style.minHeight = window.innerHeight+'px';
+		ref.current.style.minHeight = (window.innerHeight - 32)+'px';
 	}
 
     useEffect(() => {
