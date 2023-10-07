@@ -353,18 +353,17 @@ export function validateValues(values={}, rules=[]) {
 	return true;
 }
 
+/**
+ * Format date output string
+ * 
+ * @param {Date|string|number} date Date object, date string or unix timestamp seconds
+ * @param {string} pattern Format pattern.
+ * @returns {string}
+ */
 export function formatDate( date, pattern = window.CrewHRM.date_format ) {
 
-	if ( ! ( date instanceof Date ) ) {
+	date = getLocalDate(date);
 
-		if ( typeof date === 'string' ) {
-			date = new Date(date);
-
-		} else if( ! isNaN( date ) ) {
-			date = getLocalFromUnix( parseInt( date ) );
-		} 
-	}
-	
 	if( ! date || isNaN( date ) || ! ( date instanceof Date ) ) {
 		return null;
 	}
@@ -395,7 +394,14 @@ export function formatDate( date, pattern = window.CrewHRM.date_format ) {
 	return formattedDate;
 }
 
+/**
+ * Returns unix timestamp seconds
+ * 
+ * @param {Date} date The date object to get unix timestamp seconds from. Default is current Date.
+ * @returns {number}
+ */
 export function getUnixTimestamp(date = new Date()) {
+	date = getLocalDate(date);
 	return Math.floor(date.getTime() / 1000);
 }
 
@@ -412,6 +418,9 @@ export function getLocalFromUnix(unixTimestampInSeconds) {
 }
 
 export function areDatesEqual(date1, date2) {
+	date1 = getLocalDate(date1);
+	date2 = getLocalDate(date2);
+
 	return (
 		date1.getFullYear() === date2.getFullYear() &&
 		date1.getMonth() === date2.getMonth() &&
@@ -419,9 +428,34 @@ export function areDatesEqual(date1, date2) {
 	);
 }
 
+/**
+ * Get date object from unix seconds, date string
+ * @param {Date|string|number} date 
+ * @returns {Date}
+ */
+export function getLocalDate(date) {
+
+	if ( ! ( date instanceof Date ) ) {
+
+		if ( typeof date === 'string' ) {
+			date = new Date(date);
+
+		} else if( ! isNaN( date ) ) {
+			date = getLocalFromUnix( parseInt( date ) );
+
+		} else {
+			date = null;
+		}
+	}
+	
+	return date;
+}
+
 // Function to check if two Date objects have the same date and time (down to the millisecond)
 export function areDateTimesEqual(date1, date2) {
-  return date1.getTime() === date2.getTime();
+	date1 = getLocalDate(date1);
+	date2 = getLocalDate(date2);
+  	return date1.getTime() === date2.getTime();
 }
 
 export const is_production = process.env.NODE_ENV === 'production';
