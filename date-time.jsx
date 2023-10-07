@@ -54,7 +54,7 @@ export function DateTimePeriodField(props) {
 
 		onChange({starts_at, ends_at});
 
-	}, [state]);
+	}, [state.date, state.starts_at, state.ends_at]);
 
 	return (
 		<div data-crewhrm-selector="date-time-period" className={'d-flex'.classNames()}>
