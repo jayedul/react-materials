@@ -17,7 +17,7 @@ export function DateField(props) {
 
 export function DateTimePeriodField(props) {
 
-	const {ajaxToast} = useContext(ContextToast);
+	const {addToast} = useContext(ContextToast);
 
 	let { 
 		onChange, 
@@ -48,7 +48,7 @@ export function DateTimePeriodField(props) {
 		const ends_at = state.ends_at ? getUnixTimestamp( `${state.date} ${state.ends_at}` ) : null;
 
 		if ( ends_at!==null && starts_at>=ends_at ) {
-			ajaxToast(__('End time must be later than start time'));
+			addToast(__('End time must be later than start time'));
 			return;
 		}
 
