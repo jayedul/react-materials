@@ -402,6 +402,7 @@ export function formatDate( date, pattern = window.CrewHRM.date_format ) {
  */
 export function getUnixTimestamp(date = new Date()) {
 	date = getLocalDate(date);
+	console.log(date);
 	return Math.floor(date.getTime() / 1000);
 }
 

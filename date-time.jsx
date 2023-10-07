@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { TextField } from './text-field/text-field.jsx';
 import { __, getUnixTimestamp } from './helpers.jsx';
 import { input_class } from './classes.jsx';
+import { ContextToast } from './toast/toast.jsx';
 
 export function DateField(props) {
 	let { onChange, className=input_class, inputClassName, value } = props;
@@ -15,7 +16,15 @@ export function DateField(props) {
 }
 
 export function DateTimePeriodField(props) {
-	let { onChange, labelClassName, requires=['starts_at'], value={} } = props;
+
+	const {ajaxToast} = useContext(ContextToast);
+
+	let { 
+		onChange, 
+		labelClassName, 
+		requires=['starts_at'], 
+		value={} 
+	} = props;
 
 	const [state, setState] = useState({
 		date: '',
@@ -37,6 +46,11 @@ export function DateTimePeriodField(props) {
 
 		const starts_at = getUnixTimestamp( `${state.date} ${state.starts_at}` );
 		const ends_at = state.ends_at ? getUnixTimestamp( `${state.date} ${state.ends_at}` ) : null;
+
+		if ( ends_at!==null && starts_at>=ends_at ) {
+			ajaxToast(__('End time must be later than start time'));
+			return;
+		}
 
 		onChange({starts_at, ends_at});
 
