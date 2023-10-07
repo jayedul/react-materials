@@ -42,7 +42,6 @@ export function DropDown(props) {
         className = input_class,
         tabindex,
         textClassName = 'font-size-15 font-weight-400 color-text'.classNames(),
-        iconClassName = 'ch-icon ch-icon-arrow-down margin-left-10 font-size-18 color-text-light'.classNames(),
         position = 'center top',
         placeholder = __('Select'),
         addText,
@@ -87,7 +86,14 @@ export function DropDown(props) {
                         />
                     </Conditional>
                 </div>
-                <i className={iconClassName}></i>
+                <i 
+					className={`ch-icon ${!selected_value ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 color-text-light`.classNames()} 
+					onClick={e=>{
+						if ( selected_value ) {
+							e.stopPropagation();
+							onChange('');
+						}
+					}}></i>
             </div>
         );
     };
