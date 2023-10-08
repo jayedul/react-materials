@@ -224,42 +224,6 @@ export function isEmpty(value, treatNumericAsEmpty = false) {
 	return false; // If none of the above conditions are met, the value is not empty
 }
 
-// Caluclatate JSON object size including text, file etc.
-export function calculateJSONSizeInKB(jsonObject) {
-	function calculateSize(obj) {
-		if (typeof obj === 'object' && obj instanceof File) {
-			// If it's a File object, add its size
-			return obj.size;
-		} else if (typeof obj === 'object') {
-			let size = 0;
-			if (Array.isArray(obj)) {
-				for (const item of obj) {
-					size += calculateSize(item);
-				}
-			} else {
-				for (const key in obj) {
-					size += calculateSize(obj[key]);
-				}
-			}
-			return size;
-		} else if (typeof obj === 'string') {
-			// Estimate the size of the string as bytes (UTF-16 encoding)
-			return obj.length * 2;
-		} else {
-			// For other types, assume a small constant size
-			return 16; // Adjust as needed
-		}
-	}
-
-	// Calculate the size recursively
-	const sizeInBytes = calculateSize(jsonObject);
-
-	// Convert bytes to kilobytes (KB)
-	const sizeInKB = sizeInBytes / 1024;
-
-	return sizeInKB;
-}
-
 export function parseParams(searchParam) {
 	const queryParams = {};
 	for (const [key, value] of searchParam) {

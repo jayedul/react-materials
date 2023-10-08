@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 
 import style from './upload.module.scss';
-import { __, getFileId } from '../helpers.jsx';
+import { __, getFileId, sprintf } from '../helpers.jsx';
 import { ListFile } from '../file-list.jsx';
+import { ContextToast } from '../toast/toast.jsx';
 
 /**
  * Returns a set of options, computed from the attached image data and
@@ -61,6 +62,7 @@ function media_frame_image_cal(attachment, controller) {
 export function FileUpload(props) {
     const {
         maxlenth = 1,
+        maxsize,
         textPrimary = __('Browse'),
         textSecondary = __('or, Just drop it here'),
         value,
@@ -73,6 +75,7 @@ export function FileUpload(props) {
     const singular = maxlenth <= 1;
     const input_ref = useRef();
     const stateFiles = value ? (Array.isArray(value) ? value : [value]) : [];
+	const {addToast} = useContext(ContextToast);
 
     /**
      * Setup Crop control
@@ -110,9 +113,21 @@ export function FileUpload(props) {
         files = Array.from(files);
         files = [...files, ...stateFiles];
 
-        // Exclude duplicate
+        // Exclude duplicate and those that exceeds the maxsize limit
         const ids = [];
         files = files.filter((f) => {
+
+			// Check if max size crossed
+			const file_size_mb = Math.floor( f.size / (1024 * 1024 ) );
+			if ( maxsize && file_size_mb >= maxsize ) {
+				addToast({
+					message: sprintf(__('%s excluded as it exceeds the max size limit %sMB'), f.name, maxsize),
+					status: 'warning'
+				});
+				return false;
+			}
+
+			// Now check if already uploaded this file.
             let id = getFileId(f);
             let exists = ids.indexOf(id) > -1;
             ids.push(id);
