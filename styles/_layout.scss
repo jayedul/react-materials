@@ -105,7 +105,7 @@ $borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right'
 @include looper('overflow', 'auto', 'hidden');
 @include looper('justify-content', 'space-between', 'space-around', 'center', 'end', 'flex-end');
 @include looper('align-self', 'center', 'auto');
-@include looper('cursor', 'pointer', 'default', 'not-allowed');
+@include looper('cursor', 'pointer', 'default', 'not-allowed', 'text');
 @include looper('vertical-align', 'middle', 'top');
 @include looper('position', 'absolute', 'fixed', 'static', 'relative', 'sticky');
 

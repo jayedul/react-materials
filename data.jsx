@@ -36,25 +36,32 @@ export const attachment_formats = {
 	docx: {
 		label: __('DOCX')
 	},
-    audio: {
-		label: __('Audio'),
-		disabled: true
+	jpg: {
+		label: __('JPG')
 	},
-    video: {
-		label: __('Video'),
-		disabled: true
+	jpeg: {
+		label: __('JPEG')
 	},
-    image: {
-		label: __('Image'),
-		disabled: true
+	png: {
+		label: __('PNG')
+	},
+    mp3: {
+		label: __('MP3')
+	},
+    wav: {
+		label: __('WAV')
+	},
+    mp4: {
+		label: __('MP4')
+	},
+    mov: {
+		label: __('MOV')
 	},
     zip: {
-		label: __('ZIP'),
-		disabled: true
+		label: __('ZIP')
 	},
     rar: {
-		label: __('RAR'),
-		disabled: true
+		label: __('RAR')
 	}
 };
 
