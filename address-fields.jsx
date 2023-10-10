@@ -3,16 +3,16 @@ import React from 'react';
 import { TextField } from './text-field/text-field.jsx';
 import { DropDown } from './dropdown/dropdown.jsx';
 import { __ } from './helpers.jsx';
-import { countries_array } from './data.jsx';
+import { countries_array, patterns } from './data.jsx';
 
-export function AddressFields({values:{street_address, city, zip_code, province, country_code}, onChange, regex}) {
+export function AddressFields({values:{street_address, city, zip_code, province, country_code}, onChange}) {
 	return <div>
 		<TextField
 			value={street_address || ''}
 			onChange={(v) => onChange('street_address', v)}
 			placeholder={__('Street Address')}
 			style={{marginBottom: '10px'}}
-			regex={regex}
+			regex={/\S+/}
 		/>
 
 		<div className={'d-flex align-items-center column-gap-10 margin-bottom-10'.classNames()}>
@@ -21,7 +21,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={city || ''}
 					onChange={(v) => onChange('city', v)}
 					placeholder={__('City')}
-					regex={regex}
+					regex={/\S+/}
 				/>
 			</div>
 			<div className={'flex-1'.classNames()}>
@@ -29,7 +29,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={province || ''}
 					onChange={(v) => onChange('province', v)}
 					placeholder={__('Province')}
-					regex={regex}
+					regex={/\S+/}
 				/>
 			</div>
 		</div>
@@ -40,7 +40,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={zip_code || ''}
 					onChange={(v) => onChange('zip_code', v)}
 					placeholder={__('Postal/Zip Code')}
-					regex={regex}
+					regex={patterns.zip_code}
 				/>
 			</div>
 			<div className={'flex-1'.classNames()}>
@@ -48,7 +48,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={country_code}
 					onChange={(v) => onChange('country_code', v)}
 					options={countries_array}
-					regex={regex}/>
+					regex={/\S+/}/>
 			</div>
 		</div>
 	</div>
