@@ -137,7 +137,7 @@ export function TextField(props) {
     };
 
     return (
-        <div
+        <label
             data-crewhrm-selector="text-field"
             className={
                 `text-field`.classNames(style) +
@@ -174,6 +174,6 @@ export function TextField(props) {
                     <textarea {...attr} style={{resize: 'none'}}></textarea>
                 </Conditional>
             </Conditional>
-        </div>
+        </label>
     );
 }
