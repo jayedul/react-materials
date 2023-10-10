@@ -141,7 +141,7 @@ export function TextField(props) {
             data-crewhrm-selector="text-field"
             className={
                 `text-field`.classNames(style) +
-                `d-flex align-items-center ${
+                `d-flex align-items-center cursor-text ${
                     icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
                 } ${state.focused ? 'active' : ''}`.classNames() + 
 				(!state.has_error ? className : input_class_error)

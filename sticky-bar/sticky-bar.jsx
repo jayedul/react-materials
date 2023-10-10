@@ -10,8 +10,8 @@ export function StickyBar({ title, children, canBack, midWidth }) {
     return (
         <>
             <Helmet>
-                <link rel="icon" type="image/x-icon" href={logo} />
-                <title>CrewHRM - {title}</title>
+                <link rel="icon" type="image/x-icon" href={window.CrewHRM.white_label.app_logo || logo} />
+                <title>{window.CrewHRM.white_label.app_label || 'CrewHRM'} - {title}</title>
             </Helmet>
             <div
                 data-crewhrm-selector="sticky-bar"
