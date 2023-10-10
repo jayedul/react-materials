@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Conditional } from '../conditional.jsx';
+import { input_class as className, input_class_error } from '../classes.jsx';
+
 import style from './text-field.module.scss';
-import { input_class } from '../classes.jsx';
 
 export function TextField(props) {
     const {
@@ -13,15 +14,15 @@ export function TextField(props) {
         onChange,
         onIconClick: clickHandler,
         placeholder,
-        className = input_class,
-        inputClassName = '',
         pattern,
         value,
         inputDelay,
         maxLength = null,
         expandable = false,
 		disabled,
-		readOnly
+		readOnly,
+		regex,
+		style: cssStyle
     } = props;
 
     const input_ref = useRef();
@@ -30,7 +31,8 @@ export function TextField(props) {
 
     const [state, setState] = useState({
         expanded: !expandable,
-        focused: false
+        focused: false,
+		has_error: false
     });
 
     const dispatchChange = (v) => {
@@ -102,13 +104,23 @@ export function TextField(props) {
         placeholder,
         ref: input_ref,
         value: !inputDelay ? value : text,
-        onChange: (e) =>
-            !inputDelay ? dispatchChange(e.currentTarget.value) : setText(e.currentTarget.value),
+        onChange: (e) =>{
+			const {value} = e.currentTarget;
+
+			setState({
+				...state,
+				has_error: regex && (!value || !regex.test(value))
+			});
+
+			if (!inputDelay) {
+				dispatchChange(value)
+			} else {
+				setText(value);
+			}
+		},
         onFocus: () => toggleFocusState(true),
         onBlur: () => toggleFocusState(false),
-        className:
-            'text-field-flat font-size-15 font-weight-500 letter-spacing--15 flex-1'.classNames() +
-            inputClassName
+        className: 'text-field-flat font-size-15 font-weight-500 letter-spacing--15 flex-1'.classNames()
     };
 
     return (
@@ -118,10 +130,13 @@ export function TextField(props) {
                 `text-field`.classNames(style) +
                 `d-flex align-items-center ${
                     icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
-                } ${state.focused ? 'active' : ''}`.classNames() +
-                className
+                } ${state.focused ? 'active' : ''}`.classNames() + 
+				(!state.has_error ? className : input_class_error)
             }
-			style={type==='textarea' ? {height: '100px'} : {}}
+			style={{
+				height: type==='textarea' ? '100px' : undefined,
+				...cssStyle
+			}}
         >
             <Conditional show={iconClass}>
                 <i className={iconClass} onClick={() => onIconClick()}></i>

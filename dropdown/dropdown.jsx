@@ -4,7 +4,7 @@ import { Popup } from '../popup/index.jsx';
 import style from './dropdown.module.scss';
 import { __ } from '../helpers.jsx';
 import { Conditional } from '../conditional.jsx';
-import { input_class } from '../classes.jsx';
+import { input_class as className } from '../classes.jsx';
 
 const content_style = {
     padding: '0px',
@@ -39,7 +39,6 @@ export function DropDown(props) {
         options = [],
         onChange,
         transparent,
-        className = input_class,
         tabindex,
         textClassName = 'font-size-15 font-weight-400 color-text'.classNames(),
         position = 'center top',

@@ -1,16 +1,15 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { TextField } from './text-field/text-field.jsx';
 import { __, getUnixTimestamp } from './helpers.jsx';
-import { input_class } from './classes.jsx';
 import { ContextToast } from './toast/toast.jsx';
 
 export function DateField(props) {
-	let { onChange, className=input_class, inputClassName, value } = props;
+	let { onChange, value } = props;
 
 	return (
 		<TextField
 			type="date"
-			{...{ onChange, className, inputClassName, value: value || '' }}
+			{...{ onChange, value: value || '' }}
 		/>
 	);
 }
@@ -58,10 +57,12 @@ export function DateTimePeriodField(props) {
 
 	return (
 		<div data-crewhrm-selector="date-time-period" className={'d-flex'.classNames()}>
+			
 			<div className={'flex-5 margin-right-20'.classNames()}>
 				<span className={labelClassName}>{__('Date')}</span>
 				<DateField onChange={(v) => setVal('date', v)} value={state.date}/>
 			</div>
+
 			<div className={'flex-6'.classNames()}>
 				<span className={labelClassName}>{__('Time')}</span>
 				<div className={'d-flex align-items-center'.classNames()}>
