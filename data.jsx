@@ -1,5 +1,12 @@
 import { __ } from "./helpers.jsx";
 
+export const patterns = {
+	email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+	phone: /^[a-zA-Z0-9\-()\+\s]{10,15}$/,
+	zip_code: /^[A-Za-z0-9\s-]{4,10}$/,
+	url: /^(http|https):\/\/[A-Za-z0-9.-]+(\.[A-Za-z]{2,})?(:\d+)?(\/\S*)?$/,
+}
+
 export const genders = {
     male: __('Male'),
     female: __('Female'),
