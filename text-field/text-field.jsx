@@ -32,6 +32,7 @@ export function TextField(props) {
     const [state, setState] = useState({
         expanded: !expandable,
         focused: false,
+		error_triggered: false,
 		has_error: false
     });
 
@@ -62,6 +63,16 @@ export function TextField(props) {
             expanded: !state.expanded
         });
     };
+
+	const highlightError=(value)=>{
+		const has_error = regex && (!value || !regex.test(value));
+
+		setState({
+			...state,
+			error_triggered: state.error_triggered || has_error,
+			has_error
+		});
+	}
 
     const toggleFocusState = (focused) => {
         setState({
@@ -107,10 +118,9 @@ export function TextField(props) {
         onChange: (e) =>{
 			const {value} = e.currentTarget;
 
-			setState({
-				...state,
-				has_error: regex && (!value || !regex.test(value))
-			});
+			if ( state.error_triggered ) {
+				highlightError(value);
+			}
 
 			if (!inputDelay) {
 				dispatchChange(value)
@@ -119,7 +129,10 @@ export function TextField(props) {
 			}
 		},
         onFocus: () => toggleFocusState(true),
-        onBlur: () => toggleFocusState(false),
+        onBlur: e => {
+			highlightError(e.currentTarget.value);
+			toggleFocusState(false);
+		},
         className: 'text-field-flat font-size-15 font-weight-500 letter-spacing--15 flex-1'.classNames()
     };
 
