@@ -46,7 +46,7 @@ function Warning({
             >
                 {confirmText}{' '}
                 <Conditional show={loading}>
-                    <LoadingIcon size={18} color={window.CrewHRM.colors.white} />
+                    <LoadingIcon/>
                 </Conditional>
             </button>
         </div>

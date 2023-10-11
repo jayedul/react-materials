@@ -1,15 +1,11 @@
 import React from 'react';
-import { CircularProgress } from '../circular.jsx';
 
 import style from './loading.module.scss';
 import { Conditional } from '../conditional.jsx';
 
 export function LoadingIcon({
     show = true,
-    size,
     center = false,
-    color,
-    colorSecondary = 'transparent',
     className
 }) {
     return (
@@ -21,13 +17,7 @@ export function LoadingIcon({
                     className
                 }
             >
-                <CircularProgress
-                    size={size}
-                    percentage={75}
-                    color={color}
-                    colorSecondary={colorSecondary}
-                    className={'rotate'.classNames(style)}
-                />
+                <i className={'ch-icon ch-icon-loading'.classNames() + 'rotate'.classNames(style)}></i>
             </div>
         </Conditional>
     );
