@@ -11,13 +11,12 @@ export function LoadingIcon({
     return (
         <Conditional show={show}>
             <div
-                data-crewhrm-selector="loading-icon"
                 className={
                     `${center ? 'd-block text-align-center' : 'd-inline-block'}`.classNames() +
                     className
                 }
             >
-                <i className={'ch-icon ch-icon-loading'.classNames() + 'rotate'.classNames(style)}></i>
+                <i className={'ch-icon ch-icon-loading d-inline-block position-relative top-2'.classNames() + 'rotate'.classNames(style)}></i>
             </div>
         </Conditional>
     );
