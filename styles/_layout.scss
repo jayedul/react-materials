@@ -108,6 +108,7 @@ $borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right'
 @include looper('cursor', 'pointer', 'default', 'not-allowed', 'text');
 @include looper('vertical-align', 'middle', 'top');
 @include looper('position', 'absolute', 'fixed', 'static', 'relative', 'sticky');
+@include looper('align-items', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
 
 // Autos
 $autos: 'width', 'height', 'margin';
@@ -116,16 +117,6 @@ $autos: 'width', 'height', 'margin';
         #{$auto}: auto;
     }
 }
-
-$aligns: 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch';
-@mixin alignItems($class) {
-    @each $align in $aligns {
-        #{$class}-#{$align} {
-            align-items: #{$align};
-        }
-    }
-}
-@include alignItems('.align-items');
 
 
 // Change flex-direction from row to column at specific breakpoints
@@ -140,7 +131,7 @@ $aligns: 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch';
                     row-gap: #{$i}px;
                 }
 
-                @include alignItems('&.break-align-items');
+				@include looper('break-align-items', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
             }
         }
     }

@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { TextField } from './text-field/text-field.jsx';
-import { __, getUnixTimestamp } from './helpers.jsx';
+import { __, formatDate, getLocalFromUnix, getUnixTimestamp } from './helpers.jsx';
 import { ContextToast } from './toast/toast.jsx';
 
 export function DateField(props) {
@@ -25,10 +25,16 @@ export function DateTimePeriodField(props) {
 		value={} 
 	} = props;
 
+	const date      = value.starts_at ? getLocalFromUnix(value.starts_at) : '';
+	const starts_at = date ? formatDate( date, 'G:i' ) : '';
+
+	const end_date  = value.ends_at ? getLocalFromUnix(value.ends_at) : '';
+	const ends_at   = end_date ? formatDate( end_date, 'G:i' ) : '';
+
 	const [state, setState] = useState({
-		date: '',
-		starts_at: '',
-		ends_at: ''
+		date: date ? formatDate(date, 'Y-m-d') : '',
+		starts_at,
+		ends_at
 	});
 
 	const setVal = (name, value) => {
