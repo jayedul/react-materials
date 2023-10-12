@@ -45,6 +45,7 @@ export function DropDown(props) {
         placeholder = __('Select'),
         addText,
         onAddClick,
+		disabled,
         style: cssStyle = {}
     } = props;
 
@@ -86,7 +87,7 @@ export function DropDown(props) {
                     </Conditional>
                 </div>
                 <i 
-					className={`ch-icon ${!selected_value ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 color-text-light`.classNames()} 
+					className={`ch-icon ${(disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 color-text-light`.classNames()} 
 					onClick={e=>{
 						if ( selected_value ) {
 							e.stopPropagation();
@@ -113,6 +114,7 @@ export function DropDown(props) {
             <Popup
                 position={position}
                 on="click"
+				disabled={disabled}
                 closeOnDocumentClick
                 mouseLeaveDelay={300}
                 mouseEnterDelay={0}
