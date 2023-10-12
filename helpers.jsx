@@ -337,6 +337,7 @@ export function formatDate( date, pattern = window.CrewHRM.date_format ) {
 	let formattedDate = pattern;
 	formattedDate = formattedDate.replace("F", months[date.getMonth()]);
 	formattedDate = formattedDate.replace("M", months[date.getMonth()]?.substring(0, 3));
+	formattedDate = formattedDate.replace("m", date.getMonth()+1);
 	formattedDate = formattedDate.replace("j", date.getDate());
 	formattedDate = formattedDate.replace("d", String(date.getDate()).padStart(2, '0'));
 	formattedDate = formattedDate.replace("l", days[date.getDay()]);
