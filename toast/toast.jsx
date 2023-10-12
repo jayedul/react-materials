@@ -59,10 +59,10 @@ export function ToastWrapper({children}) {
 
     const ajaxToast = (response) => {
         const { success, data } = typeof response === 'object' ? response || {} : {};
-        const { message = __('Something went wrong!'), status } = data || {};
+        const { message, status } = data || {};
 
         addToast({
-            message,
+            message: message ? message : (success ? __('Done') : __('Something went wrong!')),
             dismissible: true,
             status: status || (success ? 'success' : 'error')
         });

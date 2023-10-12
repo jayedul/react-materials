@@ -87,7 +87,7 @@ export function DropDown(props) {
                     </Conditional>
                 </div>
                 <i 
-					className={`ch-icon ${(disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 color-text-light`.classNames()} 
+					className={`ch-icon ${(disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 ${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames()} 
 					onClick={e=>{
 						if ( selected_value ) {
 							e.stopPropagation();

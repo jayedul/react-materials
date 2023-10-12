@@ -143,7 +143,7 @@ export function TextField(props) {
                 `text-field`.classNames(style) +
                 `d-flex align-items-center cursor-text ${
                     icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
-                } ${state.focused ? 'active' : ''}`.classNames() + 
+                } ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
 				(!state.has_error ? className : input_class_error)
             }
 			style={{
