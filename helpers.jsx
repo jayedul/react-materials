@@ -343,8 +343,7 @@ export function formatDate( date, pattern = window.CrewHRM.date_format ) {
 	formattedDate = formattedDate.replace("l", days[date.getDay()]);
 	formattedDate = formattedDate.replace("D", days[date.getDay()]?.substring(0, 3));
 	formattedDate = formattedDate.replace("Y", date.getFullYear());
-	formattedDate = formattedDate.replace("G", date.getHours());
-	formattedDate = formattedDate.replace("g", date.getHours() % 12 || 12);
+	formattedDate = formattedDate.replace("g", String(date.getHours() % 12 || 12).padStart(2, '0'));
 	formattedDate = formattedDate.replace("H", String(date.getHours()).padStart(2, '0'));
 	formattedDate = formattedDate.replace("i", String(date.getMinutes()).padStart(2, '0'));
 	formattedDate = formattedDate.replace("A", date.getHours() >= 12 ? 'PM' : 'AM');

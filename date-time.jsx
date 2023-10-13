@@ -26,10 +26,10 @@ export function DateTimePeriodField(props) {
 	} = props;
 
 	const date      = value.starts_at ? getLocalFromUnix(value.starts_at) : '';
-	const starts_at = date ? formatDate( date, 'G:i' ) : '';
+	const starts_at = date ? formatDate( date, 'H:i' ) : '';
 
 	const end_date  = value.ends_at ? getLocalFromUnix(value.ends_at) : '';
-	const ends_at   = end_date ? formatDate( end_date, 'G:i' ) : '';
+	const ends_at   = end_date ? formatDate( end_date, 'H:i' ) : '';
 
 	const [state, setState] = useState({
 		date: date ? formatDate(date, 'Y-m-d') : '',
