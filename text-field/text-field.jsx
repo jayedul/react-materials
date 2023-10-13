@@ -22,7 +22,8 @@ export function TextField(props) {
 		disabled,
 		readOnly,
 		regex,
-		style: cssStyle
+		style: cssStyle,
+		autofocus,
     } = props;
 
     const input_ref = useRef();
@@ -81,6 +82,14 @@ export function TextField(props) {
         });
     };
 
+	// Simple autofocu on component mount
+	useEffect(()=>{
+		if( autofocus && input_ref && input_ref.current ) {
+			input_ref.current.focus();
+		}
+	}, []);
+
+	// Expand text field on search icon click ideally. So far it is used in dashboard page in job opening component.
     useEffect(() => {
         if (!state.expanded || !input_ref?.current) {
             return;
@@ -91,6 +100,7 @@ export function TextField(props) {
         }
     }, [state.expanded]);
 
+	// Apply input delay, normally used for search fields
     useEffect(() => {
 		if ( ! inputDelay ) {
 			return;
