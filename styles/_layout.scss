@@ -102,7 +102,9 @@ $borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right'
 @include looper('flex-direction', 'column', 'row', 'row-reverse', 'column-reverse');
 @include looper('flex-wrap', 'wrap', 'nowrap');
 @include looper('background-size', 'cover');
-@include looper('overflow', 'auto', 'hidden');
+@include looper('overflow', 'auto', 'hidden', 'scroll');
+@include looper('overflow-x', 'auto', 'hidden', 'scroll');
+@include looper('overflow-y', 'auto', 'hidden', 'scroll');
 @include looper('justify-content', 'space-between', 'space-around', 'center', 'end', 'flex-end');
 @include looper('align-self', 'center', 'auto');
 @include looper('cursor', 'pointer', 'default', 'not-allowed', 'text');

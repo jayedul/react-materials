@@ -1,26 +1,9 @@
-// Text alignments
-$alignments: 'left', 'right', 'center', 'justify';
-@each $alignment in $alignments {
-    .text-align-#{$alignment} {
-        text-align: #{$alignment};
-    }
-}
+@import './mixins';
 
-// Whitespaces
-$whitespaces: 'normal', 'pre', 'nowrap';
-@each $whitespace in $whitespaces {
-    .white-space-#{$whitespace} {
-        white-space: #{$whitespace};
-    }
-}
-
-// Transforms
-$transforms: 'uppercase', 'lowercase';
-@each $transform in $transforms {
-    .text-transform-#{$transform} {
-        text-transform: #{$transform};
-    }
-}
+@include looper('text-align', 'left', 'right', 'center', 'justify');
+@include looper('white-space', 'normal', 'pre', 'nowrap');
+@include looper('text-transform', 'uppercase', 'lowercase');
+@include looper('text-overflow', 'ellipsis', 'clip');
 
 .text-field-flat {
     padding: 0 !important;
