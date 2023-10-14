@@ -24,7 +24,9 @@ export function Tabs(props) {
 		}
 
 		// Brig the tab at the top
-		ref?.current?.scrollIntoView(true);
+		if( ref?.current ) {
+			ref.current.scrollIntoView(true);
+		}
 
 	}, [active]);
 

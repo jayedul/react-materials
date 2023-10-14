@@ -9,7 +9,9 @@ export function WpDashboardFullPage(props) {
 	const ref = useRef();
 
 	const setHeight=()=>{
-		ref?.current?.style?.minHeight = (window.innerHeight - 32)+'px';
+		if ( ref?.current ) {
+			ref.current.style?.minHeight = (window.innerHeight - 32)+'px';
+		}
 	}
 
     useEffect(() => {
@@ -19,7 +21,11 @@ export function WpDashboardFullPage(props) {
         wrapper.style.paddingRight = 0;
         wrapper.style.paddingBottom = 0;
 		
-		setTimeout(()=>ref?.current?.scrollIntoView(true), 500);
+		setTimeout(()=>{
+			if( ref?.current ) {
+				ref.current.scrollIntoView(true)
+			}
+		}, 500);
 
 		setHeight();
 		window.addEventListener('resize', setHeight);
