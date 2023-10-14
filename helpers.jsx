@@ -445,7 +445,7 @@ export function getFirstOfDay(date) {
 }
 
 export function getLastOfDay(date) {
-	new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+	return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
 }
 
 export const is_production = process.env.NODE_ENV === 'production';
