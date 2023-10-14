@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
+import {ErrorBoundary} from './error-boundary.jsx';
+
 export function RenderExternal({component: Comp, payload={}}) {
 	if ( ! Comp ) {
 		return null;
@@ -15,5 +17,5 @@ export function RenderExternal({component: Comp, payload={}}) {
 
 	}, [Comp, reff.current]);
 
-	return is_component ? <Comp {...payload}/> : <div ref={reff}></div>
+	return is_component ? <ErrorBoundary><Comp {...payload}/></ErrorBoundary> : <div ref={reff}></div>
 }
