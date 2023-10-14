@@ -99,8 +99,6 @@ export const time_formats = {
     _24: __('24 Hours')
 };
 
-export const date_formats = ['DD MMM, YYYY', 'Y-MM-D', 'MM/D/Y', 'D/MM/Y'];
-
 export const attendance_types = {
 	on_site: __('On-Site'),
     remote: __('Fully Remote'),

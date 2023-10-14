@@ -416,4 +416,36 @@ export function areDateTimesEqual(date1, date2) {
   	return date1.getTime() === date2.getTime();
 }
 
+export function getLastOfMonth(date) {
+	const year = date.getFullYear();
+	const month = date.getMonth();
+
+	// Get the last day of the next month (which might be the first day of the following month)
+	const lastDayOfNextMonth = new Date(year, month + 1, 0);
+
+	// Check if the last day of the next month is actually the first day of the following month
+	// If so, it means we are currently in a month with 31 days, and the last day of this month is 31
+	if (lastDayOfNextMonth.getDate() === 1) {
+		// Go back one day to get the last day of the current month
+		return new Date(year, month, 31, 23, 59, 59); // Set hours, minutes, and seconds to the last values
+	}
+
+	// Set hours, minutes, and seconds to the last values for months with 28 or 30 days
+	lastDayOfNextMonth.setHours(23, 59, 59);
+
+	return lastDayOfNextMonth;
+}
+
+export function getFirstOfMonth(date) {
+	return new Date(date.getFullYear(), date.getMonth(), 1, 0, 0, 0);
+}
+
+export function getFirstOfDay(date) {
+	return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+}
+
+export function getLastOfDay(date) {
+	new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+}
+
 export const is_production = process.env.NODE_ENV === 'production';
