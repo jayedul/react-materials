@@ -5,14 +5,15 @@ import { DropDown } from './dropdown/dropdown.jsx';
 import { __ } from './helpers.jsx';
 import { countries_array, patterns } from './data.jsx';
 
-export function AddressFields({values:{street_address, city, zip_code, province, country_code}, onChange, showErrorsAlways}) {
+export function AddressFields({required, values:{street_address, city, zip_code, province, country_code}, onChange, showErrorsAlways}) {
+	const regex = required ? /\S+/ : null;
 	return <div>
 		<TextField
 			value={street_address || ''}
 			onChange={(v) => onChange('street_address', v)}
 			placeholder={__('Street Address')}
 			style={{marginBottom: '10px'}}
-			regex={/\S+/}
+			regex={regex}
 			showErrorsAlways={showErrorsAlways}
 		/>
 
@@ -22,7 +23,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={city || ''}
 					onChange={(v) => onChange('city', v)}
 					placeholder={__('City')}
-					regex={/\S+/}
+					regex={regex}
 					showErrorsAlways={showErrorsAlways}
 				/>
 			</div>
@@ -31,7 +32,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={province || ''}
 					onChange={(v) => onChange('province', v)}
 					placeholder={__('Province')}
-					regex={/\S+/}
+					regex={regex}
 					showErrorsAlways={showErrorsAlways}
 				/>
 			</div>
@@ -43,7 +44,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={zip_code || ''}
 					onChange={(v) => onChange('zip_code', v)}
 					placeholder={__('Postal/Zip Code')}
-					regex={patterns.zip_code}
+					regex={required ? patterns.zip_code : null}
 					showErrorsAlways={showErrorsAlways}
 				/>
 			</div>
@@ -52,8 +53,9 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={country_code}
 					onChange={(v) => onChange('country_code', v)}
 					options={countries_array}
-					regex={/\S+/}
-					showErrorsAlways={showErrorsAlways}/>
+					required={required}
+					showErrorsAlways={showErrorsAlways}
+					clearable={false}/>
 			</div>
 		</div>
 	</div>

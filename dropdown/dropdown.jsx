@@ -49,6 +49,7 @@ export function DropDown(props) {
 		required=false,
         style: cssStyle={},
 		showErrorsAlways=false,
+		clearable=true
     } = props;
 
     const ref = useRef();
@@ -108,9 +109,9 @@ export function DropDown(props) {
                     </Conditional>
                 </div>
                 <i 
-					className={`ch-icon ${(disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 ${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames()} 
+					className={`ch-icon ${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 ${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames()} 
 					onClick={e=>{
-						if ( selected_value ) {
+						if ( clearable && selected_value ) {
 							e.stopPropagation();
 							onChange('');
 						}
