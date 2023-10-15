@@ -5,7 +5,7 @@ import { DropDown } from './dropdown/dropdown.jsx';
 import { __ } from './helpers.jsx';
 import { countries_array, patterns } from './data.jsx';
 
-export function AddressFields({values:{street_address, city, zip_code, province, country_code}, onChange}) {
+export function AddressFields({values:{street_address, city, zip_code, province, country_code}, onChange, showErrorsAlways}) {
 	return <div>
 		<TextField
 			value={street_address || ''}
@@ -13,6 +13,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 			placeholder={__('Street Address')}
 			style={{marginBottom: '10px'}}
 			regex={/\S+/}
+			showErrorsAlways={showErrorsAlways}
 		/>
 
 		<div className={'d-flex align-items-center column-gap-10 margin-bottom-10'.classNames()}>
@@ -22,6 +23,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					onChange={(v) => onChange('city', v)}
 					placeholder={__('City')}
 					regex={/\S+/}
+					showErrorsAlways={showErrorsAlways}
 				/>
 			</div>
 			<div className={'flex-1'.classNames()}>
@@ -30,6 +32,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					onChange={(v) => onChange('province', v)}
 					placeholder={__('Province')}
 					regex={/\S+/}
+					showErrorsAlways={showErrorsAlways}
 				/>
 			</div>
 		</div>
@@ -41,6 +44,7 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					onChange={(v) => onChange('zip_code', v)}
 					placeholder={__('Postal/Zip Code')}
 					regex={patterns.zip_code}
+					showErrorsAlways={showErrorsAlways}
 				/>
 			</div>
 			<div className={'flex-1'.classNames()}>
@@ -48,7 +52,8 @@ export function AddressFields({values:{street_address, city, zip_code, province,
 					value={country_code}
 					onChange={(v) => onChange('country_code', v)}
 					options={countries_array}
-					regex={/\S+/}/>
+					regex={/\S+/}
+					showErrorsAlways={showErrorsAlways}/>
 			</div>
 		</div>
 	</div>

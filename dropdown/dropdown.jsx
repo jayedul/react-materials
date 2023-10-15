@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Popup } from '../popup/index.jsx';
 import style from './dropdown.module.scss';
 import { __ } from '../helpers.jsx';
 import { Conditional } from '../conditional.jsx';
-import { input_class as className } from '../classes.jsx';
+import { input_class as className, input_class_error } from '../classes.jsx';
 
 const content_style = {
     padding: '0px',
@@ -46,14 +46,35 @@ export function DropDown(props) {
         addText,
         onAddClick,
 		disabled,
-        style: cssStyle = {}
+		regex,
+        style: cssStyle = {},
+		showErrorsAlways
     } = props;
 
     const ref = useRef();
 
-    const [state, setState] = useState({
-        search: ''
-    });
+    const [searchState, setSearchState] = useState('');
+	const [errorState, setErrorState] = useState(null);
+
+	const highlightError=()=>{
+		setErrorState(regex && (!selected_value || !regex.test(selected_value)));
+	}
+
+	useEffect(()=>{
+		// Do not set as true on first mount
+		if ( errorState === null ) {
+			setErrorState(false);
+			return;
+		}
+		highlightError();
+
+	}, [selected_value]);
+
+	useEffect(()=>{
+		if( showErrorsAlways ) {
+			highlightError();
+		}
+	}, [showErrorsAlways]);
 
     const pop_border =
         className.indexOf('border-1-5') > -1
@@ -69,7 +90,7 @@ export function DropDown(props) {
                 className={
                     `select-dropdown ${transparent ? 'transparent' : ''}`.classNames(style) +
                     'cursor-pointer d-flex align-items-center border-radius-5'.classNames() +
-                    className
+                    (!errorState ? className : input_class_error)
                 }
             >
                 <div className={'flex-1 white-space-nowrap'.classNames() + textClassName}>
@@ -82,7 +103,7 @@ export function DropDown(props) {
                         <input
                             className={'text-field-flat'.classNames()}
                             placeholder={__('Search..')}
-                            onChange={(e) => setState({ ...state, search: e.currentTarget.value })}
+                            onChange={(e) => setSearchState(e.currentTarget.value)}
                         />
                     </Conditional>
                 </div>
@@ -99,10 +120,7 @@ export function DropDown(props) {
     };
 
     const closeDropdown = (callback) => {
-        setState({
-            ...state,
-            search: ''
-        });
+        setSearchState('');
 
         if (callback) {
             callback();
@@ -115,7 +133,7 @@ export function DropDown(props) {
                 position={position}
                 on="click"
 				disabled={disabled}
-                closeOnDocumentClick
+                closeOnDocumentClick={true}
                 mouseLeaveDelay={300}
                 mouseEnterDelay={0}
                 contentStyle={{ ...content_style, ...cssStyle }}
@@ -147,10 +165,10 @@ export function DropDown(props) {
                                 {options
                                     .filter(
                                         (o) =>
-                                            !state.search ||
+                                            !searchState ||
                                             o.label
                                                 .toLowerCase()
-                                                .indexOf(state.search.toLowerCase()) > -1
+                                                .indexOf(searchState.toLowerCase()) > -1
                                     )
                                     .map((option) => {
                                         let { id, label } = option;

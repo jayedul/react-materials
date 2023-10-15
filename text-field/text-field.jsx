@@ -14,28 +14,33 @@ export function TextField(props) {
         onChange,
         onIconClick: clickHandler,
         placeholder,
-        pattern,
+        pattern, // For date field ideally
         value,
         inputDelay,
         maxLength = null,
         expandable = false,
 		disabled,
 		readOnly,
-		regex,
+		regex, // For input validation and highlighiting field with red border for now.
 		style: cssStyle,
 		autofocus,
+		showErrorsAlways
     } = props;
 
     const input_ref = useRef();
 
     const [text, setText] = useState(value || '');
+	const [textInstant, setTextInstant] = useState(value || '');
 
     const [state, setState] = useState({
         expanded: !expandable,
         focused: false,
+    });
+
+	const [errorState, setErrorState] = useState({
 		error_triggered: false,
 		has_error: false
-    });
+	});
 
     const dispatchChange = (v) => {
         if (maxLength !== null && v.length > maxLength) {
@@ -65,12 +70,12 @@ export function TextField(props) {
         });
     };
 
-	const highlightError=(value)=>{
-		const has_error = regex && (!value || !regex.test(value));
+	const highlightError=()=>{
+		const has_error = regex && (!textInstant || !regex.test(textInstant));
 
-		setState({
-			...state,
-			error_triggered: state.error_triggered || has_error,
+		setErrorState({
+			...errorState,
+			error_triggered: errorState.error_triggered || has_error,
 			has_error
 		});
 	}
@@ -82,7 +87,21 @@ export function TextField(props) {
         });
     };
 
-	// Simple autofocu on component mount
+	useEffect(()=>{
+		// Run highlighter on every change to remove error state once it was marked as has error.
+		if ( errorState.error_triggered ) {
+			highlightError();
+		}
+	}, [textInstant]);
+
+	// No matter what, show error right now. Especially triggered on submit button click.
+	useEffect(()=>{
+		if ( showErrorsAlways ) {
+			highlightError();
+		}
+	}, [showErrorsAlways]);
+
+	// Simple autofocus on component mount
 	useEffect(()=>{
 		if( autofocus && input_ref && input_ref.current ) {
 			input_ref.current.focus();
@@ -100,7 +119,7 @@ export function TextField(props) {
         }
     }, [state.expanded]);
 
-	// Apply input delay, normally used for search fields
+	// Apply input delay, normally used in search fields for rate limiting.
     useEffect(() => {
 		if ( ! inputDelay ) {
 			return;
@@ -113,10 +132,6 @@ export function TextField(props) {
         return () => window.clearInterval(timer);
     }, [text]);
 
-    const separator = state.expanded ? (
-        <span className={'d-inline-block width-6'.classNames()}></span>
-    ) : null;
-
     const attr = {
         type,
         pattern,
@@ -128,10 +143,8 @@ export function TextField(props) {
         onChange: (e) =>{
 			const {value} = e.currentTarget;
 
-			if ( state.error_triggered ) {
-				highlightError(value);
-			}
-
+			setTextInstant(value);
+			
 			if (!inputDelay) {
 				dispatchChange(value)
 			} else {
@@ -140,11 +153,15 @@ export function TextField(props) {
 		},
         onFocus: () => toggleFocusState(true),
         onBlur: e => {
-			highlightError(e.currentTarget.value);
+			highlightError();
 			toggleFocusState(false);
 		},
         className: 'text-field-flat font-size-15 font-weight-500 letter-spacing--15 flex-1'.classNames()
     };
+
+    const separator = state.expanded ? (
+        <span className={'d-inline-block width-6'.classNames()}></span>
+    ) : null;
 
     return (
         <label
@@ -154,7 +171,7 @@ export function TextField(props) {
                 `d-flex align-items-center cursor-text ${
                     icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
                 } ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
-				(!state.has_error ? className : input_class_error)
+				(!errorState.has_error ? className : input_class_error)
             }
 			style={{
 				height: type==='textarea' ? '100px' : undefined,
