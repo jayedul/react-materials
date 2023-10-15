@@ -31,8 +31,8 @@ export function RadioCheckbox({
 	onChange,
 	className,
 	spanClassName,
-	required,
-	showErrorsAlways
+	required=false,
+	showErrorsAlways=false
 }) {
 	const [errorState, setErrorState] = useState(null);
 

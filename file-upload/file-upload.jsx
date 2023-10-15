@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from 'react';
 
 import style from './upload.module.scss';
-import { __, getFileId, sprintf } from '../helpers.jsx';
+import { __, getFileId, isEmpty, sprintf } from '../helpers.jsx';
 import { ListFile } from '../file-list.jsx';
 import { ContextToast } from '../toast/toast.jsx';
 
@@ -76,14 +76,14 @@ export function FileUpload(props) {
 
     const singular = maxlenth <= 1;
     const input_ref = useRef();
-    const stateFiles = value ? (Array.isArray(value) ? value : [value]) : [];
+    const stateFiles = !isEmpty( value ) ? (Array.isArray(value) ? value : [value]) : [];
 	const {addToast} = useContext(ContextToast);
 
     const [hoverState, setHoverState] = useState(false);
 	const [errorState, setErrorState] = useState(null);
 
 	const highlightError=()=>{
-		setErrorState(minlength && minlength>stateFiles.length);
+		setErrorState(minlength>stateFiles.length);
 	}
 
 	// Highlight error before form submission

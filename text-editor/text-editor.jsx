@@ -23,7 +23,7 @@ const createEditorState = (html) => {
     return state;
 };
 
-export function TextEditor({required, showErrorsAlways, onChange: dispatchTo, value: html, placeholder, session }) {
+export function TextEditor({required=false, showErrorsAlways=false, onChange: dispatchTo, value: html, placeholder, session }) {
     const [state, setState] = useState({
         editorState: createEditorState(html),
         focus: false

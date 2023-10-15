@@ -46,9 +46,9 @@ export function DropDown(props) {
         addText,
         onAddClick,
 		disabled,
-		required,
-        style: cssStyle = {},
-		showErrorsAlways
+		required=false,
+        style: cssStyle={},
+		showErrorsAlways=false,
     } = props;
 
     const ref = useRef();

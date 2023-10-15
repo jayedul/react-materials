@@ -21,10 +21,10 @@ export function TextField(props) {
         expandable = false,
 		disabled,
 		readOnly,
-		regex, // For input validation and highlighiting field with red border for now.
+		regex=null, // For input validation and highlighiting field with red border for now.
 		style: cssStyle,
 		autofocus,
-		showErrorsAlways
+		showErrorsAlways=false
     } = props;
 
     const input_ref = useRef();

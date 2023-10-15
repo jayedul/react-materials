@@ -190,7 +190,7 @@ function hasTextInHTML(htmlString) {
 
 export function isEmpty(value, treatNumericAsEmpty = false) {
 	// Check for undefined and null values
-	if (value === undefined || value === null) {
+	if (value === undefined || value === null || value === 'undefined') {
 		return true;
 	}
 
