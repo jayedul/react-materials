@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Popup } from '../popup/index.jsx';
 import style from './dropdown.module.scss';
-import { __ } from '../helpers.jsx';
+import { __, isEmpty } from '../helpers.jsx';
 import { Conditional } from '../conditional.jsx';
 import { input_class as className, input_class_error } from '../classes.jsx';
 
@@ -46,7 +46,7 @@ export function DropDown(props) {
         addText,
         onAddClick,
 		disabled,
-		regex,
+		required,
         style: cssStyle = {},
 		showErrorsAlways
     } = props;
@@ -57,7 +57,7 @@ export function DropDown(props) {
 	const [errorState, setErrorState] = useState(null);
 
 	const highlightError=()=>{
-		setErrorState(regex && (!selected_value || !regex.test(selected_value)));
+		setErrorState(required && isEmpty(selected_value));
 	}
 
 	useEffect(()=>{

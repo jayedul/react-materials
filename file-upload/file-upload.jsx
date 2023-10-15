@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 
 import style from './upload.module.scss';
 import { __, getFileId, sprintf } from '../helpers.jsx';
@@ -61,6 +61,7 @@ function media_frame_image_cal(attachment, controller) {
 
 export function FileUpload(props) {
     const {
+		minlength = 0,
         maxlenth = 1,
         maxsize,
         textPrimary = __('Browse'),
@@ -69,13 +70,40 @@ export function FileUpload(props) {
         onChange,
         accept=[],
         WpMedia,
-        layoutComp
+        layoutComp,
+		showErrorsAlways
     } = props;
 
     const singular = maxlenth <= 1;
     const input_ref = useRef();
     const stateFiles = value ? (Array.isArray(value) ? value : [value]) : [];
 	const {addToast} = useContext(ContextToast);
+
+    const [hoverState, setHoverState] = useState(false);
+	const [errorState, setErrorState] = useState(null);
+
+	const highlightError=()=>{
+		setErrorState(minlength && minlength>stateFiles.length);
+	}
+
+	// Highlight error before form submission
+	useEffect(()=>{
+		if( showErrorsAlways ) {
+			highlightError();
+		}
+	}, [showErrorsAlways]);
+
+	// Highlight error on file upload state changes
+	useEffect(()=>{
+		// Don not show error on mount without interaction
+		if( errorState === null ) {
+			setErrorState(false);
+			return;
+		}
+
+		highlightError();
+
+	}, [stateFiles.length]);
 
     /**
      * Setup Crop control
@@ -90,10 +118,6 @@ export function FileUpload(props) {
             height: WpMedia?.height // set the desired height of the destination image here
         }
     };
-
-    const [state, setState] = useState({
-        highlight: false
-    });
 
     const _onChange = (files) => {
         onChange(singular ? files[0] : files);
@@ -145,10 +169,7 @@ export function FileUpload(props) {
 
     const setActionState = (e, highlight) => {
         e.preventDefault();
-        setState({
-            ...state,
-            highlight
-        });
+        setHoverState(highlight);
     };
 
     const openPicker = () => {
@@ -283,12 +304,12 @@ export function FileUpload(props) {
         <>
             <div data-crewhrm-selector="file-upload" className={'upload'.classNames(style)}>
                 <div
-                    className={`drop-container ${state.highlight ? 'highlight' : ''}`.classNames(
-                        style
-                    )}
                     onDragOver={(e) => setActionState(e, true)}
                     onDragLeave={(e) => setActionState(e, false)}
                     onClick={openPicker}
+                    className={`drop-container ${hoverState ? 'highlight' : ''} ${errorState ? 'error' : ''}`.classNames(
+                        style
+                    )}
                     onDrop={(e) => {
                         handleFiles(e?.dataTransfer?.files || []);
                         setActionState(e, false);

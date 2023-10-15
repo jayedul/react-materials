@@ -7,6 +7,10 @@
         border-radius: 10px;
         background-color: #f9f9f9;
 
+		&.error {
+			border-color: var(--crewhrm-color-error);
+		}
+
         &:hover {
             border: 1px dashed var(--crewhrm-color-primary);
         }

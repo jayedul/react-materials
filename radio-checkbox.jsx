@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import {isEmpty} from './helpers.jsx';
 
 export function checkBoxRadioValue(e, values) {
 	const { type, value: _value, checked } = e.currentTarget;
 
-	if (type == 'radio') {
+	if (type === 'radio') {
 		return _value;
 	}
 
-	let _values = Array.isArray(values) ? values : [];
+	let _values = [...(Array.isArray(values) ? values : [])];
 	let index = _values.indexOf(_value);
 
 	if (checked) {
@@ -28,9 +30,32 @@ export function RadioCheckbox({
 	options = [],
 	onChange,
 	className,
-	spanClassName
+	spanClassName,
+	required,
+	showErrorsAlways
 }) {
-	let check_array = Array.isArray(value) ? value : [];
+	const [errorState, setErrorState] = useState(null);
+
+	const highlightError=()=>{
+		setErrorState(required && isEmpty(value));
+	}
+
+	useEffect(()=>{
+		// Do not highlight at first mount
+		if ( errorState===null ) {
+			setErrorState(false);
+			return;
+		}
+
+		highlightError();
+
+	}, [value]);
+
+	useEffect(()=>{
+		if( showErrorsAlways ) {
+			highlightError();
+		}
+	}, [showErrorsAlways]);
 
 	return options.map((option) => {
 		let { label, id, disabled } = option;
@@ -44,8 +69,9 @@ export function RadioCheckbox({
 						name={name}
 						value={id}
 						disabled={disabled}
-						checked={type === 'radio' ? value === id : check_array.indexOf(id) > -1}
+						checked={type === 'radio' ? value === id : (Array.isArray(value) ? value : []).indexOf(id) > -1}
 						onChange={(e) => onChange(checkBoxRadioValue(e, value))}
+						className={`${errorState ? 'error' : ''}`.classNames()}
 					/>
 					<span className={spanClassName}>{label}</span>
 				</label>

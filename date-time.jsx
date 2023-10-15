@@ -1,15 +1,17 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { TextField } from './text-field/text-field.jsx';
 import { __, formatDate, getLocalFromUnix, getUnixTimestamp } from './helpers.jsx';
+import { patterns } from './data.jsx';
 import { ContextToast } from './toast/toast.jsx';
 
 export function DateField(props) {
-	let { onChange, value } = props;
+	let { onChange, value, required, showErrorsAlways } = props;
 
 	return (
 		<TextField
 			type="date"
-			{...{ onChange, value: value || '' }}
+			regex={required ? patterns.date : null }
+			{...{ showErrorsAlways, onChange, value: value || '' }}
 		/>
 	);
 }

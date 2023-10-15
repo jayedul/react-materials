@@ -3,8 +3,9 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
+import {isEmpty} from '../helpers.jsx';
 import style from './editor.module.scss';
 
 const createEditorState = (html) => {
@@ -22,15 +23,40 @@ const createEditorState = (html) => {
     return state;
 };
 
-export function TextEditor({ onChange: dispatchTo, value: html, placeholder, session }) {
+export function TextEditor({required, showErrorsAlways, onChange: dispatchTo, value: html, placeholder, session }) {
     const [state, setState] = useState({
         editorState: createEditorState(html),
         focus: false
     });
 
+	const [htmlContents, setHtmlContents] = useState(html);
+	const [errorState, setErrorState] = useState(null);
+
+	const highlightError=()=>{
+		setErrorState(required && isEmpty(htmlContents));
+	}
+
+	useEffect(()=>{
+		dispatchTo(htmlContents);
+
+		// Do not highlight at first mount
+		if ( errorState === null ) {
+			setErrorState(false);
+			return;
+		}
+		highlightError();
+
+	}, [htmlContents] );
+
+	useEffect(()=>{
+		if ( showErrorsAlways ) {
+			highlightError();
+		}
+	}, [showErrorsAlways])
+
     const onChange = (editorState) => {
-        dispatchTo(draftToHtml(convertToRaw(editorState.getCurrentContent())));
         setState({ ...state, editorState });
+		setHtmlContents(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     };
 
     useEffect(() => {
@@ -48,7 +74,7 @@ export function TextEditor({ onChange: dispatchTo, value: html, placeholder, ses
             editorState={state.editorState}
             wrapperClassName={
                 'wrapper'.classNames(style) +
-                `border-radius-10 border-1 b-color-tertiary b-color-active-primary ${
+                `border-radius-10 border-1 ${errorState ? 'b-color-error' : 'b-color-tertiary b-color-active-primary' } ${
                     state.focus ? 'active' : ''
                 }`.classNames()
             }
