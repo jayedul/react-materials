@@ -448,4 +448,54 @@ export function getLastOfDay(date) {
 	return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
 }
 
+export function timeAgoOrAfter(timestamp) {
+  const currentDate = new Date();
+  const currentTimestamp = currentDate.getTime();
+  const elapsed = currentTimestamp - getLocalFromUnix(timestamp).getTime();
+  const future = elapsed < 0;
+  const elapsedAbs = Math.abs(elapsed);
+
+  const seconds = Math.floor(elapsedAbs / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+  const months = Math.floor(days / 30.44); // Average number of days in a month
+  const years = Math.floor(days / 365.25); // Average number of days in a year
+
+  if (future) {
+    if (years > 0) {
+      return years === 1 ? sprintf(__('%s year from now'), years) : sprintf(__('%s years from now'), years);
+    } else if (months > 0) {
+      return months === 1 ? sprintf(__('%s month from now'), months) : sprintf(__('%s months from now'), months);
+    } else if (weeks > 0) {
+      return weeks === 1 ? sprintf(__('%s week from now'), weeks) : sprintf(__('%s weeks from now'), weeks);
+    } else if (days > 0) {
+      return days === 1 ? sprintf(__('%s day from now'), days) : sprintf(__('%s days from now'), days);
+    } else if (hours > 0) {
+      return hours === 1 ? sprintf(__('%s hour from now'), hours) : sprintf(__('%s hours from now'), hours);
+    } else if (minutes > 0) {
+      return minutes === 1 ? sprintf(__('%s minute from now'), minutes) : sprintf(__('%s minutes from now'), minutes);
+    } else {
+      return __('Less than a minute from now');
+    }
+  } else {
+    if (years > 0) {
+      return years === 1 ? sprintf(__('%s year ago'), years) : sprintf(__('%s years ago'), years);
+    } else if (months > 0) {
+      return months === 1 ? sprintf(__('%s month ago'), months) : sprintf(__('%s months ago'), months);
+    } else if (weeks > 0) {
+      return weeks === 1 ? sprintf(__('%s week ago'), weeks) : sprintf(__('%s weeks ago'), weeks);
+    } else if (days > 0) {
+      return days === 1 ? sprintf(__('%s day ago'), days) : sprintf(__('%s days ago'), days);
+    } else if (hours > 0) {
+      return hours === 1 ? sprintf(__('%s hour ago'), hours) : sprintf(__('%s hours ago'), hours);
+    } else if (minutes > 0) {
+      return minutes === 1 ? sprintf(__('%s minute ago'), minutes) : sprintf(__('%s minutes ago'), minutes);
+    } else {
+      return seconds === 1 ? sprintf(__('%s second ago'), seconds) : sprintf(__('%s seconds ago'), seconds);
+    }
+  }
+}
+
 export const is_production = process.env.NODE_ENV === 'production';

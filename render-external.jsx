@@ -15,7 +15,7 @@ export function RenderExternal({component: Comp, payload={}}) {
 			Comp(reff.current, payload);
 		}
 
-	}, [Comp, reff.current]);
+	}, [Comp, reff.current, payload]);
 
 	return is_component ? <ErrorBoundary><Comp {...payload}/></ErrorBoundary> : <div ref={reff}></div>
 }
