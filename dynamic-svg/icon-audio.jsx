@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function IconAudio({ color = window.CrewHRM.colors['primary'], width = 23, height = 31 }) {
+export function IconAudio({ color = window[window.CrewPointer || 'CrewHRM'].colors['primary'], width = 23, height = 31 }) {
     return (
         <svg
             width={width}

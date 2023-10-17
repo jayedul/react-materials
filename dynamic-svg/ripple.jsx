@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Ripple({ size = 28, strokeWidth = 5, color = window.CrewHRM.colors['secondary'] }) {
+export function Ripple({ size = 28, strokeWidth = 5, color = window[window.CrewPointer || 'CrewHRM'].colors['secondary'] }) {
     return (
         <svg
             fill="none"

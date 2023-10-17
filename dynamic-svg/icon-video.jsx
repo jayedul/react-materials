@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function IconVideo({ width = 23, height = 31, color = window.CrewHRM.colors['primary'] }) {
+export function IconVideo({ width = 23, height = 31, color = window[window.CrewPointer || 'CrewHRM'].colors['primary'] }) {
     return (
         <svg
             width={width}

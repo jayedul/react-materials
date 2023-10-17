@@ -7,9 +7,9 @@ import { Ripple } from '../dynamic-svg/ripple.jsx';
 export const ContextToast = createContext();
 
 const colors = {
-    success: window.CrewHRM.colors['secondary'],
-    warning: window.CrewHRM.colors['warning'],
-    error: window.CrewHRM.colors['error']
+    success: window[window.CrewPointer || 'CrewHRM'].colors['secondary'],
+    warning: window[window.CrewPointer || 'CrewHRM'].colors['warning'],
+    error: window[window.CrewPointer || 'CrewHRM'].colors['error']
 };
 
 export function ToastWrapper({children}) {

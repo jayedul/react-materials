@@ -133,7 +133,7 @@ export function RenderMedia({ media, onDelete, theme = 'grid', overlay = true })
                                                     color={
                                                         thumb_image
                                                             ? 'white'
-                                                            : window.CrewHRM.colors['text-lighter']
+                                                            : window[window.CrewPointer || 'CrewHRM'].colors['text-lighter']
                                                     }
                                                 />
                                             ) : null}

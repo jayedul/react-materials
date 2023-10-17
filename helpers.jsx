@@ -317,7 +317,7 @@ export function validateValues(values={}, rules=[]) {
  * @param {string} pattern Format pattern.
  * @returns {string}
  */
-export function formatDate( date, pattern = window.CrewHRM.date_format ) {
+export function formatDate( date, pattern = window[window.CrewPointer || 'CrewHRM'].date_format ) {
 
 	date = getLocalDate(date);
 

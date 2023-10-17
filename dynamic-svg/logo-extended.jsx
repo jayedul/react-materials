@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function LogoExtended({ color = window.CrewHRM.colors['primary'], height = 20 }) {
+export function LogoExtended({ color = window[window.CrewPointer || 'CrewHRM'].colors['primary'], height = 20 }) {
     const width = (105 / 20) * height;
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export function IconEmailHasUpdate(props) {
-    const { color = window.CrewHRM.colors['text'], size = 24 } = props;
+    const { color = window[window.CrewPointer || 'CrewHRM'].colors['text'], size = 24 } = props;
 
     return (
         <svg
@@ -27,7 +27,7 @@ export function IconEmailHasUpdate(props) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
-            <circle cx="19" cy="4" r="3.5" fill={window.CrewHRM.colors['error']} stroke="#F3F4F5" />
+            <circle cx="19" cy="4" r="3.5" fill={window[window.CrewPointer || 'CrewHRM'].colors['error']} stroke="#F3F4F5" />
         </svg>
     );
 }

@@ -23,7 +23,7 @@ export function PDFViewer({ src, defaultScale, height = '750px', width = '100%' 
 					: { border: '1px solid rgba(0, 0, 0, 0.3)', height, width }
 			}
 		>
-			<Worker workerUrl={`${window.CrewHRM.dist_url}libraries/pdf.worker.js`}>
+			<Worker workerUrl={`${window[window.CrewPointer || 'CrewHRM'].dist_url}libraries/pdf.worker.js`}>
 				<Viewer
 					defaultScale={defaultScale}
 					fileUrl={src}

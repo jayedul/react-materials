@@ -2,9 +2,9 @@ export function request(action, payload = {}, callback, progressCallback) {
 	// Append action and nonce
 	payload = {
 		...payload,
-		action: window.CrewHRM.app_name + '_' + action,
-		nonce: window.CrewHRM.nonce,
-		nonce_action: window.CrewHRM.nonce_action
+		action: window[window.CrewPointer || 'CrewHRM'].app_name + '_' + action,
+		nonce: window[window.CrewPointer || 'CrewHRM'].nonce,
+		nonce_action: window[window.CrewPointer || 'CrewHRM'].nonce_action
 	};
 
 	// Build form data
@@ -59,7 +59,7 @@ export function request(action, payload = {}, callback, progressCallback) {
 	flattenObject(payload, formData);
 
 	window.jQuery.ajax({
-		url: window.CrewHRM.ajaxurl,
+		url: window[window.CrewPointer || 'CrewHRM'].ajaxurl,
 		type: 'POST',
 		data: formData,
 		contentType: false,

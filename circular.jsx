@@ -5,8 +5,8 @@ export function CircularProgress({
 	strokeWidth = 2,
 	percentage = 0,
 	fontSize = 6,
-	color = window.CrewHRM.colors['primary'],
-	colorSecondary = window.CrewHRM.colors['tertiary'],
+	color = window[window.CrewPointer || 'CrewHRM'].colors['primary'],
+	colorSecondary = window[window.CrewPointer || 'CrewHRM'].colors['tertiary'],
 	showPercent = false,
 	className
 }) {
