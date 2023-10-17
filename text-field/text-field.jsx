@@ -165,7 +165,7 @@ export function TextField(props) {
 
     return (
         <label
-            data-crewhrm-selector="text-field"
+            data-crew="text-field"
             className={
                 `text-field`.classNames(style) +
                 `d-flex align-items-center cursor-text ${

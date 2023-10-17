@@ -1,8 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import {Conditional} from './conditional.jsx';
+
 import logo from '../static/images/logo.svg';
-import style from './style.module.scss';
 
 export function StickyBar({ title, children, canBack, midWidth }) {
     const is_children_array = Array.isArray(children);
@@ -14,25 +15,23 @@ export function StickyBar({ title, children, canBack, midWidth }) {
                 <title>{window[window.CrewPointer || 'CrewHRM'].white_label.app_label || 'CrewHRM'} - {title}</title>
             </Helmet>
             <div
-                data-crewhrm-selector="sticky-bar"
+                data-crew="sticky-bar"
+				style={{zIndex: 9991, height: '68px'}}
                 className={
-                    'sticky-bar'.classNames(style) +
-                    'position-sticky top-32 w-full padding-vertical-15 padding-horizontal-30 bg-color-white'.classNames()
+                    'position-sticky top-32 w-full padding-vertical-15 padding-horizontal-30 bg-color-white box-shadow-thin'.classNames()
                 }
             >
                 <div className={'d-flex align-items-center'.classNames()}>
                     {/* First column is always flex-1 */}
                     <div className={'flex-1'.classNames()}>
                         <span className={'d-flex align-items-center column-gap-15'.classNames()}>
-                            <i
-                                className={`ch-icon ${
-                                    canBack
-                                        ? 'ch-icon-arrow-left cursor-pointer font-size-15 color-hover-secondary'
-                                        : 'ch-icon-menu font-size-10'
-                                } color-text`.classNames()}
-                                onClick={() => (canBack ? window.history.back() : 0)}
-                            ></i>
-
+							<Conditional show={canBack}>
+								<i
+									className={`ch-icon ch-icon-arrow-left cursor-pointer font-size-15 color-hover-secondary color-text`.classNames()}
+									onClick={() => window.history.back()}
+								></i>
+							</Conditional>
+                            
                             <span
                                 className={'font-size-15 font-weight-500 letter-spacing--3 color-text vertical-align-middle'.classNames()}
                             >

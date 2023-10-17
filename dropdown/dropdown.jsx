@@ -129,7 +129,7 @@ export function DropDown(props) {
     };
 
     return (
-        <div data-crewhrm-selector="dropdown" ref={ref}>
+        <div data-crew="dropdown" ref={ref}>
             <Popup
                 position={position}
                 on="click"
@@ -152,7 +152,7 @@ export function DropDown(props) {
 
                     return (
                         <div
-                            data-crewhrm-selector="dropdown-popup"
+                            data-crew="dropdown-popup"
                             className={
                                 'select-dropdown-popup'.classNames(style) +
                                 `box-shadow-thick border-radius-10 ${pop_border} b-color-tertiary bg-color-white white-space-nowrap`.classNames()
@@ -179,7 +179,7 @@ export function DropDown(props) {
                                         return (
                                             <div
                                                 key={id}
-                                                data-crewhrm-selector="dropdown-item"
+                                                data-crew="dropdown-item"
                                                 className={classes.classNames(style) + list_class}
                                                 onClick={() => {
                                                     onChange(id);
@@ -194,7 +194,7 @@ export function DropDown(props) {
 
                             {addText && (
                                 <div
-                                    data-crewhrm-selector="dropdown-item-add"
+                                    data-crew="dropdown-item-add"
                                     className={'add-item'.classNames(style) + list_class}
                                     style={{ paddingTop: '10px', paddingBottom: '10px' }}
                                     onClick={() => {
@@ -239,7 +239,7 @@ export function Options(props) {
             arrow={false}
             trigger={
                 <div
-                    data-crewhrm-selector="options"
+                    data-crew="options"
                     className={'d-inline-block cursor-pointer'.classNames() + className}
                 >
                     {children}
@@ -249,7 +249,7 @@ export function Options(props) {
             {(close) => {
                 return (
                     <div
-                        data-crewhrm-selector="options-popup"
+                        data-crew="options-popup"
                         className={
                             'options-popup'.classNames(style) +
                             'box-shadow-thick border-radius-10 border-1-5 b-color-tertiary bg-color-white'.classNames()
@@ -260,7 +260,7 @@ export function Options(props) {
                                 let { id, label, icon } = option;
                                 return (
                                     <div
-                                        data-crewhrm-selector="options-popup-item"
+                                        data-crew="options-popup-item"
                                         key={id}
                                         className={
                                             'd-flex align-items-center'.classNames() +

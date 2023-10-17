@@ -27,7 +27,7 @@ export function CoverImage(props) {
 
     return (
         <div
-            data-crewhrm-selector="image"
+            data-crew="image"
             className={
                 `cover-image ${circle ? 'circle' : ''}`.classNames(style) +
                 'd-flex align-items-center justify-content-center'.classNames() +

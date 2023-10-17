@@ -13,7 +13,7 @@ export function StatusDot(props) {
 
     return (
         <div
-            data-crewhrm-selector="status-dot"
+            data-crew="status-dot"
             className={'d-inline-block'.classNames() + 'square'.classNames(style) + className}
             style={css}
         ></div>

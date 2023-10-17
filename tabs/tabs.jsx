@@ -32,7 +32,7 @@ export function Tabs(props) {
 
     return (
         <div
-            data-crewhrm-selector={'tabs-' + theme}
+            data-crew={'tabs-' + theme}
             className={`tabs theme-${theme}`.classNames(style) + className}
             style={cssStyle}
 			ref={ref}

@@ -99,7 +99,7 @@ export function ToastWrapper({children}) {
 
             {(state.toasts.length && (
                 <div
-                    data-crewhrm-selector="toast-wrapper"
+                    data-crew="toast-wrapper"
                     ref={ref}
                     className={
                         'toast'.classNames(style) + 'position-fixed right-50 bottom-33'.classNames()
@@ -112,22 +112,22 @@ export function ToastWrapper({children}) {
 
                         return (
                             <div
-                                data-crewhrm-selector="toast-single"
+                                data-crew="toast-single"
                                 key={id}
                                 className={'d-flex align-items-center border-radius-5'.classNames()}
                             >
                                 <div
-                                    data-crewhrm-selector="content"
+                                    data-crew="content"
                                     className={'flex-1 d-flex align-items-center row-gap-10 padding-15'.classNames()}
                                 >
                                     <div
-                                        data-crewhrm-selector="ripple"
+                                        data-crew="ripple"
                                         className={'d-inline-block'.classNames()}
                                     >
                                         <Ripple color={colors[status] || colors['success']} />
                                     </div>
                                     <span
-                                        data-crewhrm-selector="message"
+                                        data-crew="message"
                                         className={'d-inline-block margin-left-10 font-size-15 font-weight-500 line-height-18 color-white'.classNames()}
                                     >
                                         {message}
@@ -135,12 +135,12 @@ export function ToastWrapper({children}) {
                                 </div>
                                 {((dismissible || onTryAgain) && (
                                     <div
-                                        data-crewhrm-selector="control"
+                                        data-crew="control"
                                         className={'d-flex flex-direction-column border-left-1'.classNames()}
                                     >
                                         {(onTryAgain && (
                                             <div
-                                                data-crewhrm-selector="try"
+                                                data-crew="try"
                                                 className={`padding-vertical-10 padding-horizontal-20 ${
                                                     dismissible ? 'border-bottom-1' : ''
                                                 }`.classNames()}
@@ -159,7 +159,7 @@ export function ToastWrapper({children}) {
                                             null}
                                         {(dismissible && (
                                             <div
-                                                data-crewhrm-selector="dismiss"
+                                                data-crew="dismiss"
                                                 className={'padding-vertical-10 padding-horizontal-20'.classNames()}
                                             >
                                                 <span

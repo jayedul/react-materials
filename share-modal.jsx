@@ -64,7 +64,7 @@ export function ShareModal(props) {
 	return (
 		<Modal>
 			<div
-				data-crewhrm-selector="share-close"
+				data-crew="share-close"
 				className={'d-flex align-items-center'.classNames()}
 			>
 				<div className={'flex-1'.classNames()}>
@@ -80,7 +80,7 @@ export function ShareModal(props) {
 				</div>
 			</div>
 			<div
-				data-crewhrm-selector="share-targets"
+				data-crew="share-targets"
 				className={'d-flex align-items-center justify-content-space-between padding-vertical-40'.classNames()}
 			>
 				{targets.map((target, index) => {
@@ -101,7 +101,7 @@ export function ShareModal(props) {
 				})}
 			</div>
 			<div
-				data-crewhrm-selector="share-link"
+				data-crew="share-link"
 				className={'d-flex align-items-center border-1-5 b-color-tertiary padding-20 border-radius-10'.classNames()}
 				style={{ backgroundColor: '#F9F9F9' }}
 			>

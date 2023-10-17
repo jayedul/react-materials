@@ -8,7 +8,7 @@ export function ToggleSwitch(props) {
     const id = getRandomString();
     return (
         <div
-            data-crewhrm-selector="toggle-switch"
+            data-crew="toggle-switch"
             className={
                 `d-inline-block ${disabled ? 'disabled' : ''}`.classNames() +
                 `switch ${disabled ? 'disabled' : ''}`.classNames(style) +

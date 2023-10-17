@@ -20,7 +20,7 @@ export function IntroCard(props) {
 
     return (
         <div
-            data-crewhrm-selector={'intro-card-' + orientation}
+            data-crew={'intro-card-' + orientation}
             className={
                 `intro orientation-${orientation}`.classNames(style) +
                 'bg-color-white border-radius-5'.classNames() +

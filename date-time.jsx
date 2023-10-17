@@ -64,7 +64,7 @@ export function DateTimePeriodField(props) {
 	}, [state.date, state.starts_at, state.ends_at]);
 
 	return (
-		<div data-crewhrm-selector="date-time-period" className={'d-flex'.classNames()}>
+		<div data-crew="date-time-period" className={'d-flex'.classNames()}>
 			
 			<div className={'flex-5 margin-right-20'.classNames()}>
 				<span className={labelClassName}>{__('Date')}</span>

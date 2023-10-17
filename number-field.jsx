@@ -44,7 +44,7 @@ export function NumberField(props) {
 
 	return (
 		<div
-			data-crewhrm-selector="number-field"
+			data-crew="number-field"
 			className={
 				`d-flex align-items-center ${disabled ? 'cursor-not-allowed' : ''} ${
 					state.focused ? 'active color-active-parent' : ''
