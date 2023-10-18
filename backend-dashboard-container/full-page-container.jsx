@@ -34,7 +34,7 @@ export function WpDashboardFullPage(props) {
 
     return (
         <div ref={ref} className={'wrapper'.classNames(style) + 'd-flex w-full'.classNames()}>
-			<div className={'flex-1'.classNames()}>
+			<div className={'flex-1 w-full'.classNames()}>
             	{children}
 			</div>
         </div>
