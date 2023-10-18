@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import {Conditional} from './conditional.jsx';
 
-import logo from '../static/images/logo.svg';
+import logo from './static/images/logo.svg';
 
 export function StickyBar({ title, children, canBack, midWidth }) {
     const is_children_array = Array.isArray(children);
