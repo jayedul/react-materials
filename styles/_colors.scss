@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // These colors are sent from PHP CrewHRM\Helpers\Colors class.
 $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light', 'text-lighter',
     'text-hint', 'error', 'success', 'warning', 'black', 'white', 'transparent';
@@ -19,7 +21,7 @@ $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light',
 
     // Loop through the colors again
     @each $color in $colors {
-        &.#{$class}-hover-#{$color}:hover {
+        .#{$class}-hover-#{$color}:hover {
             &,
             &[type] {
                 #{$attr}: var(
@@ -28,7 +30,7 @@ $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light',
             }
         }
 
-        &.#{$class}-hover-parent:hover {
+        .#{$class}-hover-parent:hover {
             .#{$class}-hover-child-#{$color} {
                 &,
                 &[type] {
@@ -39,7 +41,7 @@ $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light',
             }
         }
 
-        &.#{$class}-active-#{$color} {
+        .#{$class}-active-#{$color} {
             &.active,
             &:focus {
                 &,
@@ -51,7 +53,7 @@ $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light',
             }
         }
 
-        &.#{$class}-active-parent {
+        .#{$class}-active-parent {
             &.active,
             &:focus {
                 &,
@@ -74,7 +76,7 @@ $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light',
 @for $i from 5 through 10 {
     .darken-on-hover--#{$i} {
         &:hover {
-            filter: brightness($i/10);
+            filter: brightness(math.div($i, 10));
         }
     }
 }
