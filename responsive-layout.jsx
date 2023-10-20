@@ -15,7 +15,7 @@ function RLayout({children, cardGap=15, className=''}) {
 	</div>
 }
 
-export function ResponsiveLayout() {
+export function ResponsiveLayout(props) {
 	return <ColCounter columnWidth={props.columnWidth}>
 		<RLayout {...props}/>
 	</ColCounter>
