@@ -113,8 +113,7 @@ export function ToastWrapper({children}) {
                     onMouseOut={() => setMouseState(false)}
                 >
                     {state.toasts.map((toast) => {
-                        const { id, message, dismissible, onTryAgain, status = 'success' } = toast;
-
+                        const { id, message, dismissible, onTryAgain, status } = toast;
                         return (
                             <div
                                 data-crew="toast-single"
@@ -132,7 +131,7 @@ export function ToastWrapper({children}) {
 										{
 											(!status || !status_icons[status]) ? 
 												<Ripple color={window[window.CrewPointer || 'CrewHRM'].colors['secondary']} /> : 
-												<img className={'width-36 height-auto'.classNames()} src={status_icons[status]}/>
+												<img className={'width-36 height-auto padding-5'.classNames()} src={status_icons[status]}/>
 										}
                                     </div>
 
