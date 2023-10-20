@@ -3,13 +3,18 @@ import React, { createContext, useEffect, useRef, useState } from 'react';
 import { __, getRandomString } from '../helpers.jsx';
 import style from './toast.module.scss';
 import { Ripple } from '../dynamic-svg/ripple.jsx';
+import {Conditional} from '../conditional.jsx';
+
+import icon_success from '../static/images/Icon-check.svg';
+import icon_warning from '../static/images/Icon-info-circle.svg';
+import icon_error from '../static/images/Icon-cross.svg';
 
 export const ContextToast = createContext();
 
-const colors = {
-    success: window[window.CrewPointer || 'CrewHRM'].colors['secondary'],
-    warning: window[window.CrewPointer || 'CrewHRM'].colors['warning'],
-    error: window[window.CrewPointer || 'CrewHRM'].colors['error']
+const status_icons = {
+    success: icon_success,
+    warning: icon_warning,
+    error: icon_error
 };
 
 export function ToastWrapper({children}) {
@@ -41,7 +46,7 @@ export function ToastWrapper({children}) {
             };
         }
 
-        // Push new toast in the arra
+        // Push new toast in the array
         toasts.push({
             ...toast,
             id: new_id
@@ -124,8 +129,13 @@ export function ToastWrapper({children}) {
                                         data-crew="ripple"
                                         className={'d-inline-block'.classNames()}
                                     >
-                                        <Ripple color={colors[status] || colors['success']} />
+										{
+											(!status || !status_icons[status]) ? 
+												<Ripple color={window[window.CrewPointer || 'CrewHRM'].colors['secondary']} /> : 
+												<img className={'width-36 height-auto'.classNames()} src={status_icons[status]}/>
+										}
                                     </div>
+
                                     <span
                                         data-crew="message"
                                         className={'d-inline-block margin-left-10 font-size-15 font-weight-500 line-height-18 color-white'.classNames()}
@@ -133,13 +143,14 @@ export function ToastWrapper({children}) {
                                         {message}
                                     </span>
                                 </div>
-                                {((dismissible || onTryAgain) && (
-                                    <div
+
+								<Conditional show={dismissible || onTryAgain}>
+									<div
                                         data-crew="control"
                                         className={'d-flex flex-direction-column border-left-1'.classNames()}
                                     >
-                                        {(onTryAgain && (
-                                            <div
+										<Conditional show={onTryAgain}>
+											<div
                                                 data-crew="try"
                                                 className={`padding-vertical-10 padding-horizontal-20 ${
                                                     dismissible ? 'border-bottom-1' : ''
@@ -155,10 +166,10 @@ export function ToastWrapper({children}) {
                                                     {__('Try Again')}
                                                 </span>
                                             </div>
-                                        )) ||
-                                            null}
-                                        {(dismissible && (
-                                            <div
+										</Conditional>
+										
+										<Conditional show={dismissible}>
+											<div
                                                 data-crew="dismiss"
                                                 className={'padding-vertical-10 padding-horizontal-20'.classNames()}
                                             >
@@ -169,11 +180,9 @@ export function ToastWrapper({children}) {
                                                     {__('Dismiss')}
                                                 </span>
                                             </div>
-                                        )) ||
-                                            null}
+										</Conditional>
                                     </div>
-                                )) ||
-                                    null}
+								</Conditional>
                             </div>
                         );
                     })}
