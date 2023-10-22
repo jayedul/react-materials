@@ -1,7 +1,4 @@
-@use "sass:math";
-
 @import './mixins';
-
 
 // Displays
 $displays: 'block', 'flex', 'inline', 'inline-block', 'inline-flex', 'contents', 'none';
@@ -51,12 +48,14 @@ $attrs: 'font-size', 'margin', 'margin-top', 'margin-bottom', 'margin-left', 'ma
         }
     }
 
+	$shift_size: $i/100;
+
     .letter-spacing--#{$i} {
-        letter-spacing: -#{math.div($i, 100)}px; // Negative decimal point spacing: -0.3px, -0.24px
+        letter-spacing: -#{$shift_size}px; // Negative decimal point spacing: -0.3px, -0.24px
     }
 
     .letter-spacing-#{$i} {
-        letter-spacing: #{math.div($i, 100)}px; // Posetive decimal point spacing: 0.3px, 0.24px
+        letter-spacing: #{$shift_size}px; // Posetive decimal point spacing: 0.3px, 0.24px
     }
 
     .flex-#{$i} {
