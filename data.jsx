@@ -106,6 +106,14 @@ export const attendance_types = {
     hybrid: __('Hybrid')
 };
 
+export const employment_types = {
+    full_time: __('Full Time'),
+    part_time: __('Part Time'),
+    contract: __('Contract'),
+    temporary: __('Temporary'),
+    trainee: __('Trainee')
+};
+
 export const experience_levels = {
     beginner: __('Beginner'),
     intermidiate: __('Intermidiate'),
