@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { input_class as className } from './classes.jsx';
+import { input_class as className } from '../classes.jsx';
+
+import style from './number-field.module.scss'
 
 export function NumberField(props) {
 	const { onChange, value, max, min, disabled } = props;
@@ -48,7 +50,7 @@ export function NumberField(props) {
 			className={
 				`d-flex align-items-center ${disabled ? 'cursor-not-allowed' : ''} ${
 					state.focused ? 'active color-active-parent' : ''
-				}`.classNames() + className
+				}`.classNames() + 'number-field'.classNames(style) + className
 			}
 		>
 			<div className={'height-20'.classNames()}>
