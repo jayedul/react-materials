@@ -1,0 +1,27 @@
+.navigate {
+	.control {
+		width: 0;
+		visibility: hidden;
+		transition: width 0.3s;
+
+		.icon{
+			opacity: 0;
+			transition: opacity 0.7s;
+			color: var(--crewhrm-color-text-light);
+
+			&:hover {
+				color: var(--crewhrm-color-text);
+			}
+		}
+	}
+
+	&.keep-opened, &:hover {
+		.control{
+			width: 30px;
+			visibility: visible;
+			.icon {
+				opacity: 1;
+			}
+		}
+	}
+}
