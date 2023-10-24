@@ -17,10 +17,13 @@
         }
     }
 
-    .delete-button {
+    .action-button {
         width: 224px;
-        background-color: var(--crewhrm-color-error);
-        border-color: var(--crewhrm-color-error);
         color: white;
+
+		&.danger {
+			background-color: var(--crewhrm-color-error);
+			border-color: var(--crewhrm-color-error);
+		}
     }
 }
