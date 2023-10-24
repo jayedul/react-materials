@@ -7,6 +7,7 @@ export function Modal(props) {
 		children,
 		nested = false,
 		open = true,
+		closeOnDocumentClick=false,
 		onClose = () => {},
 		style: cssStyle = {}
 	} = props;
@@ -18,7 +19,7 @@ export function Modal(props) {
 			darken={true}
 			arrow={false}
 			nested={nested}
-			closeOnDocumentClick={false}
+			closeOnDocumentClick={closeOnDocumentClick}
 			trigger={trigger}
 			onClose={onClose}
 			contentStyle={{ ...cssStyle }}
