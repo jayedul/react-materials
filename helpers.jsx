@@ -140,7 +140,12 @@ export function scrollLock(lock) {
 	document.getElementsByTagName('body')[0].style.overflow = lock ? 'hidden' : '';
 }
 
-export function getAddress({ street_address, city, province, zip_code, country_code }) {
+export function getAddress({ street_address, city, province, zip_code, country_code, attendance_type }) {
+	
+	if( Array.isArray(attendance_type) && arrayEquals(attendance_type, ['remote']) ) {
+		return __('Remote');
+	}
+
 	return [street_address, city, (province || '') + ' ' + (zip_code || ''), countries_object[country_code]]
 		.map((a) => (a || '').trim())
 		.filter((a) => a)
@@ -496,6 +501,24 @@ export function timeAgoOrAfter(timestamp) {
       return seconds === 1 ? sprintf(__('%s second ago'), seconds) : sprintf(__('%s seconds ago'), seconds);
     }
   }
+}
+
+export function arrayEquals(arr1, arr2, case_sensitive=false) {
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+
+    const sortedArr1 = arr1.slice().sort();
+    const sortedArr2 = arr2.slice().sort();
+
+    for (let i = 0; i < sortedArr1.length; i++) {
+		let same = case_sensitive ? sortedArr1[i] === sortedArr2[i] : sortedArr1[i] == sortedArr2[i];
+        if (!same) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 export const is_production = process.env.NODE_ENV === 'production';
