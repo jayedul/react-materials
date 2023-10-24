@@ -3,6 +3,15 @@
     &:not(.transparent) {
         background-color: white;
     }
+
+    // Variantions
+    &.variant-borderless{
+        border-color: transparent;
+    }
+    
+    &.variant-primary{
+        border-color: var(--crewhrm-color-primary);
+    }
 }
 
 .select-dropdown-popup {

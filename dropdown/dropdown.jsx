@@ -49,7 +49,9 @@ export function DropDown(props) {
 		required=false,
         style: cssStyle={},
 		showErrorsAlways=false,
-		clearable=true
+		clearable=true,
+        variant,
+        size
     } = props;
 
     const ref = useRef();
@@ -84,14 +86,46 @@ export function DropDown(props) {
             ? 'border-1'
             : '';
 
+    // Dropdown Variant: '' | borderless | primary
+    const variantClass = (variant) => {
+        if(!variant) return ''; // default
+
+        const variantName = (variant === 'borderless') ? 
+            'variant-borderless' : (variant === 'primary') ? 
+            'variant-primary': ''
+        
+        return variantName;
+    }
+
+    // Dropdown Size: '' | sm | md
+    const sizeClasses = (size) => {
+        if(!size) return 'padding-15 border-radius-10 height-48'; // default size class
+
+        const sizeClasses = (size === 'sm') ? 
+            'padding-vertical-5 padding-horizontal-12 border-radius-5 height-32': (size === 'md') ? 
+            'padding-vertical-5 padding-horizontal-15 border-radius-10 height-40': '';
+
+        return sizeClasses;
+    }
+
+    // Icon size: '' | sm | md
+    const iconSizeClass = (size) => {
+        if(!size) return 'font-size-24'; // default size class
+
+        const sizeClasses = (size === 'sm') || (size === 'md') ? 'font-size-20': '';
+
+        return sizeClasses;
+
+    }
+
     const triggerPoint = (search = false) => {
         return (
             <div
                 tabIndex={tabindex}
                 className={
-                    `select-dropdown ${transparent ? 'transparent' : ''}`.classNames(style) +
-                    'cursor-pointer d-flex align-items-center border-radius-5'.classNames() +
-                    (!errorState ? className : input_class_error)
+                    `select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
+                    'cursor-pointer d-flex align-items-center'.classNames() +
+                    (!errorState ? `${sizeClasses(size)} border-1-5 b-color-tertiary b-color-active-primary w-full d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames() : input_class_error)
                 }
             >
                 <div className={'flex-1 white-space-nowrap'.classNames() + textClassName}>
@@ -109,7 +143,7 @@ export function DropDown(props) {
                     </Conditional>
                 </div>
                 <i 
-					className={`ch-icon ${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 font-size-18 ${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames()} 
+					className={`ch-icon ${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 ${iconSizeClass(size)} ${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames()} 
 					onClick={e=>{
 						if ( clearable && selected_value ) {
 							e.stopPropagation();

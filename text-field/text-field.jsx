@@ -162,7 +162,7 @@ export function TextField(props) {
     const separator = state.expanded ? (
         <span className={'d-inline-block width-6'.classNames()}></span>
     ) : null;
-
+    
     return (
         <label
             data-crew="text-field"
@@ -171,7 +171,7 @@ export function TextField(props) {
                 `d-flex align-items-center cursor-text ${
                     icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
                 } ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
-				(!errorState.has_error ? className : input_class_error)
+				(!errorState.has_error ? className : input_class_error) + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
             }
 			style={{
 				height: type==='textarea' ? '100px' : undefined,
