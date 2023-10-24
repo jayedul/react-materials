@@ -35,7 +35,7 @@ export function WarningWrapper({ children }) {
 
     return (
         <ContextWarning.Provider value={{
-			showWarning: setState({...state, ...w}), 
+			showWarning: w=>setState({...state, ...w}), 
 			closeWarning, 
 			loadingState: setLoading
 		}}>
