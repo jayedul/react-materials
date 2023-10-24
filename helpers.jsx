@@ -140,7 +140,12 @@ export function scrollLock(lock) {
 	document.getElementsByTagName('body')[0].style.overflow = lock ? 'hidden' : '';
 }
 
-export function getAddress({ street_address, city, province, zip_code, country_code }) {
+export function getAddress({ street_address, city, province, zip_code, country_code, attendance_type }) {
+	
+	if( Array.isArray(attendance_type) && arrayEquals(attendance_type, ['remote']) ) {
+		return __('Remote');
+	}
+
 	return [street_address, city, (province || '') + ' ' + (zip_code || ''), countries_object[country_code]]
 		.map((a) => (a || '').trim())
 		.filter((a) => a)
