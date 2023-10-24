@@ -25,5 +25,10 @@
 			background-color: var(--crewhrm-color-error);
 			border-color: var(--crewhrm-color-error);
 		}
+
+		&.normal {
+			background-color: var(--crewhrm-color-primary);
+			border-color: var(--crewhrm-color-primary);
+		}
     }
 }

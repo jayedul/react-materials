@@ -62,7 +62,7 @@ export function WarningWrapper({ children }) {
 						</button>
 						<button
 							disabled={loading}
-							className={`delete-button ${state.mode}`.classNames(style) + btn_class}
+							className={`action-button ${state.mode}`.classNames(style) + btn_class}
 							onClick={() => state.onConfirm()}
 						>
 							{state.confirmText || __('OK')} <LoadingIcon show={loading}/>
