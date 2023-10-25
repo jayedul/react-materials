@@ -7,14 +7,6 @@
 
     &.orientation-horizontal {
         flex-direction: row;
-
-        .content {
-            flex: 7;
-        }
-
-        .image {
-            flex: 3;
-        }
     }
 
     &.orientation-vertical {
