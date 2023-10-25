@@ -1,3 +1,10 @@
+/**
+ * Ajax request wrapper
+ * @param {string} action Ajax request handler method name
+ * @param {object?} payload Post data including File object
+ * @param {function?} callback Response handler
+ * @param {function?} progressCallback File upload progress callback
+ */
 export function request(action, payload = {}, callback, progressCallback) {
 	// Append action and nonce
 	payload = {
@@ -48,7 +55,7 @@ export function request(action, payload = {}, callback, progressCallback) {
 					// Process singluar elements in the object recursively
 					flattenObject(obj[key], formData, `${_key}`);
 				}
-			} else {
+			} else if( obj[key] !== undefined ) {
 				// Put non object data directly
 				formData.append(`${_key}`, obj[key]);
 			}

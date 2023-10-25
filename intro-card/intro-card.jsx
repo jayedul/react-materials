@@ -43,7 +43,7 @@ export function IntroCard(props) {
             }
             style={{ backgroundImage: imageState ? 'url(' + image_url + ')' : '', ...cssStyle }}
         >
-            <div className={'content'.classNames(style)} style={imageState ? {width: 'calc(100% - 230px)'} : {}}>
+            <div style={imageState ? {width: 'calc(100% - 230px)'} : {}}>
 				{props.children}
 			</div>
             <div className={'image'.classNames(style)}>
