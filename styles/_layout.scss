@@ -101,6 +101,8 @@ $borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right'
     }
 }
 
+$align_items: 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch';
+@include looper('align-items', $align_items...);
 @include looper('flex-direction', 'column', 'row', 'row-reverse', 'column-reverse');
 @include looper('flex-wrap', 'wrap', 'nowrap');
 @include looper('background-size', 'cover');
@@ -112,7 +114,6 @@ $borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right'
 @include looper('cursor', 'pointer', 'default', 'not-allowed', 'text');
 @include looper('vertical-align', 'middle', 'top');
 @include looper('position', 'absolute', 'fixed', 'static', 'relative', 'sticky');
-@include looper('align-items', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
 
 // Autos
 $autos: 'width', 'height', 'margin';
@@ -122,30 +123,6 @@ $autos: 'width', 'height', 'margin';
     }
 }
 
-
-// Change flex-direction from row to column at specific breakpoints
-@mixin break-point($name, $to) {
-    @media (max-width: $to) {
-        .flex-break-#{$name} {
-            flex-direction: column !important;
-            column-gap: 0 !important;
-
-            @for $i from 0 through 50 {
-                &.break-gap-#{$i} {
-                    row-gap: #{$i}px;
-                }
-
-				@include looper('break-align-items', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
-            }
-        }
-    }
-}
-@include break-point('xl', 1366px);
-@include break-point('lg', 1199px);
-@include break-point('md', 991px);
-@include break-point('sm', 767px);
-@include break-point('xs', 575px);
-
 .h-full {
     min-height: 100%;
 }
@@ -154,18 +131,6 @@ $autos: 'width', 'height', 'margin';
     min-width: 100%;
 }
 
-// Grid
-.column {
-    display: flex;
-    align-items: stretch;
-    margin-left: -10px;
-    margin-right: -10px;
-
-    & > div {
-        margin: 0 10px;
-        flex: 1;
-    }
-}
 
 .line-clamp {
     display: -webkit-box;

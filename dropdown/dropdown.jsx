@@ -4,7 +4,7 @@ import { Popup } from '../popup/index.jsx';
 import style from './dropdown.module.scss';
 import { __, isEmpty } from '../helpers.jsx';
 import { Conditional } from '../conditional.jsx';
-import { input_class as className, input_class_error } from '../classes.jsx';
+import { input_class as className } from '../classes.jsx';
 
 const content_style = {
     padding: '0px',
@@ -125,7 +125,7 @@ export function DropDown(props) {
                 className={
                     `select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
                     'cursor-pointer d-flex align-items-center'.classNames() +
-                    (!errorState ? `${sizeClasses(size)} border-1-5 b-color-tertiary b-color-active-primary w-full d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames() : input_class_error)
+                    `${sizeClasses(size)} border-1-5 ${!errorState ? 'b-color-tertiary b-color-active-primary' : 'b-color-error'} w-full d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
                 }
             >
                 <div className={'flex-1 white-space-nowrap'.classNames() + textClassName}>
