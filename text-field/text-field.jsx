@@ -156,7 +156,7 @@ export function TextField(props) {
 			highlightError();
 			toggleFocusState(false);
 		},
-        className: 'text-field-flat font-size-15 font-weight-500 letter-spacing--15 flex-1'.classNames()
+        className: 'text-field-flat font-size-15 font-weight-400 letter-spacing--15 flex-1'.classNames()
     };
 
     const separator = state.expanded ? (

@@ -11,7 +11,7 @@ const content_style = {
     border: 'none'
 };
 
-const list_class = 'padding-vertical-8 padding-horizontal-20 cursor-pointer'.classNames();
+const list_class = 'padding-vertical-12 padding-horizontal-17 cursor-pointer font-size-15 font-weight-400'.classNames();
 
 function getPopupStyle(classNames) {
     classNames = classNames
@@ -128,7 +128,7 @@ export function DropDown(props) {
                     `${sizeClasses(size)} border-1-5 ${!errorState ? 'b-color-tertiary b-color-active-primary' : 'b-color-error'} w-full d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
                 }
             >
-                <div className={'flex-1 white-space-nowrap'.classNames() + textClassName}>
+                <div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
                     <Conditional show={!search}>
                         {selected_value !== undefined
                             ? options.find((o) => o.id === selected_value)?.label || placeholder
@@ -136,7 +136,7 @@ export function DropDown(props) {
                     </Conditional>
                     <Conditional show={search}>
                         <input
-                            className={'text-field-flat'.classNames()}
+                            className={'text-field-flat font-size-15 font-weight-400'.classNames()}
                             placeholder={__('Search..')}
                             onChange={(e) => setSearchState(e.currentTarget.value)}
                         />
