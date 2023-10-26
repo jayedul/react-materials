@@ -1,0 +1,16 @@
+.crewhrm-pdf-viewer {
+	
+	.rpv-default-layout__container {
+
+		border-radius: 5px;
+		overflow: hidden;
+
+		.rpv-default-layout__sidebar {
+			display: none;
+		}
+
+		.rpv-default-layout__toolbar {
+			background-color: var(--crewhrm-color-quaternary);
+		}
+	}
+}

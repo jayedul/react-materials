@@ -5,11 +5,13 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 
 import { Conditional } from 'crewhrm-materials/conditional.jsx';
 
-import { CircularProgress } from './circular.jsx';
-import { __ } from './helpers.jsx';
+import { CircularProgress } from 'crewhrm-materials/circular.jsx';
+import { __ } from 'crewhrm-materials/helpers.jsx';
 
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+
+import './pdf.scss'; 
 
 export function PDFViewer({ src, defaultScale }) {
 	const [state, setState] = useState({
@@ -20,10 +22,11 @@ export function PDFViewer({ src, defaultScale }) {
 	const defaultLayoutPluginInstance = defaultLayoutPlugin();
 	return (
 		<div
+			className='crewhrm-pdf-viewer'
 			style={
 				state.error || !state.loaded
 					? {}
-					: { border: '1px solid rgba(0, 0, 0, 0.3)', height: 690, width: '100%' }
+					: {height: 690, width: '100%' }
 			}
 		>
 			<Worker workerUrl={`${window[window.CrewPointer || 'CrewHRM'].dist_url}libraries/pdf.worker.js`}>
