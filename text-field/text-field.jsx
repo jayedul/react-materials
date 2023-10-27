@@ -38,7 +38,7 @@ export function TextField(props) {
     });
 
 	const [errorState, setErrorState] = useState({
-		error_triggered: false,
+		mounted: false,
 		has_error: false
 	});
 
@@ -75,7 +75,6 @@ export function TextField(props) {
 
 		setErrorState({
 			...errorState,
-			error_triggered: errorState.error_triggered || has_error,
 			has_error
 		});
 	}
@@ -89,8 +88,10 @@ export function TextField(props) {
 
 	useEffect(()=>{
 		// Run highlighter on every change to remove error state once it was marked as has error.
-		if ( errorState.error_triggered ) {
+		if ( errorState.mounted ) {
 			highlightError();
+		} else {
+			setErrorState({...errorState, mounted: true})
 		}
 	}, [textInstant]);
 
