@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
@@ -14,14 +14,28 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import './pdf.scss'; 
 
 export function PDFViewer({ src, defaultScale }) {
+	const ref_wrapper = useRef();
 	const [state, setState] = useState({
 		error: false,
 		loaded: false,
 	});
 
+	useEffect(()=>{
+		if ( state.loaded && ref_wrapper?.current ) {
+			const el = ref_wrapper.current.getElementsByClassName('rpv-page-navigation__current-page-input')[0]?.nextElementSibling;
+			const number = parseInt( el.textContent.match(/\d+(\.\d+)?/g) );
+			
+			el.innerHTML = `<span>
+				<span class="${'font-size-15 font-weight-400 color-text margin-left-5 margin-right-5'.classNames()}">of</span>
+				<span class="${'font-size-15 font-weight-600 color-text'.classNames()}">${number}</span>
+			</span>`
+		}
+	}, [ref_wrapper, state.loaded]);
+
 	const defaultLayoutPluginInstance = defaultLayoutPlugin();
 	return (
 		<div
+			ref={ref_wrapper}
 			className='crewhrm-pdf-viewer'
 			style={
 				state.error || !state.loaded

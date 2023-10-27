@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { __ } from '../helpers.jsx';
+import { Conditional } from '../conditional.jsx';
 
 import style from './exp.module.scss';
 
@@ -15,7 +16,7 @@ export function ExpandableContent(props) {
         children,
         see_more_text = __('See full view'),
         see_less_text = __('See short view'),
-        className = ''
+        className = '',
     } = props;
 
     const adjustLayout = () => {
@@ -48,7 +49,7 @@ export function ExpandableContent(props) {
         return () => {
             window.removeEventListener('resize', adjustLayout);
         };
-    }, []);
+    }, [children]);
 
     return (
         <div data-crew="expandable-content" className={className}>
@@ -61,24 +62,23 @@ export function ExpandableContent(props) {
                     {children}
                 </div>
 
-                {(state.show_control && !state.expanded && (
-                    <div
+				<Conditional show={state.show_control && !state.expanded}>
+					<div
                         data-crew="overlay"
                         className={'overlay'.classNames(style)}
                     ></div>
-                )) ||
-                    null}
+				</Conditional>
             </div>
-            {(state.show_control && (
-                <span
+
+			<Conditional show={state.show_control}>
+				<span
                     data-crew="controller"
-                    className={'d-inline-block font-size-15 font-weight-500 line-height-22 letter-spacing--15 color-text cursor-pointer margin-top-10'.classNames()}
+                    className={'d-inline-block font-size-15 font-weight-500 line-height-22 letter-spacing--15 color-text cursor-pointer margin-top-10 hover-underline'.classNames()}
                     onClick={toggleView}
                 >
                     {state.expanded ? see_less_text : see_more_text}
                 </span>
-            )) ||
-                null}
+			</Conditional>
         </div>
     );
 }

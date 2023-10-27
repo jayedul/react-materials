@@ -75,8 +75,6 @@ export function replaceUrlsWithAnchors(text, props = {}) {
 		);
 	});
 
-	replacedText = replacedText.replaceAll('\n', '<br/>');
-
 	return replacedText;
 }
 
