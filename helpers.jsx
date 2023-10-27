@@ -165,12 +165,19 @@ export function filterUniqueColumn(array, column) {
 	});
 }
 
+/**
+ * Filter object elements like array element filter
+ * @param {object} ob The object to filter elements of
+ * @param {function} cb The callback function that determine whether to keep an element or not
+ * @returns {object}
+ */
 export function filterObject(ob, cb) {
 	const new_object = {};
+	const _ob = {...ob};
 
-	for (let k in ob) {
-		if (cb(ob[k], k)) {
-			new_object[k] = ob[k];
+	for (let k in _ob) {
+		if (cb(_ob[k], k)) {
+			new_object[k] = _ob[k];
 		}
 	}
 

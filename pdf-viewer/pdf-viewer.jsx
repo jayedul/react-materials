@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 
-import { Conditional } from 'crewhrm-materials/conditional.jsx';
+import { Conditional } from './conditional.jsx';
 
-import { CircularProgress } from 'crewhrm-materials/circular.jsx';
-import { __ } from 'crewhrm-materials/helpers.jsx';
+import { CircularProgress } from './circular.jsx';
+import { __ } from './helpers.jsx';
 
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';

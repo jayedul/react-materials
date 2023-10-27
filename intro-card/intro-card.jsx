@@ -41,9 +41,9 @@ export function IntroCard(props) {
                 'bg-color-white border-radius-5'.classNames() +
                 className
             }
-            style={{ backgroundImage: imageState ? 'url(' + image_url + ')' : '', ...cssStyle }}
+            style={{ backgroundImage: (imageState || !is_horizontal) ? 'url(' + image_url + ')' : '', ...cssStyle }}
         >
-            <div style={imageState ? {width: 'calc(100% - 230px)'} : {}}>
+            <div style={(imageState && is_horizontal) ? {width: 'calc(100% - 230px)'} : {}}>
 				{props.children}
 			</div>
             <div className={'image'.classNames(style)}>
