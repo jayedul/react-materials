@@ -39,6 +39,26 @@
         }
     }
 
+    &.button-secondary {
+        background-color: var(--crewhrm-color-secondary);
+        color: white;
+        border: 1px solid var(--crewhrm-color-secondary);
+
+        // Set light colors if disabled
+        &.disabled,
+        &:disabled {
+            background-color: var(--crewhrm-color-text-lighter);
+            border-color: var(--crewhrm-color-text-lighter);
+        }
+
+        // Make little bit darker on hover
+        &:not(.button-outlined):not(:disabled):not(.disabled) {
+            &:hover {
+                filter: brightness(0.85);
+            }
+        }
+    }
+
     &.button-outlined {
         // Hovering outlined button is merely showing the primary button colors. When not hovered, it'll who outlined withour primary background color.
         &:not(:hover) {
@@ -46,7 +66,7 @@
             color: var(--crewhrm-color-primary);
 
             // It's little bit lighter variation for 'back' action buttons
-            &.button-outlined-secondary {
+            &.button-outlined-light {
                 border-color: var(--crewhrm-color-text-light);
                 color: var(--crewhrm-color-text-light);
             }

@@ -18,7 +18,7 @@ export function FormActionButtons(props) {
 				<div style={{ width: '138px' }}>
 					<button
 						disabled={disabledPrevious}
-						className={'d-inline-block button button-primary button-outlined button-outlined-secondary button-full-width'.classNames()}
+						className={'d-inline-block button button-primary button-outlined button-outlined-light button-full-width'.classNames()}
 						onClick={onBack}
 					>
 						{backText}
