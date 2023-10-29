@@ -1,12 +1,17 @@
+$default_family: '"SF Pro", Arial, Helvetica, sans-serif, "Source Sans Pro"';
 @mixin fontWeight($weight) {
     @if $weight == 400 {
-        font-family: CrewHRM-Figtree-Regular;
+        font-family: CrewHRM-Figtree-Regular, #{$default_family};
+		font-weight: 400;
     } @else if $weight == 500 {
-        font-family: CrewHRM-Figtree-Medium;
+        font-family: CrewHRM-Figtree-Medium, #{$default_family};
+		font-weight: 500;
     } @else if $weight == 600 {
-        font-family: CrewHRM-Figtree-SemiBold;
+        font-family: CrewHRM-Figtree-SemiBold, #{$default_family};
+		font-weight: 600;
     } @else if $weight == 700 {
-        font-family: CrewHRM-Figtree-Bold;
+        font-family: CrewHRM-Figtree-Bold, #{$default_family};
+		font-weight: 700;
     }
 }
 
