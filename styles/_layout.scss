@@ -40,6 +40,7 @@
 
 @include looper('line-height',     true, 'px', 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 32, 34, 38, 40);
 @include looper('font-size',       true, 'px', 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28, 38);
+@include looper('font-weight',     true, '', 400, 500, 600, 700);
 @include looper('text-align',      true, '', 'left', 'right', 'center', 'justify');
 @include looper('white-space',     true, '', 'normal', 'pre', 'nowrap');
 @include looper('text-transform',  true, '', 'uppercase', 'lowercase');
