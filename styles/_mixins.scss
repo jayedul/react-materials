@@ -15,10 +15,69 @@ $default_family: '"SF Pro", Arial, Helvetica, sans-serif, "Source Sans Pro"';
     }
 }
 
-@mixin looper( $class, $values... ) {
-	@each $value in $values {
-		.#{$class}-#{$value} {
-			#{$class}: #{$value};
-		}
-	}
+@mixin looper($class, $prop, $unit, $values... ) {
+    @if str-slice($class, 1, 1) == "-" {
+        @each $value in $values {
+            .#{$value}#{$class}{
+                #{$value} : #{$prop}#{$unit}
+            }
+        }
+        
+    } @else if $class == 'border-radius' {
+        @each $value in $values{
+            .#{$class}-#{$value}{
+                &, &[type] {
+                    #{$class}: #{$value}#{$unit};
+        			&:not(.overflow-auto) {
+        				overflow: hidden;
+        			}
+                }
+            }
+        }
+        
+    } @else if str-index($class, 'border') == 1 {
+        @each $value in $values {
+            $unit_class: if($value == 1.5, '1-5', $value);
+            .#{$class}-#{$unit_class}{
+                &, &[type] {
+                    #{$class}-width: #{$value}#{$unit};
+                    #{$class}-style: solid;
+                }
+            }
+        }
+        
+    } @else if $class == 'padding-vertical' {
+        @each $value in $values{
+            .#{$class}-#{$value}{
+                padding-top: #{$value}#{$unit};
+                padding-bottom: #{$value}#{$unit};
+            }
+        }
+        
+    } @else if $class == 'padding-horizontal' {
+        @each $value in $values{
+            .#{$class}-#{$value}{
+                padding-left: #{$value}#{$unit};
+                padding-right: #{$value}#{$unit};
+            }
+        }
+        
+    } @else if $class == 'letter-spacing' {
+        @each $value in $values{
+            .#{$class}-#{$value}{
+                #{$class}: $value/100#{$unit};
+            }
+        }
+        
+    } @else {
+        @if $prop == true {
+            $prop: $class
+        }
+        
+    	@each $value in $values {
+    		.#{$class}-#{$value} {
+    			#{$prop}: #{$value}#{$unit};
+    		}
+    	}
+    }
 }

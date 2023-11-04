@@ -11,7 +11,7 @@ import {
 import calculatePosition from './Utils.jsx';
 
 import styles from './styles.jsx';
-import style from './index.module.scss';
+import style from './popup.module.scss';
 
 let popupIdCounter = 0;
 

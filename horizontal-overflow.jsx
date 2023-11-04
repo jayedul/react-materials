@@ -76,7 +76,7 @@ export function HorizontalOverflow({children}) {
 	return <div
 		onMouseOver={()=>setControl(true)} 
 		onMouseOut={()=>setControl(false)}
-		className={'overflow-hidden w-full position-relative'.classNames()}
+		className={'overflow-hidden width-p-100 position-relative'.classNames()}
 		ref={refWrapper}
 	>
 		<Control left={true}/>

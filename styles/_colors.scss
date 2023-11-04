@@ -70,21 +70,3 @@ $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light',
 @include colorGenerate('color', 'color');
 @include colorGenerate('bg-color', 'background-color');
 @include colorGenerate('b-color', 'border-color');
-
-@for $i from 5 through 10 {
-	$downgrade: $i/10;
-    .darken-on-hover--#{$i} {
-        &:hover {
-            filter: brightness(#{$downgrade});
-        }
-    }
-}
-
-/* Box shadows */
-.box-shadow-thin {
-    box-shadow: 0px 1px 2px 0px rgba(16, 39, 68, 0.08);
-}
-
-.box-shadow-thick {
-    box-shadow: 0px 10px 20px 0px rgba(16, 39, 68, 0.1);
-}

@@ -118,7 +118,7 @@ export function RenderMedia({ media, onDelete, theme = 'grid', overlay = true })
                                             `attachment-overlay ${
                                                 thumb_image ? 'has-thumbnail' : ''
                                             }`.classNames(style) +
-                                            `d-block w-full h-full d-flex align-items-center justify-content-center padding-20 cursor-pointer ${
+                                            `d-block width-p-100 height-p-100 d-flex align-items-center justify-content-center padding-20 cursor-pointer ${
                                                 thumb_image
                                                     ? ''
                                                     : 'border-1-5 b-color-tertiary border-radius-10'
@@ -138,7 +138,7 @@ export function RenderMedia({ media, onDelete, theme = 'grid', overlay = true })
                                                 />
                                             ) : null}
                                             <span
-                                                className={`d-block margin-top-5 font-size-13 font-weight-400 line-height-24 letter-spacing--13 line-clamp line-clamp-1 ${
+                                                className={`d-block margin-top-5 font-size-13 font-weight-400 line-height-24 letter-spacing--13 ${
                                                     is_image ? 'color-white' : 'color-text-light'
                                                 }`.classNames()}
                                             >
@@ -171,7 +171,7 @@ export function RenderMediaPreview(props) {
         <div
             className={
                 `preview media-type-${media_type}`.classNames(style) +
-                'position-fixed left-0 right-0 top-0 bottom-0 w-full h-full padding-50'.classNames()
+                'position-fixed left-0 right-0 top-0 bottom-0 width-p-100 height-p-100 padding-50'.classNames()
             }
             onClick={onClosePreview}
         >
@@ -183,7 +183,7 @@ export function RenderMediaPreview(props) {
                 <i className={'ch-icon ch-icon-times color-white font-size-12'.classNames()}></i>
             </span>
             <div
-                className={'w-full h-full d-flex align-items-center justify-content-center'.classNames()}
+                className={'width-p-100 height-p-100 d-flex align-items-center justify-content-center'.classNames()}
                 onClick={(e) => e.stopPropagation()}
             >
                 {media_type === 'image' ? <ImageZoom src={file_url} zoom="180" /> : null}
@@ -193,14 +193,14 @@ export function RenderMediaPreview(props) {
                 ) : null}
 
                 {media_type === 'audio' ? (
-                    <audio autoPlay={true} controls={true} className={'w-full'.classNames()}>
+                    <audio autoPlay={true} controls={true} className={'width-p-100'.classNames()}>
                         <source src={file_url} type={mime_type} />
                         Your browser does not support the audio element.
                     </audio>
                 ) : null}
 
                 {media_type === 'video' ? (
-                    <video autoPlay={true} controls={true} className={'w-full h-full'.classNames()}>
+                    <video autoPlay={true} controls={true} className={'width-p-100 height-p-100'.classNames()}>
                         <source src={file_url} type={mime_type} />
                         Your browser does not support the audio element.
                     </video>

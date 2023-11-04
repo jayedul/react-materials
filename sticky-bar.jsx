@@ -18,7 +18,7 @@ export function StickyBar({ title, children, canBack, midWidth }) {
                 data-crew="sticky-bar"
 				style={{zIndex: 9991, height: '68px'}}
                 className={
-                    'position-sticky top-32 w-full padding-vertical-15 padding-horizontal-30 bg-color-white box-shadow-thin'.classNames()
+                    'position-sticky top-32 width-p-100 padding-vertical-15 padding-horizontal-30 bg-color-white box-shadow-thin'.classNames()
                 }
             >
                 <div className={'d-flex align-items-center'.classNames()}>

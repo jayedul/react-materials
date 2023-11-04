@@ -1,165 +1,54 @@
-@import './mixins';
+@include looper('align-items',     true, '', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
+@include looper('flex-direction',  true, '', 'column', 'row', 'row-reverse', 'column-reverse');
+@include looper('flex-wrap',       true, '', 'wrap', 'nowrap');
+@include looper('background-size', true, '', 'cover');
+@include looper('overflow',        true, '', 'auto', 'hidden', 'scroll');
+@include looper('overflow-x',      true, '', 'auto', 'hidden', 'scroll');
+@include looper('overflow-y',      true, '', 'auto', 'hidden', 'scroll');
+@include looper('justify-content', true, '', 'flex-start', 'space-between', 'space-around', 'space-evenly', 'center', 'end', 'flex-end');
+@include looper('align-self',      true, '', 'center', 'auto');
+@include looper('cursor',          true, '', 'pointer', 'default', 'not-allowed', 'text');
+@include looper('vertical-align',  true, '', 'middle', 'top');
+@include looper('position',        true, '', 'absolute', 'fixed', 'static', 'relative', 'sticky');
 
-// Displays
-$displays: 'block', 'flex', 'inline', 'inline-block', 'inline-flex', 'contents', 'none';
-@each $display in $displays {
-    .d-#{$display} {
-        display: #{$display};
-    }
-}
+@include looper('-auto',           'auto', '', 'width', 'height', 'margin');
+@include looper('width',           true, 'px', 6, 16, 20, 24, 30, 36, 39, 44);
+@include looper('width-p',         'width', '%', '100');
+@include looper('height',          true, 'px', 15, 16, 18, 20, 21, 22, 24, 25, 26, 32, 34, 38, 40, 48);
+@include looper('height-p',        'height', '%', '100');
+@include looper('d',               'display', '', 'block', 'flex', 'inline', 'inline-block', 'inline-flex', 'contents', 'none');
 
-// Sizings
-$attrs: 'font-size', 'margin', 'margin-top', 'margin-bottom', 'margin-left', 'margin-right',
-    'padding', 'padding-top', 'padding-bottom', 'padding-left', 'padding-right', 'padding-vertical',
-    'padding-horizontal', 'width', 'height', 'line-height', 'column-gap', 'row-gap', 'left', 'right',
-    'top', 'bottom';
-@for $i from 0 through 50 {
-    @each $attr in $attrs {
-        @if $attr == 'padding-vertical' {
-            .padding-vertical-#{$i} {
-                &,
-                &[type] {
-                    padding-top: #{$i}px;
-                    padding-bottom: #{$i}px;
-                }
-            }
-        } @else if $attr == 'padding-horizontal' {
-            .padding-horizontal-#{$i} {
-                &,
-                &[type] {
-                    padding-left: #{$i}px;
-                    padding-right: #{$i}px;
-                }
-            }
-        } @else {
-            .#{$attr}-#{$i} {
-                &,
-                &[type] {
-                    #{$attr}: #{$i}px;
-                }
-            }
-        }
-    }
+@include looper('left',            true, 'px', 0);
+@include looper('right',           true, 'px', 0, 15, 18, 42, 50);
+@include looper('top',             true, 'px', 0, 2, 15, 32, 42);
+@include looper('bottom',          true, 'px', 0, 33);
 
-    // Letter spacing and flex
-    @if $i <=5 {
-        .letter-spacing_#{$i} {
-            letter-spacing: #{$i}px; // Full number posetive spacing: 2px, 3px...
-        }
-    }
+@include looper('margin-left',     true, 'px', 4, 5, 10, 13, 15, 20);
+@include looper('margin-right',    true, 'px', 3, 4, 5, 6, 8, 10, 12, 20, 24, 25);
+@include looper('margin-top',      true, 'px', 3, 5, 6, 8, 10, 12, 15, 20, 25, 30, 40, 48);
+@include looper('margin-bottom',   true, 'px', 1, 2, 4, 5, 7, 9, 10, 12, 13, 15, 17, 20, 30, 32, 36, 40, 50);
 
-	$shift_size: $i/100;
+@include looper('padding',         true, 'px', 4, 5, 8, 15, 20, 25, 30, 50);
+@include looper('padding-top',     true, 'px', 50);
+@include looper('padding-bottom',  true, 'px', 50);
+@include looper('padding-vertical',true, 'px', 2, 5, 8, 10, 12, 14, 15, 20, 25, 30, 40, 50);
+@include looper('padding-horizontal', true, 'px', 4, 6, 7, 8, 10, 12, 15, 17, 20, 30, 50);
 
-    .letter-spacing--#{$i} {
-        letter-spacing: -#{$shift_size}px; // Negative decimal point spacing: -0.3px, -0.24px
-    }
+@include looper('flex',            true, 'px', 1);
+@include looper('column-gap',      true, 'px', 6, 8, 10, 12, 14, 15, 20, 21, 27, 28, 30, 40);
+@include looper('row-gap',         true, 'px', 5, 10, 15, 20);
 
-    .letter-spacing-#{$i} {
-        letter-spacing: #{$shift_size}px; // Posetive decimal point spacing: 0.3px, 0.24px
-    }
+@include looper('line-height',     true, 'px', 15, 18, 19, 20, 21, 22, 24, 25, 26, 32, 34, 38, 40);
+@include looper('font-size',       true, 'px', 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28, 38);
+@include looper('text-align',      true, '', 'left', 'right', 'center', 'justify');
+@include looper('white-space',     true, '', 'normal', 'pre', 'nowrap');
+@include looper('text-transform',  true, '', 'uppercase', 'lowercase');
+@include looper('text-overflow',   true, '', 'ellipsis', 'clip');
+@include looper('letter-spacing',  true, 'px', -38, -24, -17, -16, -15, -14, -13, -12, -3, 2);
 
-    .flex-#{$i} {
-        flex: #{$i};
-    }
-
-    .border-radius-#{$i} {
-        &,
-        &[type] {
-            border-radius: #{$i}px;
-			&:not(.overflow-auto) {
-				overflow: hidden;
-			}
-        }
-    }
-}
-
-// Borders
-$borders: 'border', 'border-bottom', 'border-top', 'border-left', 'border-right';
-@each $border in $borders {
-    .#{$border}-1 {
-        &,
-        &[type] {
-            #{$border}-width: 1px;
-            #{$border}-style: solid;
-        }
-    }
-
-    .#{$border}-1-5 {
-        &,
-        &[type] {
-            #{$border}-width: 1.5px;
-            #{$border}-style: solid;
-        }
-    }
-
-    .#{$border}-5 {
-        &,
-        &[type] {
-            #{$border}-width: 5px;
-            #{$border}-style: solid;
-        }
-    }
-}
-
-$align_items: 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch';
-@include looper('align-items', $align_items...);
-@include looper('flex-direction', 'column', 'row', 'row-reverse', 'column-reverse');
-@include looper('flex-wrap', 'wrap', 'nowrap');
-@include looper('background-size', 'cover');
-@include looper('overflow', 'auto', 'hidden', 'scroll');
-@include looper('overflow-x', 'auto', 'hidden', 'scroll');
-@include looper('overflow-y', 'auto', 'hidden', 'scroll');
-@include looper('justify-content', 'flex-start', 'space-between', 'space-around', 'space-evenly', 'center', 'end', 'flex-end');
-@include looper('align-self', 'center', 'auto');
-@include looper('cursor', 'pointer', 'default', 'not-allowed', 'text');
-@include looper('vertical-align', 'middle', 'top');
-@include looper('position', 'absolute', 'fixed', 'static', 'relative', 'sticky');
-
-// Autos
-$autos: 'width', 'height', 'margin';
-@each $auto in $autos {
-    .#{$auto}-auto {
-        #{$auto}: auto;
-    }
-}
-
-.h-full {
-    height: 100%;
-}
-
-.w-full {
-    width: 100%;
-}
-
-
-.line-clamp {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.line-clamp-1 {
-    -webkit-line-clamp: 1;
-}
-
-.line-clamp-2 {
-    -webkit-line-clamp: 2;
-}
-
-.hover-underline:hover {
-    text-decoration: underline;
-}
-
-.fade-in {
-    opacity: 0;
-    animation: crewFadeInAnimation 0.6s ease-in-out forwards 1; /* Added "1" for iteration count */
-}
-
-@keyframes crewFadeInAnimation {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+@include looper('border',          true, 'px', 1, 1.5, 5);
+@include looper('border-top',      true, 'px', 1, 1.5, 5);
+@include looper('border-bottom',   true, 'px', 1, 1.5, 5);
+@include looper('border-left',     true, 'px', 1, 1.5, 5);
+@include looper('border-right',    true, 'px', 1, 1.5, 5);
+@include looper('border-radius',   true, 'px', 3, 5, 6, 10, 30, 50);
