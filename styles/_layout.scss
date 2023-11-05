@@ -1,23 +1,27 @@
+@include looper('d',               'display', '', 'block', 'flex', 'inline', 'inline-block', 'inline-flex', 'contents', 'none');
+@include looper('flex',            true, 'px', 1, 2, 4, 5, 6);
 @include looper('align-items',     true, '', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
+@include looper('justify-content', true, '', 'flex-start', 'space-between', 'space-around', 'space-evenly', 'center', 'end', 'flex-end');
+@include looper('align-self',      true, '', 'center', 'auto');
 @include looper('flex-direction',  true, '', 'column', 'row', 'row-reverse', 'column-reverse');
 @include looper('flex-wrap',       true, '', 'wrap', 'nowrap');
-@include looper('background-size', true, '', 'cover');
+@include looper('column-gap',      true, 'px', 6, 8, 10, 12, 14, 15, 20, 21, 27, 28, 30, 40);
+@include looper('row-gap',         true, 'px', 5, 10, 15, 20);
+@include looper('vertical-align',  true, '', 'middle', 'top');
+
 @include looper('overflow',        true, '', 'auto', 'hidden', 'scroll');
 @include looper('overflow-x',      true, '', 'auto', 'hidden', 'scroll');
 @include looper('overflow-y',      true, '', 'auto', 'hidden', 'scroll');
-@include looper('justify-content', true, '', 'flex-start', 'space-between', 'space-around', 'space-evenly', 'center', 'end', 'flex-end');
-@include looper('align-self',      true, '', 'center', 'auto');
 @include looper('cursor',          true, '', 'pointer', 'default', 'not-allowed', 'text');
-@include looper('vertical-align',  true, '', 'middle', 'top');
-@include looper('position',        true, '', 'absolute', 'fixed', 'static', 'relative', 'sticky');
+@include looper('background-size', true, '', 'cover');
 
 @include looper('-auto',           'auto', '', 'width', 'height', 'margin');
 @include looper('width',           true, 'px', 6, 16, 20, 24, 30, 36, 39, 44);
 @include looper('width-p',         'width', '%', '100');
 @include looper('height',          true, 'px', 15, 16, 18, 20, 21, 22, 24, 25, 26, 32, 34, 38, 40, 48);
 @include looper('height-p',        'height', '%', '100');
-@include looper('d',               'display', '', 'block', 'flex', 'inline', 'inline-block', 'inline-flex', 'contents', 'none');
 
+@include looper('position',        true, '', 'absolute', 'fixed', 'static', 'relative', 'sticky');
 @include looper('left',            true, 'px', 0);
 @include looper('right',           true, 'px', 0, 15, 18, 42, 50);
 @include looper('top',             true, 'px', 0, 2, 15, 32, 42);
@@ -34,9 +38,6 @@
 @include looper('padding-vertical',true, 'px', 2, 5, 8, 10, 12, 14, 15, 20, 25, 30, 40, 50);
 @include looper('padding-horizontal', true, 'px', 4, 6, 7, 8, 10, 12, 15, 17, 20, 30, 50);
 
-@include looper('flex',            true, 'px', 1, 2, 4, 5, 6);
-@include looper('column-gap',      true, 'px', 6, 8, 10, 12, 14, 15, 20, 21, 27, 28, 30, 40);
-@include looper('row-gap',         true, 'px', 5, 10, 15, 20);
 
 @include looper('line-height',     true, 'px', 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 32, 34, 38, 40);
 @include looper('font-size',       true, 'px', 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28, 38);
