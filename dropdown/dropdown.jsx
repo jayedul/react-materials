@@ -51,7 +51,8 @@ export function DropDown(props) {
 		showErrorsAlways=false,
 		clearable=true,
         variant,
-        size
+        size,
+		iconSizeClass = 'font-size-24'.classNames()
     } = props;
 
     const ref = useRef();
@@ -108,16 +109,6 @@ export function DropDown(props) {
         return sizeClasses;
     }
 
-    // Icon size: '' | sm | md
-    const iconSizeClass = (size) => {
-        if(!size) return 'font-size-24'; // default size class
-
-        const sizeClasses = (size === 'sm') || (size === 'md') ? 'font-size-20': '';
-
-        return sizeClasses;
-
-    }
-
     const triggerPoint = (search = false) => {
         return (
             <div
@@ -143,7 +134,13 @@ export function DropDown(props) {
                     </Conditional>
                 </div>
                 <i 
-					className={`ch-icon ${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} margin-left-10 ${iconSizeClass(size)} ${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames()} 
+					className={
+						`ch-icon 
+						${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} 
+						margin-left-10 
+						${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames() +
+						iconSizeClass
+					}
 					onClick={e=>{
 						if ( clearable && selected_value ) {
 							e.stopPropagation();
