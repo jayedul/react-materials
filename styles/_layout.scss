@@ -34,7 +34,7 @@
 
 @include looper('padding',         true, 'px', 4, 5, 8, 15, 20, 25, 30, 50);
 @include looper('padding-top',     true, 'px', 50);
-@include looper('padding-bottom',  true, 'px', 50);
+@include looper('padding-bottom',  true, 'px', 30, 50);
 @include looper('padding-vertical',true, 'px', 2, 5, 8, 10, 12, 14, 15, 20, 25, 30, 40, 50);
 @include looper('padding-horizontal', true, 'px', 4, 6, 7, 8, 10, 12, 15, 17, 20, 30, 50);
 
