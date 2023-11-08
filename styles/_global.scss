@@ -85,13 +85,6 @@ $tick_svg: "data:image/svg+xml,%3Csvg width='14' height='10' fill='none' xmlns='
         cursor: default;
     }
 
-	ul, ol {
-		list-style: inside;
-		margin: 0;
-		padding: 0;
-		padding-left: 20px;
-	}
-
 	/* Level 1 */
 	ul {
 		list-style-type: disc; /* Disc bullet for first level <ul> */

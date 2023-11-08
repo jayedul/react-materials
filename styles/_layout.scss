@@ -12,7 +12,7 @@
 @include looper('overflow',        true, '', 'auto', 'hidden', 'scroll');
 @include looper('overflow-x',      true, '', 'auto', 'hidden', 'scroll');
 @include looper('overflow-y',      true, '', 'auto', 'hidden', 'scroll');
-@include looper('cursor',          true, '', 'pointer', 'default', 'not-allowed', 'text');
+@include looper('cursor',          true, '', 'pointer', 'default', 'not-allowed', 'text', 'context-menu');
 @include looper('background-size', true, '', 'cover');
 
 @include looper('-auto',           'auto', '', 'width', 'height', 'margin');
