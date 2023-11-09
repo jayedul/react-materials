@@ -59,11 +59,11 @@ export function RadioCheckbox({
 	}, [showErrorsAlways]);
 
 	return options.map((option) => {
-		
+
 		let { label, id, disabled, locked, tooltip } = option;
 
-		return <ToolTip tooltip={tooltip}>
-			<div key={id}>
+		return <ToolTip key={id} tooltip={tooltip}>
+			<div>
 				<label
 					className={`d-inline-flex align-items-center column-gap-10 ${(disabled || locked) ? 'cursor-default' : 'cursor-pointer'}`.classNames() + className}
 				>
