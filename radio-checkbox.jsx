@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import {isEmpty} from './helpers.jsx';
+import { ToolTip } from 'crewhrm-materials/tooltip.jsx';
 
 export function checkBoxRadioValue(e, values) {
 	const { type, value: _value, checked } = e.currentTarget;
@@ -58,24 +59,31 @@ export function RadioCheckbox({
 	}, [showErrorsAlways]);
 
 	return options.map((option) => {
-		let { label, id, disabled } = option;
-		return (
+		
+		let { label, id, disabled, locked, tooltip } = option;
+
+		return <ToolTip tooltip={tooltip}>
 			<div key={id}>
 				<label
-					className={`d-inline-flex align-items-center column-gap-10 ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`.classNames() + className}
+					className={`d-inline-flex align-items-center column-gap-10 ${(disabled || locked) ? 'cursor-default' : 'cursor-pointer'}`.classNames() + className}
 				>
-					<input
-						type={type}
-						name={name}
-						value={id}
-						disabled={disabled}
-						checked={type === 'radio' ? value === id : (Array.isArray(value) ? value : []).indexOf(id) > -1}
-						onChange={(e) => onChange(checkBoxRadioValue(e, value))}
-						className={`${errorState ? 'error' : ''}`.classNames()}
-					/>
+					{
+						locked ? 
+							<i className={'ch-icon ch-icon-lock font-size-18 color-text-lighter d-inline-block'.classNames()}></i> :
+							<input
+								type={type}
+								name={name}
+								value={id}
+								disabled={disabled}
+								checked={type === 'radio' ? value === id : (Array.isArray(value) ? value : []).indexOf(id) > -1}
+								onChange={(e) => onChange(checkBoxRadioValue(e, value))}
+								className={`${errorState ? 'error' : ''}`.classNames()}
+							/>
+					}
+					
 					<span className={spanClassName}>{label}</span>
 				</label>
 			</div>
-		);
+		</ToolTip>
 	});
 }

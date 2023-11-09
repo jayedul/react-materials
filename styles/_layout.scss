@@ -5,7 +5,7 @@
 @include looper('align-self',      true, '', 'center', 'auto');
 @include looper('flex-direction',  true, '', 'column', 'row', 'row-reverse', 'column-reverse');
 @include looper('flex-wrap',       true, '', 'wrap', 'nowrap');
-@include looper('column-gap',      true, 'px', 6, 8, 10, 12, 14, 15, 20, 21, 27, 28, 30, 40);
+@include looper('column-gap',      true, 'px', 6, 8, 10, 12, 14, 15, 20, 21, 24, 27, 28, 30, 40);
 @include looper('row-gap',         true, 'px', 5, 10, 15, 20);
 @include looper('vertical-align',  true, '', 'middle', 'top');
 

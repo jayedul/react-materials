@@ -12,7 +12,9 @@ export function InitState({ fetching, error_message }) {
 
 	if (error_message) {
 		return (
-			<div className={'padding-vertical-10 color-dagner'.classNames()}>{error_message}</div>
+			<div className={'bg-color-white padding-vertical-20 color-error text-align-center border-radius-5'.classNames()}>
+				{error_message}
+			</div>
 		);
 	}
 }
