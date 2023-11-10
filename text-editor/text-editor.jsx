@@ -23,9 +23,20 @@ const createEditorState = (html) => {
     return state;
 };
 
-export function TextEditor({required=false, showErrorsAlways=false, onChange: dispatchTo, value: html, placeholder, session }) {
+export function TextEditor(props) {
+
+	const {
+		required=false, 
+		showErrorsAlways=false, 
+		onChange: dispatchTo, 
+		value: html, 
+		placeholder, 
+		session
+	} = props;
+
     const [state, setState] = useState({
         editorState: createEditorState(html),
+		hasChange: false,
         focus: false
     });
 
@@ -37,7 +48,10 @@ export function TextEditor({required=false, showErrorsAlways=false, onChange: di
 	}
 
 	useEffect(()=>{
-		dispatchTo(htmlContents);
+		// Do not pass until changes mafe by user, to avoid glitches
+		if ( state.hasChange ) {
+			dispatchTo(htmlContents);
+		}
 
 		// Do not highlight at first mount
 		if ( errorState === null ) {
@@ -55,7 +69,11 @@ export function TextEditor({required=false, showErrorsAlways=false, onChange: di
 	}, [showErrorsAlways])
 
     const onChange = (editorState) => {
-        setState({ ...state, editorState });
+        setState({
+			...state, 
+			editorState, 
+			hasChange: true 
+		});
 		setHtmlContents(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     };
 
