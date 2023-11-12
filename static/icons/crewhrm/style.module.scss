@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?qeb9w') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?qeb9w') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?qeb9w##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?rp28ty') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?rp28ty') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?rp28ty##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,6 +26,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ch-icon-play-cropped {
+  &:before {
+    content: $ch-icon-play-cropped; 
+  }
+}
 .ch-icon-minus-cirlce {
   &:before {
     content: $ch-icon-minus-cirlce; 
@@ -84,11 +89,6 @@
 .ch-icon-undo {
   &:before {
     content: $ch-icon-undo; 
-  }
-}
-.ch-icon-menu {
-  &:before {
-    content: $ch-icon-menu; 
   }
 }
 .ch-icon-arrow-right {
@@ -150,26 +150,6 @@
 .ch-icon-slash {
   &:before {
     content: $ch-icon-slash; 
-  }
-}
-.ch-icon-anchor {
-  &:before {
-    content: $ch-icon-anchor; 
-  }
-}
-.ch-icon-behance {
-  &:before {
-    content: $ch-icon-behance; 
-  }
-}
-.ch-icon-linkedin {
-  &:before {
-    content: $ch-icon-linkedin; 
-  }
-}
-.ch-icon-twitter {
-  &:before {
-    content: $ch-icon-twitter; 
   }
 }
 .ch-icon-flag {

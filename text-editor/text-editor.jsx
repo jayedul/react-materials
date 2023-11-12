@@ -90,18 +90,18 @@ export function TextEditor(props) {
             onBlur={() => setState({ ...state, focus: false })}
             placeholder={placeholder}
             editorState={state.editorState}
+            editorClassName={'editor'.classNames(style)}
+            toolbarClassName={'toolbar'.classNames(style)}
+            onEditorStateChange={onChange}
+            toolbar={{
+                options: ['inline', 'fontSize', 'list']
+            }}
             wrapperClassName={
                 'wrapper'.classNames(style) +
                 `border-radius-10 border-1 ${errorState ? 'b-color-error' : 'b-color-tertiary b-color-active-primary' } ${
                     state.focus ? 'active' : ''
-                }`.classNames()
+                } text-editor`.classNames()
             }
-            editorClassName={'editor'.classNames(style)}
-            toolbarClassName={'toolbar'.classNames(style)}
-            toolbar={{
-                options: ['inline', 'fontSize', 'list']
-            }}
-            onEditorStateChange={onChange}
         />
     );
 }
