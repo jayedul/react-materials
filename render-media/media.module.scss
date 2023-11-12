@@ -52,6 +52,12 @@
         }
     }
 
+    &.media-type-youtube {
+        & > div {
+            background-color: black;
+        }
+    }
+
     &.media-type-image {
         figure {
             width: 100%;

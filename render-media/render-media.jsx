@@ -205,6 +205,16 @@ export function RenderMediaPreview(props) {
                         Your browser does not support the audio element.
                     </video>
                 ) : null}
+
+				{
+					media_type === 'youtube' ? 
+					<iframe 
+						style={{width: "100%", height: "100%", border: 0}} 
+						src={file_url} 
+						title="YouTube video player" 
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+						allowFullScreen></iframe> : null
+				}
             </div>
         </div>
     );
