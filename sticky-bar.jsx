@@ -16,7 +16,7 @@ export function StickyBar({ title, children, canBack, midWidth }) {
             </Helmet>
             <div
                 data-crew="sticky-bar"
-				style={{zIndex: 9991, height: '68px'}}
+				style={{zIndex: 9989, height: '68px'}}
                 className={
                     'position-sticky top-32 width-p-100 padding-vertical-15 padding-horizontal-30 bg-color-white box-shadow-thin'.classNames()
                 }

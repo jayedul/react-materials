@@ -345,19 +345,19 @@ export function formatDate( date, pattern = window[window.CrewPointer || 'CrewHR
 	];
 
 	let formattedDate = pattern;
-	formattedDate = formattedDate.replace("F", months[date.getMonth()]);
-	formattedDate = formattedDate.replace("M", months[date.getMonth()]?.substring(0, 3));
-	formattedDate = formattedDate.replace("m", date.getMonth()+1);
-	formattedDate = formattedDate.replace("j", date.getDate());
-	formattedDate = formattedDate.replace("d", String(date.getDate()).padStart(2, '0'));
-	formattedDate = formattedDate.replace("l", days[date.getDay()]);
-	formattedDate = formattedDate.replace("D", days[date.getDay()]?.substring(0, 3));
-	formattedDate = formattedDate.replace("Y", date.getFullYear());
-	formattedDate = formattedDate.replace("g", String(date.getHours() % 12 || 12).padStart(2, '0'));
-	formattedDate = formattedDate.replace("H", String(date.getHours()).padStart(2, '0'));
-	formattedDate = formattedDate.replace("i", String(date.getMinutes()).padStart(2, '0'));
-	formattedDate = formattedDate.replace("A", date.getHours() >= 12 ? 'PM' : 'AM');
-	formattedDate = formattedDate.replace("a", date.getHours() >= 12 ? 'pm' : 'am');
+	formattedDate = formattedDate.replaceAll(/\bF\b/g, months[date.getMonth()]);
+	formattedDate = formattedDate.replaceAll(/\bM\b/g, months[date.getMonth()]?.substring(0, 3));
+	formattedDate = formattedDate.replaceAll(/\bm\b/g, date.getMonth()+1);
+	formattedDate = formattedDate.replaceAll(/\bj\b/g, date.getDate());
+	formattedDate = formattedDate.replaceAll(/\bd\b/g, String(date.getDate()).padStart(2, '0'));
+	formattedDate = formattedDate.replaceAll(/\bl\b/g, days[date.getDay()]);
+	formattedDate = formattedDate.replaceAll(/\bD\b/g, days[date.getDay()]?.substring(0, 3));
+	formattedDate = formattedDate.replaceAll(/\bY\b/g, date.getFullYear());
+	formattedDate = formattedDate.replaceAll(/\bg\b/g, String(date.getHours() % 12 || 12).padStart(2, '0'));
+	formattedDate = formattedDate.replaceAll(/\bH\b/g, String(date.getHours()).padStart(2, '0'));
+	formattedDate = formattedDate.replaceAll(/\bi\b/g, String(date.getMinutes()).padStart(2, '0'));
+	formattedDate = formattedDate.replaceAll(/\bA\b/g, date.getHours() >= 12 ? 'PM' : 'AM');
+	formattedDate = formattedDate.replaceAll(/\ba\b/g, date.getHours() >= 12 ? 'pm' : 'am');
 
 	return formattedDate;
 }

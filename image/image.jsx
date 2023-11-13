@@ -13,12 +13,13 @@ export function CoverImage(props) {
         circle,
         className = '',
         name,
+		color_key,
         style: cssStyle = {}
     } = props;
 
     const _height = height || width;
     const css = {
-        backgroundColor: backgroundColor || (name ? generateBackgroundColor(name) : null),
+        backgroundColor: backgroundColor || ((color_key || name) ? generateBackgroundColor(color_key || name) : null),
         backgroundImage: src ? 'url(' + src + ')' : null,
         width: width ? width + (!isNaN(width) ? 'px' : '') : 'auto',
         height: _height ? _height + (!isNaN(_height) ? 'px' : '') : 'auto',
