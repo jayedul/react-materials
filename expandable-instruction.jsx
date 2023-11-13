@@ -17,7 +17,7 @@ export function ExpandableInstruction(props) {
 	return <table className={'width-p-100 border-collapse-collapse font-size-14 font-weight-400 line-height-28 color-text'.classNames()}>
 		<tbody>
 			<tr>
-				<td className={'padding-20'.classNames()} style={{width: '130px', paddingRight: '24px'}}>
+				<td style={{width: '130px', paddingRight: '24px'}}>
 					<VideoModal video_url={video_url} thumbnail_url={thumbnail_url}/>
 				</td>
 				<td className={'cursor-pointer'.classNames()} onClick={()=>setExpand(!expanded)}>

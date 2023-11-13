@@ -15,7 +15,7 @@ export function VideoModal({video_url, thumbnail_url}) {
 					}}/>
 		}
 		<div className={'position-relative'.classNames()}>
-			<img src={thumbnail_url} className={'width-auto height-auto'.classNames()}/>
+			<img src={thumbnail_url} className={'width-auto height-auto d-block'.classNames()}/>
 			<div 
 				className={'position-absolute left-0 right-0 top-0 bottom-0 d-flex align-items-center justify-content-center cursor-pointer'.classNames()}
 				onClick={()=>setModalState(!showModal)}
