@@ -8,8 +8,8 @@
     & > div {
         padding: 8px 15px;
         height: 40px;
-        color: var(--crewhrm-color-text);
-        border: 1px solid var(--crewhrm-color-text-lighter);
+        color: var(--crewmat-color-text);
+        border: 1px solid var(--crewmat-color-text-lighter);
         border-radius: 10px;
         cursor: pointer;
         font-size: 15px;
@@ -36,8 +36,8 @@
         & > div {
             &.active,
             &:hover {
-                background-color: var(--crewhrm-color-text);
-                border-color: var(--crewhrm-color-text);
+                background-color: var(--crewmat-color-text);
+                border-color: var(--crewmat-color-text);
                 color: white;
             }
         }
@@ -46,7 +46,7 @@
     &.theme-button-control {
         & > div {
             &:hover {
-                border-color: var(--crewhrm-color-text);
+                border-color: var(--crewmat-color-text);
             }
         }
     }
@@ -58,18 +58,18 @@
         & > div {
             padding: 2px 13px;
             border-radius: 50px;
-            border: 1px solid var(--crewhrm-color-tertiary);
+            border: 1px solid var(--crewmat-color-tertiary);
             background-color: #f9f9f9;
             font-size: 14px;
             line-height: 24px;
             height: 28px;
-            color: var(--crewhrm-color-text);
+            color: var(--crewmat-color-text);
             @include fontWeight(500);
 
             &.active {
                 color: white;
-                background-color: var(--crewhrm-color-text);
-                border-color: var(--crewhrm-color-text);
+                background-color: var(--crewmat-color-text);
+                border-color: var(--crewmat-color-text);
             }
         }
     }

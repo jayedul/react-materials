@@ -1,6 +1,6 @@
 .upload {
     .drop-container {
-        border: 1px dashed var(--crewhrm-color-tertiary);
+        border: 1px dashed var(--crewmat-color-tertiary);
         padding: 30px;
         text-align: center;
         cursor: pointer;
@@ -8,15 +8,15 @@
         background-color: #f9f9f9;
 
 		&.error {
-			border-color: var(--crewhrm-color-error);
+			border-color: var(--crewmat-color-error);
 		}
 
         &:hover {
-            border: 1px dashed var(--crewhrm-color-primary);
+            border: 1px dashed var(--crewmat-color-primary);
         }
 
         &.highlight {
-            border: 1.5px dashed var(--crewhrm-color-primary);
+            border: 1.5px dashed var(--crewmat-color-primary);
         }
     }
 }
