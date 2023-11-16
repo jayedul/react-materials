@@ -1,6 +1,7 @@
 import React from 'react';
+import { data_pointer } from '../helpers.jsx';
 
-export function Ripple({ size = 28, strokeWidth = 5, color = window[window.CrewPointer || 'CrewHRM'].colors['secondary'] }) {
+export function Ripple({ size = 28, strokeWidth = 5, color = window[data_pointer]?.colors?.secondary || '#236BFE' }) {
     return (
         <svg
             fill="none"

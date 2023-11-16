@@ -1,7 +1,8 @@
 import React from 'react';
+import { data_pointer } from '../helpers.jsx';
 
 export function IconEmail(props) {
-    const { color = window[window.CrewPointer || 'CrewHRM'].colors['text'], size = 24 } = props;
+    const { color = window[data_pointer]?.colors?.text || '#1A1A1A', size = 24 } = props;
 
     return (
         <svg

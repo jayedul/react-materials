@@ -6,7 +6,7 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import { Conditional } from '../conditional.jsx';
 
 import { CircularProgress } from '../circular.jsx';
-import { __ } from '../helpers.jsx';
+import { __, data_pointer } from '../helpers.jsx';
 
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
@@ -43,7 +43,7 @@ export function PDFViewer({ src, defaultScale }) {
 					: {height: 690, width: '100%' }
 			}
 		>
-			<Worker workerUrl={`${window[window.CrewPointer || 'CrewHRM'].dist_url}libraries/pdf.worker.js`}>
+			<Worker workerUrl={`${window[data_pointer]?.dist_url}libraries/pdf.worker.js`}>
 				<Viewer
 					defaultScale={defaultScale}
 					fileUrl={src}

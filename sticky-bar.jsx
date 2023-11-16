@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import {Conditional} from './conditional.jsx';
+import { data_pointer } from './helpers.jsx';
 
 import logo from './static/images/logo.svg';
 
@@ -11,8 +12,8 @@ export function StickyBar({ title, children, canBack, midWidth }) {
     return (
         <>
             <Helmet>
-                <link rel="icon" type="image/x-icon" href={window[window.CrewPointer || 'CrewHRM'].white_label.app_logo || logo} />
-                <title>{window[window.CrewPointer || 'CrewHRM'].white_label.app_label || 'CrewHRM'} - {title}</title>
+                <link rel="icon" type="image/x-icon" href={window[data_pointer]?.white_label?.app_logo || logo} />
+                <title>{window[data_pointer]?.white_label?.app_label || 'CrewHRM'} - {title}</title>
             </Helmet>
             <div
                 data-crew="sticky-bar"

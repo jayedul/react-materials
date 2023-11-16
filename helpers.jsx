@@ -327,7 +327,7 @@ export function validateValues(values={}, rules=[]) {
  * @param {string} pattern Format pattern.
  * @returns {string}
  */
-export function formatDate( date, pattern = window[window.CrewPointer || 'CrewHRM'].date_format ) {
+export function formatDate( date, pattern = window[data_pointer]?.date_format || 'Y-m-d' ) {
 
 	date = getLocalDate(date);
 
@@ -527,3 +527,11 @@ export function arrayEquals(arr1, arr2, case_sensitive=false) {
 }
 
 export const is_production = process.env.NODE_ENV === 'production';
+
+// Determine the unique data pointer
+var script = document.currentScript;
+const url = script.src;
+const regex = /\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/;
+const matches = url.match(regex);
+const parsedString = `CrewMat_${matches[1]}_${matches[3]}`;
+export const data_pointer = parsedString.replace(/[^a-zA-Z0-9_]/g, '');

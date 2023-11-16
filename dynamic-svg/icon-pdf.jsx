@@ -1,6 +1,7 @@
 import React from 'react';
+import { data_pointer } from '../helpers.jsx';
 
-export function IconPDF({ width = 30, height = 31, color = window[window.CrewPointer || 'CrewHRM'].colors['primary'] }) {
+export function IconPDF({ width = 30, height = 31, color = window[data_pointer]?.colors?.primary || '#1A1A1A' }) {
     return (
         <svg
             width={width}

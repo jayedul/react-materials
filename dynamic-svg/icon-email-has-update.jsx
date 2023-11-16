@@ -1,7 +1,8 @@
 import React from 'react';
+import { data_pointer } from '../helpers.jsx';
 
 export function IconEmailHasUpdate(props) {
-    const { color = window[window.CrewPointer || 'CrewHRM'].colors['text'], size = 24 } = props;
+    const { color = window[data_pointer]?.colors?.text || '#1A1A1A', size = 24 } = props;
 
     return (
         <svg
@@ -27,7 +28,7 @@ export function IconEmailHasUpdate(props) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
-            <circle cx="19" cy="4" r="3.5" fill={window[window.CrewPointer || 'CrewHRM'].colors['error']} stroke="#F3F4F5" />
+            <circle cx="19" cy="4" r="3.5" fill={window[data_pointer]?.colors?.error || '#EA4545'} stroke="#F3F4F5" />
         </svg>
     );
 }

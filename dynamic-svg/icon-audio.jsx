@@ -1,6 +1,7 @@
 import React from 'react';
+import { data_pointer } from '../helpers.jsx';
 
-export function IconAudio({ color = window[window.CrewPointer || 'CrewHRM'].colors['primary'], width = 23, height = 31 }) {
+export function IconAudio({ color = window[data_pointer]?.colors?.primary || '#1A1A1A', width = 23, height = 31 }) {
     return (
         <svg
             width={width}

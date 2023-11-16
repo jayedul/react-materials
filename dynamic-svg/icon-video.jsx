@@ -1,6 +1,7 @@
 import React from 'react';
+import { data_pointer } from '../helpers.jsx';
 
-export function IconVideo({ width = 23, height = 31, color = window[window.CrewPointer || 'CrewHRM'].colors['primary'] }) {
+export function IconVideo({ width = 23, height = 31, color = window[data_pointer]?.colors?.primary || '#1A1A1A' }) {
     return (
         <svg
             width={width}

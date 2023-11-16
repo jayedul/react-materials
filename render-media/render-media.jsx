@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ImageZoom from 'react-image-zooom';
 
 import { CoverImage } from '../image/image.jsx';
-import { getFileId, scrollLock } from '../helpers.jsx';
+import { data_pointer, getFileId, scrollLock } from '../helpers.jsx';
 import { PDFViewer } from '../pdf-viewer/pdf-viewer.jsx';
 
 import { IconImage } from '../dynamic-svg/icon-image.jsx';
@@ -133,7 +133,7 @@ export function RenderMedia({ media, onDelete, theme = 'grid', overlay = true })
                                                     color={
                                                         thumb_image
                                                             ? 'white'
-                                                            : window[window.CrewPointer || 'CrewHRM'].colors['text-lighter']
+                                                            : ((window[data_pointer]?.colors || {})['text-lighter'] || '#BBBFC3')
                                                     }
                                                 />
                                             ) : null}

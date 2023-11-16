@@ -1,3 +1,5 @@
+import { data_pointer } from "./helpers.jsx";
+
 /**
  * Ajax request wrapper
  * @param {string} action Ajax request handler method name
@@ -9,9 +11,9 @@ export function request(action, payload = {}, callback, progressCallback) {
 	// Append action and nonce
 	payload = {
 		...payload,
-		action: window[window.CrewPointer || 'CrewHRM'].app_name + '_' + action,
-		nonce: window[window.CrewPointer || 'CrewHRM'].nonce,
-		nonce_action: window[window.CrewPointer || 'CrewHRM'].nonce_action
+		action: (window[data_pointer]?.app_name || '') + '_' + action,
+		nonce: window[data_pointer]?.nonce || null,
+		nonce_action: window[data_pointer]?.nonce_action || null
 	};
 
 	// Build form data
@@ -66,7 +68,7 @@ export function request(action, payload = {}, callback, progressCallback) {
 	flattenObject(payload, formData);
 
 	window.jQuery.ajax({
-		url: window[window.CrewPointer || 'CrewHRM'].ajaxurl,
+		url: window[data_pointer].ajaxurl,
 		type: 'POST',
 		data: formData,
 		contentType: false,

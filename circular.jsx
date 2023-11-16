@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { data_pointer } from './helpers.jsx';
 
 export function CircularProgress({
 	size = 13,
 	strokeWidth = 2,
 	percentage = 0,
 	fontSize = 6,
-	color = window[window.CrewPointer || 'CrewHRM'].colors['primary'],
-	colorSecondary = window[window.CrewPointer || 'CrewHRM'].colors['tertiary'],
+	color = window[data_pointer]?.colors?.primary || '#1A1A1A',
+	colorSecondary = window[data_pointer]?.colors?.tertiary || '#E3E5E8',
 	showPercent = false,
 	className
 }) {

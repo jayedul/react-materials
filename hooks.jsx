@@ -1,7 +1,7 @@
-import { getRandomString } from './helpers.jsx';
+import { data_pointer, getRandomString } from './helpers.jsx';
 
 function enqueueHook(handler, data={}, priority, pointer) {
-	window[window.CrewPointer || 'CrewHRM'][pointer].push({
+	window[data_pointer][pointer].push({
 		key: getRandomString(),
 		handler,
 		data,
@@ -10,7 +10,7 @@ function enqueueHook(handler, data={}, priority, pointer) {
 }
 
 export function getHooks(handler, pointer) {
-	let hooks = window[window.CrewPointer || 'CrewHRM'][pointer].filter((hook) => hook.handler === handler);
+	let hooks = window[data_pointer][pointer].filter((hook) => hook.handler === handler);
 
 	// Get unique array and Sort by priority
 	let priorities = [...new Set(hooks.map((h) => h.priority))];

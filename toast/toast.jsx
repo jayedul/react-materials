@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useRef, useState } from 'react';
 
-import { __, getRandomString } from '../helpers.jsx';
+import { __, data_pointer, getRandomString } from '../helpers.jsx';
 import style from './toast.module.scss';
 import { Ripple } from '../dynamic-svg/ripple.jsx';
 import {Conditional} from '../conditional.jsx';
@@ -130,7 +130,7 @@ export function ToastWrapper({children}) {
                                     >
 										{
 											(!status || !status_icons[status]) ? 
-												<Ripple color={window[window.CrewPointer || 'CrewHRM'].colors['secondary']} /> : 
+												<Ripple color={window[data_pointer]?.colors?.secondary || '#236BFE'} /> : 
 												<img className={'width-36 height-auto padding-5'.classNames()} src={status_icons[status]}/>
 										}
                                     </div>
