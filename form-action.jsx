@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { __ } from './helpers.jsx';
 import { Conditional } from './conditional.jsx';
+import { LoadingIcon } from './loading-icon/loading-icon.jsx';
 
 export function FormActionButtons(props) {
 	const {
@@ -9,7 +11,8 @@ export function FormActionButtons(props) {
 		backText = __('Back'),
 		nextText = __('Next'),
 		disabledPrevious = false,
-		disabledNext = false
+		disabledNext = false,
+		loading=false
 	} = props;
 
 	return (
@@ -33,7 +36,7 @@ export function FormActionButtons(props) {
 						className={'button button-primary button-full-width'.classNames()}
 						onClick={onNext}
 					>
-						{nextText}
+						{nextText} <LoadingIcon show={loading}/>
 					</button>
 				</div>
 			</Conditional>

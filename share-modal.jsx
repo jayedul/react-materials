@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Modal } from './modal.jsx';
-import { __, copyToClipboard } from './helpers.jsx';
+import { __, copyToClipboard, data_pointer } from './helpers.jsx';
 
 import facebook from './static/images/brands/facebook.svg';
 import linkedin from './static/images/brands/linkedin.svg';
@@ -103,7 +103,7 @@ export function ShareModal(props) {
 			<div
 				data-crew="share-link"
 				className={'d-flex align-items-center border-1-5 b-color-tertiary padding-20 border-radius-10'.classNames()}
-				style={{ backgroundColor: '#F9F9F9' }}
+				style={{ backgroundColor: window[data_pointer]?.colors?.quaternary || '#F9F9F9' }}
 			>
 				<span
 					className={'flex-1 font-size-16 font-weight-400 letter-spacing--3 color-text'.classNames()}
