@@ -13,8 +13,17 @@ export const months = [
 	__('July'), __('August'), __('September'), __('October'), __('November'), __('December')
 ];
 
+export const months_en = [
+	'January', 'February', 'March', 'April', 'May', 'June',
+	'July', 'August', 'September', 'October', 'November', 'December'
+];
+
 export const days = [
 	__('Sunday'), __('Monday'), __('Tuesday'), __('Wednesday'), __('Thursday'), __('Friday'), __('Saturday')
+];
+
+export const days_en = [
+	'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 ];
 
 export function getElementDataSet(element) {
@@ -350,7 +359,7 @@ export function validateValues(values={}, rules=[]) {
  * @param {string} pattern Format pattern.
  * @returns {string}
  */
-export function formatDate( date, pattern = window[data_pointer]?.date_format || 'Y-m-d' ) {
+export function formatDate( date, pattern = (window[data_pointer]?.date_format || 'Y-m-d'), translate = true ) {
 
 	date = getLocalDate(date);
 
@@ -358,21 +367,28 @@ export function formatDate( date, pattern = window[data_pointer]?.date_format ||
 		return null;
 	}
 
+	const _t = content => {
+		return translate ? __(content) : content;
+	}
+
+	const _month = date.getMonth();
+	const _months = translate ? months : months_en;
+	const _days = translate ? days : days_en;
 
 	let formattedDate = pattern;
-	formattedDate = formattedDate.replaceAll(/\bF\b/g, months[date.getMonth()]);
-	formattedDate = formattedDate.replaceAll(/\bM\b/g, months[date.getMonth()]?.substring(0, 3));
-	formattedDate = formattedDate.replaceAll(/\bm\b/g, __(date.getMonth()+1));
-	formattedDate = formattedDate.replaceAll(/\bj\b/g, __(date.getDate()));
-	formattedDate = formattedDate.replaceAll(/\bd\b/g, __(String(date.getDate()).padStart(2, '0')));
-	formattedDate = formattedDate.replaceAll(/\bl\b/g, days[date.getDay()]);
-	formattedDate = formattedDate.replaceAll(/\bD\b/g, days[date.getDay()]?.substring(0, 3));
-	formattedDate = formattedDate.replaceAll(/\bY\b/g, __(date.getFullYear()));
-	formattedDate = formattedDate.replaceAll(/\bg\b/g, __(String(date.getHours() % 12 || 12).padStart(2, '0')));
-	formattedDate = formattedDate.replaceAll(/\bH\b/g, __(String(date.getHours()).padStart(2, '0')));
-	formattedDate = formattedDate.replaceAll(/\bi\b/g, __(String(date.getMinutes()).padStart(2, '0')));
-	formattedDate = formattedDate.replaceAll(/\bA\b/g, date.getHours() >= 12 ? __('PM') : __('AM'));
-	formattedDate = formattedDate.replaceAll(/\ba\b/g, date.getHours() >= 12 ? __('pm') : __('am'));
+	formattedDate = formattedDate.replaceAll(/\bF\b/g, _months[_month]);
+	formattedDate = formattedDate.replaceAll(/\bM\b/g, _months[_month]?.substring(0, 3));
+	formattedDate = formattedDate.replaceAll(/\bm\b/g, _t(_month+1));
+	formattedDate = formattedDate.replaceAll(/\bj\b/g, _t(date.getDate()));
+	formattedDate = formattedDate.replaceAll(/\bd\b/g, _t(String(date.getDate()).padStart(2, '0')));
+	formattedDate = formattedDate.replaceAll(/\bl\b/g, _days[date.getDay()]);
+	formattedDate = formattedDate.replaceAll(/\bD\b/g, _days[date.getDay()]?.substring(0, 3));
+	formattedDate = formattedDate.replaceAll(/\bY\b/g, _t(date.getFullYear()));
+	formattedDate = formattedDate.replaceAll(/\bg\b/g, _t(String(date.getHours() % 12 || 12).padStart(2, '0')));
+	formattedDate = formattedDate.replaceAll(/\bH\b/g, _t(String(date.getHours()).padStart(2, '0')));
+	formattedDate = formattedDate.replaceAll(/\bi\b/g, _t(String(date.getMinutes()).padStart(2, '0')));
+	formattedDate = formattedDate.replaceAll(/\bA\b/g, date.getHours() >= 12 ? _t('PM') : _t('AM'));
+	formattedDate = formattedDate.replaceAll(/\ba\b/g, date.getHours() >= 12 ? _t('pm') : _t('am'));
 
 	return formattedDate;
 }
