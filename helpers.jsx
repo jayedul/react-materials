@@ -25,8 +25,14 @@ export function getRandomString() {
 }
 
 export function __(txt, domain=window[data_pointer]?.text_domain) {
+
 	const { __ } = window.wp?.i18n || {};
-	return typeof __ == 'function' ? __(txt, domain) : txt;
+
+	if ( txt === null || txt === undefined || typeof txt === 'boolean' || txt === '' || typeof __ !== 'function' ) {
+		return txt;
+	}
+
+	return isNaN(txt) ? __(txt, domain) : txt.toString().split('.').map(t=>__(t, domain)).join('.');
 }
 
 export function sprintf(str, ...params) {
