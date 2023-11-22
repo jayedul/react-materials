@@ -13,7 +13,7 @@ export function StickyBar({ title, children, canBack, midWidth }) {
         <>
             <Helmet>
                 <link rel="icon" type="image/x-icon" href={window[data_pointer]?.white_label?.app_logo || logo} />
-                <title>{window[data_pointer]?.white_label?.app_label || 'CrewHRM'} - {title}</title>
+                <title>{window[data_pointer]?.white_label?.app_label || 'Crew HRM'} - {title}</title>
             </Helmet>
             <div
                 data-crew="sticky-bar"
