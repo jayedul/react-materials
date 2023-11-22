@@ -130,15 +130,6 @@ export const salary_types = {
     yearly: __('Yearly')
 };
 
-export const months = [
-	__('January'), __('February'), __('March'), __('April'), __('May'), __('June'),
-	__('July'), __('August'), __('September'), __('October'), __('November'), __('December')
-];
-
-export const days = [
-	__('Sunday'), __('Monday'), __('Tuesday'), __('Wednesday'), __('Thursday'), __('Friday'), __('Saturday')
-];
-
 export const numbers = {
 	0: __('0'),
 	1: __('1'),

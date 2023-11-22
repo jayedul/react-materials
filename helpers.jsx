@@ -1,4 +1,21 @@
-import { countries_object, days, months, patterns } from './data.jsx';
+import { countries_object, patterns } from './data.jsx';
+
+// Determine the unique data pointer
+var script = document.currentScript;
+const url = script.src;
+const regex = /\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/;
+const matches = url.match(regex);
+const parsedString = `CrewMat_${matches[1]}_${matches[3]}`.toLowerCase();
+export const data_pointer = parsedString.replace(/[^a-zA-Z0-9_]/g, '');
+
+export const months = [
+	__('January'), __('February'), __('March'), __('April'), __('May'), __('June'),
+	__('July'), __('August'), __('September'), __('October'), __('November'), __('December')
+];
+
+export const days = [
+	__('Sunday'), __('Monday'), __('Tuesday'), __('Wednesday'), __('Thursday'), __('Friday'), __('Saturday')
+];
 
 export function getElementDataSet(element) {
 	let { dataset = {} } = element;
@@ -525,11 +542,3 @@ export function arrayEquals(arr1, arr2, case_sensitive=false) {
 }
 
 export const is_production = process.env.NODE_ENV === 'production';
-
-// Determine the unique data pointer
-var script = document.currentScript;
-const url = script.src;
-const regex = /\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/;
-const matches = url.match(regex);
-const parsedString = `CrewMat_${matches[1]}_${matches[3]}`.toLowerCase();
-export const data_pointer = parsedString.replace(/[^a-zA-Z0-9_]/g, '');
