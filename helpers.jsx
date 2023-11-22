@@ -24,9 +24,9 @@ export function getRandomString() {
 	return '_' + timestamp + randomPortion;
 }
 
-export function __(txt) {
+export function __(txt, domain=window[data_pointer]?.text_domain) {
 	const { __ } = window.wp?.i18n || {};
-	return typeof __ == 'function' ? __(txt, 'crewhrm') : txt;
+	return typeof __ == 'function' ? __(txt, domain) : txt;
 }
 
 export function sprintf(str, ...params) {

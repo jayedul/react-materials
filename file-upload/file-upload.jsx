@@ -145,7 +145,7 @@ export function FileUpload(props) {
 			const file_size_mb = Math.floor( f.size / (1024 * 1024 ) );
 			if ( maxsize && file_size_mb >= maxsize ) {
 				addToast({
-					message: sprintf(__('%s excluded as it exceeds the max size limit %sMB'), f.name, maxsize),
+					message: sprintf(__('Upload failed: %s exceeds %sMB limit.'), f.name, maxsize),
 					status: 'warning'
 				});
 				return false;
