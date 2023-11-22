@@ -130,6 +130,28 @@ export const salary_types = {
     yearly: __('Yearly')
 };
 
+export const months = [
+	__('January'), __('February'), __('March'), __('April'), __('May'), __('June'),
+	__('July'), __('August'), __('September'), __('October'), __('November'), __('December')
+];
+
+export const days = [
+	__('Sunday'), __('Monday'), __('Tuesday'), __('Wednesday'), __('Thursday'), __('Friday'), __('Saturday')
+];
+
+export const numbers = {
+	0: __('0'),
+	1: __('1'),
+	2: __('2'),
+	3: __('3'),
+	4: __('4'),
+	5: __('5'),
+	6: __('6'),
+	7: __('7'),
+	8: __('8'),
+	9: __('9'),
+}
+
 // Prepare country data
 const _countries_array = [];
 const _countries_object = {};

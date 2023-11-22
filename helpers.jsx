@@ -1,4 +1,4 @@
-import { countries_object, patterns } from './data.jsx';
+import { countries_object, days, months, patterns } from './data.jsx';
 
 export function getElementDataSet(element) {
 	let { dataset = {} } = element;
@@ -334,15 +334,6 @@ export function formatDate( date, pattern = window[data_pointer]?.date_format ||
 	if( ! date || isNaN( date ) || ! ( date instanceof Date ) ) {
 		return null;
 	}
-
-	const months = [
-		"January", "February", "March", "April", "May", "June",
-		"July", "August", "September", "October", "November", "December"
-	];
-
-	const days = [
-		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-	];
 
 	let formattedDate = pattern;
 	formattedDate = formattedDate.replaceAll(/\bF\b/g, months[date.getMonth()]);
