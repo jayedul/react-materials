@@ -32,7 +32,7 @@ export function __(txt, domain=window[data_pointer]?.text_domain) {
 		return txt;
 	}
 
-	return isNaN(txt) ? __(txt, domain) : txt.toString().split('.').map(t=>__(t, domain)).join('.');
+	return isNaN(txt) ? __(txt, domain) : txt.toString().split('.').map(t=>t.split('').map(n=>__(n, domain)).join('')).join('.');
 }
 
 export function sprintf(str, ...params) {
@@ -341,20 +341,21 @@ export function formatDate( date, pattern = window[data_pointer]?.date_format ||
 		return null;
 	}
 
+
 	let formattedDate = pattern;
 	formattedDate = formattedDate.replaceAll(/\bF\b/g, months[date.getMonth()]);
 	formattedDate = formattedDate.replaceAll(/\bM\b/g, months[date.getMonth()]?.substring(0, 3));
-	formattedDate = formattedDate.replaceAll(/\bm\b/g, date.getMonth()+1);
-	formattedDate = formattedDate.replaceAll(/\bj\b/g, date.getDate());
-	formattedDate = formattedDate.replaceAll(/\bd\b/g, String(date.getDate()).padStart(2, '0'));
+	formattedDate = formattedDate.replaceAll(/\bm\b/g, __(date.getMonth()+1));
+	formattedDate = formattedDate.replaceAll(/\bj\b/g, __(date.getDate()));
+	formattedDate = formattedDate.replaceAll(/\bd\b/g, __(String(date.getDate()).padStart(2, '0')));
 	formattedDate = formattedDate.replaceAll(/\bl\b/g, days[date.getDay()]);
 	formattedDate = formattedDate.replaceAll(/\bD\b/g, days[date.getDay()]?.substring(0, 3));
-	formattedDate = formattedDate.replaceAll(/\bY\b/g, date.getFullYear());
-	formattedDate = formattedDate.replaceAll(/\bg\b/g, String(date.getHours() % 12 || 12).padStart(2, '0'));
-	formattedDate = formattedDate.replaceAll(/\bH\b/g, String(date.getHours()).padStart(2, '0'));
-	formattedDate = formattedDate.replaceAll(/\bi\b/g, String(date.getMinutes()).padStart(2, '0'));
-	formattedDate = formattedDate.replaceAll(/\bA\b/g, date.getHours() >= 12 ? 'PM' : 'AM');
-	formattedDate = formattedDate.replaceAll(/\ba\b/g, date.getHours() >= 12 ? 'pm' : 'am');
+	formattedDate = formattedDate.replaceAll(/\bY\b/g, __(date.getFullYear()));
+	formattedDate = formattedDate.replaceAll(/\bg\b/g, __(String(date.getHours() % 12 || 12).padStart(2, '0')));
+	formattedDate = formattedDate.replaceAll(/\bH\b/g, __(String(date.getHours()).padStart(2, '0')));
+	formattedDate = formattedDate.replaceAll(/\bi\b/g, __(String(date.getMinutes()).padStart(2, '0')));
+	formattedDate = formattedDate.replaceAll(/\bA\b/g, date.getHours() >= 12 ? __('PM') : __('AM'));
+	formattedDate = formattedDate.replaceAll(/\ba\b/g, date.getHours() >= 12 ? __('pm') : __('am'));
 
 	return formattedDate;
 }
@@ -472,35 +473,35 @@ export function timeAgoOrAfter(timestamp) {
 
   if (future) {
     if (years > 0) {
-      return years === 1 ? sprintf(__('%s year from now'), years) : sprintf(__('%s years from now'), years);
+      return years === 1 ? sprintf(__('%s year from now'), __(years)) : sprintf(__('%s years from now'), __(years));
     } else if (months > 0) {
-      return months === 1 ? sprintf(__('%s month from now'), months) : sprintf(__('%s months from now'), months);
+      return months === 1 ? sprintf(__('%s month from now'), __(months)) : sprintf(__('%s months from now'), __(months));
     } else if (weeks > 0) {
-      return weeks === 1 ? sprintf(__('%s week from now'), weeks) : sprintf(__('%s weeks from now'), weeks);
+      return weeks === 1 ? sprintf(__('%s week from now'), __(weeks)) : sprintf(__('%s weeks from now'), __(weeks));
     } else if (days > 0) {
-      return days === 1 ? sprintf(__('%s day from now'), days) : sprintf(__('%s days from now'), days);
+      return days === 1 ? sprintf(__('%s day from now'), __(days)) : sprintf(__('%s days from now'), __(days));
     } else if (hours > 0) {
-      return hours === 1 ? sprintf(__('%s hour from now'), hours) : sprintf(__('%s hours from now'), hours);
+      return hours === 1 ? sprintf(__('%s hour from now'), __(hours)) : sprintf(__('%s hours from now'), __(hours));
     } else if (minutes > 0) {
-      return minutes === 1 ? sprintf(__('%s minute from now'), minutes) : sprintf(__('%s minutes from now'), minutes);
+      return minutes === 1 ? sprintf(__('%s minute from now'), __(minutes)) : sprintf(__('%s minutes from now'), __(minutes));
     } else {
       return __('Less than a minute from now');
     }
   } else {
     if (years > 0) {
-      return years === 1 ? sprintf(__('%s year ago'), years) : sprintf(__('%s years ago'), years);
+      return years === 1 ? sprintf(__('%s year ago'), __(years)) : sprintf(__('%s years ago'), __(years));
     } else if (months > 0) {
-      return months === 1 ? sprintf(__('%s month ago'), months) : sprintf(__('%s months ago'), months);
+      return months === 1 ? sprintf(__('%s month ago'), __(months)) : sprintf(__('%s months ago'), __(months));
     } else if (weeks > 0) {
-      return weeks === 1 ? sprintf(__('%s week ago'), weeks) : sprintf(__('%s weeks ago'), weeks);
+      return weeks === 1 ? sprintf(__('%s week ago'), __(weeks)) : sprintf(__('%s weeks ago'), __(weeks));
     } else if (days > 0) {
-      return days === 1 ? sprintf(__('%s day ago'), days) : sprintf(__('%s days ago'), days);
+      return days === 1 ? sprintf(__('%s day ago'), __(days)) : sprintf(__('%s days ago'), __(days));
     } else if (hours > 0) {
-      return hours === 1 ? sprintf(__('%s hour ago'), hours) : sprintf(__('%s hours ago'), hours);
+      return hours === 1 ? sprintf(__('%s hour ago'), __(hours)) : sprintf(__('%s hours ago'), __(hours));
     } else if (minutes > 0) {
-      return minutes === 1 ? sprintf(__('%s minute ago'), minutes) : sprintf(__('%s minutes ago'), minutes);
+      return minutes === 1 ? sprintf(__('%s minute ago'), __(minutes)) : sprintf(__('%s minutes ago'), __(minutes));
     } else {
-      return seconds === 1 ? sprintf(__('%s second ago'), seconds) : sprintf(__('%s seconds ago'), seconds);
+      return seconds === 1 ? sprintf(__('%s second ago'), __(seconds)) : sprintf(__('%s seconds ago'), __(seconds));
     }
   }
 }
