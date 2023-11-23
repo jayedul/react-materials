@@ -2,10 +2,10 @@
 @include looper('flex',            true, 'px', 1, 2, 4, 5, 6);
 @include looper('align-items',     true, '', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
 @include looper('justify-content', true, '', 'flex-start', 'space-between', 'space-around', 'space-evenly', 'center', 'end', 'flex-end');
-@include looper('align-self',      true, '', 'center', 'auto');
+@include looper('align-self',      true, '', 'center', 'auto', 'stretch');
 @include looper('flex-direction',  true, '', 'column', 'row', 'row-reverse', 'column-reverse');
 @include looper('flex-wrap',       true, '', 'wrap', 'nowrap');
-@include looper('column-gap',      true, 'px', 6, 8, 10, 12, 14, 15, 20, 21, 24, 27, 28, 30, 40, 60);
+@include looper('column-gap',      true, 'px', 5, 6, 8, 10, 12, 14, 15, 20, 21, 24, 27, 28, 30, 40, 60);
 @include looper('row-gap',         true, 'px', 5, 10, 15, 20);
 @include looper('vertical-align',  true, '', 'middle', 'top');
 
@@ -27,6 +27,7 @@
 @include looper('top',             true, 'px', 0, 2, 15, 32, 42);
 @include looper('bottom',          true, 'px', 0, 33);
 
+@include looper('margin',          true, 'px', 0);
 @include looper('margin-left',     true, 'px', 4, 5, 10, 13, 15, 20);
 @include looper('margin-right',    true, 'px', 3, 4, 5, 6, 8, 10, 12, 20, 24, 25);
 @include looper('margin-top',      true, 'px', 3, 5, 6, 8, 10, 12, 15, 20, 25, 30, 40, 48);
@@ -35,7 +36,7 @@
 @include looper('padding',         true, 'px', 4, 5, 8, 15, 20, 25, 30, 40, 50);
 @include looper('padding-top',     true, 'px', 50);
 @include looper('padding-bottom',  true, 'px', 30, 50);
-@include looper('padding-vertical',true, 'px', 2, 5, 8, 10, 12, 14, 15, 20, 25, 30, 40, 50);
+@include looper('padding-vertical',true, 'px', 0, 2, 5, 8, 10, 12, 14, 15, 20, 25, 30, 40, 50);
 @include looper('padding-horizontal', true, 'px', 4, 6, 7, 8, 10, 12, 15, 17, 20, 30, 50);
 
 
@@ -53,5 +54,5 @@
 @include looper('border-bottom',   true, 'px', 1, 1.5, 5);
 @include looper('border-left',     true, 'px', 1, 1.5, 5);
 @include looper('border-right',    true, 'px', 1, 1.5, 5);
-@include looper('border-radius',   true, 'px', 3, 5, 6, 10, 30, 50);
+@include looper('border-radius',   true, 'px', 3, 5, 6, 8, 10, 30, 50);
 @include looper('border-collapse', true, '', 'collapse');
