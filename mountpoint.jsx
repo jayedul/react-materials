@@ -8,7 +8,7 @@ import { RenderExternal } from './render-external.jsx';
 
 export function MountPoint({ children }) {
 	return (
-		<div data-crew="root" className={'root margin-bottom-15'.classNames()}>
+		<div data-crew="root" className={'root'.classNames()}>
 			<ToastWrapper>
 				<WarningWrapper>{children}</WarningWrapper>
 			</ToastWrapper>
