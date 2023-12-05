@@ -335,7 +335,7 @@ export function FileUpload(props) {
                 <Input />
             </div>
 
-            <ListFile files={stateFiles} style={{ maxWidth: '552px' }} onRemove={removeFile} />
+            <ListFile files={stateFiles} onRemove={removeFile} />
         </>
     );
 }
