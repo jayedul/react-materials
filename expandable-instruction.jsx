@@ -17,9 +17,12 @@ export function ExpandableInstruction(props) {
 	return <table className={'width-p-100 border-collapse-collapse font-size-14 font-weight-400 line-height-28 color-text'.classNames()}>
 		<tbody>
 			<tr>
-				<td style={{width: '130px', paddingRight: '24px'}}>
-					<VideoModal video_url={video_url} thumbnail_url={thumbnail_url}/>
-				</td>
+				{
+					!video_url ? null : <td style={{width: '130px', paddingRight: '24px'}}>
+						<VideoModal video_url={video_url} thumbnail_url={thumbnail_url}/>
+					</td>
+				}
+				
 				<td className={'cursor-pointer'.classNames()} onClick={()=>setExpand(!expanded)}>
 					<strong className={'d-block font-size-18 font-weight-400 line-height-30 color-text margin-bottom-5'.classNames()}>
 						{title}
@@ -34,7 +37,7 @@ export function ExpandableInstruction(props) {
 			</tr>
 			<Conditional show={expanded}>
 				<tr>
-					<td></td>
+					{!video_url ? null : <td></td>}
 					<td colSpan={2}>
 						{content}
 					</td>
