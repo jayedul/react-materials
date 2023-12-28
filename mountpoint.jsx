@@ -16,7 +16,7 @@ export function MountPoint({ children }) {
 	);
 }
 
-function DoAction({ position, action, payload = {} }) {
+export function DoAction({ position, action, payload = {} }) {
 	
 	let handlers = getHooks(action + (position ? '_' + position : ''), 'action_hooks');
 
