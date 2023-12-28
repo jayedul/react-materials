@@ -121,6 +121,14 @@ export function copyToClipboard(text, addToast) {
 		});
 }
 
+export async function pasteFromClipboard( field, text ) {
+	if ( ! text ) {
+		text = await navigator.clipboard.readText();
+	}
+	field.focus();
+	document.execCommand('insertText', false, text);
+}
+
 export function getInitials(name) {
 	const words = name.trim().split(' ');
 

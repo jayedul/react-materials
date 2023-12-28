@@ -9,6 +9,7 @@ export function TextField(props) {
     const {
         iconClass,
         image,
+		content,
         icon_position = 'left',
         type = 'text',
         onChange,
@@ -192,6 +193,8 @@ export function TextField(props) {
                 />
                 {separator}
             </Conditional>
+
+			{content}
 
             <Conditional show={state.expanded}>
                 <Conditional show={type !== 'textarea'}>
