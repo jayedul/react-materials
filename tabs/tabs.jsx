@@ -54,7 +54,8 @@ export function Tabs(props) {
                         }
                         onClick={() => (onNavigate ? onNavigate(id) : null)}
                     >
-                        {label}
+                        
+                            {label}
 						<Conditional show={theme == 'sequence'}>
 							<div
                                 className={`sequence-line-wrapper ${fill_class}`.classNames(style)}
@@ -71,7 +72,14 @@ export function Tabs(props) {
 									</Conditional>
                                 </div>
                             </div>
-						</Conditional>
+                        </Conditional>
+                        <Conditional show={theme == 'sequence-down'}>
+                            <div
+                                className={`sequence-down-circle ${fill_class}`.classNames(style)}
+                            >
+                                
+                                </div>
+                        </Conditional>
                     </div>
                 );
             })}

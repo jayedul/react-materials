@@ -99,4 +99,74 @@
             }
         }
     }
+    &.theme-sequence-down {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 36px;
+        > div {
+            display: flex;  
+        }
+        .single-step {
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 10px;
+            &.active {
+                .sequence-down-circle {
+                    border: 2px solid var(--crewmat-color-text);
+                    &.fill-left {
+                        border: 2px solid var(--crewmat-color-text);
+                        position: relative;
+                        &:before {
+                            transition: all 0.3s ease-in-out;
+                            height: 0px;
+                            background-color: var(--crewmat-color-text);
+                        }
+                    }
+                }
+            }
+            .sequence-down-circle {
+                width: 20px;
+                height: 20px;   
+                background-color: transparent;
+                border: 2px solid #BBBFC3;
+                border-radius: 50%;
+                display: block;
+                position: relative;
+                transition: all 0.4s ease-in-out;
+                &.fill-left {
+                    border: 2px solid var(--crewmat-color-text);
+                    position: relative;
+                    &:before {
+                        transition: all 0.3s ease-in-out;
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 25px;
+                        background-color: var(--crewmat-color-text);
+                        position: absolute;
+                        top: 13px;
+                        left: 50%;
+                        transform: translate(-50%, 10px);
+                        z-index: 1;
+                    }
+                }
+            }
+            &:not(:last-child) {
+                .sequence-down-circle {
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 25px;
+                        background-color: #E3E5E8;
+                        position: absolute;
+                        top: 13px;
+                        left: 50%;
+                        transform: translate(-50%, 10px);
+                    }
+                }
+            }
+        }
+    }
 }
