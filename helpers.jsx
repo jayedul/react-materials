@@ -44,10 +44,10 @@ export function getElementDataSet(element) {
 	return data;
 }
 
-export function getRandomString(prefix='r') {
+export function getRandomString(prefix='r', postfix='r') {
 	const timestamp = new Date().getTime().toString();
 	const randomPortion = Math.random().toString(36).substring(2);
-	return prefix + timestamp + randomPortion;
+	return prefix + timestamp + randomPortion + postfix;
 }
 
 export function __(txt, domain=window[data_pointer]?.text_domain) {
