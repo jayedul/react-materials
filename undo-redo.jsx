@@ -126,7 +126,7 @@ export function HistoryFields({ defaultValues = {}, children }) {
 		historyLength: state.history.length
 	};
 
-	return (
-		<ContextHistoryFields.Provider value={payload}>{children}</ContextHistoryFields.Provider>
-	);
+	return <ContextHistoryFields.Provider value={payload}>
+		{children}
+	</ContextHistoryFields.Provider>
 }
