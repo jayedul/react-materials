@@ -105,20 +105,21 @@
         align-items: flex-start;
         gap: 36px;
         > div {
-            display: flex;  
+            display: flex;
         }
         .single-step {
             flex-direction: row-reverse;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
             &.active {
                 .sequence-down-circle {
                     border: 2px solid var(--crewmat-color-text);
+                    border: 0;
                     &.fill-left {
-                        border: 2px solid var(--crewmat-color-text);
                         position: relative;
+                        border: 0;
                         &:before {
-                            transition: all 0.3s ease-in-out;
+                            transition: all 0.4s ease-in-out 0.4s;
                             height: 0px;
                             background-color: var(--crewmat-color-text);
                         }
@@ -126,27 +127,53 @@
                 }
             }
             .sequence-down-circle {
-                width: 20px;
-                height: 20px;   
+                width: 25px;
+                height: 25px;   
                 background-color: transparent;
                 border: 2px solid #BBBFC3;
                 border-radius: 50%;
                 display: block;
                 position: relative;
-                transition: all 0.4s ease-in-out;
+                transition: all 0.3s ease-in-out;
+                border: 0;
+                svg {
+                    transform: rotate(-90deg);
+                    circle {
+                        transition: all 0.4s ease-in-out;
+                        stroke-dasharray: 100;
+                        stroke-dashoffset: 0;
+                        &:first-child {
+                            stroke:#BBBFC3;
+                        }
+                        &:last-child {
+                            stroke : #1a1a1a;
+                            stroke-dasharray: 100;
+                            stroke-dashoffset: 100;
+                        }
+                    }
+                }
                 &.fill-left {
-                    border: 2px solid var(--crewmat-color-text);
+                    svg {
+                        circle {
+                            transition: all 0.4s ease-in-out 0.3s;
+                            &:first-child {}
+                            &:last-child {
+                                stroke-dasharray: 100;
+                                stroke-dashoffset: 0;
+                            }
+                        }
+                    }
                     position: relative;
                     &:before {
-                        transition: all 0.3s ease-in-out;
+                        transition: all 0.4s ease-in-out;
                         content: '';
                         display: block;
                         width: 1px;
                         height: 25px;
                         background-color: var(--crewmat-color-text);
                         position: absolute;
-                        top: 13px;
-                        left: 50%;
+                        top: 20px;
+                        left: 48%;
                         transform: translate(-50%, 10px);
                         z-index: 1;
                     }
@@ -161,8 +188,8 @@
                         height: 25px;
                         background-color: #E3E5E8;
                         position: absolute;
-                        top: 13px;
-                        left: 50%;
+                        top: 20px;
+                        left: 48%;
                         transform: translate(-50%, 10px);
                     }
                 }

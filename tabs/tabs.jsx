@@ -77,8 +77,12 @@ export function Tabs(props) {
                             <div
                                 className={`sequence-down-circle ${fill_class}`.classNames(style)}
                             >
-                                
-                                </div>
+                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="13" cy="15" r="10" strokeWidth='2' />
+                                    <circle cx="13" cy="15" r="10" strokeWidth='2' />
+                                </svg>
+
+                            </div>
                         </Conditional>
                     </div>
                 );
