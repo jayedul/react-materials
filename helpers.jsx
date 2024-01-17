@@ -565,4 +565,25 @@ export function arrayEquals(arr1, arr2, case_sensitive=false) {
     return true;
 }
 
+export function addKsesPrefix(_obj, keys) {
+
+	if ( ! Array.isArray(keys) ) {
+		keys = [keys];
+	}
+
+	const obj = {..._obj};
+	
+	for ( let k in obj ) {
+		if ( typeof obj[k] === 'object' && ! Array.isArray(obj[k]) && ! isEmpty(obj[k]) ) {
+			obj[k] = addKsesPrefix( obj[k], keys );
+
+		} else if (keys.indexOf(k)>-1) {
+			obj[ 'kses_' + k ] = obj[k];
+			delete obj[k];
+		}
+	}
+
+	return obj;
+}
+
 export const is_production = process.env.NODE_ENV === 'production';
