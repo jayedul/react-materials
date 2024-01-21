@@ -5,23 +5,8 @@ import { DropDown } from './dropdown/dropdown.jsx';
 import { __ } from './helpers.jsx';
 import { countries_array, patterns } from './data.jsx';
 
-export function AddressFields(props) {
-
-	const {
-		required, 
-		onChange, 
-		showErrorsAlways,
-		values:{
-			street_address, 
-			city, 
-			zip_code, 
-			province, 
-			country_code
-		}, 
-	} = props;
-
+export function AddressFields({required, values:{street_address, city, zip_code, province, country_code}, onChange, showErrorsAlways}) {
 	const regex = required ? /\S+/ : null;
-
 	return <div>
 		<TextField
 			value={street_address || ''}
