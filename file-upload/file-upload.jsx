@@ -67,6 +67,7 @@ export function FileUpload(props) {
         textPrimary = __('Browse'),
         textSecondary = __('or, Just drop it here'),
         value,
+		removable=true,
         onChange,
         accept=[],
         WpMedia,
@@ -335,7 +336,7 @@ export function FileUpload(props) {
                 <Input />
             </div>
 
-            <ListFile files={stateFiles} onRemove={removeFile} />
+            <ListFile files={stateFiles} onRemove={removable ? removeFile : null} />
         </>
     );
 }
