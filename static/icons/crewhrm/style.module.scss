@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ka8t8s') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ka8t8s') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ka8t8s##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?q0tcec') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?q0tcec') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?q0tcec##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -36,6 +36,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ch-icon-world {
+  &:before {
+    content: $ch-icon-world; 
+  }
+}
+.ch-icon-globe {
+  &:before {
+    content: $ch-icon-globe; 
+  }
+}
+.ch-icon-internet {
+  &:before {
+    content: $ch-icon-internet; 
+  }
+}
+.ch-icon-network {
+  &:before {
+    content: $ch-icon-network; 
+  }
+}
 .ch-icon-x {
   &:before {
     content: $ch-icon-x; 
