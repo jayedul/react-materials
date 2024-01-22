@@ -44,10 +44,10 @@ export function getElementDataSet(element) {
 	return data;
 }
 
-export function getRandomString() {
+export function getRandomString(prefix='r', postfix='r') {
 	const timestamp = new Date().getTime().toString();
 	const randomPortion = Math.random().toString(36).substring(2);
-	return '_' + timestamp + randomPortion;
+	return prefix + timestamp + randomPortion + postfix;
 }
 
 export function __(txt, domain=window[data_pointer]?.text_domain) {
@@ -563,6 +563,27 @@ export function arrayEquals(arr1, arr2, case_sensitive=false) {
     }
 
     return true;
+}
+
+export function addKsesPrefix(_obj, keys) {
+
+	if ( ! Array.isArray(keys) ) {
+		keys = [keys];
+	}
+
+	const obj = {..._obj};
+	
+	for ( let k in obj ) {
+		if ( typeof obj[k] === 'object' && ! Array.isArray(obj[k]) && ! isEmpty(obj[k]) ) {
+			obj[k] = addKsesPrefix( obj[k], keys );
+
+		} else if (keys.indexOf(k)>-1) {
+			obj[ 'kses_' + k ] = obj[k];
+			delete obj[k];
+		}
+	}
+
+	return obj;
 }
 
 export const is_production = process.env.NODE_ENV === 'production';
