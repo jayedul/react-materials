@@ -82,7 +82,7 @@ export function Tabs(props) {
                                     <circle cx="13" cy="15" r="10" strokeWidth='2' />
                                 </svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
-                                    <path d="M2.70703 6.66911L5.29226 9.20817L10.832 3.7915" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.70703 6.66911L5.29226 9.20817L10.832 3.7915" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </div>
                         </Conditional>
