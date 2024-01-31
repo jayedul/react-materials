@@ -1,0 +1,30 @@
+.show-more {
+	.show-more-icon {
+		position: relative;
+		span {
+			margin-top: -2px;
+			display: block;
+			width: 12px;
+			height: 1.5px;
+			background-color: #236bfe;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			&:first-child {
+				transform: translateX(-50%);
+			}
+			&:last-child {
+				transition: all 0.3s ease-in-out;
+				transform: translateX(-50%) rotate(-90deg);
+			}
+		}
+		&.expand {
+			span {
+				&:last-child {
+					transition: all 0.3s ease-in-out;
+					transform: translateX(-50%) rotate(0deg);
+				}
+			}
+		}
+	}
+}
