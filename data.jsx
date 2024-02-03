@@ -130,6 +130,8 @@ export const marital_statuses = {
 	other: __('Other')
 }
 
+export const blood_groups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
+
 // Prepare country data
 const _countries_array = [];
 const _countries_object = {};
