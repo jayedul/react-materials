@@ -12,15 +12,18 @@ export function AddressFields(props) {
 		onChange, 
 		showErrorsAlways,
 		unit_field = false,
-		values:{
-			unit_flat,
-			street_address, 
-			city, 
-			zip_code, 
-			province, 
-			country_code
-		}, 
+		name_prefix='',
+		values={}, 
 	} = props;
+
+	const getName=name=>`${name_prefix}${name}`;
+
+	const unit_flat      = values[ getName('unit_flat') ];
+	const street_address = values[ getName('street_address') ];
+	const city           = values[ getName('city') ];
+	const zip_code       = values[ getName('zip_code') ];
+	const province       = values[ getName('province') ];
+	const country_code   = values[ getName('country_code') ];
 
 	const regex = required ? /\S+/ : null;
 
@@ -31,7 +34,7 @@ export function AddressFields(props) {
 				<div style={{width: '104px'}}>
 					<TextField
 						value={unit_flat || ''}
-						onChange={(v) => onChange('unit_flat', v)}
+						onChange={(v) => onChange(getName('unit_flat'), v)}
 						placeholder={__('Unit\\Flat')}
 						style={{marginBottom: '10px'}}
 						regex={regex}
@@ -42,7 +45,7 @@ export function AddressFields(props) {
 			<div className={'flex-1'.classNames()}>
 				<TextField
 					value={street_address || ''}
-					onChange={(v) => onChange('street_address', v)}
+					onChange={(v) => onChange(getName('street_address'), v)}
 					placeholder={__('Street Address')}
 					style={{marginBottom: '10px'}}
 					regex={regex}
@@ -55,7 +58,7 @@ export function AddressFields(props) {
 			<div className={'flex-1'.classNames()}>
 				<TextField
 					value={city || ''}
-					onChange={(v) => onChange('city', v)}
+					onChange={(v) => onChange(getName('city'), v)}
 					placeholder={__('City')}
 					regex={regex}
 					showErrorsAlways={showErrorsAlways}
@@ -64,7 +67,7 @@ export function AddressFields(props) {
 			<div className={'flex-1'.classNames()}>
 				<TextField
 					value={province || ''}
-					onChange={(v) => onChange('province', v)}
+					onChange={(v) => onChange(getName('province'), v)}
 					placeholder={__('Province')}
 					regex={regex}
 					showErrorsAlways={showErrorsAlways}
@@ -76,7 +79,7 @@ export function AddressFields(props) {
 			<div className={'flex-1'.classNames()}>
 				<TextField
 					value={zip_code || ''}
-					onChange={(v) => onChange('zip_code', v)}
+					onChange={(v) => onChange(getName('zip_code'), v)}
 					placeholder={__('Postal/Zip Code')}
 					regex={required ? patterns.zip_code : null}
 					showErrorsAlways={showErrorsAlways}
@@ -86,7 +89,7 @@ export function AddressFields(props) {
 				<DropDown
 					placeholder={__('Select Country')}
 					value={country_code}
-					onChange={(v) => onChange('country_code', v)}
+					onChange={(v) => onChange(getName('country_code'), v)}
 					options={countries_array}
 					required={required}
 					showErrorsAlways={showErrorsAlways}

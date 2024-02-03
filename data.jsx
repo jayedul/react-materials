@@ -121,6 +121,15 @@ export const numbers = {
 	9: __('9'),
 }
 
+export const marital_statuses = {
+	single: __('Single'),
+	married: __('Married'),
+	separated: __('Separated'),
+	devorced: __('Devorced'),
+	widowed: __('Widowed'),
+	other: __('Other')
+}
+
 // Prepare country data
 const _countries_array = [];
 const _countries_object = {};
