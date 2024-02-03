@@ -11,7 +11,9 @@ export function AddressFields(props) {
 		required, 
 		onChange, 
 		showErrorsAlways,
+		unit_field = false,
 		values:{
+			unit_flat,
 			street_address, 
 			city, 
 			zip_code, 
@@ -23,15 +25,32 @@ export function AddressFields(props) {
 	const regex = required ? /\S+/ : null;
 
 	return <div>
-		<TextField
-			value={street_address || ''}
-			onChange={(v) => onChange('street_address', v)}
-			placeholder={__('Street Address')}
-			style={{marginBottom: '10px'}}
-			regex={regex}
-			showErrorsAlways={showErrorsAlways}
-		/>
-
+		<div className={'d-flex column-gap-10'.classNames()}>
+			{
+				!unit_field ? null :
+				<div style={{width: '104px'}}>
+					<TextField
+						value={unit_flat || ''}
+						onChange={(v) => onChange('unit_flat', v)}
+						placeholder={__('Unit\\Flat')}
+						style={{marginBottom: '10px'}}
+						regex={regex}
+						showErrorsAlways={showErrorsAlways}
+					/>
+				</div>
+			}
+			<div className={'flex-1'.classNames()}>
+				<TextField
+					value={street_address || ''}
+					onChange={(v) => onChange('street_address', v)}
+					placeholder={__('Street Address')}
+					style={{marginBottom: '10px'}}
+					regex={regex}
+					showErrorsAlways={showErrorsAlways}
+				/>
+			</div>
+		</div>
+		
 		<div className={'d-flex align-items-center column-gap-10 margin-bottom-10'.classNames()}>
 			<div className={'flex-1'.classNames()}>
 				<TextField
@@ -65,6 +84,7 @@ export function AddressFields(props) {
 			</div>
 			<div className={'flex-1'.classNames()}>
 				<DropDown
+					placeholder={__('Select Country')}
 					value={country_code}
 					onChange={(v) => onChange('country_code', v)}
 					options={countries_array}
