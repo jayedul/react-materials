@@ -22,7 +22,9 @@
             border-bottom: 1px solid var(--crewmat-color-tertiary);
         }
     }
-
+    i.ch-icon {
+        font-size: 15px;
+    }
     .list-wrapper {
         max-height: 300px;
         overflow-x: hidden;

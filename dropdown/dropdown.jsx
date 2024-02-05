@@ -52,7 +52,13 @@ export function DropDown(props) {
 		clearable=true,
         variant,
         size,
-		iconSizeClass = 'font-size-24'.classNames()
+        iconSizeClass = 'font-size-20'.classNames(),
+        theme,
+        themeFilterText,
+        themeFilterIcon,
+        themeFilterIconText,
+        themeFilterCount,
+        themeFilterGap="20"
     } = props;
 
     const ref = useRef();
@@ -110,6 +116,16 @@ export function DropDown(props) {
     }
 
     const triggerPoint = (search = false) => {
+        const _placeholder = theme == 'filter' ?
+            <div className={`d-flex align-items-center column-gap-${themeFilterGap}`.classNames()}>
+                {themeFilterText && <div className={'color-text-light font-size-15'.classNames()}>{themeFilterText}</div>}
+                <div className={'d-flex align-items-center column-gap-5 color-text font-size-15'.classNames()}>
+                    {themeFilterIcon && <i className={`ch-icon ${themeFilterIcon}`.classNames()}></i>}
+                    {themeFilterIconText && <span className={''.classNames()}>{themeFilterIconText}</span>}
+                    {themeFilterCount && <span className={''.classNames()}>({themeFilterCount})</span>}
+                </div>
+            </div>
+            : placeholder;
         return (
             <div
                 tabIndex={tabindex}
@@ -122,8 +138,8 @@ export function DropDown(props) {
                 <div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
                     <Conditional show={!search}>
                         {selected_value !== undefined
-                            ? options.find((o) => o.id === selected_value)?.label || placeholder
-                            : placeholder}
+                            ? options.find((o) => o.id === selected_value)?.label || _placeholder
+                            : _placeholder}
                     </Conditional>
                     <Conditional show={search}>
                         <input
@@ -137,7 +153,7 @@ export function DropDown(props) {
 					className={
 						`ch-icon 
 						${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} 
-						margin-left-10 
+						margin-left-10
 						${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames() +
 						iconSizeClass
 					}
