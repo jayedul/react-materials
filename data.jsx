@@ -1,5 +1,15 @@
 import { __ } from "./helpers.jsx";
 
+export const week_days = {
+	monday: __('Monday'),
+	tuesday: __('Tuesday'),
+	wednesday: __('Wednesday'),
+	thursday: __('Thursday'),
+	friday: __('Friday'),
+	saturday: __('Saturday'),
+	sunday: __('Sunday')
+}
+
 export const patterns = {
 	date: /^(\d{4})-(\d{2})-(\d{2})$/,
 	email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
