@@ -119,7 +119,7 @@ export function DropDown(props) {
         const _placeholder = theme == 'filter' ?
             <div className={`d-flex align-items-center column-gap-${themeFilterGap}`.classNames()}>
                 {themeFilterText && <div className={'color-text-light font-size-15'.classNames()}>{themeFilterText}</div>}
-                <div className={'d-flex align-items-center column-gap-5 color-text font-size-15'.classNames()}>
+                <div className={'d-flex align-items-center column-gap-5 font-size-15'.classNames()}>
                     {themeFilterIcon && <i className={`ch-icon ${themeFilterIcon}`.classNames()}></i>}
                     {themeFilterIconText && <span className={''.classNames()}>{themeFilterIconText}</span>}
                     {themeFilterCount && <span className={''.classNames()}>({themeFilterCount})</span>}
@@ -153,7 +153,6 @@ export function DropDown(props) {
 					className={
 						`ch-icon 
 						${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} 
-						margin-left-10
 						${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames() +
 						iconSizeClass
 					}

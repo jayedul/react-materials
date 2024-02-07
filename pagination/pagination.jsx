@@ -36,7 +36,7 @@ export function Pagination({ onChange, pageNumber = 1, pageCount = 1, previousLa
             <ReactPaginate
                 previousLabel={
                     previousLabel ?
-                        <div className={'prev'.classNames(style) + 'd-flex align-item-center column-gap-10'.classNames()}>
+                        <div className={'prev'.classNames(style) + 'd-flex column-gap-10'.classNames()}>
                             <i className={'ch-icon ch-icon-arrow-left font-size-18'.classNames()}></i>
                             <span>{previousLabel}</span>
                         </div>
@@ -44,7 +44,7 @@ export function Pagination({ onChange, pageNumber = 1, pageCount = 1, previousLa
                 }
                 nextLabel={
                     nextLabel ?
-                        <div className={'next'.classNames(style) + 'd-flex align-item-center column-gap-10'.classNames()}>
+                        <div className={'next'.classNames(style) + 'd-flex column-gap-10'.classNames()}>
                             <span>{nextLabel}</span>
                             <i style={{ transform: 'rotate(180deg)' }} className={'ch-icon ch-icon-arrow-left font-size-18'.classNames()}></i>
                         </div>
