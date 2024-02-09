@@ -178,8 +178,15 @@ export function scrollLock(lock) {
 	document.getElementsByTagName('body')[0].style.overflow = lock ? 'hidden' : '';
 }
 
-export function getAddress({ street_address, city, province, zip_code, country_code, attendance_type }) {
+export function getAddress(props, prefix = '') {
 	
+	const street_address  = props[`${prefix}street_address`];
+	const city            = props[`${prefix}city`];
+	const province        = props[`${prefix}province`];
+	const zip_code        = props[`${prefix}zip_code`];
+	const country_code    = props[`${prefix}country_code`];
+	const attendance_type = props[`${prefix}attendance_type`];
+
 	if( Array.isArray(attendance_type) && arrayEquals(attendance_type, ['remote']) ) {
 		return __('Remote');
 	}
