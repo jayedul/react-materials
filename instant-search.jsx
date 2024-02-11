@@ -91,9 +91,13 @@ export function InstantSearch(props) {
 					className={`d-flex align-items-center padding-vertical-10 cursor-pointer ${index<results.length-1 ? 'border-bottom-1 b-color-tertiary' : ''}`.classNames()}
 					onClick={()=>dispatchResult({...result})}
 				>
-					<div className={'margin-right-10'.classNames()}>
-						<CoverImage src={thumbnail_url} circle={true} width={32}/>
-					</div>
+					{
+						!thumbnail_url ? null :
+						<div className={'margin-right-10'.classNames()}>
+							<CoverImage src={thumbnail_url} circle={true} width={32}/>
+						</div>
+					}
+					
 					<div className={'flex-1'}>
 						<span className={'d-block font-size-15 font-weight-500 line-height-24 letter-spacing--15 color-text margin-bottom-2'.classNames()}>
 							{label}
@@ -114,7 +118,7 @@ export function InstantSearch(props) {
 	>
 		<TextField 
 			placeholder={placeholder}
-			icon="ch-icon ch-icon-search-normal-1"
+			iconClass={'ch-icon ch-icon-search-normal-1'.classNames()}
 			icon_position="right"
 			className={'border-1-5 border-radius-10 b-color-tertiary padding-vertical-12 padding-horizontal-20'.classNames()}
 			inputClassName={'font-size-15 font-weight-400 line-height-25 color-text-light'.classNames()}
