@@ -342,21 +342,22 @@ export function DropDownUnmanaged(props) {
         position = 'bottom right',
         children,
         rendered,
+		closeOnDocumentClick=true,
+		onClose=()=>{},
         style: cssStyle = {}
     } = props;
 
-    return (
-        <Popup
-            position={position}
-            closeOnDocumentClick={false}
-            on={[]}
-            arrow={false}
-            open={rendered ? true : false}
-            darken={false}
-            contentStyle={{ ...content_style, ...cssStyle }}
-            trigger={<div className={className}>{children}</div>}
-        >
-            {rendered}
-        </Popup>
-    );
+    return <Popup
+		position={position}
+		closeOnDocumentClick={closeOnDocumentClick}
+		onClose={onClose}
+		on={[]}
+		arrow={false}
+		open={rendered ? true : false}
+		darken={false}
+		contentStyle={{ ...content_style, ...cssStyle }}
+		trigger={<div className={className}>{children}</div>}
+	>
+		{rendered}
+	</Popup>
 }
