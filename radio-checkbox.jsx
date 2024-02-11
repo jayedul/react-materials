@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import {isEmpty} from './helpers.jsx';
-import { ToolTip } from 'crewhrm-materials/tooltip.jsx';
+import { ToolTip } from './tooltip.jsx';
 
 export function checkBoxRadioValue(e, values) {
 	const { type, value: _value, checked } = e.currentTarget;

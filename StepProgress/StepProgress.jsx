@@ -1,5 +1,5 @@
 import React from 'react';
-import { __ } from 'crewhrm-materials/helpers.jsx';
+import { __ } from './helpers.jsx';
 import IndexCss from './index.module.scss';
 
 // eslint-disable-next-line react/prop-types
