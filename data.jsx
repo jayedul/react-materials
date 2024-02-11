@@ -104,6 +104,15 @@ export const employment_types = {
     trainee: __('Trainee')
 };
 
+export const employment_statuses = {
+	active: __('Active'),
+	inactive: __('Inactive'),
+	resigned: __('Resigned'),
+	on_leave: __('On Leave'),
+	laid_off: __('Laid Off'),
+	terminated: __('Terminated')
+}
+
 export const experience_levels = {
     beginner: __('Beginner'),
     intermidiate: __('Intermidiate'),
