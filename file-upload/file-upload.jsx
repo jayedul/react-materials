@@ -62,7 +62,7 @@ function media_frame_image_cal(attachment, controller) {
 export function FileUpload(props) {
     const {
 		minlength = 0,
-        maxlenth = 1,
+        maxlength = 1,
         maxsize,
         textPrimary = __('Browse'),
         textSecondary = __('or, Just drop it here'),
@@ -75,7 +75,7 @@ export function FileUpload(props) {
 		showErrorsAlways
     } = props;
 
-    const singular = maxlenth <= 1;
+    const singular = maxlength <= 1;
     const input_ref = useRef();
     const stateFiles = !isEmpty( value ) ? (Array.isArray(value) ? value : [value]) : [];
 	const {addToast} = useContext(ContextToast);
@@ -110,15 +110,15 @@ export function FileUpload(props) {
      * Setup Crop control
      * The controls used by WordPress Admin are api.CroppedImageControl and api.SiteIconControl.
      */
-    const cropControl = {
-        id: 'control-id',
+    const cropControl = (WpMedia?.mime_type || '').indexOf('image')===0 ? {
+        id: 'crewmat-control-id',
         params: {
             flex_width: true, // set to true if the width of the cropped image can be different to the width defined here
             flex_height: true, // set to true if the height of the cropped image can be different to the height defined here
             width: WpMedia?.width, // set the desired width of the destination image here
             height: WpMedia?.height // set the desired height of the destination image here
         }
-    };
+    } : undefined;
 
     const _onChange = (files) => {
         onChange(singular ? files[0] : files);
@@ -126,7 +126,7 @@ export function FileUpload(props) {
 
     const handleFiles = (files) => {
         // Convert singulars to array
-        if (!(files instanceof FileList)) {
+        if (!(files instanceof FileList) && ! Array.isArray( files )) {
             files = [files];
         }
 
@@ -159,7 +159,7 @@ export function FileUpload(props) {
             return !exists;
         });
 
-        _onChange(files.slice(0, maxlenth));
+        _onChange(files.slice(0, maxlength));
     };
 
     const removeFile = (index) => {
@@ -180,13 +180,7 @@ export function FileUpload(props) {
             input_ref.current.click();
             return;
         }
-
-        /**
-         * Open Wp Media picker otherwise.
-         * For now media picker is statically defined for image.
-         * Refactor it later to add suport for other types of files.
-         */
-
+		
         /**
          * Create a media modal select frame, we need to set this up every time instead of reusing if already there
          * as the toolbar button does not get reset when doing the following:
@@ -201,18 +195,18 @@ export function FileUpload(props) {
             states: [
                 new wp.media.controller.Library({
                     title: __('Select'),
-                    library: wp.media.query({ type: 'image' }),
-                    multiple: false,
+                    library: wp.media.query(WpMedia?.mime_type ? { type: WpMedia.mime_type } : undefined),
+                    multiple: singular ? false : 'add',
                     date: false,
                     priority: 20,
-                    suggestedWidth: WpMedia.width,
-                    suggestedHeight: WpMedia.height
+                    suggestedWidth: WpMedia?.width,
+                    suggestedHeight: WpMedia?.height
                 }),
-                new wp.media.controller.CustomizeImageCropper({
+				(cropControl ? new wp.media.controller.CustomizeImageCropper({
                     imgSelectOptions: media_frame_image_cal,
                     control: cropControl
-                })
-            ]
+                }) : null)
+            ].filter(s=>s!==null)
         });
 
         /**
@@ -246,19 +240,40 @@ export function FileUpload(props) {
          * state if the image isn't the right size.
          */
         media_frame.on('select', function () {
-            const avatarAttachment = media_frame.state().get('selection').first().toJSON();
+			const selection = media_frame.state().get('selection');
+
+			if ( !singular ) {
+				handleFiles(
+					selection.map(({attributes: _attachment}) => {
+						return {
+							file_id: _attachment.id,
+							file_url: _attachment.url,
+							file_name: _attachment.filename,
+							mime_type: _attachment.mime
+						}
+					})
+				);
+				
+                media_frame.close();
+				return;
+			}
+
+            const _attachment = selection.first().toJSON();
 
             if (
-                cropControl.params.width === avatarAttachment.width &&
-                cropControl.params.height === avatarAttachment.height &&
-                !cropControl.params.flex_width &&
-                !cropControl.params.flex_height
+                !cropControl || 
+				(
+					cropControl.params.width === _attachment.width &&
+					cropControl.params.height === _attachment.height &&
+					!cropControl.params.flex_width &&
+					!cropControl.params.flex_height
+				)
             ) {
                 handleFiles({
-                    file_id: avatarAttachment.id,
-                    file_url: avatarAttachment.url,
-                    file_name: avatarAttachment.filename,
-                    mime_type: avatarAttachment.mime
+                    file_id: _attachment.id,
+                    file_url: _attachment.url,
+                    file_name: _attachment.filename,
+                    mime_type: _attachment.mime
                 });
 
                 media_frame.close();
@@ -296,7 +311,7 @@ export function FileUpload(props) {
         return (
             <>
                 <Input />
-                {layoutComp({ onCLick: openPicker })}
+                {layoutComp({ onClick: openPicker })}
             </>
         );
     }

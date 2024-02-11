@@ -572,6 +572,24 @@ export function arrayEquals(arr1, arr2, case_sensitive=false) {
     return true;
 }
 
+export function trimTextMiddle(text, maxlength=40) {
+    if (text.length <= maxlength) {
+        return text;
+    }
+
+    var middle      = Math.floor(text.length / 2); // Find the middle index of the text
+    var trimLength  = text.length - (maxlength - 3); // Calculate the length of text to be trimmed
+    var trimmedText = text.slice(0, middle - Math.ceil(trimLength / 2)) + '...' + text.slice(middle + Math.floor(trimLength / 2)); // Trim text from the middle and replace with three dots
+
+    // Ensure the final text is not more than maxlength characters
+    if (trimmedText.length > maxlength) {
+        var excess = trimmedText.length - maxlength;
+        trimmedText = trimmedText.slice(0, trimmedText.length - excess - 3) + '...';
+    }
+
+    return trimmedText;
+}
+
 export function addKsesPrefix(_obj, keys) {
 
 	if ( ! Array.isArray(keys) ) {
