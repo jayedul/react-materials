@@ -36,7 +36,7 @@ export function InstantSearch(props) {
 		}
 
 		setFetching(true);
-		request('instantSearch', {args: {...props.args, keyWord}}, resp=>{
+		request('instantSearch', {args: {...props.args, keyword: keyWord}}, resp=>{
 
 			const {success, data:{results=[]}} = resp;
 			
