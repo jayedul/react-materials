@@ -2,8 +2,29 @@ import React from 'react';
 
 import { TextField } from './text-field/text-field.jsx';
 import { DropDown } from './dropdown/dropdown.jsx';
-import { __ } from './helpers.jsx';
+import { __, isEmpty } from './helpers.jsx';
 import { countries_array, patterns } from './data.jsx';
+
+export function isAddressValid(data, name_prefix='') {
+
+	const fields = [
+		'unit_flat',
+		'street_address',
+		'city',
+		'zip_code',
+		'province',
+		'country_code'
+	];
+
+	const errors = fields.filter(name=>{
+		const field_name = `${name_prefix}${name}`;
+		const value = data[field_name];
+
+		return isEmpty(value) || !/\S+/.test(value);
+	});
+
+	return isEmpty(errors);
+}
 
 export function AddressFields(props) {
 

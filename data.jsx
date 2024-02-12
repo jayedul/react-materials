@@ -165,10 +165,10 @@ for (let i = A; i <= Z; ++i) {
 
 			_countries_array.push({
 				id: code,
-				label: name
+				label: __(name)
 			});
 
-			_countries_object[code] = name;
+			_countries_object[code] = __(name);
 		}
 	}
 }
