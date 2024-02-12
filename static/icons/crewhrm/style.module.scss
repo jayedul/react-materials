@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?pzfecb') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?pzfecb') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?pzfecb##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?u95ohq') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?u95ohq') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?u95ohq##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -36,6 +36,47 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ch-icon-alarm-clock {
+  &:before {
+    content: $ch-icon-alarm-clock; 
+  }
+}
+.ch-icon-announcement {
+  &:before {
+    content: $ch-icon-announcement; 
+  }
+}
+.ch-icon-arrow-up-right {
+  &:before {
+    content: $ch-icon-arrow-up-right; 
+  }
+}
+.ch-icon-bell-ringing {
+  &:before {
+    content: $ch-icon-bell-ringing; 
+  }
+}
+.ch-icon-cake {
+  &:before {
+    content: $ch-icon-cake; 
+  }
+}
+.ch-icon-plus {
+  &:before {
+    content: $ch-icon-plus;     
+    color: #72777b;
+  }
+}
+.ch-icon-star {
+  &:before {
+    content: $ch-icon-star; 
+  }
+}
+.ch-icon-umbrella {
+  &:before {
+    content: $ch-icon-umbrella; 
+  }
+}
 .ch-icon-camera-plus {
   &:before {
     content: $ch-icon-camera-plus; 

@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'crewhrm';
   src:
-    url('fonts/crewhrm.ttf?pzfecb') format('truetype'),
-    url('fonts/crewhrm.woff?pzfecb') format('woff'),
-    url('fonts/crewhrm.svg?pzfecb#crewhrm') format('svg');
+    url('fonts/crewhrm.ttf?u95ohq') format('truetype'),
+    url('fonts/crewhrm.woff?u95ohq') format('woff'),
+    url('fonts/crewhrm.svg?u95ohq#crewhrm') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -34,6 +34,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ch-icon-alarm-clock:before {
+  content: "\e926";
+}
+.ch-icon-announcement:before {
+  content: "\e927";
+}
+.ch-icon-arrow-up-right:before {
+  content: "\e928";
+}
+.ch-icon-bell-ringing:before {
+  content: "\e92a";
+}
+.ch-icon-cake:before {
+  content: "\e92b";
+}
+.ch-icon-plus:before {
+  content: "\e92c";
+  color: #72777b;
+}
+.ch-icon-star:before {
+  content: "\e92e";
+}
+.ch-icon-umbrella:before {
+  content: "\e92f";
+}
 .ch-icon-camera-plus:before {
   content: "\e921";
 }
