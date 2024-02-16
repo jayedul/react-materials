@@ -42,7 +42,6 @@ export function ShareModal(props) {
 	const { addToast } = useContext(ContextToast);
 
 	const openSharer = (url, sharer) => {
-		url = 'http://google.com';
 		let urlToLoad = sharer.replace('%s', encodeURIComponent(url));
 
 		// Define the dimensions of the popup window
