@@ -4,6 +4,18 @@
 	padding: 0 50px;
 }
 
+.frontend-container {
+	max-width: 1022px;
+	margin: 0 auto;
+	padding: 0px 15px;
+}
+
+.frontend-container2 {
+	max-width: 817px;
+	margin: 0 auto;
+	padding: 0px 15px;
+}
+
 .crew-hrm-border {
 	border-radius: 10px;
 	border: 1.5px solid #e3e5e8;
@@ -14,4 +26,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+@media (max-width: 991px) {
+	.container {
+		padding: 0 15px;
+	}
 }
