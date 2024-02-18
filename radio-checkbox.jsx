@@ -4,7 +4,12 @@ import {isEmpty} from './helpers.jsx';
 import { ToolTip } from './tooltip.jsx';
 
 export function checkBoxRadioValue(e, values) {
-	const { type, value: _value, checked } = e.currentTarget;
+
+	let { type, value: _value, checked } = e.currentTarget;
+
+	if ( ! isNaN(_value) ) {
+		_value = parseInt(_value);
+	}
 
 	if (type === 'radio') {
 		return _value;
@@ -12,6 +17,10 @@ export function checkBoxRadioValue(e, values) {
 
 	let _values = [...(Array.isArray(values) ? values : [])];
 	let index = _values.indexOf(_value);
+
+	if ( index === -1 && typeof _value === 'number' ) {
+		index = _values.indexOf(_value.toString());
+	}
 
 	if (checked) {
 		if (index === -1) {
@@ -24,17 +33,21 @@ export function checkBoxRadioValue(e, values) {
 	return _values;
 }
 
-export function RadioCheckbox({
-	name,
-	value,
-	type,
-	options = [],
-	onChange,
-	className,
-	spanClassName,
-	required=false,
-	showErrorsAlways=false
-}) {
+export function RadioCheckbox(props) {
+
+	const {
+		name,
+		value,
+		type,
+		options = [],
+		onChange,
+		className,
+		spanClassName,
+		required=false,
+		showErrorsAlways=false,
+		level=1
+	} = props;
+
 	const [errorState, setErrorState] = useState(null);
 
 	const highlightError=()=>{
@@ -60,10 +73,14 @@ export function RadioCheckbox({
 
 	return options.map((option) => {
 
-		let { label, id, disabled, locked, tooltip } = option;
+		let { label, id, disabled, locked, tooltip, children=[] } = option;
 
+		if (!isNaN(id)) {
+			id = parseInt(id);
+		}
+		
 		return <ToolTip key={id} tooltip={tooltip}>
-			<div>
+			<div style={{paddingLeft: `${level>1 ? 8 : 0}px`}}>
 				<label
 					className={`d-inline-flex align-items-center column-gap-10 ${(disabled || locked) ? 'cursor-default' : 'cursor-pointer'}`.classNames() + className}
 				>
@@ -83,6 +100,10 @@ export function RadioCheckbox({
 					
 					<span className={spanClassName}>{label}</span>
 				</label>
+
+				{
+					!children?.length ? null : <RadioCheckbox {...props} options={children} level={level+1}/>
+				}
 			</div>
 		</ToolTip>
 	});
