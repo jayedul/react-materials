@@ -4,6 +4,7 @@ import { Conditional } from '../conditional.jsx';
 import { input_class as className, input_class_error } from '../classes.jsx';
 
 import style from './text-field.module.scss';
+import { isEmpty } from 'crewhrm-materials/helpers.jsx';
 
 export function TextField(props) {
     const {
@@ -23,6 +24,7 @@ export function TextField(props) {
 		disabled,
 		readOnly,
 		regex=null, // For input validation and highlighiting field with red border for now.
+		required, // If explicitly not specified, then it will be required if there's regex. If false, then regex will be validated only if the value is not empty.
 		style: cssStyle,
 		autofocus,
 		showErrorsAlways=false
@@ -72,7 +74,17 @@ export function TextField(props) {
     };
 
 	const highlightError=()=>{
-		const has_error = regex && (!textInstant || !regex.test(textInstant));
+		
+		let has_error = false;
+
+		if ( regex ) {
+			if ( required === false && isEmpty( textInstant ) ) {
+				// No need to force regex rule as it is empty, and not required.
+			} else {
+				// Check regex even though if it is not required, however the field is not empty.
+				has_error = isEmpty( textInstant ) || !regex.test(textInstant);
+			}
+		}
 
 		setErrorState({
 			...errorState,
