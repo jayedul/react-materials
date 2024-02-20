@@ -32,14 +32,6 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9992;
 
-    & > div {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-color: white;
-        border-radius: 10px;
-    }
-
     &.media-type-audio {
         & > div {
             background-color: transparent;
@@ -75,4 +67,18 @@
             }
         }
     }
+
+	$grad_color: rgba(0, 0, 0, 0.13);
+
+	.prev {
+		&:hover {
+			background: linear-gradient(to right, $grad_color, transparent);
+		}
+	}
+
+	.next {
+		&:hover {
+			background: linear-gradient(to right, transparent, $grad_color);
+		}
+	}
 }
