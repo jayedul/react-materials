@@ -68,7 +68,7 @@
         }
     }
 
-	$grad_color: rgba(0, 0, 0, 0.13);
+	$grad_color: rgba(226, 226, 226, 0.518);
 
 	.prev {
 		&:hover {
@@ -79,6 +79,13 @@
 	.next {
 		&:hover {
 			background: linear-gradient(to right, transparent, $grad_color);
+		}
+	}
+
+	.prev, .next {
+		i {
+			font-size: 28px;
+			text-shadow: 0px 0px 2px white;
 		}
 	}
 }
