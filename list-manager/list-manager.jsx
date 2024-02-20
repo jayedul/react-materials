@@ -4,48 +4,78 @@ import { SortableList } from '../sortable-list.jsx';
 import { __, getRandomString } from '../helpers.jsx';
 
 import style from './list.module.scss';
-import { Conditional } from '../conditional.jsx';
 
-function ItemSingle({ id_key, label_key, list_item, renameStage, deleteHandler, deleteFlow }) {
-    return (
-        <div
-            className={
-                'd-flex align-items-center border-radius-10 border-1-5 b-color-tertiary padding-15'.classNames() +
-                'single'.classNames(style)
-            }
-        >
-            <i className={'ch-icon ch-icon-drag font-size-26 color-text-light'.classNames()}></i>
+function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildren}) {
+	
+	const {
+		id_key, 
+		label_key, 
+		onEdit
+	} = payload;
+	
+	const {children=[]}       = list_item;
+	const item_id             = list_item[id_key];
+	const item_label          = list_item[label_key];
 
-            <div className={'flex-1'.classNames()}>
-                <input
-                    id={'crewhrm-flow-option-' + list_item[id_key]}
-                    type="text"
-                    value={list_item[label_key]}
-                    disabled={!renameStage}
-                    onChange={(e) => {
-                        if (renameStage) {
-                            renameStage(list_item[id_key], e.currentTarget.value);
-                        }
-                    }}
-                    className={'text-field-flat margin-left-5'.classNames()}
-                />
-            </div>
+    return <>
+		<div
+			className={
+				'd-flex align-items-center  column-gap-20 border-radius-10 border-1-5 b-color-tertiary padding-15'.classNames() +
+				'single'.classNames(style)
+			}
+			onClick={e=>e.stopPropagation()}
+			onMouseDown={e=>e.stopPropagation()}
+		>
+			<div className={'flex-1 d-flex align-items-center'.classNames()}>
 
-            <Conditional show={deleteHandler || deleteFlow}>
-                <i
-                    className={
-                        'ch-icon ch-icon-trash font-size-24 color-error margin-left-20 cursor-pointer'.classNames() +
-                        'trash'.classNames(style)
-                    }
-                    onClick={() =>
-                        deleteHandler
-                            ? deleteHandler(list_item[id_key])
-                            : deleteFlow(list_item[id_key])
-                    }
-                ></i>
-            </Conditional>
-        </div>
-    );
+				<i className={'ch-icon ch-icon-drag font-size-26 color-text-light'.classNames()}></i>
+
+				<div className={'flex-1'.classNames()}>
+					<input
+						id={'crewhrm-flow-option-' + item_id}
+						type="text"
+						value={item_label}
+						disabled={!renameStage}
+						onChange={(e) => {
+							if (renameStage) {
+								renameStage(item_id, e.currentTarget.value);
+							}
+						}}
+						className={'text-field-flat margin-left-5'.classNames()}
+					/>
+				</div>
+			</div>
+			
+			{
+				!onEdit ? null :
+				<i
+					className={
+						'ch-icon ch-icon-edit-2 font-size-24 cursor-pointer'.classNames() +
+						'trash'.classNames(style)
+					}
+					onClick={() =>onEdit(list_item)}
+				></i>
+			}
+
+			<i
+				className={
+					'ch-icon ch-icon-trash font-size-24 color-error cursor-pointer'.classNames() +
+					'trash'.classNames(style)
+				}
+				onClick={() =>deleteItem(item_id)}
+			></i>
+		</div>
+
+		{
+			!children.length ? null : 
+			<ListManager 
+				{...payload}
+				list={children}
+				onChange={list=>updateChildren(item_id, list)}
+				className={'margin-left-15 margin-top-15 border-left-1 b-color-tertiary'.classNames()}
+				style={{paddingLeft: '15px'}}/>
+		}
+	</>
 }
 
 export function ListManager(props) {
@@ -56,9 +86,11 @@ export function ListManager(props) {
         mode,
         className = '',
         onChange,
-        deleteItem: deleteHandler,
+		onEdit,
+        deleteItem,
         addText = __('Add New'),
-        readOnyAfter
+        readOnlyAfter,
+		style: cssStyle={}
     } = props;
     const is_queue = mode === 'queue';
 
@@ -93,7 +125,14 @@ export function ListManager(props) {
         onChange(list);
     };
 
-    const deleteFlow = (id) => {
+	const updateChildren=(id, children)=>{
+		const {list=[]} = props;
+        const index = list.findIndex((s) => s[id_key] == id);
+		list[index].children = children;
+		onChange(list);
+	}
+
+    const deleteInternaly = (id) => {
         const { list = [] } = props;
 
         if (id !== null) {
@@ -133,6 +172,7 @@ export function ListManager(props) {
                 }`.classNames() +
                 className
             }
+			style={cssStyle}
         >
             <SortableList
                 className={'row-gap-15'.classNames()}
@@ -145,11 +185,10 @@ export function ListManager(props) {
                             <ItemSingle
                                 {...{
                                     list_item,
-                                    id_key,
-                                    label_key,
+									payload: props,
+									updateChildren,
                                     renameStage,
-                                    deleteHandler,
-                                    deleteFlow
+                                    deleteItem: deleteItem || deleteInternaly
                                 }}
                             />
                         )
@@ -157,8 +196,8 @@ export function ListManager(props) {
                 })}
             />
 
-            {readOnyAfter
-                ? readOnyAfter.map((list_item) => {
+            {readOnlyAfter
+                ? readOnlyAfter.map((list_item) => {
                       return (
                           <ItemSingle
                               key={list_item[id_key]}
