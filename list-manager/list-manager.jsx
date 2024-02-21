@@ -5,12 +5,13 @@ import { __, getRandomString } from '../helpers.jsx';
 
 import style from './list.module.scss';
 
-function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildren}) {
+function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildren, addChild, has_sibling}) {
 	
 	const {
 		id_key, 
 		label_key, 
-		onEdit
+		onEdit,
+		nested=false
 	} = payload;
 	
 	const {children=[]}       = list_item;
@@ -28,7 +29,10 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 		>
 			<div className={'flex-1 d-flex align-items-center'.classNames()}>
 
-				<i className={'ch-icon ch-icon-drag font-size-26 color-text-light'.classNames()}></i>
+				{
+					!has_sibling ? null :
+					<i className={'ch-icon ch-icon-drag font-size-26 color-text-light'.classNames()}></i>
+				}
 
 				<div className={'flex-1'.classNames()}>
 					<input
@@ -36,22 +40,34 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 						type="text"
 						value={item_label}
 						disabled={!renameStage}
+						className={'text-field-flat margin-left-5'.classNames()}
 						onChange={(e) => {
 							if (renameStage) {
 								renameStage(item_id, e.currentTarget.value);
 							}
 						}}
-						className={'text-field-flat margin-left-5'.classNames()}
 					/>
 				</div>
 			</div>
+
+			{
+				!nested ? null :
+				<i
+					className={
+						'ch-icon ch-icon-add-circle font-size-24 cursor-pointer'.classNames() +
+						'action-icon'.classNames(style)
+					}
+					onClick={addChild}
+					title={__('Add sub lesson')}
+				></i>
+			}
 			
 			{
 				!onEdit ? null :
 				<i
 					className={
 						'ch-icon ch-icon-edit-2 font-size-24 cursor-pointer'.classNames() +
-						'trash'.classNames(style)
+						'action-icon'.classNames(style)
 					}
 					onClick={() =>onEdit(list_item)}
 				></i>
@@ -60,7 +76,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 			<i
 				className={
 					'ch-icon ch-icon-trash font-size-24 color-error cursor-pointer'.classNames() +
-					'trash'.classNames(style)
+					'action-icon'.classNames(style)
 				}
 				onClick={() =>deleteItem(item_id)}
 			></i>
@@ -73,7 +89,9 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				list={children}
 				onChange={list=>updateChildren(item_id, list)}
 				className={'margin-left-15 margin-top-15 border-left-1 b-color-tertiary'.classNames()}
-				style={{paddingLeft: '15px'}}/>
+				style={{paddingLeft: '15px'}}
+				addButton={false}
+			/>
 		}
 	</>
 }
@@ -89,7 +107,8 @@ export function ListManager(props) {
         deleteItem,
         addText = __('Add New'),
         readOnlyAfter,
-		style: cssStyle={}
+		style: cssStyle={},
+		addButton=true
     } = props;
     const is_queue = mode === 'queue';
 
@@ -98,7 +117,8 @@ export function ListManager(props) {
         exclude_focus: list.map((s) => s[id_key])
     });
 
-    const addStage = () => {
+    const addStage = (append_to=null) => {
+		
         const id = getRandomString();
 
         // Keep track of last id to focus
@@ -108,11 +128,23 @@ export function ListManager(props) {
         });
 
         // Build array
-        let item = { [id_key]: id, [label_key]: __('Untitled') };
-        let new_array = is_queue ? [...list, item] : [item, ...list];
+        let item = { 
+			[id_key]: id, 
+			[label_key]: __('Untitled')
+		};
+
+		let _list = [...list];
+		if ( append_to ) {
+			const index = _list.findIndex(l=>l[id_key]==append_to);
+			if ( index>-1 ) {
+				_list[index].children = [...(_list[index].children || []), item];
+			}
+		} else {
+			_list = is_queue ? [...list, item] : [item, ...list];
+		}
 
         // Send the changes to parent component
-        onChange(new_array);
+        onChange(_list);
     };
 
     const renameStage = (id, label) => {
@@ -185,7 +217,9 @@ export function ListManager(props) {
                                 {...{
                                     list_item,
 									payload: props,
+									has_sibling: list.length>1,
 									updateChildren,
+									addChild: ()=>addStage(list_item[props.id_key]),
                                     renameStage,
                                     deleteItem: deleteItem || deleteInternaly
                                 }}
@@ -206,18 +240,22 @@ export function ListManager(props) {
                   })
                 : null}
 
-            <div
-                className={
-                    'd-flex align-items-center darken-on-hover--8'.classNames() +
-                    'add-stage'.classNames(style)
-                }
-                onClick={addStage}
-            >
-                <i className={'ch-icon ch-icon-add-circle font-size-24'.classNames()}></i>
-                <div className={'flex-1 font-size-15 font-weight-500 margin-left-10'.classNames()}>
-                    {addText}
-                </div>
-            </div>
+			{
+				!addButton ? null :
+				<div
+					className={
+						'd-flex align-items-center darken-on-hover--8'.classNames() +
+						'add-stage'.classNames(style)
+					}
+					onClick={()=>addStage()}
+				>
+					<i className={'ch-icon ch-icon-add-circle font-size-24'.classNames()}></i>
+					<div className={'flex-1 font-size-15 font-weight-500 margin-left-10'.classNames()}>
+						{addText}
+					</div>
+				</div>
+			}
+            
         </div>
     );
 }
