@@ -86,7 +86,6 @@ export function ListManager(props) {
         mode,
         className = '',
         onChange,
-		onEdit,
         deleteItem,
         addText = __('Add New'),
         readOnlyAfter,
@@ -201,7 +200,7 @@ export function ListManager(props) {
                       return (
                           <ItemSingle
                               key={list_item[id_key]}
-                              {...{ list_item, id_key, label_key }}
+                              {...{ list_item, payload: props }}
                           />
                       );
                   })
