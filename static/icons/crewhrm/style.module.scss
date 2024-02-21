@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?1dxnlf') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?1dxnlf') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?1dxnlf##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?loqcqg') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?loqcqg') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?loqcqg##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -36,19 +36,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ch-icon-share1 {
+.ch-icon-bank {
   &:before {
-    content: $ch-icon-share1; 
+    content: $ch-icon-bank; 
   }
 }
-.ch-icon-reload {
+.ch-icon-briefcase-2 {
   &:before {
-    content: $ch-icon-reload; 
-  }
-}
-.ch-icon-reload1 {
-  &:before {
-    content: $ch-icon-reload1; 
+    content: $ch-icon-briefcase-2; 
   }
 }
 .ch-icon-alarm-clock {
@@ -221,9 +216,9 @@
     content: $ch-icon-arrow-right; 
   }
 }
-.ch-icon-briefcase {
+.ch-icon-briefcase1 {
   &:before {
-    content: $ch-icon-briefcase; 
+    content: $ch-icon-briefcase1; 
   }
 }
 .ch-icon-empty-wallet {
@@ -484,6 +479,21 @@
 .ch-icon-download1 {
   &:before {
     content: $ch-icon-download1; 
+  }
+}
+.ch-icon-share1 {
+  &:before {
+    content: $ch-icon-share1; 
+  }
+}
+.ch-icon-reload {
+  &:before {
+    content: $ch-icon-reload; 
+  }
+}
+.ch-icon-reload1 {
+  &:before {
+    content: $ch-icon-reload1; 
   }
 }
 .ch-icon-linkedin2 {
