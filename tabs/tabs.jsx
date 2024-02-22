@@ -4,7 +4,17 @@ import { Conditional } from '../conditional.jsx';
 import style from './tabs.module.scss';
 
 export function Tabs(props) {
-    const { onNavigate, active, tabs = [], theme, className = '', style: cssStyle = {}, scrollIntoViewOnChange=false } = props;
+	
+    const { 
+		onNavigate, 
+		active, 
+		tabs = [], 
+		theme, 
+		className = '', 
+		style: cssStyle = {}, 
+		scrollIntoViewOnChange=false 
+	} = props;
+
     const active_index = tabs.findIndex((tab) => tab.id == active);
 
 	const ref = useRef();
@@ -52,10 +62,9 @@ export function Tabs(props) {
                             `single-step ${id === active ? 'active' : ''}`.classNames(style) +
                             `${onNavigate ? 'cursor-pointer' : ''}`.classNames()
                         }
-                        onClick={() => (onNavigate ? onNavigate(id) : null)}
+                        onClick={() => ((onNavigate && id!=active) ? onNavigate(id) : null)}
                     >
-                        
-                            {label}
+                        {label}
 						<Conditional show={theme == 'sequence'}>
 							<div
                                 className={`sequence-line-wrapper ${fill_class}`.classNames(style)}
