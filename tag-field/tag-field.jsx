@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { isEmpty } from '../helpers.jsx';
 import style from './tag.module.scss';
 
 export function TagField({
@@ -9,7 +10,9 @@ export function TagField({
     onChange = () => {},
     className = '',
     behavior,
-    fullWidth
+    fullWidth,
+	showErrorsAlways,
+	required
 }) {
     const dispatchChange = (id, checked) => {
         if (behavior == 'radio') {
@@ -44,14 +47,10 @@ export function TagField({
                 return (
                     <div
                         key={id}
-                        className={`${is_selected ? 'active' : ''}`.classNames(style)}
+                        className={`${is_selected ? 'active' : ''} ${(required && isEmpty(value) && showErrorsAlways) ? 'error' : ''}`.classNames(style)}
                         onClick={() => dispatchChange(id)}
                     >
-                        {(real_control && (
-                            <input type={behavior} checked={is_selected} onChange={(e) => {}} />
-                        )) ||
-                            null}
-                        {label}
+                        {!real_control ? null : <input type={behavior} checked={is_selected} onChange={(e) => {}} />} {label}
                     </div>
                 );
             })}
