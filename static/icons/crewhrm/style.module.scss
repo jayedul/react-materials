@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?loqcqg') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?loqcqg') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?loqcqg##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?z5i55c') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?z5i55c') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?z5i55c##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -36,6 +36,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ch-icon-check-tick-mark {
+  &:before {
+    content: $ch-icon-check-tick-mark; 
+  }
+}
+.ch-icon-file {
+  &:before {
+    content: $ch-icon-file; 
+  }
+}
+.ch-icon-folder {
+  &:before {
+    content: $ch-icon-folder; 
+  }
+}
+.ch-icon-play-circle {
+  &:before {
+    content: $ch-icon-play-circle; 
+  }
+}
 .ch-icon-bank {
   &:before {
     content: $ch-icon-bank; 
