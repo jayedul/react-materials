@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import {ErrorBoundary} from './error-boundary.jsx';
 import {getRandomString} from './helpers.jsx';
 
-export function RenderExternal({component: Comp, payload={}}) {
+export function RenderExternal({className='', component: Comp, payload={}}) {
 	if ( ! Comp ) {
 		return null;
 	}
@@ -21,7 +21,7 @@ export function RenderExternal({component: Comp, payload={}}) {
 	}, [Comp, reff.current, payload]);
 
 	// If internal component, then simply embed as usual. External component can only be called as function through useEffect hook.
-	return is_internal ? <ErrorBoundary><Comp {...payload}/></ErrorBoundary> : <div ref={reff}></div>
+	return is_internal ? <ErrorBoundary><Comp className={className} {...payload}/></ErrorBoundary> : <div ref={reff} className={className}></div>
 }
 
 const render_states={};
