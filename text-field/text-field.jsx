@@ -200,7 +200,7 @@ export function TextField(props) {
             <Conditional show={image && state.expanded}>
                 <img
                     src={image}
-                    className={'image'.classNames(style)}
+                    className={'image'.classNames(style) + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()}
                     onClick={() => onIconClick()}
                 />
                 {separator}

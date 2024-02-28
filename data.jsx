@@ -18,6 +18,9 @@ export const patterns = {
 	url: /^(http|https):\/\/[A-Za-z0-9.-]+(\.[A-Za-z]{2,})?(:\d+)?(\/\S*)?$/,
 	first_name: /^(?=.*\S).{1,20}$/,
 	last_name: /^(?=.*\S).{1,20}$/,
+	at_least_one_special_character: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~^€£]+/,
+	at_least_one_uppercase: /[A-Z]/,
+	eight_to_twenty: /^.{8,20}$/,
 }
 
 export const genders = {
