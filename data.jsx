@@ -20,6 +20,7 @@ export const patterns = {
 	last_name: /^(?=.*\S).{1,20}$/,
 	at_least_one_special_character: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~^€£]+/,
 	at_least_one_uppercase: /[A-Z]/,
+	at_least_one_digit: /[0-9]/,
 	eight_to_twenty: /^.{8,20}$/,
 }
 
