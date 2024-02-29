@@ -611,4 +611,22 @@ export function addKsesPrefix(_obj, keys) {
 	return obj;
 }
 
+export function convertOffsetToTimezone(offset) {
+    // Convert the offset to minutes
+    var totalMinutes = Math.abs(offset) * 60;
+    
+    // Calculate hours and minutes
+    var hours = Math.floor(totalMinutes / 60);
+    var minutes = totalMinutes % 60;
+    
+    // Determine the sign of the offset
+    var sign = offset >= 0 ? '+' : '-';
+    
+    // Format the result as "hh:mm"
+    var formattedHours = hours < 10 ? '0' + hours : hours;
+    var formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    
+    return sign + formattedHours + ':' + formattedMinutes;
+}
+
 export const is_production = process.env.NODE_ENV === 'production';
