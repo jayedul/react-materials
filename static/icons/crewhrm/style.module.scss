@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?z5i55c') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?z5i55c') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?z5i55c##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ftf23p') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ftf23p') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ftf23p##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -36,6 +36,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ch-icon-eye-slash {
+  &:before {
+    content: $ch-icon-eye-slash; 
+  }
+}
+.ch-icon-wheel-lifebuoy {
+  &:before {
+    content: $ch-icon-wheel-lifebuoy; 
+  }
+}
 .ch-icon-check-tick-mark {
   &:before {
     content: $ch-icon-check-tick-mark; 
