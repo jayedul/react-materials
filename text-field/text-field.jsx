@@ -193,7 +193,7 @@ export function TextField(props) {
 			}}
         >
             <Conditional show={iconClass}>
-                <i className={`${iconClass}`.classNames()} onClick={() => onIconClick()}></i>
+                <i className={iconClass} onClick={() => onIconClick()}></i>
                 {separator}
             </Conditional>
 
