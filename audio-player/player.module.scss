@@ -1,0 +1,37 @@
+.audio {
+	background-size: cover;
+	background-position: center center;
+	display: block;
+	
+	$blur: 40px;
+	&>div {
+		-webkit-backdrop-filter: blur($blur);
+		-moz-backdrop-filter: blur($blur);
+		-ms-backdrop-filter: blur($blur);
+		-o-backdrop-filter: blur($blur);
+		backdrop-filter: blur($blur);
+		background: rgba(0, 0, 0, 0.3);
+	}
+
+	.player-control {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		background-color: var(--crewmat-color-primary);
+		cursor: pointer;
+		overflow: hidden;
+		border: 1px solid var(--crewmat-color-white);
+
+		&:not(:hover) {
+			opacity: 0.8;
+			transition: opacity 0.4s;
+		}
+
+		i {
+			color: var(--crewmat-color-white);
+		}
+	}
+}

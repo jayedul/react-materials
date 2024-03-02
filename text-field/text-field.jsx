@@ -4,7 +4,7 @@ import { Conditional } from '../conditional.jsx';
 import { input_class as className, input_class_error } from '../classes.jsx';
 
 import style from './text-field.module.scss';
-import { isEmpty } from 'crewhrm-materials/helpers.jsx';
+import { isEmpty } from './helpers.jsx';
 
 export function TextField(props) {
     const {

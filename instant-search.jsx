@@ -7,7 +7,7 @@ import { DropDownUnmanaged } from "./dropdown/dropdown.jsx";
 import { request } from "./request.jsx";
 import { ContextToast } from "./toast/toast.jsx";
 import { Conditional } from "./conditional.jsx";
-import { LoadingIcon } from "crewhrm-materials/loading-icon/loading-icon.jsx";
+import { LoadingIcon } from "./loading-icon/loading-icon.jsx";
 
 export function InstantSearch(props) {
 

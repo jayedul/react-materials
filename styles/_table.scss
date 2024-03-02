@@ -1,0 +1,175 @@
+@import './breakpoint';
+
+$radius: 6px;
+$stroke-light-30: #cdcfd5;
+
+@mixin regularStyle() {
+	&>* {
+		&>tr:first-child {
+			/* top-left border-radius */
+			&>th:first-child {
+				border-top-left-radius: $radius;
+			}
+
+			/* top-right border-radius */
+			&>th:last-child {
+				border-top-right-radius: $radius;
+			}
+		}
+
+		&>tr:last-child {
+			/* bottom-left border-radius */
+			&>td:first-child {
+				border-bottom-left-radius: $radius;
+			}
+
+			/* bottom-right border-radius */
+			&>td:last-child {
+				border-bottom-right-radius: $radius;
+			}
+		}
+
+		&>tr {
+			&:last-child td {
+				border-bottom: 1px solid $stroke-light-30;
+			}
+
+			&>th, &>td {
+				border-top: 1px solid $stroke-light-30;
+
+				// min-width: calc(100% / var(--column-count));
+
+				&:first-child {
+					border-left: 1px solid $stroke-light-30;
+					padding-left: 20px;
+				}
+
+				&:last-child {
+					border-right: 1px solid $stroke-light-30;
+					padding-right: 20px;
+				}
+			}
+
+			&>th {
+				background: rgba(239, 241, 247, 0.8);
+				text-align: left;
+				padding: 15px 10px;
+			}
+
+			&>td {
+				padding: 17px 10px;
+			}
+		}
+	}
+}
+
+.table {
+
+	&, &>*, &>*>*, &>*>*>* {
+		border: none;
+	}
+	
+	border-collapse: separate;
+	border-spacing: 0;
+	min-width: 300px;
+	width: 100%;
+	border-radius: $radius;
+	
+	&.no-responsive {
+		@include regularStyle();
+	}
+	
+	&:not(.no-responsive) {
+
+		@include breakpoint-min(desktop-lg) {
+			@include regularStyle();
+		}
+
+		@media (max-width: 1199px) {
+
+			&, &>*, &>*>*, &>*>*>* {
+				display: block;
+			}
+
+			&>thead>tr {
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+
+			&>*>tr {
+				background: rgba(239, 241, 247, 0.8);
+
+				&:not(:last-child) {
+					margin-bottom: 22px;
+				}
+
+				&>td {
+					word-break: break-word;
+					padding-top: 17px;
+					padding-bottom: 17px;
+
+					&:last-child {
+						border-bottom: 1px solid $stroke-light-30;
+						border-bottom-left-radius: 6px;
+						border-bottom-right-radius: 6px;
+					}
+
+					&:first-child {
+						border-top-left-radius: 6px;
+						border-top-right-radius: 6px;
+					}
+				}
+			}
+
+			&>*>*>td {
+				/* Behave  like a "row" */
+				border: none;
+				border-radius: 0;
+				position: relative;
+				padding: 10px;
+
+				width: unset;
+				text-align: left;
+
+				border-top: 1px solid $stroke-light-30;
+				border-left: 1px solid $stroke-light-30;
+				border-right: 1px solid $stroke-light-30;
+
+				display: flex;
+
+				&.column-fullwidth {
+					padding: 15px 20px;
+				}
+
+				&:not(.column-fullwidth) {
+					padding-left: 40%;
+
+					&:before {
+						/* Now like a table header */
+						position: absolute;
+						/* Top/left values mimic padding */
+						top: 0;
+						left: 0;
+						width: 35%;
+						padding-left: 20px;
+						padding-right: 10px;
+						white-space: nowrap;
+
+						/* Label the data You could also use a data-* attribute and content for this. That way "bloats" the HTML,this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow. */
+
+						content: attr(data-th);
+						height: 100%;
+						display: flex;
+						align-items: center;
+
+						font-weight: 400;
+						font-size: 13px;
+						line-height: 138%;
+						color: var(--crewmat-color-text-light);
+					}
+				}
+			}
+		}
+	}
+}

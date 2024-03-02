@@ -629,4 +629,23 @@ export function convertOffsetToTimezone(offset) {
     return sign + formattedHours + ':' + formattedMinutes;
 }
 
+export const getDashboardPath=(rel_path)=>{
+
+	const {
+		settings: {
+			general: {
+				frontend_dashboard_path
+			}
+		}, 
+		is_admin
+	} = window[data_pointer];
+
+	return getPath( `${is_admin ? '' : frontend_dashboard_path}${rel_path.indexOf('/')===0 ? '' : '/'}${rel_path}` );
+}
+
+export function getPath(path) {
+	let _path = (window[data_pointer].is_admin ? '/' : window[data_pointer].home_path) + path;
+	return _path.replace(/\/+/g, '/');
+}
+
 export const is_production = process.env.NODE_ENV === 'production';
