@@ -4,7 +4,7 @@ import { input_class as className } from '../classes.jsx';
 import style from './number-field.module.scss'
 
 export function NumberField(props) {
-	const { onChange, value, max, min, disabled } = props;
+	const { onChange, value, max, min, disabled, placeholder } = props;
 	const ref = useRef();
 	const [state, setState] = useState({
 		focused: false
@@ -65,10 +65,21 @@ export function NumberField(props) {
 					type="text"
 					disabled={disabled}
 					onChange={(e) => changeValue(null, e.currentTarget.value)}
-					value={value}
+					value={value ?? 0}
 					onFocus={() => toggleFocusState(true)}
 					onBlur={() => toggleFocusState(false)}
+					placeholder={placeholder}
 					className={'text-field-flat text-align-center'.classNames()}
+					onKeyDown={e=>{
+						
+						let v = parseInt( e.currentTarget.value );
+
+						if ( e.key === "ArrowUp" ) {
+							changeValue( 1, v );
+						} else if ( e.key === "ArrowDown" ) {
+							changeValue( -1, v );
+						}
+					}}
 				/>
 			</div>
 			<div className={'height-20'.classNames()}>

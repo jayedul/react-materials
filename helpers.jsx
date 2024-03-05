@@ -1,3 +1,4 @@
+import currencySymbol from "currency-symbol-map/map";
 import { countries_object, patterns } from './data.jsx';
 
 // Determine the unique data pointer
@@ -7,6 +8,8 @@ const regex = /\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/;
 const matches = url.match(regex);
 const parsedString = `CrewMat_${matches[1]}_${matches[3]}`.toLowerCase();
 export const data_pointer = parsedString.replace(/[^a-zA-Z0-9_]/g, '');
+
+export const currency_symbol = currencySymbol[window[data_pointer].currency_code];
 
 export const months = [
 	__('January'), __('February'), __('March'), __('April'), __('May'), __('June'),
@@ -407,6 +410,8 @@ export function formatDate( date, pattern = (window[data_pointer]?.date_format |
 
 	return formattedDate;
 }
+
+export const formatDateTime=(d)=>formatDate(d, `${window[data_pointer]?.date_format || 'Y-m-d'} ${window[data_pointer]?.time_format || 'g:i a'}`)
 
 /**
  * Returns unix timestamp seconds
