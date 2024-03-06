@@ -9,6 +9,10 @@ export function Pagination({ onChange, pageNumber = 1, pageCount = 1, previousLa
         onChange((event.selected ?? 0) + 1);
     };
 
+	if ( pageCount <= 1 ) {
+		return null;
+	}
+
     if (theme !== 'data-table-pagination') {
         return (
             <ReactPaginate

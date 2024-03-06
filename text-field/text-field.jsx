@@ -27,6 +27,7 @@ export function TextField(props) {
 		required, // If explicitly not specified, then it will be required if there's regex. If false, then regex will be validated only if the value is not empty.
 		style: cssStyle,
 		autofocus,
+		resize='none',
 		showErrorsAlways=false
     } = props;
 
@@ -214,7 +215,7 @@ export function TextField(props) {
                 </Conditional>
 
                 <Conditional show={type === 'textarea'}>
-                    <textarea {...attr} style={{resize: 'none'}}></textarea>
+                    <textarea {...attr} style={{resize}}></textarea>
                 </Conditional>
             </Conditional>
         </label>
