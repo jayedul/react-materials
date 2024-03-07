@@ -8,13 +8,13 @@ import { isEmpty } from '../helpers.jsx';
 
 export function TextField(props) {
     const {
-        iconClass,
+        iconClass: input_icon_class,
         image,
 		content,
-        icon_position = 'left',
-        type = 'text',
+        icon_position: _icon_position = 'left',
+        type: input_type = 'text',
         onChange,
-        onIconClick: clickHandler,
+        onIconClick: iconClickHandler,
         placeholder,
         pattern, // For date field ideally
         value,
@@ -39,12 +39,20 @@ export function TextField(props) {
     const [state, setState] = useState({
         expanded: !expandable,
         focused: false,
+		show_password: false
     });
 
 	const [errorState, setErrorState] = useState({
 		mounted: false,
 		has_error: false
 	});
+
+	// Set controls for password
+	const is_password   = input_type == 'password';
+	const type          = is_password ? (state.show_password ? 'text' : input_type) : input_type;
+	const iconClass     = is_password ? `ch-icon ${state.show_password ? 'ch-icon-eye' : 'ch-icon-eye-slash'} font-size-20`.classNames() : input_icon_class;
+	const clickHandler  = is_password ? ()=>setState({...state, show_password: !state.show_password}) : iconClickHandler;
+	const icon_position = is_password ? 'right' : _icon_position;
 
     const dispatchChange = (v) => {
         if (maxLength !== null && v.length > maxLength) {

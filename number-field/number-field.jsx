@@ -48,7 +48,7 @@ export function NumberField(props) {
 		<div
 			data-crew="number-field"
 			className={
-				`d-flex align-items-center ${disabled ? 'cursor-not-allowed' : ''} ${
+				`d-flex align-items-center bg-color-white ${disabled ? 'cursor-not-allowed' : ''} ${
 					state.focused ? 'active color-active-parent' : ''
 				}`.classNames() + 'number-field'.classNames(style) + className
 			}

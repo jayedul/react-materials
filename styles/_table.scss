@@ -170,7 +170,7 @@ $stroke-light-30: #cdcfd5;
 		@include mobileStyle();
 	}
 
-	&:not(.no-responsive) {
+	&:not(.no-responsive):not(.vertical-head) {
 
 		@include breakpoint-min(desktop-lg) {
 			@include regularStyle();
