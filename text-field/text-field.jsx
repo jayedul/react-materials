@@ -32,7 +32,6 @@ export function TextField(props) {
     } = props;
 
     const input_ref = useRef();
-
     const [text, setText] = useState(value || '');
 	const [textInstant, setTextInstant] = useState(value || '');
 
@@ -47,13 +46,27 @@ export function TextField(props) {
 		has_error: false
 	});
 
-	// Set controls for password
-	const is_password   = input_type == 'password';
-	const type          = is_password ? (state.show_password ? 'text' : input_type) : input_type;
-	const iconClass     = is_password ? `ch-icon ${state.show_password ? 'ch-icon-eye' : 'ch-icon-eye-slash'} font-size-20`.classNames() : input_icon_class;
-	const clickHandler  = is_password ? ()=>setState({...state, show_password: !state.show_password}) : iconClickHandler;
-	const icon_position = is_password ? 'right' : _icon_position;
+	// Set controls per field type
+	const presets = {
+		password: {
+			type: state.show_password ? 'text' : 'password',
+			iconClass: `ch-icon ${state.show_password ? 'ch-icon-eye' : 'ch-icon-eye-slash'} font-size-20`.classNames(),
+			clickHandler: ()=>setState({...state, show_password: !state.show_password}),
+			icon_position: 'right'
+		},
+		search: {
+			iconClass: `ch-icon ch-icon-search-normal-1 font-size-16`.classNames(),
+			icon_position: 'right'
+		}
+	}
 
+	const {
+		type          = input_type,
+		iconClass     = input_icon_class,
+		clickHandler  = iconClickHandler,
+		icon_position = _icon_position
+	} = presets[input_type] || {};
+	
     const dispatchChange = (v) => {
         if (maxLength !== null && v.length > maxLength) {
             return;
