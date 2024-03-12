@@ -211,6 +211,7 @@ export function TextField(props) {
             }
 			style={{
 				height: type==='textarea' ? '100px' : undefined,
+				margin: 0,
 				...cssStyle
 			}}
         >

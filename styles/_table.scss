@@ -148,6 +148,13 @@ $stroke-light-30: #cdcfd5;
 			}
 		}
 	}
+
+	tr.empty-state {
+		td {
+			padding: 0 !important;
+			display: block;
+		}
+	}
 }
 
 .table {
