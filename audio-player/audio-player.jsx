@@ -5,7 +5,7 @@ import WaveSurfer from './wavesurfer.js';
 
 import style from './player.module.scss';
 
-export function AudioPlayer({src, permalink, title, thumbnail, height=40}) {
+export function AudioPlayer({src, permalink, title, thumbnail, height=40, children}) {
 
 	const waveform_ref = useRef();
 	const [state, setState] = useState({
@@ -17,17 +17,17 @@ export function AudioPlayer({src, permalink, title, thumbnail, height=40}) {
 
 		// Create a canvas gradient
 		const ctx = document.createElement('canvas').getContext('2d')
-		const gradient = ctx.createLinearGradient(0, 0, 0, 150)
+		const gradient = ctx.createLinearGradient(0, 0, 0, 130)
 		gradient.addColorStop(0, 'rgb(255, 255, 255)')
 		gradient.addColorStop(0.5, 'rgb(255, 255, 255)')
-		gradient.addColorStop(1, 'rgb(0, 0, 0)')
+		gradient.addColorStop(1, 'rgb(80, 80, 80)')
 
 		// Default style with a gradient
 		const wavesurfer = WaveSurfer.create({
 			container: waveform_ref.current,
 			waveColor: gradient,
 			height,
-			progressColor: 'rgba(0, 0, 75, 0.2)',
+			progressColor: 'rgba(0, 0, 115, 0.2)',
 			url: src,
 		});
 
@@ -83,15 +83,25 @@ export function AudioPlayer({src, permalink, title, thumbnail, height=40}) {
 					>
 						<i className={`ch-icon ${!state.is_playing ? 'ch-icon-play' : 'ch-icon-pause'} font-size-14`.classNames()}></i>
 					</div>
-					<div className={'flex-1 color-white font-weight-500 font-size-18'.classNames()}>
-						{title}
+					<div className={'flex-1 d-flex align-items-center justify-content-space-between column-gap-15 row-gap-10'.classNames()}>
+						<div>
+							<span className={'color-white font-weight-500 font-size-18 line-clamp'.classNames()}>
+								{title}
+							</span>
+						</div>
+						<div>
+							{children}
+						</div>
 					</div>
 				</div>
 				<div>
 					<div 
 						ref={waveform_ref} 
 						style={{cursor: 'text'}} 
-						onClick={e=>{e.preventDefault(); e.stopPropagation();}}></div>
+						onClick={e=>{
+							e.preventDefault(); 
+							e.stopPropagation();
+						}}></div>
 				</div>
 				<div>
 		
