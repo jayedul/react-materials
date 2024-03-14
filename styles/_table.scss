@@ -188,3 +188,19 @@ $stroke-light-30: #cdcfd5;
 		}
 	}
 }
+
+
+.table-basic {
+
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid var(--crewmat-color-tertiary) !important;
+	  
+	&>tbody>tr, &>thead>tr {
+		&>th, &>td {
+      		border: 1px solid var(--crewmat-color-tertiary) !important;
+			padding: 5px 9px !important;
+			text-align: left;
+		}
+	}
+}
