@@ -234,7 +234,7 @@ export function filterObject(ob, cb) {
 	return new_object;
 }
 
-function hasTextInHTML(htmlString) {
+export function hasTextInHTML(htmlString) {
 	// Create a DOMParser instance
 	const parser = new DOMParser();
 

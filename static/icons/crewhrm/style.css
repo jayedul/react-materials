@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'crewhrm';
   src:
-    url('fonts/crewhrm.ttf?yfx5ec') format('truetype'),
-    url('fonts/crewhrm.woff?yfx5ec') format('woff'),
-    url('fonts/crewhrm.svg?yfx5ec#crewhrm') format('svg');
+    url('fonts/crewhrm.ttf?a1cgml') format('truetype'),
+    url('fonts/crewhrm.woff?a1cgml') format('woff'),
+    url('fonts/crewhrm.svg?a1cgml#crewhrm') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -34,6 +34,51 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ch-icon-book-alt2:before {
+  content: "\e951";
+}
+.ch-icon-linkedin2:before {
+  content: "\eaca";
+}
+.ch-icon-book-open:before {
+  content: "\e952";
+}
+.ch-icon-local_grocery_store:before {
+  content: "\e91b";
+}
+.ch-icon-add_shopping_cart:before {
+  content: "\e919";
+}
+.ch-icon-download:before {
+  content: "\e91a";
+}
+.ch-icon-thumb_down:before {
+  content: "\e930";
+}
+.ch-icon-thumb_up_alt:before {
+  content: "\e931";
+}
+.ch-icon-local_grocery_store1:before {
+  content: "\e920";
+}
+.ch-icon-add_shopping_cart1:before {
+  content: "\e933";
+}
+.ch-icon-download1:before {
+  content: "\e934";
+}
+.ch-icon-open-book:before {
+  content: "\e953";
+}
+.ch-icon-share1:before {
+  content: "\e93b";
+}
+.ch-icon-reload:before {
+  content: "\e912";
+}
+.ch-icon-reload1:before {
+  content: "\e93a";
+}
 .ch-icon-eye-slash:before {
   content: "\e948";
 }
@@ -294,42 +339,6 @@
 }
 .ch-icon-network1:before {
   content: "\e935";
-}
-.ch-icon-local_grocery_store:before {
-  content: "\e91b";
-}
-.ch-icon-add_shopping_cart:before {
-  content: "\e919";
-}
-.ch-icon-download:before {
-  content: "\e91a";
-}
-.ch-icon-thumb_down:before {
-  content: "\e930";
-}
-.ch-icon-thumb_up_alt:before {
-  content: "\e931";
-}
-.ch-icon-local_grocery_store1:before {
-  content: "\e920";
-}
-.ch-icon-add_shopping_cart1:before {
-  content: "\e933";
-}
-.ch-icon-download1:before {
-  content: "\e934";
-}
-.ch-icon-share1:before {
-  content: "\e93b";
-}
-.ch-icon-reload:before {
-  content: "\e912";
-}
-.ch-icon-reload1:before {
-  content: "\e93a";
-}
-.ch-icon-linkedin2:before {
-  content: "\eaca";
 }
 .ch-icon-behance:before {
   content: "\e94a";
