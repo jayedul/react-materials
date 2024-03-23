@@ -290,6 +290,7 @@ export function FileUpload(props) {
 		let _accept = Array.isArray(accept) ? accept : [accept];
 
 		_accept = _accept.map(a=>{
+			// Slash exists means mime type, otherwise extension
 			return (a.indexOf('/')>-1 || a.indexOf('.')===0) ? a : '.'+a;
 		}).join(',');
 

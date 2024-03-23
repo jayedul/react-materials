@@ -20,6 +20,8 @@ export function TextField(props) {
         value,
         inputDelay,
         maxLength = null,
+		min,
+		max,
         expandable = false,
 		disabled,
 		readOnly,
@@ -169,6 +171,8 @@ export function TextField(props) {
     }, [text]);
 
     const attr = {
+		min,
+		max,
         type,
         pattern,
 		disabled,

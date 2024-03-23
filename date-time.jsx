@@ -5,13 +5,21 @@ import { patterns } from './data.jsx';
 import { ContextToast } from './toast/toast.jsx';
 
 export function DateField(props) {
-	let { onChange, value, required, showErrorsAlways, style } = props;
+	let { 
+		onChange, 
+		value, 
+		required, 
+		showErrorsAlways, 
+		style,
+		min,
+		max
+	} = props;
 
 	return (
 		<TextField
 			type="date"
 			regex={required ? patterns.date : null }
-			{...{style, showErrorsAlways, onChange, value: value || '' }}
+			{...{style, min, max, showErrorsAlways, onChange, value: value || '' }}
 		/>
 	);
 }

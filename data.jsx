@@ -164,6 +164,34 @@ export const relationships = {
 	other: __('Other')
 }
 
+export const leave_types = {
+    sick: __('Sick Leave'),
+    vacation: __('Vacation Leave'),
+    personal: __('Personal Leave'),
+    maternity: __('Maternity Leave'),
+    paternity: __('Paternity Leave'),
+    bereavement: __('Bereavement Leave'),
+    unpaid: __('Unpaid Leave'),
+    holiday: __('Holiday Leave'),
+    comp: __('Compensatory Leave'),
+    mental_health: __('Mental Health Leave'),
+    training: __('Training Leave'),
+    family_emergency: __('Family Emergency Leave'),
+    compassionate: __('Compassionate Leave'),
+    administrative: __('Administrative Leave'),
+    annual: __('Annual Leave'),
+    casual: __('Casual Leave'),
+    educational: __('Educational Leave'),
+    relocation: __('Relocation Leave')
+};
+
+export const leave_request_statuses = {
+	pending: __('Pending'),
+	cancelled: __('Cancelled'),
+	approved: __('Approved'),
+	rejected: __('Rejected')
+}
+
 // Prepare country data
 const _countries_array = [];
 const _countries_object = {};

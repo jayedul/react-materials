@@ -447,6 +447,12 @@ export function areDatesEqual(date1, date2) {
 	);
 }
 
+export function isDateGreaterThan(date1, date2) {
+	date1 = getLocalDate(date1);
+	date2 = getLocalDate(date2);
+	return date1.getTime() > date2.getTime();
+}
+
 /**
  * Get date object from unix seconds, date string
  * @param {Date|string|number} date 
