@@ -9,14 +9,13 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 		return null;
 	}
 
-	const [sessionState, setSessionState] = useState(getRandomString());
 	const reff = useRef();
 	const is_internal = Comp.length!==2; // 2 means it is from external script.
 
 	useEffect(()=>{
 		// If not internal componenet, call the function, so it can render their contents. 
 		if ( ! is_internal && reff && reff.current) {
-			Comp(reff.current, {session: sessionState, payload});
+			Comp(reff.current, {session: getRandomString(), payload});
 		}
 	}, [Comp, reff.current, payload]);
 

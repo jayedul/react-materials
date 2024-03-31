@@ -112,7 +112,6 @@ export const employment_statuses = {
 	active: __('Active'),
 	inactive: __('Inactive'),
 	resigned: __('Resigned'),
-	on_leave: __('On Leave'),
 	laid_off: __('Laid Off'),
 	terminated: __('Terminated')
 }
