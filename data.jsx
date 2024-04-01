@@ -1,5 +1,27 @@
 import { __ } from "./helpers.jsx";
 
+import LinkedInIcon from './static/images/social-img/crew-linkedin-icon.svg';
+import FacebookIcon from './static/images/social-img/crew-facebook-icon.svg';
+import TwitterIcon from './static/images/social-img/crew-twitter-icon.svg';
+import GithubIcon from './static/images/social-img/crew-github-icon.svg';
+import YoutubeIcon from './static/images/social-img/crew-youtube-icon-icon.svg';
+import WordpresskIcon from './static/images/social-img/crew-wordpress-icon.svg';
+import MediumIcon from './static/images/social-img/crew-medium-icon.svg';
+import DribbleIcon from './static/images/social-img/crew-dribble-icon.svg';
+import BehanceIcon from './static/images/social-img/crew-behance-icon.svg';
+
+export const social_icons = {
+	linkedin: LinkedInIcon,
+	twitter: TwitterIcon,
+	facebook: FacebookIcon,
+	github: GithubIcon,
+	medium: MediumIcon,
+	dribble: DribbleIcon,
+	behance: BehanceIcon,
+	wordpress: WordpresskIcon,
+	youtube: YoutubeIcon
+}
+
 export const week_days = {
 	monday: __('Monday'),
 	tuesday: __('Tuesday'),
