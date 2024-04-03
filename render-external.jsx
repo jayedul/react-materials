@@ -20,16 +20,27 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 	}, [Comp, reff.current, payload]);
 
 	// If internal component, then simply embed as usual. External component can only be called as function through useEffect hook.
-	return is_internal ? <ErrorBoundary><Comp className={className} {...payload}/></ErrorBoundary> : <div ref={reff} className={className}></div>
+	return is_internal ? 
+			<ErrorBoundary>
+				<Comp className={className} {...payload}/>
+			</ErrorBoundary> 
+			: 
+			<div ref={reff} className={className}></div>
 }
 
 const render_states={};
 export function mountExternal( id, el, session, component ) {
 
-	if ( render_states[id]?.session !== session ) {
-		render_states[id] = {
-			session,
-			root: createRoot(el)
+	if ( ! render_states[id] ) {
+		render_states[id] = {};
+	}
+	
+	if ( render_states[id].session !== session ) {
+		
+		render_states[id].session = session;
+				
+		if ( ! render_states[id].root ) {
+			render_states[id].root = createRoot(el);
 		}
 	}
 

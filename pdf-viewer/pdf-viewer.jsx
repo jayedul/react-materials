@@ -70,8 +70,7 @@ export function PDFViewer({ src, defaultScale }) {
 
 			<Conditional show={state.error}>
 				<div className={'color-error'.classNames()}>
-					{__('Failed to open here.')}{' '}
-					<a href={src} target="_blank" rel="noreferrer">
+					{__('Failed to open PDF.')} <a href={src} target="_blank" rel="noreferrer">
 						{__('Download Instead.')}
 					</a>
 				</div>
