@@ -7,24 +7,16 @@ import { AddBenefitModal } from './AddBenefitModal.jsx';
 import AddEmployeeCss from './builder.module.scss';
 
 const options = [
-	{
+	/* {
 		name: 'edit',
 		label: __('Edit'),
 		icon: 'ch-icon ch-icon-edit-2',
-		for: ['publish', 'draft', 'expired'],
-	},
-	{
-		name: 'share',
-		label: __('Share Job'),
-		icon: 'ch-icon ch-icon-share',
-		for: ['publish'],
-	},
+	}, */
 	{
 		name: 'delete',
 		label: __('Delete'),
 		icon: 'ch-icon ch-icon-trash',
 		for: 'all',
-		warning: __('Are you sure to delete permanently?'),
 	},
 ];
 
@@ -54,6 +46,35 @@ export function BenifitsBuilder(props) {
 		setBenefitModal(null);
 	}
 
+	const deleteBenefit=(id)=>{
+
+		if ( !window.confirm('Sure to remove?') ) {
+			return;
+		}
+
+		const {benefits={}} = props;
+		
+		for ( let k in benefits ) {
+
+			// Delete root level benefit
+			if ( k === id ) {
+				delete benefits[k];
+				break;
+			}
+
+			const {children={}} = benefits[k] || {};
+			
+			// Delete if the ID is in child level
+			for (let k2 in children) {
+				if (k2===id) {
+					delete benefits[k].children[k2];
+				}
+			}
+		}
+
+		onChange(benefits);
+	}
+
 	const actions = options.map((o) => {
 		return {
 			id: o.name,
@@ -69,7 +90,18 @@ export function BenifitsBuilder(props) {
 		};
 	});
 
-	const isChecked = true;
+	const takeAction=(action, id)=>{
+		switch(action) {
+
+			case 'delete': 
+				deleteBenefit(id);
+				break;
+
+			case 'edit' : 
+				
+				break;
+		}
+	}
 
 	return <>
 		{
@@ -95,12 +127,12 @@ export function BenifitsBuilder(props) {
 								className={'d-flex align-items-center justify-content-space-between flex-wrap-wrap row-gap-20 font-size-17 font-weight-500 color-text'.classNames()}
 							>
 								<div className={'d-flex column-gap-10'.classNames()}>
-									<input
+									{/* <input
 										type="checkbox"
 										checked={isChecked}
 										disabled={false}
 										onChange={() => setIsChecked(!isChecked)}
-									/>
+									/> */}
 									<div className={''.classNames()}>
 										{label}
 										<span
@@ -124,20 +156,23 @@ export function BenifitsBuilder(props) {
 										<div
 											className={'margin-left-5 font-size-13 font-weight-500 line-height-25 color-text'.classNames()}
 										>
-											{__('Add Sub-department')}
+											{__('Add Sub-benefit')}
 										</div>
 									</div>
 									
 									<div className={'margin-left-15'.classNames()}>
-										<Options options={actions}>
+										<Options 
+											options={actions}
+											onClick={action=>takeAction(action, id)}
+										>
 											<i
 												className={'ch-icon ch-icon-more color-text-light font-size-20 cursor-pointer d-inline-block margin-left-15'.classNames()}
 											></i>
 										</Options>
 									</div>
-									<i
+									{/* <i
 										className={'ch-icon ch-icon-arrow-down cursor-pointer font-size-24 color-text-light margin-left-10'.classNames()}
-									></i>
+									></i> */}
 								</div>
 							</div>
 						</div>
@@ -172,21 +207,26 @@ export function BenifitsBuilder(props) {
 													className={'d-flex align-items-center justify-content-space-between flex-wrap-wrap row-gap-20 font-size-17 font-weight-500 color-text'.classNames()}
 												>
 													<div className={'d-flex column-gap-10'.classNames()}>
-														<input
+														{/* <input
 															type="checkbox"
 															checked={isChecked}
 															disabled={false}
 															onChange={() => setIsChecked(!isChecked)}
-														/>
+														/> */}
 														<div className={''.classNames()}>
 															{label}
 														</div>
 													</div>
 													<div className={'d-flex align-items-center'.classNames()}>
 														<div className={'margin-left-15'.classNames()}>
-															<i
-																className={'ch-icon ch-icon-more cursor-pointer font-size-24 color-text-light'.classNames()}
-															></i>
+															<Options 
+																options={actions}
+																onClick={action=>takeAction(action, child_id)}
+															>
+																<i
+																	className={'ch-icon ch-icon-more color-text-light font-size-20 cursor-pointer d-inline-block margin-left-15'.classNames()}
+																></i>
+															</Options>
 														</div>
 													</div>
 												</div>
