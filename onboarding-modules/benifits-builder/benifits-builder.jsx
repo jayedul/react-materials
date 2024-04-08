@@ -133,7 +133,7 @@ export function BenifitsBuilder(props) {
 										disabled={false}
 										onChange={() => setIsChecked(!isChecked)}
 									/> */}
-									<div className={''.classNames()}>
+									<div>
 										{label}
 										<span
 											className={
@@ -213,7 +213,7 @@ export function BenifitsBuilder(props) {
 															disabled={false}
 															onChange={() => setIsChecked(!isChecked)}
 														/> */}
-														<div className={''.classNames()}>
+														<div>
 															{label}
 														</div>
 													</div>

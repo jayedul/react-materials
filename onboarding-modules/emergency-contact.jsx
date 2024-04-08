@@ -75,7 +75,7 @@ export function EmergencyContactField(props) {
 				</div>
 			</div>
 		</div>
-		<div className={''.classNames()}>
+		<div>
 			<AddressFields
 				unit_field={true}
 				values={values}

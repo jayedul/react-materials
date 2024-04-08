@@ -9,7 +9,7 @@ import TrashImg from 'crewhrm-materials/static/images/trash-01.svg';
 
 import schedule_style from './schedule.module.scss';
 
-const default_schedule = {
+export const default_schedule = {
 	monday: {
 		enable: true,
 		slots: {

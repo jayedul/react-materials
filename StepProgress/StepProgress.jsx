@@ -14,11 +14,11 @@ export default function StepProgress({ completedStep = 0, currentStep, totalStep
 				<div className={'d-flex justify-content-end'.classNames()}>
 					{currentStep}/{totalStep} {__('completed')}
 				</div>
-				<div className={'complete-progressbar'.classNames(IndexCss) + ''.classNames()}>
+				<div className={'complete-progressbar'.classNames(IndexCss)}>
 					<span className={'complete-progressbar-bar'.classNames(IndexCss) + 'margin-left-10'.classNames()}>
 						<span
 							style={{ width: `${(60 / 4) * (completedStep + 1)}px` }}
-							className={'upgradeable-progressbar-bar'.classNames(IndexCss) + ''.classNames()}
+							className={'upgradeable-progressbar-bar'.classNames(IndexCss)}
 						></span>
 					</span>
 				</div>
