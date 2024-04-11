@@ -9,28 +9,38 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 		return null;
 	}
 
-	const [sessionState, setSessionState] = useState(getRandomString());
 	const reff = useRef();
 	const is_internal = Comp.length!==2; // 2 means it is from external script.
 
 	useEffect(()=>{
 		// If not internal componenet, call the function, so it can render their contents. 
 		if ( ! is_internal && reff && reff.current) {
-			Comp(reff.current, {session: sessionState, payload});
+			Comp(reff.current, {session: getRandomString(), payload});
 		}
 	}, [Comp, reff.current, payload]);
 
 	// If internal component, then simply embed as usual. External component can only be called as function through useEffect hook.
-	return is_internal ? <ErrorBoundary><Comp className={className} {...payload}/></ErrorBoundary> : <div ref={reff} className={className}></div>
+	return is_internal ? 
+			<ErrorBoundary>
+				<Comp className={className} {...payload}/>
+			</ErrorBoundary> 
+			: 
+			<div ref={reff} className={className}></div>
 }
 
 const render_states={};
 export function mountExternal( id, el, session, component ) {
 
-	if ( render_states[id]?.session !== session ) {
-		render_states[id] = {
-			session,
-			root: createRoot(el)
+	if ( ! render_states[id] ) {
+		render_states[id] = {};
+	}
+	
+	if ( render_states[id].session !== session ) {
+		
+		render_states[id].session = session;
+				
+		if ( ! render_states[id].root ) {
+			render_states[id].root = createRoot(el);
 		}
 	}
 

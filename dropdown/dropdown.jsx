@@ -121,8 +121,8 @@ export function DropDown(props) {
                 {themeFilterText && <div className={'color-text-light font-size-15'.classNames()}>{themeFilterText}</div>}
                 <div className={'d-flex align-items-center column-gap-5 font-size-15'.classNames()}>
                     {themeFilterIcon && <i className={`ch-icon ${themeFilterIcon}`.classNames()}></i>}
-                    {themeFilterIconText && <span className={''.classNames()}>{themeFilterIconText}</span>}
-                    {themeFilterCount && <span className={''.classNames()}>({themeFilterCount})</span>}
+                    {themeFilterIconText && <span>{themeFilterIconText}</span>}
+                    {themeFilterCount && <span>({themeFilterCount})</span>}
                 </div>
             </div>
             : placeholder;

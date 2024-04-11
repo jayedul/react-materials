@@ -15,7 +15,7 @@ export default function ShowMore({ text = 'Show additional option', expand = fal
 			{!image && (
 				<div
 					className={
-						''.classNames() + `show-more-icon ${expand == true ? 'expand' : ''} `.classNames(IndexCss)
+						`show-more-icon ${expand == true ? 'expand' : ''} `.classNames(IndexCss)
 					}
 				>
 					<span></span>
