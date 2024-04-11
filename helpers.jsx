@@ -2,10 +2,7 @@ import currencySymbol from "currency-symbol-map/map";
 import { countries_object, patterns } from './data.jsx';
 
 // Determine the unique data pointer
-var script = document.currentScript;
-const url = script.src;
-const regex = /\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/;
-const matches = url.match(regex);
+const matches = document.currentScript.src.match(/\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/);
 const parsedString = `CrewMat_${matches[1]}_${matches[3]}`.toLowerCase();
 export const data_pointer = parsedString.replace(/[^a-zA-Z0-9_]/g, '');
 
