@@ -31,18 +31,12 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 const render_states={};
 export function mountExternal( id, el, session, component ) {
 
-	if ( ! render_states[id] ) {
-		render_states[id] = {};
-	}
-	
-	if ( render_states[id].session !== session ) {
-		
-		render_states[id].session = session;
-				
-		if ( ! render_states[id].root ) {
-			render_states[id].root = createRoot(el);
-		}
-	}
+	const current_session = el.getAttribute('data-solidie-mountpoint');
 
-	render_states[id].root.render(component);
+	el.setAttribute('data-solidie-mountpoint', id);
+
+	if (!current_session) {
+		render_states[id] = createRoot(el);
+	}
+	render_states[id].render(component);
 }
