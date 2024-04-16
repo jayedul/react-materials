@@ -68,7 +68,7 @@ export function request(action, payload = {}, callback, progressCallback) {
 	flattenObject(payload, formData);
 
 	window.jQuery.ajax({
-		url: window[data_pointer].ajaxurl,
+		url: window[data_pointer].permalinks.ajaxurl,
 		type: 'POST',
 		data: formData,
 		contentType: false,
