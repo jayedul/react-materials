@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import {ErrorBoundary} from './error-boundary.jsx';
-import {getRandomString} from './helpers.jsx';
+import {data_pointer, getRandomString} from './helpers.jsx';
 
 export function RenderExternal({className='', component: Comp, payload={}}) {
 	if ( ! Comp ) {
@@ -28,15 +28,16 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 			<div ref={reff} className={className}></div>
 }
 
-const render_states={};
 export function mountExternal( id, el, session, component ) {
 
+	const {mountpoints={}} = window[data_pointer];
 	const current_session = el.getAttribute('data-solidie-mountpoint');
 
 	el.setAttribute('data-solidie-mountpoint', id);
 
-	if (!current_session) {
-		render_states[id] = createRoot(el);
+	if ( ! current_session || ! mountpoints[id] ) {
+		window[data_pointer].mountpoints[id] = createRoot(el);
 	}
-	render_states[id].render(component);
+
+	window[data_pointer].mountpoints[id].render(component);
 }
