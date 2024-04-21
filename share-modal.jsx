@@ -60,8 +60,8 @@ export function ShareModal(props) {
 		);
 	};
 
-	return (
-		<Modal>
+	return <Modal>
+		<div style={{maxWidth: '550px'}}>
 			<div
 				data-cylector="share-close"
 				className={'d-flex align-items-center'.classNames()}
@@ -123,6 +123,6 @@ export function ShareModal(props) {
 					</span>
 				</span>
 			</div>
-		</Modal>
-	);
+		</div>
+	</Modal>
 }
