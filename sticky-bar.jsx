@@ -16,7 +16,7 @@ export function StickyBar({ title, children, canBack, midWidth }) {
                 <title>{window[data_pointer]?.white_label?.app_label || 'Crew HRM'} - {title}</title>
             </Helmet>
             <div
-                data-crew="sticky-bar"
+                data-cylector="sticky-bar"
 				style={{zIndex: 9989, height: '68px'}}
                 className={
                     'position-sticky top-32 width-p-100 padding-vertical-15 padding-horizontal-30 bg-color-white box-shadow-thin'.classNames()

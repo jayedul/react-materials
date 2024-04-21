@@ -63,7 +63,7 @@ export function ShareModal(props) {
 	return (
 		<Modal>
 			<div
-				data-crew="share-close"
+				data-cylector="share-close"
 				className={'d-flex align-items-center'.classNames()}
 			>
 				<div className={'flex-1'.classNames()}>
@@ -79,7 +79,7 @@ export function ShareModal(props) {
 				</div>
 			</div>
 			<div
-				data-crew="share-targets"
+				data-cylector="share-targets"
 				className={'d-flex align-items-center justify-content-space-between padding-vertical-40'.classNames()}
 			>
 				{targets.map((target, index) => {
@@ -100,7 +100,7 @@ export function ShareModal(props) {
 				})}
 			</div>
 			<div
-				data-crew="share-link"
+				data-cylector="share-link"
 				className={'d-flex align-items-center border-1-5 b-color-tertiary padding-20 border-radius-10'.classNames()}
 				style={{ backgroundColor: window[data_pointer]?.colors?.quaternary || '#F9F9F9' }}
 			>
