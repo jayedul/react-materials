@@ -61,13 +61,6 @@ export function LeaveBuilder({leaves={}, onChange}) {
 		onChange( filterObject( leaves, (value, key) => key!==id ) );
 	}
 
-	// Set default leaves if the saved one is empty
-	useEffect(()=>{
-		if ( isEmpty( leaves ) ) {
-			onChange( leave_fields );
-		}
-	}, []);
-
 	return <>
 		{
 			Object.keys(leaves).map(key=>{
