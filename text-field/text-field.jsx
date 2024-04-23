@@ -30,7 +30,9 @@ export function TextField(props) {
 		style: cssStyle,
 		autofocus,
 		resize='none',
-		showErrorsAlways=false
+		showErrorsAlways=false,
+		onBlur,
+		onFocus
     } = props;
 
     const input_ref = useRef();
@@ -191,10 +193,18 @@ export function TextField(props) {
 				setText(value);
 			}
 		},
-        onFocus: () => toggleFocusState(true),
+        onFocus: () => {
+			toggleFocusState(true);
+			if ( onFocus ) {
+				onFocus();
+			}
+		},
         onBlur: e => {
 			highlightError();
 			toggleFocusState(false);
+			if ( onBlur ) {
+				onBlur();
+			}
 		},
         className: 'text-field-flat font-size-15 font-weight-400 letter-spacing--15 flex-1'.classNames()
     };
