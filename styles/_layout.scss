@@ -47,6 +47,7 @@
 @include looper('white-space',     true, '', 'normal', 'pre', 'nowrap');
 @include looper('text-transform',  true, '', 'uppercase', 'lowercase');
 @include looper('text-overflow',   true, '', 'ellipsis', 'clip');
+@include looper('text-decoration', true, '', 'overline', 'line-through', 'underline', 'none');
 @include looper('letter-spacing',  true, 'px', -38, -24, -18, -17, -16, -15, -14, -13, -12, -3, 2, 3, 4, 5);
 
 @include looper('border',          true, 'px', 1, 1.5, 5);

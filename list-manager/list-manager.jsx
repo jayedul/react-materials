@@ -11,12 +11,14 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 		id_key, 
 		label_key, 
 		onEdit,
-		nested=false
+		nested=false,
+		permalink_key
 	} = payload;
 	
-	const {children=[]}       = list_item;
-	const item_id             = list_item[id_key];
-	const item_label          = list_item[label_key];
+	const {children=[]} = list_item;
+	const item_id       = list_item[id_key];
+	const item_label    = list_item[label_key];
+	const permalink     = list_item[permalink_key];
 
     return <>
 		<div
@@ -50,6 +52,27 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				</div>
 			</div>
 
+			<i
+				className={
+					'ch-icon ch-icon-trash font-size-24 color-error cursor-pointer'.classNames() +
+					'action-icon'.classNames(style)
+				}
+				title={__('Delete lesson')}
+				onClick={() =>deleteItem(item_id)}
+			></i>
+
+			{
+				!onEdit ? null :
+				<i
+					className={
+						'ch-icon ch-icon-edit-2 font-size-24 cursor-pointer'.classNames() +
+						'action-icon'.classNames(style)
+					}
+					title={__('Edit lesson')}
+					onClick={() =>onEdit(list_item)}
+				></i>
+			}
+
 			{
 				!nested ? null :
 				<i
@@ -61,25 +84,19 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 					title={__('Add sub lesson')}
 				></i>
 			}
-			
+
 			{
-				!onEdit ? null :
-				<i
+				!permalink ? null :
+				<a 
+					href={permalink}
+					target='_blank'
+					title={__('Visit lesson')}
 					className={
-						'ch-icon ch-icon-edit-2 font-size-24 cursor-pointer'.classNames() +
+						'ch-icon ch-icon-arrow-up-right font-size-24 cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
-					onClick={() =>onEdit(list_item)}
-				></i>
+				></a>
 			}
-
-			<i
-				className={
-					'ch-icon ch-icon-trash font-size-24 color-error cursor-pointer'.classNames() +
-					'action-icon'.classNames(style)
-				}
-				onClick={() =>deleteItem(item_id)}
-			></i>
 		</div>
 
 		{
