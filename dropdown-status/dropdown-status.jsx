@@ -3,16 +3,22 @@ import React from "react";
 import style from './style.module.scss';
 
 const color_map = {
-	pending: 'warning',
 	publish: 'success',
-	approved: 'success',
 	published: 'success',
+	sent: 'success',
+	approved: 'success',
+
+	pending: 'warning',
+	processing: 'warning',
+	
 	rejected: 'error',
 	revoked: 'error',
 	banned: 'error',
 }
 
-export function DropDownStatus({options, value, onChange, disabled}) {
+export function DropDownStatus({options=[], value, onChange, disabled, placeholder}) {
+
+	const _options = placeholder ? [{id: '', label: placeholder}, ...options] : options;
 
 	return <div className={`select-wrapper ${color_map[value] || 'default'} ${disabled ? 'disabled' : ''}`.classNames(style)}>
 		<select 
@@ -21,7 +27,7 @@ export function DropDownStatus({options, value, onChange, disabled}) {
 			disabled={disabled}
 		>
 			{
-				options.map(option=>{
+				_options.map(option=>{
 					return <option key={option.id} value={option.id}>
 						{option.label}
 					</option>
