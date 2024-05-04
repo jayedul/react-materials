@@ -5,8 +5,10 @@ import style from './style.module.scss';
 const color_map = {
 	pending: 'warning',
 	publish: 'success',
+	approved: 'success',
 	published: 'success',
 	rejected: 'error',
+	revoked: 'error',
 	banned: 'error',
 }
 
