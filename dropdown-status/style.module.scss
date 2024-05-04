@@ -1,0 +1,88 @@
+$opacity_bg: 0.122;
+$opacity_br: 0.264;
+$opacity_cl: 0.975;
+$color_scale: 90;
+
+.select-wrapper {
+	width: fit-content;
+	min-width: 117px;
+	max-width: max-content;
+	position: relative;
+
+	border-radius: 42px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&.disabled {
+		cursor: not-allowed;
+		opacity: .6;
+	}
+	
+	&.default {
+		background: rgba($color_scale, $color_scale, $color_scale, $opacity_bg);
+		border: 1px solid rgba($color_scale, $color_scale, $color_scale, $opacity_br);
+		
+		&, select {
+			color: rgba($color_scale, $color_scale, $color_scale, $opacity_cl);
+		}
+	}
+
+	&.error {
+		background: rgba($color_scale, 0, 0, $opacity_bg);
+		border: 1px solid rgba($color_scale, 0, 0, $opacity_br);
+		
+		&, select {
+			color: rgba($color_scale, 0, 0, $opacity_cl);
+		}
+	}
+
+	&.warning {
+		background: rgba($color_scale, $color_scale, 0, $opacity_bg);
+		border: 1px solid rgba($color_scale, $color_scale, 0, $opacity_br);
+		
+		&, select {
+			color: rgba($color_scale, $color_scale, 0, $opacity_cl);
+		}
+	}
+	
+	&.success {
+		background: rgba(0, $color_scale, 0, $opacity_bg);
+		border: 1px solid rgba(0, $color_scale, 0, $opacity_br);
+		
+		&, select {
+			color: rgba(0, $color_scale, 0, $opacity_cl);
+		}
+	}
+	
+	select {
+		display: block;
+		width: 100%;
+		margin: 0;
+		padding: 0 29px 0 14px;
+		border: none;
+		outline: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		min-height: 24px !important;
+		position: relative;
+		z-index: 1;
+		background: transparent !important;
+		cursor: pointer;
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	& > i {
+		position: absolute;
+		font-size: 14px;
+	}
+
+	// down arrow icon
+	.icon2 {
+		right: 9px;
+	}
+}
