@@ -142,6 +142,13 @@ export function FileUpload(props) {
         const ids = [];
         files = files.filter((f) => {
 
+			// Check if mime type or extension is expected
+			const {type, name} = f;
+			const extension = name.toLowerCase().split('.').at(-1);
+			if ( ! isEmpty( accept ) && accept.indexOf(type.toLowerCase()) === -1 && accept.indexOf(extension) === -1 && accept.indexOf(`.${extension}`) === -1 ) {
+				return false;
+			}
+
 			// Check if max size crossed
 			const file_size_mb = Math.floor( f.size / (1024 * 1024 ) );
 			if ( maxsize && file_size_mb >= maxsize ) {
@@ -291,7 +298,7 @@ export function FileUpload(props) {
 
 		_accept = _accept.map(a=>{
 			// Slash exists means mime type, otherwise extension
-			return (a.indexOf('/')>-1 || a.indexOf('.')===0) ? a : '.'+a;
+			return (a.indexOf('/')>-1 || a.indexOf('.')===0) ? a : `.${a}`;
 		}).join(',');
 
         return (
