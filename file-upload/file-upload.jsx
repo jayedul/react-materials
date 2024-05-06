@@ -144,8 +144,16 @@ export function FileUpload(props) {
 
 			// Check if mime type or extension is expected
 			const {type, name} = f;
+			const mime_type = type.toLowerCase();
 			const extension = name.toLowerCase().split('.').at(-1);
-			if ( ! isEmpty( accept ) && accept.indexOf(type.toLowerCase()) === -1 && accept.indexOf(extension) === -1 && accept.indexOf(`.${extension}`) === -1 ) {
+
+			if ( 
+				! isEmpty( accept ) && 
+				accept.indexOf(`${mime_type.split('/')[0]}/*`) === -1 && 
+				accept.indexOf(mime_type) === -1 && 
+				accept.indexOf(extension) === -1 && 
+				accept.indexOf(`.${extension}`) === -1 
+			) {
 				return false;
 			}
 
