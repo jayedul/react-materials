@@ -645,15 +645,12 @@ export const getDashboardPath=(rel_path)=>{
 				frontend_dashboard_path
 			}
 		}, 
-		is_admin
+		is_admin,
+		home_path
 	} = window[data_pointer];
 
-	return getPath( `${is_admin ? '' : frontend_dashboard_path}${rel_path.indexOf('/')===0 ? '' : '/'}${rel_path}` );
-}
+	const base_path = is_admin ? '/' : '/' + home_path + '/';
+	const path      = base_path + `${is_admin ? '' : frontend_dashboard_path}/${rel_path}/`
 
-export function getPath(path) {
-	let _path = (window[data_pointer].is_admin ? '/' : window[data_pointer].home_path) + path;
-	return _path.replace(/\/+/g, '/');
+	return path.replace(/\/+/g, '/');;
 }
-
-export const is_production = process.env.NODE_ENV === 'production';

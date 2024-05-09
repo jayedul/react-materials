@@ -1,6 +1,7 @@
 import style_library from './styles/index.module.scss';
 import icons from './static/icons/crewhrm/style.module.scss';
-import { is_production } from './helpers.jsx';
+
+const is_production = process.env.NODE_ENV === 'production'
 
 String.prototype.classNames = function (style) {
 	let dump = '';
