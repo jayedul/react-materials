@@ -46,7 +46,6 @@ export function NumberField(props) {
 
 	return (
 		<div
-			data-cylector="number-field"
 			className={
 				`d-flex align-items-center bg-color-white ${disabled ? 'cursor-not-allowed' : ''} ${
 					state.focused ? 'active color-active-parent' : ''

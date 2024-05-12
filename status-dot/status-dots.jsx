@@ -13,7 +13,6 @@ export function StatusDot(props) {
 
     return (
         <div
-            data-cylector="status-dot"
             className={'d-inline-block'.classNames() + 'square'.classNames(style) + className}
             style={css}
         ></div>

@@ -52,9 +52,8 @@ export function ExpandableContent(props) {
     }, [children]);
 
     return (
-        <div data-cylector="expandable-content" className={className}>
+        <div className={className}>
             <div
-                data-cylector="content"
                 ref={wrapper_ref}
                 className={`exp-wrapper ${state.expanded ? 'expanded' : ''}`.classNames(style)}
             >
@@ -63,16 +62,12 @@ export function ExpandableContent(props) {
                 </div>
 
 				<Conditional show={state.show_control && !state.expanded}>
-					<div
-                        data-cylector="overlay"
-                        className={'overlay'.classNames(style)}
-                    ></div>
+					<div className={'overlay'.classNames(style)}></div>
 				</Conditional>
             </div>
 
 			<Conditional show={state.show_control}>
 				<span
-                    data-cylector="controller"
                     className={'d-inline-block font-size-15 font-weight-500 line-height-22 letter-spacing--15 color-text cursor-pointer margin-top-10 hover-underline'.classNames()}
                     onClick={toggleView}
                 >

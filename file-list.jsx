@@ -11,7 +11,6 @@ export function ListFile({ files, style = {}, onRemove }) {
 
 		return (
 			<div
-				data-cylector="file-list-item"
 				key={file_id}
 				className={'d-flex align-items-center column-gap-14 padding-vertical-10 padding-horizontal-20 margin-top-10 border-radius-10 border-1 b-color-tertiary'.classNames()}
 				style={style}

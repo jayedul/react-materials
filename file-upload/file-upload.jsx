@@ -334,7 +334,7 @@ export function FileUpload(props) {
 
     return (
         <>
-            <div data-cylector="file-upload" className={'upload'.classNames(style)}>
+            <div className={'upload'.classNames(style)}>
                 <div
                     onDragOver={(e) => setActionState(e, true)}
                     onDragLeave={(e) => setActionState(e, false)}

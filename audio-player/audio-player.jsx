@@ -57,6 +57,7 @@ export function AudioPlayer({src, permalink, title, thumbnail, height=40, childr
 	return <Link 
 		to={permalink}
 		className={'audio'.classNames(style) + `border-radius-5`.classNames()}
+		data-cylector="content-single"
 		style={{
 			backgroundImage: 'url('+thumbnail+')',
 			cursor: permalink ? 'pointer' : 'default'

@@ -8,7 +8,7 @@ import { RenderExternal } from './render-external.jsx';
 
 export function MountPoint({ children }) {
 	return (
-		<div data-cylector="root" className={'root'.classNames()}>
+		<div className={'root'.classNames()}>
 			<ToastWrapper>
 				<WarningWrapper>{children}</WarningWrapper>
 			</ToastWrapper>

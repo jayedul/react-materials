@@ -8,7 +8,6 @@ export function ToggleSwitch(props) {
     const id = getRandomString();
     return (
         <div
-            data-cylector="toggle-switch"
             className={
                 `d-inline-block ${disabled ? 'disabled' : ''}`.classNames() +
                 `switch ${disabled ? 'disabled' : ''}`.classNames(style) +

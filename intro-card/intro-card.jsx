@@ -35,7 +35,6 @@ export function IntroCard(props) {
     return (
         <div
 			ref={ref_wrapper}
-            data-cylector={'intro-card-' + orientation}
             className={
                 `intro orientation-${orientation}`.classNames(style) +
                 'bg-color-white border-radius-5'.classNames() +

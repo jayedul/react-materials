@@ -42,7 +42,6 @@ export function Tabs(props) {
 
     return (
         <div
-            data-cylector={'tabs-' + theme}
             className={`tabs theme-${theme}`.classNames(style) + className}
             style={cssStyle}
 			ref={ref}
