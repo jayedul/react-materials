@@ -5,7 +5,7 @@ export function InitState({ fetching, error_message }) {
 	if (fetching) {
 		return (
 			<div className={'padding-vertical-10'.classNames()}>
-				<LoadingIcon center={true} />
+				<LoadingIcon center={true} show={fetching}/>
 			</div>
 		);
 	}
