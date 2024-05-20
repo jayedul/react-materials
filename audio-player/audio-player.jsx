@@ -1,12 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import WaveSurfer from './wavesurfer.js';
-
 import style from './player.module.scss';
 
-export function AudioPlayer({src, permalink, title, thumbnail, height=40, children}) {
+const ContextAudioPlayer = createContext();
 
+export function AudioPlayersWrapper({children}) {
+	
+	const [currentID, setCurrentID] = useState(null);
+
+	return <ContextAudioPlayer.Provider value={{setID: setCurrentID, currentID}}>
+		{children}
+	</ContextAudioPlayer.Provider>
+}
+
+export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, height=40, children}) {
+
+	const {setID, currentID} = useContext(ContextAudioPlayer);
 	const waveform_ref = useRef();
 	const [state, setState] = useState({
 		player: null,
@@ -27,8 +38,12 @@ export function AudioPlayer({src, permalink, title, thumbnail, height=40, childr
 			container: waveform_ref.current,
 			waveColor: gradient,
 			height,
-			progressColor: 'rgba(0, 0, 115, 0.2)',
+			progressColor: 'rgba(0, 34, 115, 0.5)',
 			url: src,
+		});
+				
+		wavesurfer.on('finish', function() {
+			wavesurfer.play();
 		});
 
 		setState({
@@ -37,9 +52,15 @@ export function AudioPlayer({src, permalink, title, thumbnail, height=40, childr
 		});
 	}
 
+	// Play pause audio on button click
 	const playPause=()=>{
+
 		if ( ! state.player ) {
 			return;
+		}
+
+		if ( !state.is_playing ) {
+			setID(audio_id);
 		}
 
 		state.player[state.is_playing ? 'pause' : 'play']();
@@ -50,9 +71,21 @@ export function AudioPlayer({src, permalink, title, thumbnail, height=40, childr
 		});
 	}
 
+	// Initiate player on component load
 	useEffect(()=>{
 		buildPlayer();
 	}, []);
+
+	// Stop audio if another one is played/resumed
+	useEffect(()=>{
+		if ( currentID && currentID !== audio_id && state.player ) {
+			state.player.pause();
+			setState({
+				...state,
+				is_playing: false
+			});
+		}
+	}, [currentID]);
 
 	return <Link 
 		to={permalink}
