@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Popup } from '../popup/index.jsx';
-import style from './dropdown.module.scss';
 import { __, isEmpty } from '../helpers.jsx';
 import { Conditional } from '../conditional.jsx';
 import { input_class as className } from '../classes.jsx';
+
+import style from './dropdown.module.scss';
 
 const content_style = {
     padding: '0px',
@@ -51,7 +52,6 @@ export function DropDown(props) {
 		showErrorsAlways=false,
 		clearable=true,
         variant,
-        size,
         iconSizeClass = 'font-size-20'.classNames(),
         theme,
         themeFilterText,
@@ -104,17 +104,6 @@ export function DropDown(props) {
         return variantName;
     }
 
-    // Dropdown Size: '' | sm | md
-    const sizeClasses = (size) => {
-        if(!size) return 'padding-15 border-radius-10 height-48'; // default size class
-
-        const sizeClasses = (size === 'sm') ? 
-            'padding-vertical-5 padding-horizontal-12 border-radius-5 height-32': (size === 'md') ? 
-            'padding-vertical-5 padding-horizontal-15 border-radius-10 height-40': '';
-
-        return sizeClasses;
-    }
-
     const triggerPoint = (search = false) => {
         const _placeholder = theme == 'filter' ?
             <div className={`d-flex align-items-center column-gap-${themeFilterGap}`.classNames()}>
@@ -131,8 +120,8 @@ export function DropDown(props) {
                 tabIndex={tabindex}
                 className={
                     `select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
-                    'cursor-pointer d-flex align-items-center'.classNames() +
-                    `${sizeClasses(size)} border-1-5 ${!errorState ? 'b-color-tertiary b-color-active-primary' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
+                    'cursor-pointer d-flex align-items-center padding-15 border-radius-10 height-48 column-gap-8'.classNames() +
+                    `border-1-5 ${!errorState ? 'b-color-tertiary b-color-active-primary' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
                 }
             >
                 <div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
