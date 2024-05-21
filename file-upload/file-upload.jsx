@@ -334,42 +334,41 @@ export function FileUpload(props) {
         );
     }
 
-    return (
-        <>
-            <div className={'upload'.classNames(style)}>
-                <div
-                    onDragOver={(e) => setActionState(e, true)}
-                    onDragLeave={(e) => setActionState(e, false)}
-                    onClick={openPicker}
-                    className={`drop-container ${hoverState ? 'highlight' : ''} ${errorState ? 'error' : ''}`.classNames(
-                        style
-                    )}
-                    onDrop={(e) => {
-                        handleFiles(e?.dataTransfer?.files || []);
-                        setActionState(e, false);
-                    }}
-                >
-                    <div className={'margin-bottom-5'.classNames()}>
-                        <i
-                            className={'ch-icon ch-icon-folder-add font-size-24 color-text'.classNames()}
-                        ></i>
-                    </div>
+    return  <div className={'upload'.classNames(style)}>
+		<div
+			onDragOver={(e) => setActionState(e, true)}
+			onDragLeave={(e) => setActionState(e, false)}
+			onClick={openPicker}
+			className={`drop-container ${hoverState ? 'highlight' : ''} ${errorState ? 'error' : ''}`.classNames(
+				style
+			)}
+			onDrop={(e) => {
+				handleFiles(e?.dataTransfer?.files || []);
+				setActionState(e, false);
+			}}
+		>
+			<div className={'text-align-center'.classNames()}>
+				<div className={'margin-bottom-5'.classNames()}>
+					<i
+						className={'ch-icon ch-icon-folder-add font-size-24 color-text'.classNames()}
+					></i>
+				</div>
 
-                    <span
-                        className={'d-block font-size-15 font-weight-600 line-height-20 color-text'.classNames()}
-                    >
-                        {textPrimary}
-                    </span>
-                    <span
-                        className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
-                    >
-                        {textSecondary}
-                    </span>
-                </div>
-                <Input />
-            </div>
+				<span
+					className={'d-block font-size-15 font-weight-600 line-height-20 color-text'.classNames()}
+				>
+					{textPrimary}
+				</span>
+				<span
+					className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
+				>
+					{textSecondary}
+				</span>
+			</div>
 
-            <ListFile files={stateFiles} onRemove={removable ? removeFile : null} />
-        </>
-    );
+			<ListFile files={stateFiles} onRemove={removable ? removeFile : null} />
+		</div>
+	
+		<Input />
+	</div>
 }

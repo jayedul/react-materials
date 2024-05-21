@@ -409,6 +409,7 @@ export function formatDate( date, pattern = (window[data_pointer]?.date_format |
 }
 
 export const formatDateTime=(d)=>formatDate(d, `${window[data_pointer]?.date_format || 'Y-m-d'} ${window[data_pointer]?.time_format || 'g:i a'}`)
+export const formatTime=(d)=>formatDate(d, `${window[data_pointer]?.time_format || 'g:i a'}`)
 
 /**
  * Returns unix timestamp seconds

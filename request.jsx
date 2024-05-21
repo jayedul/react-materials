@@ -94,11 +94,8 @@ export function request(action, payload = {}, callback, progressCallback) {
 			xhr.upload.addEventListener(
 				'progress',
 				function (evt) {
-					if (evt.lengthComputable) {
-						var percentComplete = (evt.loaded / evt.total) * 100;
-						if (typeof progressCallback == 'function') {
-							progressCallback(percentComplete);
-						}
+					if (typeof progressCallback == 'function' && evt.lengthComputable) {
+						progressCallback(Math.round((evt.loaded / evt.total) * 100));
 					}
 				},
 				false

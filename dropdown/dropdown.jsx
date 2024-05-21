@@ -301,12 +301,13 @@ export function Options(props) {
                                             close();
                                         }}
                                     >
-                                        <Conditional show={icon}>
-                                            <i
+										{
+											!icon ? null :
+											<i
                                                 className={icon + 'margin-right-10'.classNames()}
                                             ></i>
-                                        </Conditional>
-
+										}
+										
                                         {label}
                                     </div>
                                 );
