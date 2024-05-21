@@ -32,7 +32,9 @@ export function TextField(props) {
 		resize='none',
 		showErrorsAlways=false,
 		onBlur,
-		onFocus
+		onFocus,
+		onKeyDown,
+		onKeyUp,
     } = props;
 
     const input_ref = useRef();
@@ -206,7 +208,9 @@ export function TextField(props) {
 				onBlur();
 			}
 		},
-        className: 'text-field-flat font-size-15 font-weight-400 letter-spacing--15 flex-1'.classNames()
+		onKeyDown,
+		onKeyUp,
+		className: 'text-field-flat font-size-15 font-weight-400 letter-spacing--15 flex-1'.classNames()
     };
 
     const separator = state.expanded ? (

@@ -15,29 +15,8 @@
 
 	tbody {
 		position: relative;
-		.table-shadow {
-			width: 16px;
-			height: 100%;
-			display: block;
-			background: linear-gradient(90deg, #d9d9d9 0%, rgba(217, 217, 217, 0) 100%);
-			position: absolute;
-			top: 0px;
-			left: 325px;
-			z-index: 2;
-			opacity: 0.3;
-		}
-		.table-stikcy-glasseffect {
-			display: block;
-			position: absolute;
-			width: 15px;
-			height: 100%;
-			background: linear-gradient(270deg, #fff 100%, rgba(255, 255, 255, 1) 100%);
-			top: 0;
-			right: -8px;
-			z-index: 2;
-			opacity: 0.9;
-		}
 	}
+
 	td,
 	th {
 		border-bottom: 1px solid #e3e5e8;
@@ -107,18 +86,7 @@
 			align-items: center;
 		}
 	}
-	.table-badge {
-		color: #236bfe;
-		text-align: center;
-		font-size: 12px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: normal;
-		padding: 2px 8px;
-		border-radius: 16px;
-		background: rgba(35, 107, 254, 0.1);
-		min-width: 60px;
-	}
+	
 	thead tr th:nth-child(1),
 	tbody tr td:nth-child(1) {
 		position: sticky;
