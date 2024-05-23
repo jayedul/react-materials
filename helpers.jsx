@@ -655,3 +655,26 @@ export const getDashboardPath=(rel_path)=>{
 
 	return path.replace(/\/+/g, '/');;
 }
+
+export const getLocalValue=(name, deflt)=>{
+
+	let values = window.localStorage.getItem('solidie_local_values');
+
+	if ( values ) {
+		try {
+			values = JSON.parse(values);
+		} catch(e) {}
+	}
+	
+	if ( values === null || values === undefined || typeof values !== 'object' || Array.isArray(values) ) {
+		values = {}
+	}
+
+	return name ? (values[name] ?? deflt) : values;
+}
+
+export const setLocalValue=(name, value)=>{
+	const locals = getLocalValue();
+	locals[name] = value;
+	window.localStorage.setItem('solidie_local_values', JSON.stringify(locals));
+}
