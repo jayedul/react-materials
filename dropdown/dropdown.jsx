@@ -12,7 +12,7 @@ const content_style = {
     border: 'none'
 };
 
-const list_class = 'padding-vertical-12 padding-horizontal-17 cursor-pointer font-size-15 font-weight-400'.classNames();
+const list_class = 'padding-vertical-10 padding-horizontal-15 cursor-pointer font-size-15 font-weight-400'.classNames();
 
 function getPopupStyle(classNames) {
     classNames = classNames
@@ -52,13 +52,7 @@ export function DropDown(props) {
 		showErrorsAlways=false,
 		clearable=true,
         variant,
-        iconSizeClass = 'font-size-20'.classNames(),
-        theme,
-        themeFilterText,
-        themeFilterIcon,
-        themeFilterIconText,
-        themeFilterCount,
-        themeFilterGap="20"
+        iconSizeClass = 'font-size-20'.classNames()
     } = props;
 
     const ref = useRef();
@@ -105,54 +99,44 @@ export function DropDown(props) {
     }
 
     const triggerPoint = (search = false) => {
-        const _placeholder = theme == 'filter' ?
-            <div className={`d-flex align-items-center column-gap-${themeFilterGap}`.classNames()}>
-                {themeFilterText && <div className={'color-text-light font-size-15'.classNames()}>{themeFilterText}</div>}
-                <div className={'d-flex align-items-center column-gap-5 font-size-15'.classNames()}>
-                    {themeFilterIcon && <i className={`ch-icon ${themeFilterIcon}`.classNames()}></i>}
-                    {themeFilterIconText && <span>{themeFilterIconText}</span>}
-                    {themeFilterCount && <span>({themeFilterCount})</span>}
-                </div>
-            </div>
-            : placeholder;
-        return (
-            <div
-                tabIndex={tabindex}
-                className={
-                    `select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
-                    'cursor-pointer d-flex align-items-center padding-15 border-radius-10 height-48 column-gap-8'.classNames() +
-                    `border-1-5 ${!errorState ? 'b-color-tertiary b-color-active-primary' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
-                }
-            >
-                <div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
-                    <Conditional show={!search}>
-                        {selected_value !== undefined
-                            ? options.find((o) => o.id === selected_value)?.label || _placeholder
-                            : _placeholder}
-                    </Conditional>
-                    <Conditional show={search}>
-                        <input
-                            className={'text-field-flat font-size-15 font-weight-400'.classNames()}
-                            placeholder={__('Search..')}
-                            onChange={(e) => setSearchState(e.currentTarget.value)}
-                        />
-                    </Conditional>
-                </div>
-                <i 
-					className={
-						`ch-icon 
-						${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} 
-						${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames() +
-						iconSizeClass
+        const _placeholder = placeholder;
+        return <div
+			tabIndex={tabindex}
+			className={
+				`select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
+				'cursor-pointer d-flex align-items-center border-radius-10 column-gap-8'.classNames() +
+				`border-1-5 ${!errorState ? 'b-color-tertiary b-color-active-primary' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
+			}
+			style={{padding: '0 15px', height: '40px'}}
+		>
+			<div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
+				<Conditional show={!search}>
+					{selected_value !== undefined
+						? options.find((o) => o.id === selected_value)?.label || _placeholder
+						: _placeholder}
+				</Conditional>
+				<Conditional show={search}>
+					<input
+						className={'text-field-flat font-size-15 font-weight-400'.classNames()}
+						placeholder={__('Search..')}
+						onChange={(e) => setSearchState(e.currentTarget.value)}
+					/>
+				</Conditional>
+			</div>
+			<i 
+				className={
+					`ch-icon 
+					${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} 
+					${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames() +
+					iconSizeClass
+				}
+				onClick={e=>{
+					if ( clearable && selected_value ) {
+						e.stopPropagation();
+						onChange('');
 					}
-					onClick={e=>{
-						if ( clearable && selected_value ) {
-							e.stopPropagation();
-							onChange('');
-						}
-					}}></i>
-            </div>
-        );
+				}}></i>
+		</div>
     };
 
     const closeDropdown = (callback) => {
@@ -189,7 +173,7 @@ export function DropDown(props) {
                         <div
                             className={
                                 'select-dropdown-popup'.classNames(style) +
-                                `box-shadow-thick border-radius-10 ${pop_border} b-color-tertiary bg-color-white white-space-nowrap`.classNames()
+                                `box-shadow-thick border-radius-10 ${pop_border} b-color-tertiary bg-color-white white-space-nowrap box-shadow-thin`.classNames()
                             }
                             style={popup_styles}
                         >

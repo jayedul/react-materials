@@ -4,7 +4,7 @@ import { input_class as className } from '../classes.jsx';
 import style from './number-field.module.scss'
 
 export function NumberField(props) {
-	const { onChange, value, max, min, disabled, placeholder } = props;
+	const { onChange, value, max, min, disabled, placeholder, width } = props;
 	const ref = useRef();
 	const [state, setState] = useState({
 		focused: false
@@ -51,6 +51,7 @@ export function NumberField(props) {
 					state.focused ? 'active color-active-parent' : ''
 				}`.classNames() + 'number-field'.classNames(style) + className
 			}
+			style={{width}}
 		>
 			<div className={'height-20'.classNames()}>
 				<i
