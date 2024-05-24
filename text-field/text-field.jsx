@@ -222,7 +222,7 @@ export function TextField(props) {
     ) : null;
 
 	let wrapper_class = !errorState.has_error ? input_class : input_class_error;
-	wrapper_class = type==='textarea' ? wrapper_class.replace('padding-vertical-0', 'padding-vertical-15') : wrapper_class;
+	wrapper_class = type==='textarea' ? wrapper_class.replace('padding-vertical-0', 'padding-vertical-10') : wrapper_class;
     
     return (
         <label
