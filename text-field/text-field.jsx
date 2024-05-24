@@ -254,7 +254,7 @@ export function TextField(props) {
                 </Conditional>
 
                 <Conditional show={type === 'textarea'}>
-                    <textarea {...attr} style={{resize}}></textarea>
+                    <textarea {...attr} style={{resize, paddingTop: '15px', paddingBottom: '15px'}}></textarea>
                 </Conditional>
             </Conditional>
         </label>

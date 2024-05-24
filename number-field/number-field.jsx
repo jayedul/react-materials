@@ -11,6 +11,11 @@ export function NumberField(props) {
 	});
 
 	const changeValue = (shift, val) => {
+
+		if ( disabled ) {
+			return;
+		}
+
 		// Focu the field to apply styles
 		ref.current.focus();
 
