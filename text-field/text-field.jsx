@@ -229,6 +229,7 @@ export function TextField(props) {
 			style={{
 				height: type==='textarea' ? '100px' : undefined,
 				margin: 0,
+				...(type==='textarea' ? {paddingTop: '15px !important', paddingBottom: '15px !important'} : {}),
 				...cssStyle
 			}}
         >
