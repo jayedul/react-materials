@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Conditional } from '../conditional.jsx';
-import { input_class as className, input_class_error } from '../classes.jsx';
+
+import { 
+	input_class_raw as input_class, 
+	input_class_error_raw as input_class_error 
+} from '../classes.jsx';
 
 import style from './text-field.module.scss';
 import { isEmpty } from '../helpers.jsx';
@@ -216,6 +220,9 @@ export function TextField(props) {
     const separator = state.expanded ? (
         <span className={'d-inline-block width-6'.classNames()}></span>
     ) : null;
+
+	let wrapper_class = !errorState.has_error ? input_class : input_class_error;
+	wrapper_class = type==='textarea' ? wrapper_class.replace('padding-vertical-0', 'padding-vertical-15') : wrapper_class;
     
     return (
         <label
@@ -224,12 +231,11 @@ export function TextField(props) {
                 `d-flex align-items-center cursor-text ${
                     icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
                 } ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
-				(!errorState.has_error ? className : input_class_error) + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
+				wrapper_class + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
             }
 			style={{
 				height: type==='textarea' ? '100px' : undefined,
 				margin: 0,
-				...(type==='textarea' ? {paddingTop: '15px !important', paddingBottom: '15px !important'} : {}),
 				...cssStyle
 			}}
         >
