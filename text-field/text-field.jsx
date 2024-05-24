@@ -231,7 +231,7 @@ export function TextField(props) {
                 `d-flex align-items-center cursor-text ${
                     icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
                 } ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
-				wrapper_class + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
+				wrapper_class.classNames() + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
             }
 			style={{
 				height: type==='textarea' ? '100px' : undefined,
