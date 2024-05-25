@@ -11,6 +11,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 		id_key, 
 		label_key, 
 		onEdit,
+		rename=true,
 		nested=false,
 		permalink_key
 	} = payload;
@@ -23,7 +24,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
     return <>
 		<div
 			className={
-				'd-flex align-items-center  column-gap-20 border-radius-10 border-1-5 b-color-tertiary padding-15'.classNames() +
+				'd-flex align-items-center  column-gap-20 border-radius-10 border-1-5 b-color-tertiary padding-horizontal-10 padding-vertical-5'.classNames() +
 				'single'.classNames(style)
 			}
 			onClick={e=>e.stopPropagation()}
@@ -33,22 +34,25 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 				{
 					!has_sibling ? null :
-					<i className={'ch-icon ch-icon-drag font-size-26 color-text-light'.classNames()}></i>
+					<i className={'ch-icon ch-icon-drag font-size-18 color-text-light'.classNames()}></i>
 				}
 
 				<div className={'flex-1'.classNames()}>
-					<input
-						id={'crewhrm-flow-option-' + item_id}
-						type="text"
-						value={item_label}
-						disabled={!renameStage}
-						className={'text-field-flat margin-left-5'.classNames()}
-						onChange={(e) => {
-							if (renameStage) {
-								renameStage(item_id, e.currentTarget.value);
-							}
-						}}
-					/>
+					{
+						!rename ? item_label : 
+						<input
+							id={'crewhrm-flow-option-' + item_id}
+							type="text"
+							value={item_label}
+							disabled={!renameStage}
+							className={'text-field-flat margin-left-5'.classNames()}
+							onChange={(e) => {
+								if (renameStage) {
+									renameStage(item_id, e.currentTarget.value);
+								}
+							}}
+						/>
+					}
 				</div>
 			</div>
 
@@ -57,8 +61,8 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 					'ch-icon ch-icon-trash font-size-24 color-error cursor-pointer'.classNames() +
 					'action-icon'.classNames(style)
 				}
-				title={__('Delete lesson')}
-				onClick={() =>deleteItem(item_id)}
+				title={__('Delete')}
+				onClick={()=>deleteItem(item_id)}
 			></i>
 
 			{
@@ -68,7 +72,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 						'ch-icon ch-icon-edit-2 font-size-24 cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
-					title={__('Edit lesson')}
+					title={__('Edit')}
 					onClick={() =>onEdit(list_item)}
 				></i>
 			}
@@ -81,7 +85,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 						'action-icon'.classNames(style)
 					}
 					onClick={addChild}
-					title={__('Add sub lesson')}
+					title={__('Add child')}
 				></i>
 			}
 
@@ -90,7 +94,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				<a 
 					href={permalink}
 					target='_blank'
-					title={__('Visit lesson')}
+					title={__('Visit')}
 					className={
 						'ch-icon ch-icon-arrow-up-right font-size-24 cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
@@ -120,10 +124,10 @@ export function ListManager(props) {
         label_key = 'label',
         mode,
         className = '',
+		onAdd,
         onChange,
         deleteItem,
         addText = __('Add New'),
-        readOnlyAfter,
 		style: cssStyle={},
 		addButton=true
     } = props;
@@ -245,18 +249,7 @@ export function ListManager(props) {
                     };
                 })}
             />
-
-            {readOnlyAfter
-                ? readOnlyAfter.map((list_item) => {
-                      return (
-                          <ItemSingle
-                              key={list_item[id_key]}
-                              {...{ list_item, payload: props }}
-                          />
-                      );
-                  })
-                : null}
-
+			
 			{
 				!addButton ? null :
 				<div
@@ -264,7 +257,7 @@ export function ListManager(props) {
 						'd-flex align-items-center darken-on-hover--8'.classNames() +
 						'add-stage'.classNames(style)
 					}
-					onClick={()=>addStage()}
+					onClick={()=>onAdd ? onAdd() : addStage()}
 				>
 					<i className={'ch-icon ch-icon-add-circle font-size-24'.classNames()}></i>
 					<div className={'flex-1 font-size-15 font-weight-500 margin-left-10'.classNames()}>
