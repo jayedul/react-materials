@@ -7,13 +7,11 @@ import { WarningWrapper } from './warning/warning.jsx';
 import { RenderExternal } from './render-external.jsx';
 
 export function MountPoint({ children }) {
-	return (
-		<div className={'root'.classNames()}>
-			<ToastWrapper>
-				<WarningWrapper>{children}</WarningWrapper>
-			</ToastWrapper>
-		</div>
-	);
+	return <div className={'root font-weight-400'.classNames()}>
+		<ToastWrapper>
+			<WarningWrapper>{children}</WarningWrapper>
+		</ToastWrapper>
+	</div>
 }
 
 export function DoAction({ position, action, payload = {} }) {
