@@ -113,8 +113,6 @@ export function FileUpload(props) {
 		minlength = 0,
         maxlength = 1,
         maxsize,
-        textPrimary = __('Browse'),
-        textSecondary = __('or, Just drop it here'),
         value,
 		removable=true,
         onChange,
@@ -403,6 +401,8 @@ export function FileUpload(props) {
         );
     }
 
+	const replace_now = !removable && !isEmpty(stateFiles);
+
     return  <div className={'upload'.classNames(style)}>
 		<div
 			onDragOver={(e) => setActionState(e, true)}
@@ -426,12 +426,12 @@ export function FileUpload(props) {
 				<span
 					className={'d-block font-size-15 font-weight-600 line-height-20 color-text'.classNames()}
 				>
-					{textPrimary}
+					{replace_now ? __('Replace File') : __('Browse')}
 				</span>
 				<span
 					className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
 				>
-					{textSecondary}
+					{replace_now ? __('or, Just drop another') : __('or, Just drop it here')}
 				</span>
 			</div>
 
