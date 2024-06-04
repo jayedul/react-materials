@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { input_class as className } from '../classes.jsx';
 
 import style from './number-field.module.scss'
+import { useEffect } from 'react';
 
 export function NumberField(props) {
 	
@@ -18,10 +19,16 @@ export function NumberField(props) {
 
 	const ref = useRef();
 	const [state, setState] = useState({
-		focused: false
+		focused: false,
+		cursor_position: 0
 	});
 
 	const changeValue = (shift, val) => {
+
+		setState({
+			...state,
+			cursor_position: ref.current.selectionStart
+		});
 
 		if ( disabled ) {
 			return;
@@ -61,6 +68,10 @@ export function NumberField(props) {
 			focused
 		});
 	};
+
+	useEffect(()=>{
+		ref.current.setSelectionRange(state.cursor_position, state.cursor_position);
+	}, [value]);
 
 	const controller_class =
         'font-size-20 cursor-pointer color-text-light color-active-child-primary'.classNames();
