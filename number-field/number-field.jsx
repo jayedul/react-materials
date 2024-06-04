@@ -4,7 +4,18 @@ import { input_class as className } from '../classes.jsx';
 import style from './number-field.module.scss'
 
 export function NumberField(props) {
-	const { onChange, value, max, min, disabled, placeholder, width } = props;
+	
+	const { 
+		onChange, 
+		value, 
+		max, 
+		min, 
+		disabled, 
+		placeholder, 
+		width,
+		decimal_point
+	} = props;
+
 	const ref = useRef();
 	const [state, setState] = useState({
 		focused: false
@@ -20,7 +31,8 @@ export function NumberField(props) {
 		ref.current.focus();
 
 		// Collect value and dispatch
-		let value = parseInt(val === undefined ? ref?.current?.value : val) || 0;
+		let parser = decimal_point ? parseFloat : parseInt;
+		let value = parser(val === undefined ? ref?.current?.value : val) || 0;
 
 		// Apply controller action
 		if (shift === 1 || shift === -1) {
@@ -33,6 +45,10 @@ export function NumberField(props) {
 		}
 		if (!isNaN(max) && value > max) {
 			value = max;
+		}
+
+		if (decimal_point) {
+			value = value.toFixed(2);
 		}
 
 		// Dispatch to parent level caller
@@ -77,12 +93,14 @@ export function NumberField(props) {
 					className={'text-field-flat text-align-center'.classNames()}
 					onKeyDown={e=>{
 						
-						let v = parseInt( e.currentTarget.value );
-
 						if ( e.key === "ArrowUp" ) {
-							changeValue( 1, v );
+							
+							e.preventDefault();
+							changeValue( 1 );
+
 						} else if ( e.key === "ArrowDown" ) {
-							changeValue( -1, v );
+							e.preventDefault();
+							changeValue( -1 );
 						}
 					}}
 				/>
