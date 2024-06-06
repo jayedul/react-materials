@@ -55,11 +55,11 @@ export function NumberField(props) {
 		}
 
 		if (decimal_point) {
-			value = value.toFixed(2);
+			value = parser( value.toFixed(2) );
 		}
 
 		// Dispatch to parent level caller
-		onChange(value);
+		onChange( value );
 	};
 
 	const toggleFocusState = (focused) => {
