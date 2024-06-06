@@ -55,7 +55,7 @@ export function NumberField(props) {
 		}
 
 		if (decimal_point) {
-			value = parser( value.toFixed(2) );
+			value = value.toFixed(2);
 		}
 
 		// Dispatch to parent level caller
