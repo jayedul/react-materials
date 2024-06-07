@@ -14,7 +14,7 @@ export function ToolTip({children, tooltip, position="left center", className=''
 			</div>
 		)}
 	>
-		<span className={"bg-color-white border-1 b-color-tertiary box-shadow-thick border-radius-5 padding-vertical-10 padding-horizontal-15".classNames()}>
+		<span className={"bg-color-white border-1 b-color-line-40 box-shadow-thick border-radius-5 padding-vertical-10 padding-horizontal-15".classNames()}>
 			{tooltip}
 		</span>
 	</Popup>

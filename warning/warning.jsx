@@ -8,7 +8,7 @@ import { Modal } from '../modal.jsx';
 export const ContextWarning = createContext();
 
 const btn_class =
-    'font-size-15 font-weight-400 letter-spacing--3 padding-vertical-10 padding-horizontal-15 border-radius-5 border-1-5 b-color-tertiary cursor-pointer'.classNames();
+    'font-size-15 font-weight-400 letter-spacing--3 padding-vertical-10 padding-horizontal-15 border-radius-5 border-1-5 b-color-line-40 cursor-pointer'.classNames();
 
 export function WarningWrapper({ children }) {
 	

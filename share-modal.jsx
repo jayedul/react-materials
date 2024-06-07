@@ -98,7 +98,7 @@ export function ShareModal(props) {
 				})}
 			</div>
 			<div
-				className={'d-flex align-items-center border-1-5 b-color-tertiary padding-20 border-radius-10'.classNames()}
+				className={'d-flex align-items-center border-1-5 b-color-line-40 padding-20 border-radius-10'.classNames()}
 				style={{ backgroundColor: window[data_pointer]?.colors?.quaternary || '#F9F9F9' }}
 			>
 				<span

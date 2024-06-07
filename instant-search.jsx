@@ -96,7 +96,7 @@ export function InstantSearch(props) {
 					const {thumbnail_url, label, unique_name, id} = result;
 					return <div 
 						key={id} 
-						className={`d-flex align-items-center padding-vertical-10 cursor-pointer ${index<results.length-1 ? 'border-bottom-1 b-color-tertiary' : ''}`.classNames()}
+						className={`d-flex align-items-center padding-vertical-10 cursor-pointer ${index<results.length-1 ? 'border-bottom-1 b-color-line-40' : ''}`.classNames()}
 						onClick={()=>dispatchResult({...result})}
 					>
 						{
@@ -137,7 +137,7 @@ export function InstantSearch(props) {
 				placeholder={placeholder}
 				iconClass={'ch-icon ch-icon-search-normal-1'.classNames()}
 				icon_position="right"
-				className={'border-1-5 border-radius-10 b-color-tertiary padding-vertical-12 padding-horizontal-20'.classNames()}
+				className={'border-1-5 border-radius-10 b-color-line-40 padding-vertical-12 padding-horizontal-20'.classNames()}
 				inputClassName={'font-size-15 font-weight-400 line-height-25 color-text-50'.classNames()}
 				onChange={txt => setKeyword((txt || '').trim())}
 				autofocus={true}/>

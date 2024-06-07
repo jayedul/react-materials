@@ -24,7 +24,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
     return <>
 		<div
 			className={
-				'd-flex align-items-center  column-gap-20 border-radius-10 border-1-5 b-color-tertiary padding-horizontal-10 padding-vertical-5'.classNames() +
+				'd-flex align-items-center  column-gap-20 border-radius-10 border-1-5 b-color-line-40 padding-horizontal-10 padding-vertical-5'.classNames() +
 				'single'.classNames(style)
 			}
 			onClick={e=>e.stopPropagation()}
@@ -109,7 +109,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				{...payload}
 				list={children}
 				onChange={list=>updateChildren(item_id, list)}
-				className={'margin-left-15 margin-top-15 border-left-1 b-color-tertiary'.classNames()}
+				className={'margin-left-15 margin-top-15 border-left-1 b-color-line-40'.classNames()}
 				style={{paddingLeft: '15px'}}
 				addButton={false}
 			/>

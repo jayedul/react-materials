@@ -8,7 +8,7 @@
                 // Here [type] is used  to override wp default styles for input fields
                 #{$attr}: var(
                     --crewmat-color-#{$color}
-                ); // Usage: bg-color-primary (Style will be applied to itself normally)
+                ); // Usage: *-error (Style will be applied to itself normally)
             }
         }
     }
@@ -20,7 +20,7 @@
             &[type] {
                 #{$attr}: var(
                     --crewmat-color-#{$color}
-                ); // Useage: bg-color-hover-primary (Style will be applied to itself on hover)
+                ); // Useage: *-hover-error (Style will be applied to itself on hover)
             }
         }
 
@@ -30,7 +30,7 @@
                 &[type] {
                     #{$attr}: var(
                         --crewmat-color-#{$color}
-                    ); // Usage: bg-color-hover-parent > bg-color-hover-child-primary (Style will be applied upon hovering parent)
+                    ); // Usage: *-hover-parent > *-hover-child-error (Style will be applied upon hovering parent)
                 }
             }
         }
@@ -42,7 +42,7 @@
                 &[type] {
                     #{$attr}: var(
                         --crewmat-color-#{$color}
-                    ); // Usage: bg-color-active-primary (Style will be applied to itself when it is focused or has active class)
+                    ); // Usage: *-active-error (Style will be applied to itself when it is focused or has active class)
                 }
             }
         }
@@ -55,7 +55,7 @@
                     .#{$class}-active-child-#{$color} {
                         #{$attr}: var(
                             --crewmat-color-#{$color}
-                        ); // Usage: bg-color-active-parent > bg-color-active-child-primary (Style will be applied when parent is focused or has active class)
+                        ); // Usage: *-active-parent > *-active-child-error (Style will be applied when parent is focused or has active class)
                     }
                 }
             }
@@ -64,10 +64,9 @@
 }
 
 $text_colors: 'text', 'text-50', 'text-40';
-
-$colors_ar: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light', 'text-lighter',
-    'text-hint', 'error', 'success', 'warning', 'black', 'white', 'transparent';
+$b_colors   : 'line', 'line-50', 'line-40', 'error', 'text', 'transparent';
+$bg_colors  : 'error', 'white', 'transparent';
 
 @include colorGenerate('color', 'color', $text_colors);
-@include colorGenerate('bg-color', 'background-color', $colors_ar);
-@include colorGenerate('b-color', 'border-color', $colors_ar);
+@include colorGenerate('bg-color', 'background-color', $bg_colors);
+@include colorGenerate('b-color', 'border-color', $b_colors);
