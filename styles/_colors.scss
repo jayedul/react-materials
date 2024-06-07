@@ -1,5 +1,6 @@
 // Loop through the colors
 @mixin colorGenerate($class, $attr, $colors) {
+
     @each $color in $colors {
         // Generate text color classes
         .#{$class}-#{$color} {
@@ -9,55 +10,16 @@
                 #{$attr}: var(
                     --solidie-color-#{$color}
                 ); // Usage: *-error (Style will be applied to itself normally)
-            }
-        }
-    }
 
-    // Loop through the colors again
-    @each $color in $colors {
-        .#{$class}-hover-#{$color}:hover {
-            &,
-            &[type] {
-                #{$attr}: var(
-                    --solidie-color-#{$color}
-                ); // Useage: *-hover-error (Style will be applied to itself on hover)
-            }
-        }
-
-        .#{$class}-hover-parent:hover {
-            .#{$class}-hover-child-#{$color} {
-                &,
-                &[type] {
-                    #{$attr}: var(
-                        --solidie-color-#{$color}
-                    ); // Usage: *-hover-parent > *-hover-child-error (Style will be applied upon hovering parent)
-                }
-            }
-        }
-
-        .#{$class}-active-#{$color} {
-            &.active,
-            &:focus {
-                &,
-                &[type] {
-                    #{$attr}: var(
-                        --solidie-color-#{$color}
-                    ); // Usage: *-active-error (Style will be applied to itself when it is focused or has active class)
-                }
-            }
-        }
-
-        .#{$class}-active-parent {
-            &.active,
-            &:focus {
-                &,
-                &[type] {
-                    .#{$class}-active-child-#{$color} {
-                        #{$attr}: var(
-                            --solidie-color-#{$color}
-                        ); // Usage: *-active-parent > *-active-child-error (Style will be applied when parent is focused or has active class)
-                    }
-                }
+				&.interactive:hover, &.active {
+					@if ($attr == 'color') {
+						#{$attr}: var(--solidie-color-#{$color}-150);
+					}
+					
+					@if ($attr == 'background-color') {
+						#{$attr}: var(--solidie-color-#{$color}-150);
+					}
+				}
             }
         }
     }

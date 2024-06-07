@@ -19,35 +19,15 @@
     line-height: normal;
 
     &.button-primary {
-        background-color: var(--solidie-color-primary);
+        background-color: var(--solidie-color-material);
         color: white;
-        border: 1px solid var(--solidie-color-primary);
+        border: 1px solid var(--solidie-color-material);
 
         // Set light colors if disabled
         &.disabled,
         &:disabled {
-            background-color: var(--solidie-color-text-40);
-            border-color: var(--solidie-color-text-40);
-        }
-
-        // Make little bit darker on hover
-        &:not(.button-outlined):not(:disabled):not(.disabled) {
-            &:hover {
-                filter: brightness(0.85);
-            }
-        }
-    }
-
-    &.button-secondary {
-        background-color: var(--solidie-color-secondary);
-        color: white;
-        border: 1px solid var(--solidie-color-secondary);
-
-        // Set light colors if disabled
-        &.disabled,
-        &:disabled {
-            background-color: var(--solidie-color-text-40);
-            border-color: var(--solidie-color-text-40);
+            background-color: var(--solidie-color-material-50);
+            border-color: var(--solidie-color-material-50);
         }
 
         // Make little bit darker on hover
@@ -59,31 +39,18 @@
     }
 
     &.button-outlined {
+
         // Hovering outlined button is merely showing the primary button colors. When not hovered, it'll who outlined withour primary background color.
         &:not(:hover) {
             background-color: transparent;
-            color: var(--solidie-color-primary);
-
-            // It's little bit lighter variation for 'back' action buttons
-            &.button-outlined-light {
-                border-color: var(--solidie-color-text-50);
-                color: var(--solidie-color-text-50);
-            }
-        }
-
-        // This variation is for placing button inside elements that has colored background other than white.
-        // Especially in notice bar at the top of dashboard.
-        &.button-foreground {
-            border-color: white;
-            color: white;
+            color: var(--solidie-color-material);
         }
 
         // Set styles for disabled state
-        &.disabled,
-        &:disabled {
+        &.disabled,  &:disabled {
             background-color: transparent;
-            border-color: var(--solidie-color-text-40);
-            color: var(--solidie-color-text-40);
+            border-color: var(--solidie-color-material-40);
+            color: var(--solidie-color-material-40);
         }
     }
 
@@ -97,11 +64,6 @@
         padding: 10px 15px;
     }
 
-    &.button-medium-2 {
-        @include fontWeight(500);
-        padding: 8px 15px;
-    }
-    
     &.button-large {
         padding: 14px 15px;
     }
@@ -109,13 +71,5 @@
     &.button-full-width {
         width: 100%;
         text-align: center;
-    }
-
-    &.button-full-width-2 {
-        padding: 10px 15px;
-        width: 100%;
-        text-align: center;
-        font-size: 15px;
-        @include fontWeight(600);
     }
 }
