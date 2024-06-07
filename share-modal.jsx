@@ -72,7 +72,7 @@ export function ShareModal(props) {
 				</div>
 				<div>
 					<i
-						className={'ch-icon ch-icon-times font-size-18 color-text-light cursor-pointer'.classNames()}
+						className={'ch-icon ch-icon-times font-size-18 color-text-50 cursor-pointer'.classNames()}
 						onClick={closeModal}
 					></i>
 				</div>
@@ -89,7 +89,7 @@ export function ShareModal(props) {
 						>
 							<img src={target.icon} className={'width-44'.classNames()} />
 							<span
-								className={'d-block margin-top-12 font-size-16 font-weight-400 color-text-light'.classNames()}
+								className={'d-block margin-top-12 font-size-16 font-weight-400 color-text-50'.classNames()}
 							>
 								{target.label}
 							</span>
@@ -111,10 +111,10 @@ export function ShareModal(props) {
 					onClick={() => copyToClipboard(url, addToast)}
 				>
 					<i
-						className={'ch-icon ch-icon-copy font-size-24 color-text-light margin-right-8 vertical-align-middle'.classNames()}
+						className={'ch-icon ch-icon-copy font-size-24 color-text-50 margin-right-8 vertical-align-middle'.classNames()}
 					></i>
 					<span
-						className={'font-size-16 font-weight-400 letter-spacing--3 color-text-light vertical-align-middle'.classNames()}
+						className={'font-size-16 font-weight-400 letter-spacing--3 color-text-50 vertical-align-middle'.classNames()}
 					>
 						{__('Copy')}
 					</span>

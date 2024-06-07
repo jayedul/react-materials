@@ -4,13 +4,13 @@
 
     .cancel-button {
         width: 118px;
-        color: var(--crewmat-color-text-light);
-        border-color: var(--crewmat-color-text-lighter);
+        color: var(--crewmat-color-text-50);
+        border-color: var(--crewmat-color-text-40);
         background-color: white;
 
         &:hover,
         &:focus {
-            border-color: var(--crewmat-color-text-lighter);
+            border-color: var(--crewmat-color-text-40);
             color: var(--crewmat-color-text);
             outline: none;
             box-shadow: none;

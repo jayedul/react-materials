@@ -127,7 +127,7 @@ export function DropDown(props) {
 				className={
 					`ch-icon 
 					${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} 
-					${disabled ? 'color-text-lighter cursor-not-allowed' : 'color-text-light'}`.classNames() +
+					${disabled ? 'color-text-40 cursor-not-allowed' : 'color-text-50'}`.classNames() +
 					iconSizeClass
 				}
 				onClick={e=>{

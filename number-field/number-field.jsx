@@ -74,7 +74,7 @@ export function NumberField(props) {
 	}, [value]);
 
 	const controller_class =
-        'font-size-20 cursor-pointer color-text-light color-active-child-primary'.classNames();
+        'font-size-20 cursor-pointer color-text-50 color-active-child-primary'.classNames();
 
 	return (
 		<div

@@ -34,7 +34,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 				{
 					!has_sibling ? null :
-					<i className={'ch-icon ch-icon-drag font-size-18 color-text-light'.classNames()}></i>
+					<i className={'ch-icon ch-icon-drag font-size-18 color-text-50'.classNames()}></i>
 				}
 
 				<div className={'flex-1'.classNames()}>

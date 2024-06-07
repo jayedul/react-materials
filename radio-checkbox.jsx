@@ -86,7 +86,7 @@ export function RadioCheckbox(props) {
 				>
 					{
 						locked ? 
-							<i className={'ch-icon ch-icon-lock font-size-18 color-text-lighter d-inline-block'.classNames()}></i> :
+							<i className={'ch-icon ch-icon-lock font-size-18 color-text-40 d-inline-block'.classNames()}></i> :
 							<input
 								type={type}
 								name={name}

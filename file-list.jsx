@@ -23,7 +23,7 @@ export function ListFile({ files, style = {}, onRemove }) {
 
 			<Conditional show={typeof onRemove == 'function'}>
 				<i
-					className={'ch-icon ch-icon-times cursor-pointer font-size-15 color-text-lighter color-hover-text'.classNames()}
+					className={'ch-icon ch-icon-times cursor-pointer font-size-15 color-text-40 color-hover-text'.classNames()}
 					onClick={(e) =>onRemove(index)}
 				></i>
 			</Conditional>

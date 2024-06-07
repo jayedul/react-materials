@@ -63,8 +63,8 @@
     }
 }
 
-$text_colors: 'texts-100', 'texts-50';
-// These colors are sent from PHP CrewHRM\Helpers\Colors class.
+$text_colors: 'text', 'text-50', 'text-40';
+
 $colors_ar: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light', 'text-lighter',
     'text-hint', 'error', 'success', 'warning', 'black', 'white', 'transparent';
 

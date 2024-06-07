@@ -36,7 +36,7 @@
             font-size: 13px;
             @include fontWeight(500);
             letter-spacing: -0.13px;
-            color: var(--crewmat-color-text-light);
+            color: var(--crewmat-color-text-50);
 
             &.active {
                 color: black;
@@ -69,7 +69,7 @@
                         height: 13px;
                         border-radius: 50%;
                         background-color: white;
-                        border: 2px solid var(--crewmat-color-text-lighter);
+                        border: 2px solid var(--crewmat-color-text-40);
                     }
                 }
 
