@@ -24,7 +24,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
     return <>
 		<div
 			className={
-				'd-flex align-items-center  column-gap-20 border-radius-10 border-1-5 b-color-text-40 padding-horizontal-10 padding-vertical-5'.classNames() +
+				'd-flex align-items-center  column-gap-20 border-radius-10 border-1 b-color-text-40 padding-horizontal-10 padding-vertical-5'.classNames() +
 				'single'.classNames(style)
 			}
 			onClick={e=>e.stopPropagation()}

@@ -81,8 +81,8 @@ export function DropDown(props) {
 	}, [showErrorsAlways]);
 
     const pop_border =
-        className.indexOf('border-1-5') > -1
-            ? 'border-1-5'
+        className.indexOf('border-1') > -1
+            ? 'border-1'
             : className.indexOf('border-1') > -1
             ? 'border-1'
             : '';
@@ -105,7 +105,7 @@ export function DropDown(props) {
 			className={
 				`select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
 				'cursor-pointer d-flex align-items-center border-radius-10 column-gap-8'.classNames() +
-				`border-1-5 ${!errorState ? 'b-color-text-40' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
+				`border-1 ${!errorState ? 'b-color-text-40' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
 			}
 			style={{padding: '0 15px', height: '40px'}}
 		>
@@ -266,7 +266,7 @@ export function Options(props) {
                     <div
                         className={
                             'options-popup'.classNames(style) +
-                            'box-shadow-thick border-radius-10 border-1-5 b-color-text-40 bg-color-white'.classNames()
+                            'box-shadow-thick border-radius-10 border-1 b-color-text-40 bg-color-white'.classNames()
                         }
                     >
                         <div className={'list-wrapper'.classNames(style)}>

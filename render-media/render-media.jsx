@@ -170,7 +170,7 @@ export function RenderMedia({ media, onDelete, theme = 'grid', overlay = true })
                                             `d-block width-p-100 height-p-100 d-flex align-items-center justify-content-center padding-20 cursor-pointer ${
                                                 thumb_image
                                                     ? ''
-                                                    : 'border-1-5 b-color-text-40 border-radius-10'
+                                                    : 'border-1 b-color-text-40 border-radius-10'
                                             }`.classNames()
                                         }
                                     >
