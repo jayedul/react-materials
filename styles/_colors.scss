@@ -1,9 +1,5 @@
-// These colors are sent from PHP CrewHRM\Helpers\Colors class.
-$colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light', 'text-lighter',
-    'text-hint', 'error', 'success', 'warning', 'black', 'white', 'transparent';
-
 // Loop through the colors
-@mixin colorGenerate($class, $attr) {
+@mixin colorGenerate($class, $attr, $colors) {
     @each $color in $colors {
         // Generate text color classes
         .#{$class}-#{$color} {
@@ -67,6 +63,11 @@ $colors: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light',
     }
 }
 
-@include colorGenerate('color', 'color');
-@include colorGenerate('bg-color', 'background-color');
-@include colorGenerate('b-color', 'border-color');
+$text_colors: 'texts-100', 'texts-50';
+// These colors are sent from PHP CrewHRM\Helpers\Colors class.
+$colors_ar: 'primary', 'secondary', 'tertiary', 'quaternary', 'text', 'text-light', 'text-lighter',
+    'text-hint', 'error', 'success', 'warning', 'black', 'white', 'transparent';
+
+@include colorGenerate('color', 'color', $text_colors);
+@include colorGenerate('bg-color', 'background-color', $colors_ar);
+@include colorGenerate('b-color', 'border-color', $colors_ar);
