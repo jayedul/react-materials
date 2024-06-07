@@ -33,23 +33,21 @@
         overflow-x: hidden;
         overflow-y: auto;
 
-        &,
-        .list-item {
+        &, .list-item {
             &:not(:last-child) {
-                border-bottom: 1px solid var(--solidie-color-tertiary);
+                border-bottom: 1px solid var(--solidie-color-text-10);
             }
         }
     }
 
-    .list-item,
-    .add-item {
+    .list-item, .add-item {
         &:hover {
-            background-color: var(--solidie-color-tertiary);
+            background-color: var(--solidie-color-text-10);
         }
 
         &.active {
             color: white;
-            background-color: var(--solidie-color-primary);
+            background-color: var(--solidie-color-text);
         }
     }
 }

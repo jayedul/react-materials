@@ -29,7 +29,7 @@
     }
 }
 
-$text_colors: 'text';
+$text_colors: 'text', 'error', 'warning', 'success';
 $b_colors   : 'text', 'material', 'warning', 'success', 'error', 'transparent';
 $bg_colors  : 'error', 'white', 'transparent';
 

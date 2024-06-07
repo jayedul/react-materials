@@ -28,7 +28,7 @@
     }
 
     input:checked + label {
-        background-color: var(--solidie-color-secondary);
+        background-color: var(--solidie-color-material);
     }
 
     input:checked + label:after {
