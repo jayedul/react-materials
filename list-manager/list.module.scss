@@ -5,7 +5,7 @@
         & {
             background-color: white;
             &:hover {
-                background-color: var(--crewmat-color-quaternary);
+                background-color: var(--solidie-color-quaternary);
             }
         }
 
@@ -17,8 +17,8 @@
     }
 
     .add-stage {
-        color: var(--crewmat-color-secondary);
-        border: 1.5px solid var(--crewmat-color-secondary);
+        color: var(--solidie-color-secondary);
+        border: 1.5px solid var(--solidie-color-secondary);
         border-radius: 10px;
         padding: 10px 15px;
         cursor: pointer;

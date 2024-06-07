@@ -8,7 +8,7 @@
         text-indent: -9999px;
         width: 38.9px;
         height: 22px;
-        background-color: var(--crewmat-color-text-50);
+        background-color: var(--solidie-color-text-50);
         display: block;
         border-radius: 100px;
         position: relative;
@@ -28,7 +28,7 @@
     }
 
     input:checked + label {
-        background-color: var(--crewmat-color-secondary);
+        background-color: var(--solidie-color-secondary);
     }
 
     input:checked + label:after {

@@ -7,7 +7,7 @@
             &[type] {
                 // Here [type] is used  to override wp default styles for input fields
                 #{$attr}: var(
-                    --crewmat-color-#{$color}
+                    --solidie-color-#{$color}
                 ); // Usage: *-error (Style will be applied to itself normally)
             }
         }
@@ -19,7 +19,7 @@
             &,
             &[type] {
                 #{$attr}: var(
-                    --crewmat-color-#{$color}
+                    --solidie-color-#{$color}
                 ); // Useage: *-hover-error (Style will be applied to itself on hover)
             }
         }
@@ -29,7 +29,7 @@
                 &,
                 &[type] {
                     #{$attr}: var(
-                        --crewmat-color-#{$color}
+                        --solidie-color-#{$color}
                     ); // Usage: *-hover-parent > *-hover-child-error (Style will be applied upon hovering parent)
                 }
             }
@@ -41,7 +41,7 @@
                 &,
                 &[type] {
                     #{$attr}: var(
-                        --crewmat-color-#{$color}
+                        --solidie-color-#{$color}
                     ); // Usage: *-active-error (Style will be applied to itself when it is focused or has active class)
                 }
             }
@@ -54,7 +54,7 @@
                 &[type] {
                     .#{$class}-active-child-#{$color} {
                         #{$attr}: var(
-                            --crewmat-color-#{$color}
+                            --solidie-color-#{$color}
                         ); // Usage: *-active-parent > *-active-child-error (Style will be applied when parent is focused or has active class)
                     }
                 }

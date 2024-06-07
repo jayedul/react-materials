@@ -10,7 +10,7 @@
     }
     
     &.variant-primary{
-        border-color: var(--crewmat-color-primary);
+        border-color: var(--solidie-color-primary);
     }
 }
 
@@ -22,7 +22,7 @@
         & > div {
             border: none !important;
             border-radius: 0;
-            border-bottom: 1px solid var(--crewmat-color-tertiary);
+            border-bottom: 1px solid var(--solidie-color-tertiary);
         }
     }
     i.ch-icon {
@@ -36,7 +36,7 @@
         &,
         .list-item {
             &:not(:last-child) {
-                border-bottom: 1px solid var(--crewmat-color-tertiary);
+                border-bottom: 1px solid var(--solidie-color-tertiary);
             }
         }
     }
@@ -44,12 +44,12 @@
     .list-item,
     .add-item {
         &:hover {
-            background-color: var(--crewmat-color-tertiary);
+            background-color: var(--solidie-color-tertiary);
         }
 
         &.active {
             color: white;
-            background-color: var(--crewmat-color-primary);
+            background-color: var(--solidie-color-primary);
         }
     }
 }
@@ -66,7 +66,7 @@
         &,
         .list-item {
             &:not(:last-child) {
-                border-bottom: 1px solid var(--crewmat-color-tertiary);
+                border-bottom: 1px solid var(--solidie-color-tertiary);
             }
         }
     }
@@ -75,7 +75,7 @@
     .add-item {
         &.active,
         &:hover {
-            background-color: var(--crewmat-color-quaternary);
+            background-color: var(--solidie-color-quaternary);
         }
     }
 }

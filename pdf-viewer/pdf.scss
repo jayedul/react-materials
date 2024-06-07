@@ -7,7 +7,7 @@
 		border: 1px solid lightgray;
 
 		.rpv-default-layout__toolbar {
-			background-color: var(--crewmat-color-quaternary);
+			background-color: var(--solidie-color-quaternary);
 
 			[aria-describedby=rpv-core__tooltip-body-theme-switch],
 			[aria-describedby=rpv-core__tooltip-body-full-screen-enter],
@@ -24,12 +24,12 @@
 				width: 24px;
 				height: 24px;
 				border-radius: 50%;
-				background-color: var(--crewmat-color-white);
+				background-color: var(--solidie-color-white);
 				border: 0;
 				font-size: 15px;
 				font-family: CrewHRM-Figtree-SemiBold;
 				text-align: center;
-				color: var(--crewmat-color-text);
+				color: var(--solidie-color-text);
 				overflow: hidden;
 				margin: 0;
 				padding: 0;

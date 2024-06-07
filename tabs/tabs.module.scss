@@ -11,7 +11,7 @@
     }
 
     &.theme-button {
-        background-color: var(--crewmat-color-quaternary);
+        background-color: var(--solidie-color-quaternary);
         border-radius: 6px;
         padding: 2px;
 
@@ -32,11 +32,11 @@
         & > div {
             padding-top: 10px;
             padding-bottom: 10px;
-            border-bottom: 1.5px solid var(--crewmat-color-tertiary);
+            border-bottom: 1.5px solid var(--solidie-color-tertiary);
             font-size: 13px;
             @include fontWeight(500);
             letter-spacing: -0.13px;
-            color: var(--crewmat-color-text-50);
+            color: var(--solidie-color-text-50);
 
             &.active {
                 color: black;
@@ -60,7 +60,7 @@
                             display: block;
                             width: 100%;
                             height: 1px;
-                            background-color: var(--crewmat-color-tertiary);
+                            background-color: var(--solidie-color-tertiary);
                         }
                     }
 
@@ -69,27 +69,27 @@
                         height: 13px;
                         border-radius: 50%;
                         background-color: white;
-                        border: 2px solid var(--crewmat-color-text-40);
+                        border: 2px solid var(--solidie-color-text-40);
                     }
                 }
 
                 &.fill-left {
                     .hr-1 {
-                        background-color: var(--crewmat-color-primary) !important;
+                        background-color: var(--solidie-color-primary) !important;
                     }
                 }
 
                 &.fill-right {
                     .hr-2,
                     .circle {
-                        border-color: var(--crewmat-color-primary) !important;
-                        background-color: var(--crewmat-color-primary) !important;
+                        border-color: var(--solidie-color-primary) !important;
+                        background-color: var(--solidie-color-primary) !important;
                     }
                 }
 
                 &.fill-right-gradient {
                     .circle {
-                        border-color: var(--crewmat-color-primary) !important;
+                        border-color: var(--solidie-color-primary) !important;
                     }
 
                     .hr-2 {
@@ -115,7 +115,7 @@
             gap: 5px;
             &.active {
                 .sequence-down-circle {
-                    border: 2px solid var(--crewmat-color-text);
+                    border: 2px solid var(--solidie-color-text);
                     border: 0;
                     &.fill-left {
                         position: relative;
@@ -123,7 +123,7 @@
                         &:before {
                             transition: all 0.4s ease-in-out 0.4s;
                             height: 0px;
-                            background-color: var(--crewmat-color-text);
+                            background-color: var(--solidie-color-text);
                         }
                     }
                 }

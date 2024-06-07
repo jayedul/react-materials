@@ -144,7 +144,7 @@ $stroke-light-30: #cdcfd5;
 				font-weight: 400;
 				font-size: 13px;
 				line-height: 138%;
-				color: var(--crewmat-color-text-50);
+				color: var(--solidie-color-text-50);
 			}
 		}
 	}
@@ -194,11 +194,11 @@ $stroke-light-30: #cdcfd5;
 
 	border-collapse: collapse;
 	width: 100%;
-	border: 1px solid var(--crewmat-color-tertiary) !important;
+	border: 1px solid var(--solidie-color-tertiary) !important;
 	  
 	&>tbody>tr, &>thead>tr {
 		&>th, &>td {
-      		border: 1px solid var(--crewmat-color-tertiary) !important;
+      		border: 1px solid var(--solidie-color-tertiary) !important;
 			padding: 5px 9px !important;
 			text-align: left;
 		}
