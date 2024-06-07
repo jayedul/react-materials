@@ -1,7 +1,7 @@
 @import './breakpoint';
 
 $radius: 6px;
-$stroke-light-30: #cdcfd5;
+$stroke-light-30: var(--solidie-color-text-20);
 
 @mixin regularStyle() {
 	&>* {
@@ -194,11 +194,11 @@ $stroke-light-30: #cdcfd5;
 
 	border-collapse: collapse;
 	width: 100%;
-	border: 1px solid var(--solidie-color-tertiary) !important;
+	border: 1px solid var(--solidie-color-text-20) !important;
 	  
 	&>tbody>tr, &>thead>tr {
 		&>th, &>td {
-      		border: 1px solid var(--solidie-color-tertiary) !important;
+      		border: 1px solid var(--solidie-color-text-20) !important;
 			padding: 5px 9px !important;
 			text-align: left;
 		}

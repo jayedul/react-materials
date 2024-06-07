@@ -126,7 +126,7 @@ export function ToastWrapper({children}) {
                                     >
 										{
 											(!status || !status_icons[status]) ? 
-												<Ripple color={window[data_pointer]?.colors?.secondary || '#236BFE'} /> : 
+												<Ripple color={window[data_pointer]?.colors?.material || '#236BFE'} /> : 
 												<img className={'width-36 height-auto padding-5'.classNames()} src={status_icons[status]}/>
 										}
                                     </div>

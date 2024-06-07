@@ -1,21 +1,21 @@
 .upload {
     .drop-container {
-        border: 1px dashed var(--solidie-color-tertiary);
+        border: 1px dashed var(--solidie-color-text-20);
         padding: 30px;
         cursor: pointer;
         border-radius: 10px;
-        background-color: var(--solidie-color-quaternary);
+        background-color: var(--solidie-color-black-10);
 
 		&.error {
 			border-color: var(--solidie-color-error);
 		}
 
         &:hover {
-            border: 1px dashed var(--solidie-color-primary);
+            border: 1px dashed var(--solidie-color-text-20);
         }
 
         &.highlight {
-            border: 1.5px dashed var(--solidie-color-primary);
+            border: 1px dashed var(--solidie-color-text-60);
         }
     }
 }

@@ -29,12 +29,13 @@
     }
 }
 
-$text_colors: 'text', 'error', 'warning', 'success';
+$text_colors: 'text', 'material', 'white', 'error', 'warning', 'success';
 $b_colors   : 'text', 'material', 'warning', 'success', 'error', 'transparent';
 $bg_colors  : 'error', 'white', 'transparent';
 
 @for $i from 1 through 9 {
   	$text_colors: append($text_colors, 'text-#{$i*10}');
+  	$text_colors: append($text_colors, 'material-#{$i*10}');
   	$b_colors: append($b_colors, 'text-#{$i*10}');
   	$b_colors: append($b_colors, 'material-#{$i*10}');
 }

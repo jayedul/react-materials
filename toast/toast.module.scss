@@ -6,7 +6,7 @@
     z-index: 9994;
 
     & > div {
-        background-color: var(--solidie-color-primary);
+        background-color: var(--solidie-color-text);
         &:not(:last-child) {
             margin-bottom: 20px;
         }
