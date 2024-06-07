@@ -98,7 +98,7 @@ export function TextEditor(props) {
             }}
             wrapperClassName={
                 'wrapper'.classNames(style) +
-                `border-radius-10 border-1 ${errorState ? 'b-color-error' : 'b-color-line-40 b-color-active-text' } ${
+                `border-radius-10 border-1 ${errorState ? 'b-color-error' : 'b-color-text-40 b-color-active-text' } ${
                     state.focus ? 'active' : ''
                 } text-editor`.classNames()
             }

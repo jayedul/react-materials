@@ -19,15 +19,25 @@
 					@if ($attr == 'background-color') {
 						#{$attr}: var(--solidie-color-#{$color}-150);
 					}
+					
+					@if ($attr == 'border-color') {
+						#{$attr}: var(--solidie-color-#{$color}-150);
+					}
 				}
             }
         }
     }
 }
 
-$text_colors: 'text', 'text-50', 'text-40';
-$b_colors   : 'line', 'line-50', 'line-40', 'error', 'text', 'transparent';
+$text_colors: 'text';
+$b_colors   : 'text', 'material', 'warning', 'success', 'error', 'transparent';
 $bg_colors  : 'error', 'white', 'transparent';
+
+@for $i from 1 through 9 {
+  	$text_colors: append($text_colors, 'text-#{$i*10}');
+  	$b_colors: append($b_colors, 'text-#{$i*10}');
+  	$b_colors: append($b_colors, 'material-#{$i*10}');
+}
 
 @include colorGenerate('color', 'color', $text_colors);
 @include colorGenerate('bg-color', 'background-color', $bg_colors);

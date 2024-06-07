@@ -105,7 +105,7 @@ export function DropDown(props) {
 			className={
 				`select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
 				'cursor-pointer d-flex align-items-center border-radius-10 column-gap-8'.classNames() +
-				`border-1-5 ${!errorState ? 'b-color-line-40 b-color-active-text' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
+				`border-1-5 ${!errorState ? 'b-color-text-40 b-color-active-text' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
 			}
 			style={{padding: '0 15px', height: '40px'}}
 		>
@@ -173,7 +173,7 @@ export function DropDown(props) {
                         <div
                             className={
                                 'select-dropdown-popup'.classNames(style) +
-                                `box-shadow-thick border-radius-10 ${pop_border} b-color-line-40 bg-color-white white-space-nowrap box-shadow-thin`.classNames()
+                                `box-shadow-thick border-radius-10 ${pop_border} b-color-text-40 bg-color-white white-space-nowrap box-shadow-thin`.classNames()
                             }
                             style={popup_styles}
                         >
@@ -266,7 +266,7 @@ export function Options(props) {
                     <div
                         className={
                             'options-popup'.classNames(style) +
-                            'box-shadow-thick border-radius-10 border-1-5 b-color-line-40 bg-color-white'.classNames()
+                            'box-shadow-thick border-radius-10 border-1-5 b-color-text-40 bg-color-white'.classNames()
                         }
                     >
                         <div className={'list-wrapper'.classNames(style)}>

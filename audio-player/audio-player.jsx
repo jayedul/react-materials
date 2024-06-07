@@ -104,7 +104,7 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 			</div>
 			<div className={'flex-1'.classNames()}>
 				<div 
-					className={'d-flex align-items-center column-gap-15 margin-bottom-10 border-bottom-1 b-color-line-40'.classNames()}
+					className={'d-flex align-items-center column-gap-15 margin-bottom-10 border-bottom-1 b-color-text-40'.classNames()}
 					style={{paddingBottom: '10px'}}
 				>
 					<div 
