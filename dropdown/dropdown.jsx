@@ -164,9 +164,7 @@ export function DropDown(props) {
             >
                 {(close) => {
                     // Determine border width, color and radius from the class name to sync the popup accordingly
-                    let popup_styles = ref.current
-                        ? { minWidth: ref.current.clientWidth + 'px' }
-                        : {};
+                    let popup_styles = ref.current ? { minWidth: ref.current.clientWidth + 'px' } : {};
                     popup_styles = { ...popup_styles, ...getPopupStyle(className) };
 
                     return (

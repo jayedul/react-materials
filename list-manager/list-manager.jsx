@@ -24,7 +24,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
     return <>
 		<div
 			className={
-				'd-flex align-items-center  column-gap-20 border-radius-10 border-1 b-color-text-40 padding-horizontal-10 padding-vertical-5'.classNames() +
+				'd-flex align-items-center column-gap-10 border-radius-10 border-1 b-color-text-30 padding-horizontal-10 padding-vertical-5'.classNames() +
 				'single'.classNames(style)
 			}
 			onClick={e=>e.stopPropagation()}
@@ -34,10 +34,10 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 				{
 					!has_sibling ? null :
-					<i className={'ch-icon ch-icon-drag font-size-18 color-text-50'.classNames()}></i>
+					<i className={'ch-icon ch-icon-drag font-size-18 color-text-50 interactive'.classNames()}></i>
 				}
 
-				<div className={'flex-1'.classNames()}>
+				<div className={'flex-1 color-text-80'.classNames()}>
 					{
 						!rename ? item_label : 
 						<input
@@ -45,7 +45,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 							type="text"
 							value={item_label}
 							disabled={!renameStage}
-							className={'text-field-flat margin-left-5'.classNames()}
+							className={'text-field-flat margin-left-5 color-text-80'.classNames()}
 							onChange={(e) => {
 								if (renameStage) {
 									renameStage(item_id, e.currentTarget.value);
@@ -58,7 +58,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 			<i
 				className={
-					'ch-icon ch-icon-trash font-size-24 color-error cursor-pointer'.classNames() +
+					'ch-icon ch-icon-trash font-size-18 color-error interactive cursor-pointer'.classNames() +
 					'action-icon'.classNames(style)
 				}
 				title={__('Delete')}
@@ -69,7 +69,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				!onEdit ? null :
 				<i
 					className={
-						'ch-icon ch-icon-edit-2 font-size-24 cursor-pointer'.classNames() +
+						'ch-icon ch-icon-edit-2 font-size-18 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 					title={__('Edit')}
@@ -81,7 +81,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				!nested ? null :
 				<i
 					className={
-						'ch-icon ch-icon-add-circle font-size-24 cursor-pointer'.classNames() +
+						'ch-icon ch-icon-add-circle font-size-24 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 					onClick={addChild}
@@ -96,7 +96,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 					target='_blank'
 					title={__('Visit')}
 					className={
-						'ch-icon ch-icon-arrow-up-right font-size-24 cursor-pointer'.classNames() +
+						'ch-icon ch-icon-arrow-up-right font-size-18 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 				></a>

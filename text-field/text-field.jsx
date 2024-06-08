@@ -214,7 +214,7 @@ export function TextField(props) {
 		},
 		onKeyDown,
 		onKeyUp,
-		className: 'text-field-flat font-size-15 font-weight-400 letter-spacing--15 flex-1'.classNames()
+		className: 'text-field-flat font-size-15 font-weight-400 letter-spacing--15 flex-1 color-text'.classNames()
     };
 
     const separator = state.expanded ? (

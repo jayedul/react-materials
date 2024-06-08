@@ -101,7 +101,7 @@ export function NumberField(props) {
 					onFocus={() => toggleFocusState(true)}
 					onBlur={() => toggleFocusState(false)}
 					placeholder={placeholder}
-					className={'text-field-flat text-align-center'.classNames()}
+					className={'text-field-flat text-align-center color-text'.classNames()}
 					onKeyDown={e=>{
 						
 						if ( e.key === "ArrowUp" ) {

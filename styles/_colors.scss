@@ -29,17 +29,14 @@
     }
 }
 
-$text_colors: 'text', 'material', 'white', 'error', 'warning', 'success';
-$b_colors   : 'text', 'material', 'warning', 'success', 'error', 'transparent';
-$bg_colors  : 'error', 'white', 'transparent';
+$colors: 'text', 'material', 'white', 'error', 'warning', 'success', 'transparent';
 
+// Add shades to dynamic colors set from settings page
 @for $i from 1 through 9 {
-  	$text_colors: append($text_colors, 'text-#{$i*10}');
-  	$text_colors: append($text_colors, 'material-#{$i*10}');
-  	$b_colors: append($b_colors, 'text-#{$i*10}');
-  	$b_colors: append($b_colors, 'material-#{$i*10}');
+  	$colors: append($colors, 'text-#{$i*10}');
+  	$colors: append($colors, 'material-#{$i*10}');
 }
 
-@include colorGenerate('color', 'color', $text_colors);
-@include colorGenerate('bg-color', 'background-color', $bg_colors);
-@include colorGenerate('b-color', 'border-color', $b_colors);
+@include colorGenerate('color', 'color', $colors);
+@include colorGenerate('bg-color', 'background-color', $colors);
+@include colorGenerate('b-color', 'border-color', $colors);
