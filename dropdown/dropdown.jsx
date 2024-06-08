@@ -12,7 +12,7 @@ const content_style = {
     border: 'none'
 };
 
-const list_class = 'padding-vertical-10 padding-horizontal-15 cursor-pointer font-size-15 font-weight-400'.classNames();
+const list_class = 'padding-vertical-10 padding-horizontal-15 cursor-pointer font-size-15 font-weight-400 color-text-80'.classNames();
 
 function getPopupStyle(classNames) {
     classNames = classNames

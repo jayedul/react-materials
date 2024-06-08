@@ -6,4 +6,14 @@
         max-height: 16px;
         display: inline-block;
     }
+
+	input, textarea {
+		&::placeholder {
+			color: var(--solidie-color-text-40);
+		}
+
+		&::-ms-input-placeholder {
+			color: var(--solidie-color-text-40);
+		}
+	}
 }

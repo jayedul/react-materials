@@ -1,14 +1,22 @@
 .number-field {
     
-    div:nth-of-type(1),
-    div:nth-of-type(3){
+    div:nth-of-type(1), div:nth-of-type(3){
         opacity: 0;
     }
     
     &:hover{
-        div:nth-of-type(1):hover,
-        div:nth-of-type(3):hover{
+        div:nth-of-type(1):hover, div:nth-of-type(3):hover{
             opacity: 1;
         }
     }
+
+	input, textarea {
+		&::placeholder {
+			color: var(--solidie-color-text-40);
+		}
+
+		&::-ms-input-placeholder {
+			color: var(--solidie-color-text-40);
+		}
+	}
 }

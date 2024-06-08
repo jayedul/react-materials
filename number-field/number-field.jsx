@@ -87,7 +87,7 @@ export function NumberField(props) {
 		>
 			<div className={'height-20'.classNames()}>
 				<i
-					className={'ch-icon ch-icon-minus-square'.classNames() + controller_class}
+					className={'ch-icon ch-icon-minus-square color-text-70 interactive'.classNames() + controller_class}
 					onClick={() => changeValue(-1)}
 				></i>
 			</div>
@@ -118,7 +118,7 @@ export function NumberField(props) {
 			</div>
 			<div className={'height-20'.classNames()}>
 				<i
-					className={'ch-icon ch-icon-add-square'.classNames() + controller_class}
+					className={'ch-icon ch-icon-add-square color-text-70 interactive'.classNames() + controller_class}
 					onClick={() => changeValue(1)}
 				></i>
 			</div>

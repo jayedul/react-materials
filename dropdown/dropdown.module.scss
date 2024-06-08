@@ -22,7 +22,7 @@
         & > div {
             border: none !important;
             border-radius: 0;
-            border-bottom: 1px solid var(--solidie-color-tertiary);
+            border-bottom: 1px solid var(--solidie-color-text-10);
         }
     }
     i.ch-icon {
@@ -64,7 +64,7 @@
         &,
         .list-item {
             &:not(:last-child) {
-                border-bottom: 1px solid var(--solidie-color-tertiary);
+                border-bottom: 1px solid var(--solidie-color-text-10);
             }
         }
     }
@@ -73,7 +73,7 @@
     .add-item {
         &.active,
         &:hover {
-            background-color: var(--solidie-color-quaternary);
+            background-color: var(--solidie-color-text-5);
         }
     }
 }

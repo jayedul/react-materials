@@ -2,14 +2,12 @@
 @mixin colorGenerate($class, $attr, $colors) {
 
     @each $color in $colors {
-        // Generate text color classes
-        .#{$class}-#{$color} {
-            &,
-            &[type] {
-                // Here [type] is used  to override wp default styles for input fields
-                #{$attr}: var(
-                    --solidie-color-#{$color}
-                ); // Usage: *-error (Style will be applied to itself normally)
+
+		.#{$class}-#{$color} {
+
+            &, &[type] {
+
+				#{$attr}: var(--solidie-color-#{$color});
 
 				&.interactive:hover, &.active {
 					@if ($attr == 'color') {
@@ -31,10 +29,13 @@
 
 $colors: 'text', 'material', 'white', 'error', 'warning', 'success', 'transparent';
 
-// Add shades to dynamic colors set from settings page
 @for $i from 1 through 9 {
+
   	$colors: append($colors, 'text-#{$i*10}');
   	$colors: append($colors, 'material-#{$i*10}');
+
+  	$colors: append($colors, 'text-#{$i}');
+  	$colors: append($colors, 'material-#{$i}');
 }
 
 @include colorGenerate('color', 'color', $colors);

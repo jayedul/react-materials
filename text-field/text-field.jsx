@@ -224,46 +224,44 @@ export function TextField(props) {
 	let wrapper_class = !errorState.has_error ? input_class : input_class_error;
 	wrapper_class = type==='textarea' ? wrapper_class.replace('padding-vertical-0', 'padding-vertical-10') : wrapper_class;
     
-    return (
-        <label
-            className={
-                `text-field`.classNames(style) +
-                `d-flex align-items-center cursor-text ${
-                    icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
-                } ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
-				wrapper_class.classNames() + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
-            }
-			style={{
-				height: type==='textarea' ? '100px' : undefined,
-				margin: 0,
-				...cssStyle
-			}}
-        >
-            <Conditional show={iconClass}>
-                <i className={iconClass + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()} onClick={() => onIconClick()}></i>
-                {separator}
-            </Conditional>
+    return <label
+		className={
+			`text-field`.classNames(style) +
+			`d-flex align-items-center cursor-text ${
+				icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
+			} ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
+			wrapper_class.classNames() + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
+		}
+		style={{
+			height: type==='textarea' ? '100px' : undefined,
+			margin: 0,
+			...cssStyle
+		}}
+	>
+		<Conditional show={iconClass}>
+			<i className={iconClass + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()} onClick={() => onIconClick()}></i>
+			{separator}
+		</Conditional>
 
-            <Conditional show={image && state.expanded}>
-                <img
-                    src={image}
-                    className={'image'.classNames(style) + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()}
-                    onClick={() => onIconClick()}
-                />
-                {separator}
-            </Conditional>
+		<Conditional show={image && state.expanded}>
+			<img
+				src={image}
+				className={'image'.classNames(style) + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()}
+				onClick={() => onIconClick()}
+			/>
+			{separator}
+		</Conditional>
 
-			{content}
+		{content}
 
-            <Conditional show={state.expanded}>
-                <Conditional show={type !== 'textarea'}>
-                    <input {...attr} />
-                </Conditional>
+		<Conditional show={state.expanded}>
+			<Conditional show={type !== 'textarea'}>
+				<input {...attr} />
+			</Conditional>
 
-                <Conditional show={type === 'textarea'}>
-                    <textarea {...attr} style={{resize, paddingTop: '15px', paddingBottom: '15px'}}></textarea>
-                </Conditional>
-            </Conditional>
-        </label>
-    );
+			<Conditional show={type === 'textarea'}>
+				<textarea {...attr} style={{resize, paddingTop: '15px', paddingBottom: '15px'}}></textarea>
+			</Conditional>
+		</Conditional>
+	</label>
 }
