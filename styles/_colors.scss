@@ -9,16 +9,8 @@
 
 				#{$attr}: var(--solidie-color-#{$color});
 
-				&.interactive:hover, &.active {
-					@if ($attr == 'color') {
-						#{$attr}: var(--solidie-color-#{$color}-150);
-					}
-					
-					@if ($attr == 'background-color') {
-						#{$attr}: var(--solidie-color-#{$color}-150);
-					}
-					
-					@if ($attr == 'border-color') {
+				@if str-index($color, "-") == null {
+					&.interactive:hover, &.active {
 						#{$attr}: var(--solidie-color-#{$color}-150);
 					}
 				}
