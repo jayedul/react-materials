@@ -73,55 +73,52 @@ export function NumberField(props) {
 		ref.current.setSelectionRange(state.cursor_position, state.cursor_position);
 	}, [value]);
 
-	const controller_class =
-        'font-size-20 cursor-pointer color-text-50 color-active-child-primary'.classNames();
+	const controller_class = 'font-size-20 cursor-pointer color-text-50'.classNames();
 
-	return (
-		<div
-			className={
-				`d-flex align-items-center bg-color-white ${disabled ? 'cursor-not-allowed' : ''} ${
-					state.focused ? 'active color-active-parent' : ''
-				}`.classNames() + 'number-field'.classNames(style) + className
-			}
-			style={{width}}
-		>
-			<div className={'height-20'.classNames()}>
-				<i
-					className={'ch-icon ch-icon-minus-square color-text-70 interactive'.classNames() + controller_class}
-					onClick={() => changeValue(-1)}
-				></i>
-			</div>
-			<div className={'flex-1'.classNames()}>
-				<input
-					ref={ref}
-					type="text"
-					disabled={disabled}
-					onChange={(e) => changeValue(null, e.currentTarget.value)}
-					value={value ?? 0}
-					onFocus={() => toggleFocusState(true)}
-					onBlur={() => toggleFocusState(false)}
-					placeholder={placeholder}
-					className={'text-field-flat text-align-center color-text'.classNames()}
-					onKeyDown={e=>{
-						
-						if ( e.key === "ArrowUp" ) {
-							
-							e.preventDefault();
-							changeValue( 1 );
-
-						} else if ( e.key === "ArrowDown" ) {
-							e.preventDefault();
-							changeValue( -1 );
-						}
-					}}
-				/>
-			</div>
-			<div className={'height-20'.classNames()}>
-				<i
-					className={'ch-icon ch-icon-add-square color-text-70 interactive'.classNames() + controller_class}
-					onClick={() => changeValue(1)}
-				></i>
-			</div>
+	return <div
+		className={
+			`d-flex align-items-center bg-color-white ${disabled ? 'cursor-not-allowed' : ''} ${
+				state.focused ? 'active color-active-parent' : ''
+			}`.classNames() + 'number-field'.classNames(style) + className
+		}
+		style={{width}}
+	>
+		<div className={'height-20'.classNames()}>
+			<i
+				className={'ch-icon ch-icon-minus-square color-text-70 interactive'.classNames() + controller_class}
+				onClick={() => changeValue(-1)}
+			></i>
 		</div>
-	);
+		<div className={'flex-1'.classNames()}>
+			<input
+				ref={ref}
+				type="text"
+				disabled={disabled}
+				onChange={(e) => changeValue(null, e.currentTarget.value)}
+				value={value ?? 0}
+				onFocus={() => toggleFocusState(true)}
+				onBlur={() => toggleFocusState(false)}
+				placeholder={placeholder}
+				className={'text-field-flat text-align-center color-text'.classNames()}
+				onKeyDown={e=>{
+					
+					if ( e.key === "ArrowUp" ) {
+						
+						e.preventDefault();
+						changeValue( 1 );
+
+					} else if ( e.key === "ArrowDown" ) {
+						e.preventDefault();
+						changeValue( -1 );
+					}
+				}}
+			/>
+		</div>
+		<div className={'height-20'.classNames()}>
+			<i
+				className={'ch-icon ch-icon-add-square color-text-70 interactive'.classNames() + controller_class}
+				onClick={() => changeValue(1)}
+			></i>
+		</div>
+	</div>
 }

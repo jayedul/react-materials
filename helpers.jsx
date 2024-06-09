@@ -678,3 +678,17 @@ export const setLocalValue=(name, value)=>{
 	locals[name] = value;
 	window.localStorage.setItem('solidie_local_values', JSON.stringify(locals));
 }
+
+export const purgeBasePath = (str) => {
+    // Remove non-alphanumeric characters (except spaces and hyphens)
+    let cleanedStr = str.replace(/[^a-zA-Z0-9\s-]/g, '');
+
+    // Replace spaces with hyphens
+    cleanedStr = cleanedStr.replace(/\s+/g, '-');
+
+    // Consolidate multiple hyphens into a single hyphen
+    cleanedStr = cleanedStr.replace(/-+/g, '-');
+
+    // Return the cleaned string
+    return cleanedStr;
+}
