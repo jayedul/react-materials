@@ -9,6 +9,6 @@ export function LoadingIcon({ show, center = false, className }) {
 			className
 		}
 	>
-		<i className={'ch-icon ch-icon-loading d-inline-block position-relative top-2'.classNames() + 'rotate'.classNames(style)}></i>
+		<i className={'ch-icon ch-icon-loading d-inline-block position-relative top-2 color-material-90'.classNames() + 'rotate'.classNames(style)}></i>
 	</div>
 }
