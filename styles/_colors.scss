@@ -31,9 +31,14 @@
             &, &[type] {
 
 				#{$attr}: var(--solidie-color-#{$color});
+				transition: all 0.4s;
 
 				&.interactive:hover, &.active {
 					#{$attr}: var(--solidie-color-#{get-first-part($color, '-')}-150);
+
+					&.scalable {
+						transform: scale(1.05);
+					}
 				}
             }
         }

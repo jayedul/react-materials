@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
+import {data_pointer} from '../helpers.jsx';
+
 import WaveSurfer from './wavesurfer.js';
 import style from './player.module.scss';
 
@@ -26,19 +28,21 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 
 	const buildPlayer=()=>{
 
+		const {colors={}} = window[data_pointer];
+
 		// Create a canvas gradient
 		const ctx = document.createElement('canvas').getContext('2d')
 		const gradient = ctx.createLinearGradient(0, 0, 0, 130)
-		gradient.addColorStop(0, 'rgb(255, 255, 255)')
-		gradient.addColorStop(0.5, 'rgb(255, 255, 255)')
-		gradient.addColorStop(1, 'rgb(80, 80, 80)')
+		gradient.addColorStop(0, colors.white)
+		gradient.addColorStop(0.5, colors.white)
+		gradient.addColorStop(1, colors.white)
 
 		// Default style with a gradient
 		const wavesurfer = WaveSurfer.create({
 			container: waveform_ref.current,
 			waveColor: gradient,
 			height,
-			progressColor: 'rgba(0, 34, 115, 0.5)',
+			progressColor: colors['material-90'],
 			url: src,
 		});
 				
@@ -104,8 +108,8 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 			</div>
 			<div className={'flex-1'.classNames()}>
 				<div 
-					className={'d-flex align-items-center column-gap-15 margin-bottom-10 border-bottom-1 b-color-text-40'.classNames()}
-					style={{paddingBottom: '10px'}}
+					className={'d-flex align-items-center column-gap-15 margin-bottom-10 border-bottom-1'.classNames()}
+					style={{paddingBottom: '10px', borderColor: 'rgba(255, 255, 255, 0.3)'}}
 				>
 					<div 
 						className={'player-control'.classNames(style)} 

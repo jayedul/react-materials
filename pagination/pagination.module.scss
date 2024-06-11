@@ -1,7 +1,10 @@
 .container {
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
     list-style-type: none !important;
+	flex-wrap: wrap;
+    row-gap: 10px;
+    justify-content: center;
 
     & > li {
         padding: 0;
