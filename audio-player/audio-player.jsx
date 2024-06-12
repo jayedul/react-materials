@@ -42,7 +42,7 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 			container: waveform_ref.current,
 			waveColor: gradient,
 			height,
-			progressColor: colors['material-90'],
+			progressColor: colors['material-50'],
 			url: src,
 		});
 				
