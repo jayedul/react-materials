@@ -3,13 +3,12 @@ import React from 'react';
 import './prototypes.jsx';
 import { getHooks } from './hooks.jsx';
 import { ToastWrapper } from './toast/toast.jsx';
-import { WarningWrapper } from './warning/warning.jsx';
 import { RenderExternal } from './render-external.jsx';
 
 export function MountPoint({ children }) {
 	return <div className={'root font-weight-400'.classNames()}>
 		<ToastWrapper>
-			<WarningWrapper>{children}</WarningWrapper>
+			{children}
 		</ToastWrapper>
 	</div>
 }
