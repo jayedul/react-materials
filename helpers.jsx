@@ -692,3 +692,10 @@ export const purgeBasePath = (str) => {
     // Return the cleaned string
     return cleanedStr;
 }
+
+export function getBack(e){
+	if ( window.history.state?.idx ) {
+		e.preventDefault();
+		window.history.back();
+	}
+}
