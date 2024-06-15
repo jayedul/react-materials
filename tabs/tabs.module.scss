@@ -75,21 +75,21 @@
 
                 &.fill-left {
                     .hr-1 {
-                        background-color: var(--solidie-color-primary) !important;
+                        background-color: var(--solidie-color-material) !important;
                     }
                 }
 
                 &.fill-right {
                     .hr-2,
                     .circle {
-                        border-color: var(--solidie-color-primary) !important;
-                        background-color: var(--solidie-color-primary) !important;
+                        border-color: var(--solidie-color-material) !important;
+                        background-color: var(--solidie-color-material) !important;
                     }
                 }
 
                 &.fill-right-gradient {
                     .circle {
-                        border-color: var(--solidie-color-primary) !important;
+                        border-color: var(--solidie-color-material) !important;
                     }
 
                     .hr-2 {
