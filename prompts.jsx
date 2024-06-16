@@ -14,7 +14,7 @@ export function confirm(title, text, callback) {
 		confirmButtonText: "Yes",
 		reverseButtons: true,
 		customClass: {
-			title: 'font-weight-500'.classNames()
+			title: 'font-weight-600'.classNames()
 		}
 	}).then((result) => {
 		if (result.isConfirmed) {
