@@ -6,7 +6,7 @@ import { ToastWrapper } from './toast/toast.jsx';
 import { RenderExternal } from './render-external.jsx';
 
 export function MountPoint({ children }) {
-	return <div className={'solidie-root font-weight-400'.classNames()}>
+	return <div className={'mountpoint font-weight-400'.classNames()}>
 		<ToastWrapper>
 			{children}
 		</ToastWrapper>

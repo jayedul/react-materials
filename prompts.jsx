@@ -14,7 +14,7 @@ export function confirm(title, text, callback) {
 		confirmButtonText: "Yes",
 		reverseButtons: true,
 		customClass: {
-			container: 'solidie-root solidie-prompt'.classNames()
+			title: 'font-weight-500'.classNames()
 		}
 	}).then((result) => {
 		if (result.isConfirmed) {

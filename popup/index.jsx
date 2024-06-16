@@ -22,7 +22,6 @@ const getRootPopup = () => {
     if (PopupRoot === null) {
         PopupRoot = document.createElement('div');
         PopupRoot.setAttribute('id', root_id);
-		PopupRoot.classList.add('solidie-root'.classNames());
         document.body.appendChild(PopupRoot);
     }
 
