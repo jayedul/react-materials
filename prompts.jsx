@@ -12,7 +12,10 @@ export function confirm(title, text, callback) {
 		cancelButtonColor: 'gray',
 		confirmButtonColor: colors.material,
 		confirmButtonText: "Yes",
-		reverseButtons: true
+		reverseButtons: true,
+		customClass: {
+			container: 'solidie-root solidie-prompt'
+		}
 	}).then((result) => {
 		if (result.isConfirmed) {
 			const func = typeof text=='function' ? text : callback;

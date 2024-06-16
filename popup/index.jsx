@@ -14,13 +14,15 @@ import styles from './styles.jsx';
 import style from './popup.module.scss';
 
 let popupIdCounter = 0;
+let root_id = 'solidie-pop-root-id';
 
 const getRootPopup = () => {
-    let PopupRoot = document.getElementById('crewhrm-popup-root');
+    let PopupRoot = document.getElementById(root_id);
 
     if (PopupRoot === null) {
         PopupRoot = document.createElement('div');
-        PopupRoot.setAttribute('id', 'crewhrm-popup-root');
+        PopupRoot.setAttribute('id', root_id);
+		PopupRoot.classList.add('solidie-root');
         document.body.appendChild(PopupRoot);
     }
 
