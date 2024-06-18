@@ -653,7 +653,7 @@ export const getDashboardPath=(rel_path)=>{
 	const base_path = is_admin ? '/' : '/' + home_path + '/';
 	const path      = base_path + `${is_admin ? '' : frontend_dashboard_path}/${rel_path}/`
 
-	return path.replace(/\/+/g, '/');;
+	return path.replace(/\/+/g, '/');
 }
 
 export const getLocalValue=(name, deflt)=>{
