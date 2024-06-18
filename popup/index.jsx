@@ -242,7 +242,7 @@ export const Popup = forwardRef(
                                   .map((c) => `${c}-content`)
                                   .join(' ')
                             : ''
-                    }`.classNames(style),
+                    }`.classNames(style) + 'mountpoint'.classNames(),
                 style: {
                     ...popupContentStyle,
                     ...contentStyle,

@@ -257,6 +257,7 @@ export function ListManager(props) {
 						'd-flex align-items-center darken-on-hover--8'.classNames() +
 						'add-stage'.classNames(style)
 					}
+					data-cylector="add-list-item"
 					onClick={()=>onAdd ? onAdd() : addStage()}
 				>
 					<i className={'ch-icon ch-icon-add-circle font-size-24'.classNames()}></i>

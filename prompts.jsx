@@ -14,6 +14,7 @@ export function confirm(title, text, callback) {
 		confirmButtonText: "Yes",
 		reverseButtons: true,
 		customClass: {
+			container: 'solidie-swal',
 			title: 'font-weight-600'.classNames()
 		}
 	}).then((result) => {
