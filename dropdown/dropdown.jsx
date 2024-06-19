@@ -108,6 +108,7 @@ export function DropDown(props) {
 				`border-1 ${!errorState ? 'b-color-text-40' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
 			}
 			style={{padding: '0 15px', height: '40px'}}
+			data-cylector="trigger-point"
 		>
 			<div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
 				<Conditional show={!search}>
@@ -147,89 +148,86 @@ export function DropDown(props) {
         }
     };
 
-    return (
-        <div ref={ref}>
-            <Popup
-                position={position}
-                on="click"
-				disabled={disabled}
-                closeOnDocumentClick={true}
-                mouseLeaveDelay={300}
-                mouseEnterDelay={0}
-                contentStyle={{ ...content_style, ...cssStyle }}
-                arrow={false}
-                nested={nested}
-                trigger={triggerPoint()}
-                onClose={() => closeDropdown()}
-            >
-                {(close) => {
-                    // Determine border width, color and radius from the class name to sync the popup accordingly
-                    let popup_styles = ref.current ? { minWidth: ref.current.clientWidth + 'px' } : {};
-                    popup_styles = { ...popup_styles, ...getPopupStyle(className) };
+    return <div ref={ref}>
+		<Popup
+			position={position}
+			on="click"
+			disabled={disabled}
+			closeOnDocumentClick={true}
+			mouseLeaveDelay={300}
+			mouseEnterDelay={0}
+			contentStyle={{ ...content_style, ...cssStyle }}
+			arrow={false}
+			nested={nested}
+			trigger={triggerPoint()}
+			onClose={() => closeDropdown()}
+		>
+			{(close) => {
+				// Determine border width, color and radius from the class name to sync the popup accordingly
+				let popup_styles = ref.current ? { minWidth: ref.current.clientWidth + 'px' } : {};
+				popup_styles = { ...popup_styles, ...getPopupStyle(className) };
 
-                    return (
-                        <div
-                            className={
-                                'select-dropdown-popup'.classNames(style) +
-                                `box-shadow-thick border-radius-10 ${pop_border} b-color-text-40 bg-color-white white-space-nowrap box-shadow-thin`.classNames()
-                            }
-                            style={popup_styles}
-                        >
-                            <div className={'trigger-point'.classNames(style)}>
-                                {triggerPoint(options.length > 8)}
-                            </div>
-                            <div className={'list-wrapper'.classNames(style)}>
-                                {options
-                                    .filter(
-                                        (o) =>
-                                            !searchState ||
-                                            o.label
-                                                .toLowerCase()
-                                                .indexOf(searchState.toLowerCase()) > -1
-                                    )
-                                    .map((option) => {
-                                        let { id, label } = option;
-                                        let classes = `list-item ${
-                                            id == selected_value ? 'active' : ''
-                                        }`;
-                                        return (
-                                            <div
-                                                key={id}
-                                                className={classes.classNames(style) + list_class}
-                                                onClick={() => {
-                                                    onChange(id);
-                                                    closeDropdown(close);
-                                                }}
-                                            >
-                                                {label}
-                                            </div>
-                                        );
-                                    })}
-                            </div>
+				return (
+					<div
+						className={
+							'select-dropdown-popup'.classNames(style) +
+							`box-shadow-thick border-radius-10 ${pop_border} b-color-text-40 bg-color-white white-space-nowrap box-shadow-thin`.classNames()
+						}
+						style={popup_styles}
+					>
+						<div className={'trigger-point'.classNames(style)}>
+							{triggerPoint(options.length > 8)}
+						</div>
+						<div className={'list-wrapper'.classNames(style)} data-cylector="options-wrapper">
+							{options
+								.filter(
+									(o) =>
+										!searchState ||
+										o.label
+											.toLowerCase()
+											.indexOf(searchState.toLowerCase()) > -1
+								)
+								.map((option) => {
+									let { id, label } = option;
+									let classes = `list-item ${
+										id == selected_value ? 'active' : ''
+									}`;
+									return <div
+										key={id}
+										data-cylector={id}
+										className={classes.classNames(style) + list_class}
+										onClick={() => {
+											onChange(id);
+											closeDropdown(close);
+										}}
+									>
+										{label}
+									</div>
+								})}
+						</div>
 
-                            {addText && (
-                                <div
-                                    className={'add-item'.classNames(style) + list_class}
-                                    style={{ paddingTop: '10px', paddingBottom: '10px' }}
-                                    onClick={() => {
-                                        closeDropdown(close);
-                                        onAddClick();
-                                    }}
-                                >
-                                    <i
-                                        className={'ch-icon ch-icon-add-square vertical-align-middle d-inline-block margin-right-10'.classNames()}
-                                    ></i>
-                                    <span className={'vertical-align-middle'.classNames()}>
-                                        {addText}
-                                    </span>
-                                </div>
-                            )}
-                        </div>
-                    );
-                }}
-            </Popup>
-        </div>
-    );
+						{addText && (
+							<div
+								className={'add-item'.classNames(style) + list_class}
+								style={{ paddingTop: '10px', paddingBottom: '10px' }}
+								onClick={() => {
+									closeDropdown(close);
+									onAddClick();
+								}}
+							>
+								<i
+									className={'ch-icon ch-icon-add-square vertical-align-middle d-inline-block margin-right-10'.classNames()}
+								></i>
+								<span className={'vertical-align-middle'.classNames()}>
+									{addText}
+								</span>
+							</div>
+						)}
+					</div>
+				);
+			}}
+		</Popup>
+	</div>
 }
 
 export function Options(props) {

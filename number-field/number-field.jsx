@@ -14,7 +14,8 @@ export function NumberField(props) {
 		disabled, 
 		placeholder, 
 		width,
-		decimal_point
+		decimal_point,
+		name
 	} = props;
 
 	const ref = useRef();
@@ -92,6 +93,7 @@ export function NumberField(props) {
 		<div className={'flex-1'.classNames()}>
 			<input
 				ref={ref}
+				name={name}
 				type="text"
 				disabled={disabled}
 				onChange={(e) => changeValue(null, e.currentTarget.value)}

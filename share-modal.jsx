@@ -61,7 +61,7 @@ export function ShareModal(props) {
 	};
 
 	return <Modal>
-		<div style={{maxWidth: '550px'}}>
+		<div style={{maxWidth: '550px'}} data-cylector="sharer">
 			<div
 				className={'d-flex align-items-center'.classNames()}
 			>
@@ -74,6 +74,7 @@ export function ShareModal(props) {
 					<i
 						className={'ch-icon ch-icon-times font-size-18 color-text-50 cursor-pointer'.classNames()}
 						onClick={closeModal}
+						data-cylector="close-sharer"
 					></i>
 				</div>
 			</div>
@@ -115,6 +116,7 @@ export function ShareModal(props) {
 					></i>
 					<span
 						className={'font-size-16 font-weight-400 letter-spacing--3 color-text-50 vertical-align-middle'.classNames()}
+						data-cylector="copy-url"
 					>
 						{__('Copy')}
 					</span>

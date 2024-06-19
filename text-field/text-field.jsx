@@ -39,6 +39,7 @@ export function TextField(props) {
 		onFocus,
 		onKeyDown,
 		onKeyUp,
+		name
     } = props;
 
     const input_ref = useRef();
@@ -179,6 +180,7 @@ export function TextField(props) {
     }, [text]);
 
     const attr = {
+		name,
 		min,
 		max,
         type,
