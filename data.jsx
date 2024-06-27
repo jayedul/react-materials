@@ -46,13 +46,6 @@ export const patterns = {
 	eight_to_twenty: /^.{8,20}$/,
 }
 
-export const genders = {
-    male: __('Male'),
-    female: __('Female'),
-    other: __('Other'),
-    decline: __('Decline to self Identity')
-};
-
 export const statuses = {
     publish: {
         color: '#73BF45',
@@ -116,42 +109,6 @@ export const time_formats = {
     _24: __('24 Hours')
 };
 
-export const attendance_types = {
-	on_site: __('On-Site'),
-    remote: __('Fully Remote'),
-    hybrid: __('Hybrid')
-};
-
-export const employment_types = {
-    full_time: __('Full Time'),
-    part_time: __('Part Time'),
-    contract: __('Contract'),
-    temporary: __('Temporary'),
-    trainee: __('Trainee')
-};
-
-export const employment_statuses = {
-	active: __('Active'),
-	inactive: __('Inactive'),
-	resigned: __('Resigned'),
-	laid_off: __('Laid Off'),
-	terminated: __('Terminated')
-}
-
-export const experience_levels = {
-    beginner: __('Beginner'),
-    intermidiate: __('Intermidiate'),
-    adanced: __('Advanced')
-};
-
-export const salary_types = {
-    hourly: __('Hourly'),
-    daily: __('Daily'),
-    weekly: __('Weekly'),
-    monthly: __('Monthly'),
-    yearly: __('Yearly')
-};
-
 export const numbers = {
 	0: __('0'),
 	1: __('1'),
@@ -163,54 +120,6 @@ export const numbers = {
 	7: __('7'),
 	8: __('8'),
 	9: __('9'),
-}
-
-export const marital_statuses = {
-	single: __('Single'),
-	married: __('Married'),
-	separated: __('Separated'),
-	devorced: __('Devorced'),
-	widowed: __('Widowed'),
-	other: __('Other')
-}
-
-export const blood_groups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
-
-export const relationships = {
-	parent: __('Parent'),
-	sibling: __('Sibling'),
-	spouse: __('Spouse'),
-	friend: __('Friend'),
-	colleague: __('Colleague'),
-	other: __('Other')
-}
-
-export const leave_types = {
-    sick: __('Sick Leave'),
-    vacation: __('Vacation Leave'),
-    personal: __('Personal Leave'),
-    maternity: __('Maternity Leave'),
-    paternity: __('Paternity Leave'),
-    bereavement: __('Bereavement Leave'),
-    unpaid: __('Unpaid Leave'),
-    holiday: __('Holiday Leave'),
-    comp: __('Compensatory Leave'),
-    mental_health: __('Mental Health Leave'),
-    training: __('Training Leave'),
-    family_emergency: __('Family Emergency Leave'),
-    compassionate: __('Compassionate Leave'),
-    administrative: __('Administrative Leave'),
-    annual: __('Annual Leave'),
-    casual: __('Casual Leave'),
-    educational: __('Educational Leave'),
-    relocation: __('Relocation Leave')
-};
-
-export const leave_request_statuses = {
-	pending: __('Pending'),
-	cancelled: __('Cancelled'),
-	approved: __('Approved'),
-	rejected: __('Rejected')
 }
 
 // Prepare country data
