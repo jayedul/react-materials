@@ -3,11 +3,14 @@ import { data_pointer } from './helpers';
 
 const {colors={}} = window[data_pointer];
 
-export function confirm(title, text, callback) {
-	Swal.fire({
+export function confirm(title, text, callback, configs) {
+
+	const has_text = typeof text === 'string';
+
+	const params = {
 		title,
-		text: typeof text=='function' ? undefined : text,
-		icon: "warning",
+		text: has_text ? text : undefined,
+		icon: "question",
 		showCancelButton: true,
 		cancelButtonColor: 'gray',
 		confirmButtonColor: colors.material,
@@ -17,9 +20,14 @@ export function confirm(title, text, callback) {
 			container: 'solidie-swal',
 			title: 'font-weight-600'.classNames()
 		}
-	}).then((result) => {
+	}
+
+	let _configs = has_text ? configs : callback;
+	_configs     = ( _configs && typeof _configs === 'object' ) ? _configs : {};
+
+	Swal.fire({...params, ..._configs}).then((result) => {
 		if (result.isConfirmed) {
-			const func = typeof text=='function' ? text : callback;
+			const func = has_text ? callback : text;
 			func();
 		}
 	});
