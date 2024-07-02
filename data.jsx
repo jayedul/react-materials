@@ -10,6 +10,16 @@ import MediumIcon from './static/images/social-img/crew-medium-icon.svg';
 import DribbleIcon from './static/images/social-img/crew-dribble-icon.svg';
 import BehanceIcon from './static/images/social-img/crew-behance-icon.svg';
 
+export const order_statuses = {
+	pending        : __('Pending payment'),
+	processing     : __('Processing'),
+	'on-hold'      : __('On hold'),
+	completed      : __('Completed'),
+	cancelled      : __('Cancelled'),
+	refunded       : __('Refunded'),
+	failed         : __('Failed')
+}
+
 export const social_icons = {
 	linkedin: LinkedInIcon,
 	twitter: TwitterIcon,
