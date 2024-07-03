@@ -5,6 +5,9 @@ $radius: 6px;
 $base_color: var(--solidie-color-material-20);
 
 @mixin regularStyle() {
+	
+	background-color: white;
+
 	&>* {
 		&>tr:first-child {
 			/* top-left border-radius */
@@ -77,7 +80,7 @@ $base_color: var(--solidie-color-material-20);
 	}
 
 	&>*>tr {
-		background: rgba(234, 234, 234, 0.268);
+		background: white;
 
 		&:not(:last-child) {
 			margin-bottom: 22px;
