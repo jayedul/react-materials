@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-import style from './style.module.scss';
-
 export function WpDashboardFullPage(props) {
 
     const { children } = props;
@@ -32,11 +30,9 @@ export function WpDashboardFullPage(props) {
 		return ()=>window.removeEventListener('resize', setHeight);
     }, []);
 
-    return (
-        <div ref={ref} className={'wrapper'.classNames(style) + 'd-flex width-p-100'.classNames()}>
-			<div className={'flex-1 width-p-100'.classNames()}>
-            	{children}
-			</div>
-        </div>
-    );
+    return <div ref={ref} className={'d-flex width-p-100'.classNames()}>
+		<div className={'flex-1 width-p-100'.classNames()}>
+			{children}
+		</div>
+	</div>
 }
