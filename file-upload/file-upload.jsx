@@ -120,7 +120,8 @@ export function FileUpload(props) {
         WpMedia,
         layoutComp,
 		imageMaxWidth,
-		showErrorsAlways
+		showErrorsAlways,
+		FileControl
     } = props;
 
     const singular = maxlength <= 1;
@@ -435,7 +436,11 @@ export function FileUpload(props) {
 				</span>
 			</div>
 
-			<ListFile files={stateFiles} onRemove={removable ? removeFile : null} />
+			<ListFile 
+				files={stateFiles} 
+				onRemove={removable ? removeFile : null} 
+				FileControl={FileControl}
+			/>
 		</div>
 	
 		<Input />
