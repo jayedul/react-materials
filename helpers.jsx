@@ -530,19 +530,19 @@ export function timeAgoOrAfter(timestamp) {
 
   if (future) {
     if (years > 0) {
-      return years === 1 ? sprintf(__('%s year from now'), __(years)) : sprintf(__('%s years from now'), __(years));
+      return years === 1 ? sprintf(__('%s year later'), __(years)) : sprintf(__('%s years later'), __(years));
     } else if (months > 0) {
-      return months === 1 ? sprintf(__('%s month from now'), __(months)) : sprintf(__('%s months from now'), __(months));
+      return months === 1 ? sprintf(__('%s month later'), __(months)) : sprintf(__('%s months later'), __(months));
     } else if (weeks > 0) {
-      return weeks === 1 ? sprintf(__('%s week from now'), __(weeks)) : sprintf(__('%s weeks from now'), __(weeks));
+      return weeks === 1 ? sprintf(__('%s week later'), __(weeks)) : sprintf(__('%s weeks later'), __(weeks));
     } else if (days > 0) {
-      return days === 1 ? sprintf(__('%s day from now'), __(days)) : sprintf(__('%s days from now'), __(days));
+      return days === 1 ? sprintf(__('%s day later'), __(days)) : sprintf(__('%s days later'), __(days));
     } else if (hours > 0) {
-      return hours === 1 ? sprintf(__('%s hour from now'), __(hours)) : sprintf(__('%s hours from now'), __(hours));
+      return hours === 1 ? sprintf(__('%s hour later'), __(hours)) : sprintf(__('%s hours later'), __(hours));
     } else if (minutes > 0) {
-      return minutes === 1 ? sprintf(__('%s minute from now'), __(minutes)) : sprintf(__('%s minutes from now'), __(minutes));
+      return minutes === 1 ? sprintf(__('%s minute later'), __(minutes)) : sprintf(__('%s minutes later'), __(minutes));
     } else {
-      return __('Less than a minute from now');
+      return __('Less than a minute later');
     }
   } else {
     if (years > 0) {
