@@ -695,7 +695,7 @@ export const purgeBasePath = (str) => {
 
 export function getBack(e){
 	if ( window.history.state?.idx ) {
-		e.preventDefault();
+		e?.preventDefault?.();
 		window.history.back();
 	}
 }
