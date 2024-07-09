@@ -18,7 +18,7 @@ String.prototype.classNames = function (style) {
 			dump += ' ' + c;
 		}
 
-		return (source[c] || '') + (!is_production ? ' ' + 'crewhrm-' + c : '');
+		return (source[c] || '') + (!is_production ? ' ' + 'solidie-' + c : '');
 	});
 
 	if (dump) {
