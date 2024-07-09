@@ -12,19 +12,17 @@ export function Modal(props) {
 		style: cssStyle = {}
 	} = props;
 
-	return (
-		<Popup
-			on={[]}
-			open={open}
-			darken={true}
-			arrow={false}
-			nested={nested}
-			closeOnDocumentClick={closeOnDocumentClick}
-			trigger={trigger}
-			onClose={onClose}
-			contentStyle={{ ...cssStyle }}
-		>
-			<div>{children}</div>
-		</Popup>
-	);
+	return <Popup
+		on={[]}
+		open={open}
+		darken={true}
+		arrow={false}
+		nested={nested}
+		closeOnDocumentClick={closeOnDocumentClick}
+		trigger={trigger}
+		onClose={onClose}
+		contentStyle={{ ...cssStyle }}
+	>
+		<div>{children}</div>
+	</Popup>
 }

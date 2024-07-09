@@ -6,25 +6,39 @@ default style for popup
 
 */
 .popup-content {
+	
     margin: auto;
+
+	@media (max-width: 549px) {
+		width: 100%;
+	}
 
     &.popup {
         width: auto;
     }
 
     &.modal {
-        height: 100%;
+        height: auto;
+		max-height: 70%;
+		max-width: 90%;
         display: flex;
         align-items: center;
-
+		overflow: auto;
+		background-color: white;
+		border-radius: 10px;
+		
         & > div {
             max-height: 80%;
             overflow: auto;
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
-            min-width: 586px;
-            max-width: 100%;
+            padding: 20px;
+			width: 100%;
+			max-width: 550px;
+			
+			@media (min-width: 550px) {
+				min-width: 520px;
+			}
         }
     }
 }

@@ -60,7 +60,10 @@ export function ShareModal(props) {
 		);
 	};
 
-	return <Modal>
+	return <Modal 
+		closeOnDocumentClick={true}
+		onClose={closeModal}
+	>
 		<div style={{maxWidth: '550px'}} data-cylector="sharer">
 			<div
 				className={'d-flex align-items-center'.classNames()}
