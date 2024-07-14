@@ -118,6 +118,7 @@ export function FileUpload(props) {
         onChange,
         accept=[],
         WpMedia,
+		layout,
         layoutComp,
 		imageMaxWidth,
 		showErrorsAlways,
@@ -403,6 +404,7 @@ export function FileUpload(props) {
     }
 
 	const replace_now = !removable && !isEmpty(stateFiles);
+	const is_thumbnail = layout === 'thumbnail' && maxlength===1;
 
     return  <div className={'upload'.classNames(style)}>
 		<div
@@ -417,30 +419,50 @@ export function FileUpload(props) {
 				setActionState(e, false);
 			}}
 		>
-			<div className={'text-align-center'.classNames()}>
-				<div className={'margin-bottom-5'.classNames()}>
-					<i
-						className={'ch-icon ch-icon-folder-add font-size-24 color-text'.classNames()}
-					></i>
+			<div className={'d-flex align-items-center column-gap-15'.classNames()}>
+				{
+					!is_thumbnail ? null :
+					<div style={{width: '150px'}} className={'position-relative'.classNames()}>
+						<img 
+							src={value instanceof File ? URL.createObjectURL(value) : value?.file_url} 
+							className={'width-p-100 height-auto'.classNames()}
+							style={{
+								border: '5px solid white',
+								boxShadow: '2px 2px 7px rgba(0, 0, 0, .3)',
+								borderRadius: '5px'
+							}}
+						/>
+					</div>
+				}
+				<div className={`flex-1 ${!is_thumbnail ? 'text-align-center' : 'text-align-left'}`.classNames()}>
+					<div className={'margin-bottom-5'.classNames()}>
+						<i
+							className={'ch-icon ch-icon-folder-add font-size-24 color-text'.classNames()}
+						></i>
+					</div>
+
+					<span
+						className={'d-block font-size-15 font-weight-600 line-height-20 color-text'.classNames()}
+					>
+						{replace_now ? __('Replace File') : __('Browse')}
+					</span>
+					<span
+						className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
+					>
+						{replace_now ? __('or, Just drop another') : __('or, Just drop it here')}
+					</span>
 				</div>
-
-				<span
-					className={'d-block font-size-15 font-weight-600 line-height-20 color-text'.classNames()}
-				>
-					{replace_now ? __('Replace File') : __('Browse')}
-				</span>
-				<span
-					className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
-				>
-					{replace_now ? __('or, Just drop another') : __('or, Just drop it here')}
-				</span>
 			</div>
+			
 
-			<ListFile 
-				files={stateFiles} 
-				onRemove={removable ? removeFile : null} 
-				FileControl={FileControl}
-			/>
+			{
+				is_thumbnail ? null :
+				<ListFile 
+					files={stateFiles} 
+					onRemove={removable ? removeFile : null} 
+					FileControl={FileControl}
+				/>
+			}
 		</div>
 	
 		<Input />
