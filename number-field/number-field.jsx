@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { input_class as className } from '../classes.jsx';
 
 import style from './number-field.module.scss'
-import { useEffect } from 'react';
 
 export function NumberField(props) {
 	
@@ -20,23 +19,18 @@ export function NumberField(props) {
 
 	const ref = useRef();
 	const [state, setState] = useState({
-		focused: false,
-		cursor_position: 0
+		value
 	});
 
-	const changeValue = (shift, val) => {
+	const [focused, setFocused] = useState(false);
 
-		setState({
-			...state,
-			cursor_position: ref.current.selectionStart
-		});
+	const changeValue = (shift) => {
+
+		let val = state.value;
 
 		if ( disabled ) {
 			return;
 		}
-
-		// Focu the field to apply styles
-		ref.current.focus();
 
 		// Collect value and dispatch
 		let parser = decimal_point ? parseFloat : parseInt;
@@ -61,25 +55,16 @@ export function NumberField(props) {
 
 		// Dispatch to parent level caller
 		onChange( value );
-	};
 
-	const toggleFocusState = (focused) => {
-		setState({
-			...state,
-			focused
-		});
+		setState({...state, value});
 	};
-
-	useEffect(()=>{
-		ref.current.setSelectionRange(state.cursor_position, state.cursor_position);
-	}, [value]);
 
 	const controller_class = 'font-size-20 cursor-pointer color-text-50'.classNames();
 
 	return <div
 		className={
 			`d-flex align-items-center bg-color-white ${disabled ? 'cursor-not-allowed' : ''} ${
-				state.focused ? 'active' : ''
+				focused ? 'active' : ''
 			}`.classNames() + 'number-field'.classNames(style) + className
 		}
 		style={{width}}
@@ -96,10 +81,10 @@ export function NumberField(props) {
 				name={name}
 				type="text"
 				disabled={disabled}
-				onChange={(e) => changeValue(null, e.currentTarget.value)}
-				value={value ?? 0}
-				onFocus={() => toggleFocusState(true)}
-				onBlur={() => toggleFocusState(false)}
+				onChange={(e) => setState({...state, value: e.currentTarget.value})}
+				value={state.value ?? 0}
+				onFocus={() => setFocused(true)}
+				onBlur={() => {changeValue(); setFocused(false);}}
 				placeholder={placeholder}
 				className={'text-field-flat text-align-center color-text'.classNames()}
 				onKeyDown={e=>{
