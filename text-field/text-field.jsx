@@ -1,14 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Conditional } from '../conditional.jsx';
-
 import { 
 	input_class_raw as input_class, 
 	input_class_error_raw as input_class_error 
 } from '../classes.jsx';
 
-import style from './text-field.module.scss';
 import { isEmpty } from '../helpers.jsx';
+
+import style from './text-field.module.scss';
+
+function evaluatePasswordStrength(password) {
+    const weakPattern = /^.{0,5}$/;
+    const normalPattern = /^(?=.*[a-zA-Z])(?=.*\d).{6,7}$/;
+    const strongPattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+
+	if ( isEmpty(password) ) {
+		return 0;
+	} else if (weakPattern.test(password)) {
+        return 1;
+    } else if (normalPattern.test(password)) {
+        return 2;
+    } else if (strongPattern.test(password)) {
+        return 3;
+    }
+	
+	return 2;
+}
 
 export function TextField(props) {
     const {
@@ -39,7 +56,8 @@ export function TextField(props) {
 		onFocus,
 		onKeyDown,
 		onKeyUp,
-		name
+		name,
+		password_strength=false
     } = props;
 
     const input_ref = useRef();
@@ -226,44 +244,73 @@ export function TextField(props) {
 	let wrapper_class = !errorState.has_error ? input_class : input_class_error;
 	wrapper_class = type==='textarea' ? wrapper_class.replace('padding-vertical-0', 'padding-vertical-10') : wrapper_class;
     
-    return <label
-		className={
-			`text-field`.classNames(style) +
-			`d-flex align-items-center cursor-text ${
-				icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
-			} ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
-			wrapper_class.classNames() + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
+	const pass_strength = (type !== 'password' || !password_strength) ? null : evaluatePasswordStrength(value);
+
+    return <>
+		<label
+			className={
+				`text-field`.classNames(style) +
+				`d-flex align-items-center cursor-text ${
+					icon_position == 'right' ? 'flex-direction-row-reverse' : 'flex-direction-row'
+				} ${state.focused ? 'active' : ''} ${disabled ? 'cursor-not-allowed' : ''}`.classNames() + 
+				wrapper_class.classNames() + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
+			}
+			style={{
+				height: type==='textarea' ? '100px' : undefined,
+				margin: 0,
+				...cssStyle
+			}}
+		>
+			{
+				!iconClass ? null :
+				<>
+					<i 
+						className={iconClass + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()} 
+						onClick={() => onIconClick()}
+					></i>
+					{separator}
+				</>
+			}
+			
+			{
+				!(image && state.expanded) ? null :
+				<>
+					<img
+						src={image}
+						className={'image'.classNames(style) + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()}
+						onClick={() => onIconClick()}
+					/>
+					{separator}
+				</>
+			}
+
+			{content}
+
+			{
+				!state.expanded ? null :
+				(
+					type !== 'textarea' ?
+						<input {...attr} /> 
+						:
+						<textarea 
+							{...attr} 
+							style={{
+								resize, 
+								paddingTop: '15px', 
+								paddingBottom: '15px'
+							}}
+						></textarea>
+				)
+			}
+
+		</label>
+		{
+			pass_strength===null ? null :
+			<div className={"d-flex column-gap-8 align-items-center margin-top-10".classNames()}>
+				<div style={{width: '15%'}} className={`border-1 ${pass_strength>=1 ? 'b-color-text-70' : 'b-color-text-30'}`.classNames()}></div>
+				<div style={{width: '15%'}} className={`border-1 ${pass_strength>=2 ? 'b-color-warning' : 'b-color-text-30'}`.classNames()}></div>
+				<div style={{width: '15%'}} className={`border-1 ${pass_strength>=3 ? 'b-color-success' : 'b-color-text-30'}`.classNames()}></div>
+			</div>
 		}
-		style={{
-			height: type==='textarea' ? '100px' : undefined,
-			margin: 0,
-			...cssStyle
-		}}
-	>
-		<Conditional show={iconClass}>
-			<i className={iconClass + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()} onClick={() => onIconClick()}></i>
-			{separator}
-		</Conditional>
-
-		<Conditional show={image && state.expanded}>
-			<img
-				src={image}
-				className={'image'.classNames(style) + `${(clickHandler || expandable) ? 'cursor-pointer' : ''}`.classNames()}
-				onClick={() => onIconClick()}
-			/>
-			{separator}
-		</Conditional>
-
-		{content}
-
-		<Conditional show={state.expanded}>
-			<Conditional show={type !== 'textarea'}>
-				<input {...attr} />
-			</Conditional>
-
-			<Conditional show={type === 'textarea'}>
-				<textarea {...attr} style={{resize, paddingTop: '15px', paddingBottom: '15px'}}></textarea>
-			</Conditional>
-		</Conditional>
-	</label>
+	</>
 }
