@@ -189,9 +189,10 @@ export function RenderMedia({ media, onDelete, theme = 'grid', overlay = true })
                                             }
 
                                             <span
-                                                className={`d-block margin-top-5 font-size-13 font-weight-400 line-height-24 letter-spacing--13 ${
+                                                className={`d-block margin-top-10 font-size-13 font-weight-400 letter-spacing--13 line-clamp ${
                                                     is_image ? 'color-white' : 'color-text-50'
                                                 }`.classNames()}
+												style={{lineHeight: '16px'}}
                                             >
                                                 {file_name}
                                             </span>
