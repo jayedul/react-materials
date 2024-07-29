@@ -5,7 +5,7 @@ const { syncDirectory } = require('./sync-directory');
 const to_sync = [
 	{
 		from: path.resolve( process.cwd() + '/node_modules/solidie-materials' ),
-		to: path.resolve( process.cwd() + '../solidie-materials' )
+		to: path.resolve( process.cwd(), '../solidie-materials' )
 	}
 ];
 
@@ -15,5 +15,9 @@ for ( let i=0; i<to_sync.length; i++ ) {
 
 	if ( fs.existsSync(to) && fs.existsSync(from) ) {
 		syncDirectory(from, to);
+	} else {
+		console.log('Sync source or destination does not exist');
+		console.log('From: ' + from);
+		console.log('To: ' + to);
 	}
 }

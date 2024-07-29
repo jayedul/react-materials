@@ -1,66 +1,67 @@
 const fs = require('fs');
 const path = require('path');
 const chokidar = require('chokidar');
-const { exec } = require('child_process');
 
-function removeFilesNotInSource(sourceDir, targetDir) {
-  fs.readdir(targetDir, (err, targetFiles) => {
-    if (err) {
-      console.error(`Error reading target directory: ${err}`);
-      return;
-    }
+module.exports.syncDirectory = function (sourceDir, targetDir) {
+  const watcher = chokidar.watch(sourceDir, {
+    ignored: /(^|[\/\\])\../, // ignore dotfiles
+    persistent: true,
+  });
 
-    targetFiles.forEach((targetFile) => {
-      const sourceFilePath = path.join(sourceDir, targetFile);
-      const targetFilePath = path.join(targetDir, targetFile);
-	
-	  // Check for files or directories to exclude
-      if (
-        targetFile === '.git' || // Exclude .git directory
-        targetFile === '.gitignore' || // Exclude .gitignore file
-        targetFile === '.DS_Store' || // Exclude .DS_Store file
-        targetFile.endsWith('.zip') // Exclude zip files
-      ) {
+  watcher
+    .on('add', (filePath) => syncFile(filePath, sourceDir, targetDir))
+    .on('addDir', (dirPath) => syncDirectory(dirPath, sourceDir, targetDir))
+    .on('unlink', (filePath) => deleteFile(filePath, sourceDir, targetDir))
+    .on('unlinkDir', (dirPath) => deleteDirectory(dirPath, sourceDir, targetDir))
+    .on('change', (filePath) => syncFile(filePath, sourceDir, targetDir));
+
+  function syncFile(filePath, sourceDir, targetDir) {
+    const relativePath = path.relative(sourceDir, filePath);
+    const targetPath = path.join(targetDir, relativePath);
+
+    fs.mkdir(path.dirname(targetPath), { recursive: true }, (err) => {
+      if (err) {
+        console.error(`Error creating directory: ${err}`);
         return;
       }
-
-      fs.access(sourceFilePath, fs.constants.F_OK, (sourceErr) => {
-        if (sourceErr) {
-          // File does not exist in source, so we can remove it from the target
-          fs.unlink(targetFilePath, (deleteErr) => {
-            if (deleteErr) {
-              console.error(`Error deleting file: ${deleteErr}`);
-            }
-          });
+      fs.copyFile(filePath, targetPath, (err) => {
+        if (err) {
+          console.error(`Error copying file: ${err}`);
         }
       });
     });
-  });
-}
+  }
 
-module.exports.syncDirectory=function(sourceDir, targetDir) {
-	
-	const rsyncCommand = `rsync -av --exclude='.git/' --exclude='.gitignore' --exclude='.DS_Store' --exclude='*.zip' ${sourceDir}/ ${targetDir}`;
+  function syncDirectory(dirPath, sourceDir, targetDir) {
+    const relativePath = path.relative(sourceDir, dirPath);
+    const targetPath = path.join(targetDir, relativePath);
 
-	const watcher = chokidar.watch(sourceDir, {
-		ignored: /(^|[\/\\])\../, // ignore dotfiles
-		persistent: true,
-	});
+    fs.mkdir(targetPath, { recursive: true }, (err) => {
+      if (err) {
+        console.error(`Error creating directory: ${err}`);
+      }
+    });
+  }
 
-	watcher
-		.on('add', (path) => syncDirectory())
-		.on('addDir', (path) => syncDirectory())
-		.on('unlinkDir', (path) => syncDirectory())
-		.on('change', (path) => syncDirectory())
-		.on('unlink', (path) => syncDirectory());
+  function deleteFile(filePath, sourceDir, targetDir) {
+    const relativePath = path.relative(sourceDir, filePath);
+    const targetPath = path.join(targetDir, relativePath);
 
-	function syncDirectory() {
-		exec(rsyncCommand, (error, stdout, stderr) => {
-			if (error) {
-				console.error(`Error syncing directories: ${error}`);
-			} else {
-				removeFilesNotInSource(sourceDir, targetDir);
-			}
-		});
-	}
-}
+    fs.unlink(targetPath, (err) => {
+      if (err) {
+        console.error(`Error deleting file: ${err}`);
+      }
+    });
+  }
+
+  function deleteDirectory(dirPath, sourceDir, targetDir) {
+    const relativePath = path.relative(sourceDir, dirPath);
+    const targetPath = path.join(targetDir, relativePath);
+
+    fs.rmdir(targetPath, { recursive: true }, (err) => {
+      if (err) {
+        console.error(`Error deleting directory: ${err}`);
+      }
+    });
+  }
+};
