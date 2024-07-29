@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const directory = path.resolve(path.dirname(require.main.filename) + '/dist');
+const directory = path.resolve(process.cwd() + '/dist');
 
 fs.readdir(directory, (err, files) => {
 
