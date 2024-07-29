@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { CoverImage } from '../image/image.jsx';
 import { data_pointer, getFileId, isEmpty, scrollLock } from '../helpers.jsx';
-import { PDFViewer } from '../pdf-viewer/pdf-viewer.jsx';
 
 import { IconImage } from '../dynamic-svg/icon-image.jsx';
 import { IconAudio } from '../dynamic-svg/icon-audio.jsx';
 import { IconVideo } from '../dynamic-svg/icon-video.jsx';
-import { IconPDF } from '../dynamic-svg/icon-pdf.jsx';
 import { IconZip } from '../dynamic-svg/icon-zip.jsx';
 
 import style from './media.module.scss';
@@ -16,7 +14,6 @@ const thumbnails = {
     image: IconImage,
     audio: IconAudio,
     video: IconVideo,
-    pdf: IconPDF,
     zip: IconZip,
     other: null
 };
@@ -259,14 +256,6 @@ export function RenderMediaPreview(props) {
 							src={file_url} 
 							className={'width-auto height-auto'.classNames()} 
 							style={{maxWidth: '100%', maxHeight: '100%'}}/>
-					}
-
-					{
-						media_type !== 'pdf' ? null :
-						<PDFViewer 
-							src={file_url} 
-							height="100%" 
-							defaultScale={1} />
 					}
 
 					{
