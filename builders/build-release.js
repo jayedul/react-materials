@@ -140,6 +140,8 @@ module.exports = conf => {
 				'!./svn-push/**',
 				'!./tests/**',
 
+				(!vendors.length ? '!./vendor/**' : null),
+
 				'!.github',
 				'!.git',
 				
@@ -153,7 +155,7 @@ module.exports = conf => {
 				'!./*.js',
 				'!./*.json',
 				'!./*.xml'
-			])
+			].filter(f=>f))
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
 	});
 
