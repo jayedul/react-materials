@@ -71,7 +71,7 @@ var onError = function (err) {
 
 module.exports = conf => {
 
-	const {text_dirs_js=[], text_dirs_php=[]} = conf;
+	const {text_dirs_js=[], text_dirs_php=[]} = conf || {};
 
 	function i18n_makepot_init(callback) {
 
@@ -168,18 +168,24 @@ module.exports = conf => {
 		return gulp.src(path.resolve(root_dir, './build/**/*.*')).pipe(zip(build_name)).pipe(gulp.dest(root_dir));
 	});
 
-	/**
-	 * Export tasks
-	 */
+	
+	const series = [
+		'clean-zip',
+		'clean-build',
+		'copy',
+		'make-zip',
+		'clean-build'
+	];
+
+	if (text_dirs_js.length) {
+		series.splice(2, 0, i18n_makepot_init);
+	}
+
+	if (text_dirs_php.length) {
+		series.splice(2, 0, 'makepot');
+	}
+
 	return {
-		build: gulp.series(
-			'clean-zip',
-			'clean-build',
-			'makepot',
-			i18n_makepot_init,
-			'copy',
-			'make-zip',
-			'clean-build'
-		)
+		build: gulp.series(...series)
 	}
 }
