@@ -1,5 +1,5 @@
 import style_library from './styles/index.module.scss';
-import icons from './static/icons/crewhrm/style.module.scss';
+import icons from './static/icons/solidie/style.module.scss';
 
 const is_production = process.env.NODE_ENV === 'production'
 
@@ -11,7 +11,7 @@ String.prototype.classNames = function (style) {
 
 	// Apply dynamic classes
 	cls = cls.map((c) => {
-		let source = style || (c.indexOf('ch-icon') > -1 ? icons : style_library);
+		let source = style || (c.indexOf('sicon') > -1 ? icons : style_library);
 
 		// Log if the class not found
 		if (!source[c]) {

@@ -1,19 +1,20 @@
 {
-  "name": "crewhrm-materials",
+  "name": "solidie-materials",
   "version": "1.0.0",
-  "description": "",
+  "description": "Raw React components library, not transpiled. It is intended to be used in Solidie repositories.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Solidie",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CrewHRM/Materials.git"
+    "url": "git+https://github.com/Solidie/solidie-materials.git"
   },
-  "author": "",
-  "license": "GPL-3.0",
+  "keywords": [],
   "bugs": {
-    "url": "https://github.com/CrewHRM/Materials/issues"
+    "url": "https://github.com/Solidie/solidie-materials/issues"
   },
-  "homepage": "https://github.com/CrewHRM/Materials#readme"
+  "homepage": "https://github.com/Solidie/solidie-materials#readme"
 }

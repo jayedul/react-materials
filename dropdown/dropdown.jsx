@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Popup } from '../popup/index.jsx';
 import { __, isEmpty } from '../helpers.jsx';
-import { Conditional } from '../conditional.jsx';
-import { input_class as className } from '../classes.jsx';
 
 import style from './dropdown.module.scss';
 
@@ -13,25 +11,6 @@ const content_style = {
 };
 
 const list_class = 'padding-vertical-10 padding-horizontal-15 cursor-pointer font-size-15 font-weight-400 color-text-80'.classNames();
-
-function getPopupStyle(classNames) {
-    classNames = classNames
-        .split(' ')
-        .map((c) => c.trim())
-        .filter((c) => c.indexOf('crewhrm-') === 0)
-        .map((c) => c.replace('crewhrm-', ''));
-    const styles = {};
-
-    for (let i = 0; i < classNames.length; i++) {
-        // Get border radius
-        if (classNames[i].indexOf('border-radius-') === 0) {
-            styles.borderRadius = classNames[i].replace(/\D/g, '') + 'px';
-            break;
-        }
-    }
-
-    return styles;
-}
 
 export function DropDown(props) {
     const {
@@ -51,7 +30,6 @@ export function DropDown(props) {
         style: cssStyle={},
 		showErrorsAlways=false,
 		clearable=true,
-        variant,
         iconSizeClass = 'font-size-20'.classNames()
     } = props;
 
@@ -80,30 +58,12 @@ export function DropDown(props) {
 		}
 	}, [showErrorsAlways]);
 
-    const pop_border =
-        className.indexOf('border-1') > -1
-            ? 'border-1'
-            : className.indexOf('border-1') > -1
-            ? 'border-1'
-            : '';
-
-    // Dropdown Variant: '' | borderless | primary
-    const variantClass = (variant) => {
-        if(!variant) return ''; // default
-
-        const variantName = (variant === 'borderless') ? 
-            'variant-borderless' : (variant === 'primary') ? 
-            'variant-primary': ''
-        
-        return variantName;
-    }
-
     const triggerPoint = (search = false) => {
         const _placeholder = placeholder;
         return <div
 			tabIndex={tabindex}
 			className={
-				`select-dropdown ${variantClass(variant)} ${transparent ? 'transparent' : ''}`.classNames(style) +
+				`select-dropdown ${transparent ? 'transparent' : ''}`.classNames(style) +
 				'cursor-pointer d-flex align-items-center border-radius-10 column-gap-8'.classNames() +
 				`border-1 ${!errorState ? 'b-color-text-40' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
 			}
@@ -111,23 +71,25 @@ export function DropDown(props) {
 			data-cylector="trigger-point"
 		>
 			<div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
-				<Conditional show={!search}>
-					{selected_value !== undefined
-						? options.find((o) => o.id === selected_value)?.label || _placeholder
-						: _placeholder}
-				</Conditional>
-				<Conditional show={search}>
-					<input
-						className={'text-field-flat font-size-15 font-weight-400'.classNames()}
-						placeholder={__('Search..')}
-						onChange={(e) => setSearchState(e.currentTarget.value)}
-					/>
-				</Conditional>
+				{
+					!search ? 
+						(
+							selected_value !== undefined
+								? options.find((o) => o.id === selected_value)?.label || _placeholder
+								: _placeholder
+						)
+						:
+						<input
+							className={'text-field-flat font-size-15 font-weight-400'.classNames()}
+							placeholder={__('Search..')}
+							onChange={(e) => setSearchState(e.currentTarget.value)}
+						/>
+				}
 			</div>
 			<i 
 				className={
-					`ch-icon 
-					${(!clearable || disabled || !selected_value) ? 'ch-icon-arrow-down' : 'ch-icon-times'} 
+					`sicon 
+					${(!clearable || disabled || !selected_value) ? 'sicon-arrow-down' : 'sicon-times'} 
 					${disabled ? 'color-text-40 cursor-not-allowed' : 'color-text-50'}`.classNames() +
 					iconSizeClass
 				}
@@ -165,13 +127,12 @@ export function DropDown(props) {
 			{(close) => {
 				// Determine border width, color and radius from the class name to sync the popup accordingly
 				let popup_styles = ref.current ? { minWidth: ref.current.clientWidth + 'px' } : {};
-				popup_styles = { ...popup_styles, ...getPopupStyle(className) };
 
 				return (
 					<div
 						className={
 							'select-dropdown-popup'.classNames(style) +
-							`box-shadow-thick border-radius-10 ${pop_border} b-color-text-40 bg-color-white white-space-nowrap box-shadow-thin`.classNames()
+							`box-shadow-thick border-radius-10 border-1 b-color-text-40 bg-color-white white-space-nowrap box-shadow-thin`.classNames()
 						}
 						style={popup_styles}
 					>
@@ -216,7 +177,7 @@ export function DropDown(props) {
 								}}
 							>
 								<i
-									className={'ch-icon ch-icon-add-square vertical-align-middle d-inline-block margin-right-10'.classNames()}
+									className={'sicon sicon-add-square vertical-align-middle d-inline-block margin-right-10'.classNames()}
 								></i>
 								<span className={'vertical-align-middle'.classNames()}>
 									{addText}

@@ -3,15 +3,6 @@
     &:not(.transparent) {
         background-color: white;
     }
-
-    // Variantions
-    &.variant-borderless{
-        border-color: transparent;
-    }
-    
-    &.variant-primary{
-        border-color: var(--solidie-color-material);
-    }
 }
 
 .select-dropdown-popup {
@@ -25,7 +16,7 @@
             border-bottom: 1px solid var(--solidie-color-text-10);
         }
     }
-    i.ch-icon {
+    i.sicon {
         font-size: 15px;
     }
     .list-wrapper {

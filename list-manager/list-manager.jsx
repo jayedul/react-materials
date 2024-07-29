@@ -5,6 +5,8 @@ import { __, getRandomString } from '../helpers.jsx';
 
 import style from './list.module.scss';
 
+const getElementId = index => `solidie-item-${index}`;
+
 function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildren, addChild, has_sibling}) {
 	
 	const {
@@ -34,14 +36,14 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 				{
 					!has_sibling ? null :
-					<i className={'ch-icon ch-icon-drag font-size-18 color-text-50 interactive'.classNames()}></i>
+					<i className={'sicon sicon-drag font-size-18 color-text-50 interactive'.classNames()}></i>
 				}
 
 				<div className={'flex-1 color-text-80'.classNames()}>
 					{
 						!rename ? item_label : 
 						<input
-							id={'crewhrm-flow-option-' + item_id}
+							id={getElementId(item_id)}
 							type="text"
 							value={item_label}
 							disabled={!renameStage}
@@ -58,7 +60,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 			<i
 				className={
-					'ch-icon ch-icon-trash font-size-18 color-error interactive cursor-pointer'.classNames() +
+					'sicon sicon-trash font-size-18 color-error interactive cursor-pointer'.classNames() +
 					'action-icon'.classNames(style)
 				}
 				title={__('Delete')}
@@ -69,7 +71,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				!onEdit ? null :
 				<i
 					className={
-						'ch-icon ch-icon-edit-2 font-size-18 color-material interactive cursor-pointer'.classNames() +
+						'sicon sicon-edit-2 font-size-18 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 					title={__('Edit')}
@@ -81,7 +83,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				!nested ? null :
 				<i
 					className={
-						'ch-icon ch-icon-add-circle font-size-24 color-material interactive cursor-pointer'.classNames() +
+						'sicon sicon-add-circle font-size-24 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 					onClick={addChild}
@@ -96,7 +98,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 					target='_blank'
 					title={__('Visit')}
 					className={
-						'ch-icon ch-icon-arrow-up-right font-size-18 color-material interactive cursor-pointer'.classNames() +
+						'sicon sicon-arrow-up-right font-size-18 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 				></a>
@@ -202,7 +204,7 @@ export function ListManager(props) {
             return;
         }
 
-        const input = document.getElementById('crewhrm-flow-option-' + last_id);
+        const input = document.getElementById(getElementId(last_id));
 
         if (input) {
             input.focus();
@@ -260,7 +262,7 @@ export function ListManager(props) {
 					data-cylector="add-list-item"
 					onClick={()=>onAdd ? onAdd() : addStage()}
 				>
-					<i className={'ch-icon ch-icon-add-circle font-size-24'.classNames()}></i>
+					<i className={'sicon sicon-add-circle font-size-24'.classNames()}></i>
 					<div className={'flex-1 font-size-15 font-weight-500 margin-left-10'.classNames()}>
 						{addText}
 					</div>

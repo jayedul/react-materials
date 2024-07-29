@@ -135,7 +135,7 @@ export function InstantSearch(props) {
 		<div ref={search_ref}>
 			<TextField 
 				placeholder={placeholder}
-				iconClass={'ch-icon ch-icon-search-normal-1'.classNames()}
+				iconClass={'sicon sicon-search-normal-1'.classNames()}
 				icon_position="right"
 				className={'border-1 border-radius-10 b-color-text-40 padding-vertical-12 padding-horizontal-20'.classNames()}
 				inputClassName={'font-size-15 font-weight-400 line-height-25 color-text-50'.classNames()}

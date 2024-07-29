@@ -437,7 +437,7 @@ export function FileUpload(props) {
 				<div className={`flex-1 ${!is_thumbnail ? 'text-align-center' : 'text-align-left'}`.classNames()}>
 					<div className={'margin-bottom-5'.classNames()}>
 						<i
-							className={'ch-icon ch-icon-folder-add font-size-24 color-text'.classNames()}
+							className={'sicon sicon-folder-add font-size-24 color-text'.classNames()}
 						></i>
 					</div>
 

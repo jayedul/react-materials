@@ -36,7 +36,7 @@ export function PDFViewer({ src, defaultScale }) {
 	return (
 		<div
 			ref={ref_wrapper}
-			className='crewhrm-pdf-viewer'
+			className='solidie-pdf-viewer'
 			style={
 				state.error || !state.loaded
 					? {}

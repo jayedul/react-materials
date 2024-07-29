@@ -65,7 +65,7 @@ export const Popup = forwardRef(
         const contentRef = useRef(null);
         const arrowRef = useRef(null);
         const focusedElBeforeOpen = useRef(null);
-        const popupId = useRef(`crewhrm-popup-${++popupIdCounter}`);
+        const popupId = useRef(`solidie-popup-${++popupIdCounter}`);
 
         const isModal = modal ? true : !trigger;
         const timeOut = useRef(0);

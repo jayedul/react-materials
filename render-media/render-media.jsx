@@ -143,7 +143,7 @@ export function RenderMedia({ media, onDelete, theme = 'grid', overlay = true })
                                     onClick={onDelete}
                                 >
                                     <i
-                                        className={'ch-icon ch-icon-times color-white font-size-12'.classNames()}
+                                        className={'sicon sicon-times color-white font-size-12'.classNames()}
                                     ></i>
                                 </span>
 							}
@@ -246,7 +246,7 @@ export function RenderMediaPreview(props) {
 						zIndex: 999994
 					}}
 				>
-					<i className={'ch-icon ch-icon-times color-white font-size-12'.classNames()}></i>
+					<i className={'sicon sicon-times color-white font-size-12'.classNames()}></i>
 				</span>
 
 				<div
@@ -307,7 +307,7 @@ export function RenderMediaPreview(props) {
 								onNavigate(-1)
 							}}
 						>
-							<i className={'ch-icon ch-icon-arrow-right'.classNames()} style={{top: '50%', transform: 'rotate(180deg)'}}></i>
+							<i className={'sicon sicon-arrow-right'.classNames()} style={{top: '50%', transform: 'rotate(180deg)'}}></i>
 						</div>
 						<div 
 							className={'position-absolute right-0 top-0 bottom-0 padding-horizontal-10 d-flex align-items-center cursor-pointer'.classNames() + 'next'.classNames(style)}
@@ -317,7 +317,7 @@ export function RenderMediaPreview(props) {
 								onNavigate(1)
 							}}
 						>
-							<i className={'ch-icon ch-icon-arrow-right'.classNames()} style={{top: '50%'}}></i>
+							<i className={'sicon sicon-arrow-right'.classNames()} style={{top: '50%'}}></i>
 						</div>
 					</>
 				}

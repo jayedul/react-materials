@@ -79,12 +79,12 @@ export function TextField(props) {
 	const presets = {
 		password: {
 			type: state.show_password ? 'text' : 'password',
-			iconClass: `ch-icon ${state.show_password ? 'ch-icon-eye' : 'ch-icon-eye-slash'} font-size-20`.classNames(),
+			iconClass: `sicon ${state.show_password ? 'sicon-eye' : 'sicon-eye-slash'} font-size-20`.classNames(),
 			clickHandler: ()=>setState({...state, show_password: !state.show_password}),
 			icon_position: 'right'
 		},
 		search: {
-			iconClass: `ch-icon ch-icon-search-normal-1 font-size-16`.classNames(),
+			iconClass: `sicon sicon-search-normal-1 font-size-16`.classNames(),
 			icon_position: 'right'
 		}
 	}

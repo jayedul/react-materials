@@ -284,7 +284,7 @@ export function parseParams(searchParam) {
 
 export function storage(name, local = false) {
 	const store = local ? 'localStorage' : 'sessionStorage';
-	const _name = 'crewhrm_' + name;
+	const _name = 'solidie_' + name;
 
 	return {
 		setItem: (value) => {
