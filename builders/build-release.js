@@ -71,7 +71,7 @@ var onError = function (err) {
 
 module.exports = conf => {
 
-	const {text_dirs_js=[], text_dirs_php=[]} = conf || {};
+	const {text_dirs_js=[], text_dirs_php=[], vendors=[]} = conf || {};
 
 	function i18n_makepot_init(callback) {
 
@@ -140,8 +140,6 @@ module.exports = conf => {
 				'!./svn-push/**',
 				'!./tests/**',
 
-				'!./vendor/**',
-
 				'!.github',
 				'!.git',
 				
@@ -159,6 +157,27 @@ module.exports = conf => {
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
 	});
 
+	function optimize_vendor(callback) {
+
+		const allowed = [...vendors, 'composer', 'autoload.php'];
+
+		const dir = path.resolve(root_dir, `./build/${project_name}/vendor/`);
+		if ( fs.existsSync(dir) ) {
+			fs.readdirSync(dir).forEach(file=>{
+				if ( allowed.indexOf(file) > -1 ) {
+					return;
+				}
+
+				const fullPath = path.join(dir, file);
+				fs.rmSync( fullPath, {recursive: true} );
+			});
+		}
+
+		if (typeof callback==='function') {
+			callback();
+		}
+	}
+
 	gulp.task('make-zip', function () {
 		// Replace the mode in build folder
 		const index_path = path.resolve( root_dir, `./build/${project_name}/${project_name}.php` );
@@ -173,6 +192,7 @@ module.exports = conf => {
 		'clean-zip',
 		'clean-build',
 		'copy',
+		optimize_vendor,
 		'make-zip',
 		'clean-build'
 	];
