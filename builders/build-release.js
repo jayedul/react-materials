@@ -155,10 +155,7 @@ module.exports = conf => {
 				'!./*.js',
 				'!./*.json',
 				'!./*.xml'
-			].map(d=>{
-				const negate = d.indexOf('!')===0;
-				return `${negate ? '!' : ''}${path.resolve(root_dir, d.replace('!'))}`;
-			}))
+			])
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
 	});
 
