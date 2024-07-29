@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = react_blueprints => (env, options) => {
@@ -76,6 +77,9 @@ module.exports = react_blueprints => (env, options) => {
 
 		// Convert rel path to absolute
 		dest_path = path.resolve(process.cwd(), dest_path);
+		if ( ! fs.existsSync( dest_path ) ) {
+			fs.mkdirSync(dest_path, {recursive: true});
+		}
 
 		for (let k in src_files) {
 			src_files[k] = path.resolve( process.cwd(), src_files[k]);
