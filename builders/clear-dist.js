@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const directory = path.resolve(process.cwd(), './dist');
+if ( ! fs.existsSync( directory ) ) {
+	return;
+}
 
 fs.readdir(directory, (err, files) => {
 
