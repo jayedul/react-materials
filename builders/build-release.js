@@ -171,7 +171,7 @@ module.exports = conf => {
 
 					if ( vendors.indexOf(file) > -1 ) {
 						
-						const vendor_dir = fs.resolve( dir, `./${file}` );
+						const vendor_dir = path.resolve( dir, `./${file}` );
 
 						// Delete components and unnecessary files
 						fs.readdirSync( vendor_dir ).forEach(sub_file=>{
@@ -180,7 +180,7 @@ module.exports = conf => {
 								sub_file.indexOf( '.' ) === 0 || 
 								['.json', '.js'].indexOf( path.extname( sub_file ) ) >- 1 
 							) {
-								fs.rmSync( fs.resolve( vendor_dir, `./${sub_file}` ) );
+								fs.rmSync( path.resolve( vendor_dir, `./${sub_file}` ) );
 							}
 						});
 					}
