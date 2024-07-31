@@ -159,6 +159,16 @@ module.exports = conf => {
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
 	});
 
+	function clear_vendor(file, dir) {
+		if ( 
+			file === 'components' || 
+			file.indexOf( '.' ) === 0 || 
+			['.json', '.js'].indexOf( path.extname( file ) ) >- 1 
+		) {
+			fs.rmSync( path.resolve( dir, `./${file}` ), {recursive: true} );
+		}
+	}
+
 	function optimize_vendor(callback) {
 
 		const allowed = [...vendors, 'composer', 'autoload.php'];
@@ -169,18 +179,21 @@ module.exports = conf => {
 
 				if ( allowed.indexOf(file) > -1 ) {
 
-					if ( vendors.indexOf(file) > -1 ) {
+					// If it solidie, delete unnecessary files
+					if ( ['solidie'].indexOf(file) > -1 ) {
 						
 						const vendor_dir = path.resolve( dir, `./${file}` );
 
 						// Delete components and unnecessary files
 						fs.readdirSync( vendor_dir ).forEach(sub_file=>{
-							if ( 
-								sub_file === 'components' || 
-								sub_file.indexOf( '.' ) === 0 || 
-								['.json', '.js'].indexOf( path.extname( sub_file ) ) >- 1 
-							) {
-								fs.rmSync( path.resolve( vendor_dir, `./${sub_file}` ) );
+							
+							clear_vendor( sub_file, vendor_dir );
+
+							const sub_path = path.resolve(vendor_dir, `./${sub_file}`);
+							if ( fs.statSync(sub_path).isDirectory() ) {
+								fs.readdirSync(sub_path).forEach(f=>{
+									clear_vendor(f, sub_path);
+								})
 							}
 						});
 					}
