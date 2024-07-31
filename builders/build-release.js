@@ -166,7 +166,25 @@ module.exports = conf => {
 		const dir = path.resolve(root_dir, `./build/${project_name}/vendor/`);
 		if ( fs.existsSync(dir) ) {
 			fs.readdirSync(dir).forEach(file=>{
+
 				if ( allowed.indexOf(file) > -1 ) {
+
+					if ( vendors.indexOf(file) > -1 ) {
+						
+						const vendor_dir = fs.resolve( dir, `./${file}` );
+
+						// Delete components and unnecessary files
+						fs.readdirSync( vendor_dir ).forEach(sub_file=>{
+							if ( 
+								sub_file === 'components' || 
+								sub_file.indexOf( '.' ) === 0 || 
+								['.json', '.js'].indexOf( path.extname( sub_file ) ) >- 1 
+							) {
+								fs.rmSync( fs.resolve( vendor_dir, `./${sub_file}` ) );
+							}
+						});
+					}
+
 					return;
 				}
 
