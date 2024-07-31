@@ -255,8 +255,10 @@ export function FileUpload(props) {
     };
 
     const setActionState = (e, highlight) => {
-        e.preventDefault();
-        setHoverState(highlight);
+		if ( ! WpMedia ) {
+			e.preventDefault();
+			setHoverState(highlight);
+		}
     };
 
     const openPicker = () => {
@@ -415,8 +417,10 @@ export function FileUpload(props) {
 				style
 			)}
 			onDrop={(e) => {
-				handleFiles(e?.dataTransfer?.files || []);
-				setActionState(e, false);
+				if ( ! WpMedia ) {
+					handleFiles(e?.dataTransfer?.files || []);
+					setActionState(e, false);
+				}
 			}}
 		>
 			<div className={'d-flex align-items-center column-gap-15'.classNames()}>
@@ -446,15 +450,17 @@ export function FileUpload(props) {
 					>
 						{replace_now ? __('Replace File') : __('Browse')}
 					</span>
-					<span
-						className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
-					>
-						{replace_now ? __('or, Just drop another') : __('or, Just drop it here')}
-					</span>
+					{
+						WpMedia ? null :
+						<span
+							className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
+						>
+							{replace_now ? __('or, Just drop another') : __('or, Just drop it here')}
+						</span>
+					}
 				</div>
 			</div>
 			
-
 			{
 				is_thumbnail ? null :
 				<ListFile 
