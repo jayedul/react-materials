@@ -163,7 +163,7 @@ module.exports = conf => {
 		if ( 
 			file === 'components' || 
 			file.indexOf( '.' ) === 0 || 
-			['.json', '.js'].indexOf( path.extname( file ) ) >- 1 
+			['.json', '.js', '.sh'].indexOf( path.extname( file ) ) >- 1 
 		) {
 			fs.rmSync( path.resolve( dir, `./${file}` ), {recursive: true} );
 		}
