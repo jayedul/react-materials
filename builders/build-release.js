@@ -162,7 +162,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_exclude
 		if ( 
 			file === 'components' || 
 			file.indexOf( '.' ) === 0 || 
-			['.json', '.js', '.sh', '.xml'].indexOf( path.extname( file ) ) >- 1 
+			['.json', '.js', '.sh', '.xml', '.lock'].indexOf( path.extname( file ) ) >- 1 
 		) {
 			fs.rmSync( path.resolve( dir, `./${file}` ), {recursive: true} );
 		}
