@@ -69,9 +69,7 @@ var onError = function (err) {
 	this.emit('end');
 };
 
-module.exports = conf => {
-
-	const {text_dirs_js=[], text_dirs_php=[], vendors=[]} = conf || {};
+module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_excludes=[]}) => {
 
 	function i18n_makepot_init(callback) {
 
@@ -154,6 +152,7 @@ module.exports = conf => {
 				'!./*.lock',
 				'!./*.js',
 				'!./*.json',
+				'./composer.json',
 				'!./*.xml'
 			].filter(f=>f))
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
@@ -196,6 +195,11 @@ module.exports = conf => {
 								})
 							}
 						});
+					}
+
+					const exclude = vendor_excludes.filter(path=>path.startsWith(`${file}/`))[0];
+					if ( exclude ) {
+						fs.rmSync(path.resolve(dir, `./${exclude}`), {recursive: true});
 					}
 
 					return;
