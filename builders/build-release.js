@@ -69,7 +69,7 @@ var onError = function (err) {
 	this.emit('end');
 };
 
-module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_excludes=[]}) => {
+module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_excludes=[], delete_build_dir=true}) => {
 
 	function i18n_makepot_init(callback) {
 
@@ -230,8 +230,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_exclude
 		'clean-build',
 		'copy',
 		optimize_vendor,
-		'make-zip',
-		'clean-build'
+		'make-zip'
 	];
 
 	if (text_dirs_js.length) {
@@ -240,6 +239,10 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_exclude
 
 	if (text_dirs_php.length) {
 		series.splice(2, 0, 'makepot');
+	}
+
+	if ( delete_build_dir ) {
+		series.push('clean-build');
 	}
 
 	return {
