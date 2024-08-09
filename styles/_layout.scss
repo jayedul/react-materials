@@ -1,5 +1,6 @@
 @include looper('d',               'display', '', 'block', 'flex', 'inline', 'inline-block', 'inline-flex', 'contents', 'none');
 @include looper('flex',            true, '', 1, 2, 4, 5, 6);
+@include looper('flex-shrink',     true, '', 0);
 @include looper('align-items',     true, '', 'center', 'start', 'end', 'flex-start', 'flex-end', 'stretch');
 @include looper('justify-content', true, '', 'flex-start', 'space-between', 'space-around', 'space-evenly', 'center', 'end', 'flex-end');
 @include looper('align-self',      true, '', 'center', 'auto', 'stretch');
