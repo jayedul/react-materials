@@ -62,7 +62,7 @@ export function ExpandableContent(props) {
                 </div>
 
 				<Conditional show={state.show_control && !state.expanded}>
-					<div className={'overlay'.classNames(style)}></div>
+					<div className={'overlay'.classNames(style)} style={{pointerEvents: 'none'}}></div>
 				</Conditional>
             </div>
 
