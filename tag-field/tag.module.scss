@@ -62,8 +62,8 @@
         & > div {
             padding: 2px 13px;
             border-radius: 50px;
-            border: 1px solid var(--solidie-color-tertiary);
-            background-color: var(--solidie-color-quaternary);
+            border: 1px solid var(--solidie-material-20);
+            background-color: var(--solidie-material-5);
             font-size: 14px;
             line-height: 24px;
             height: 28px;
@@ -72,8 +72,8 @@
 
             &.active {
                 color: white;
-                background-color: var(--solidie-color-text);
-                border-color: var(--solidie-color-text);
+                background-color: var(--solidie-material-80);
+                border-color: var(--solidie-material-80);
             }
         }
     }
