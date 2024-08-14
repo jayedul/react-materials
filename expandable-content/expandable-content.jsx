@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { __ } from '../helpers.jsx';
-import { Conditional } from '../conditional.jsx';
 
 import style from './exp.module.scss';
 
@@ -49,31 +48,34 @@ export function ExpandableContent(props) {
         return () => {
             window.removeEventListener('resize', adjustLayout);
         };
-    }, [children]);
+    }, []);
 
-    return (
-        <div className={className}>
-            <div
-                ref={wrapper_ref}
-                className={`exp-wrapper ${state.expanded ? 'expanded' : ''}`.classNames(style)}
-            >
-                <div ref={content_ref} className={'content'.classNames(style)}>
-                    {children}
-                </div>
+    return <div className={className}>
+		<div
+			ref={wrapper_ref}
+			className={`exp-wrapper ${state.expanded ? 'expanded' : ''}`.classNames(style)}
+		>
+			<div ref={content_ref} className={'content'.classNames(style)}>
+				{children}
+			</div>
 
-				<Conditional show={state.show_control && !state.expanded}>
-					<div className={'overlay'.classNames(style)} style={{pointerEvents: 'none'}}></div>
-				</Conditional>
-            </div>
+			{
+				!(state.show_control && !state.expanded) ? null :
+				<div 
+					className={'overlay'.classNames(style)} 
+					style={{pointerEvents: 'none'}}
+				></div>
+			}
+		</div>
 
-			<Conditional show={state.show_control}>
-				<span
-                    className={'d-inline-block font-size-15 font-weight-500 line-height-22 letter-spacing--15 color-text cursor-pointer margin-top-10 hover-underline'.classNames()}
-                    onClick={toggleView}
-                >
-                    {state.expanded ? see_less_text : see_more_text}
-                </span>
-			</Conditional>
-        </div>
-    );
+		{
+			!state.show_control ? null :
+			<span
+				className={'d-inline-block font-size-15 font-weight-500 line-height-22 letter-spacing--15 color-text cursor-pointer margin-top-10 hover-underline'.classNames()}
+				onClick={toggleView}
+			>
+				{state.expanded ? see_less_text : see_more_text}
+			</span>
+		}
+	</div>
 }
