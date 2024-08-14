@@ -122,7 +122,8 @@ export function FileUpload(props) {
         layoutComp,
 		imageMaxWidth,
 		showErrorsAlways,
-		FileControl
+		FileControl,
+		append_mode='stack'
     } = props;
 
     const singular = maxlength <= 1;
@@ -186,7 +187,7 @@ export function FileUpload(props) {
         }
 
         files = Array.from(files);
-        files = [...files, ...stateFiles];
+        files = append_mode === 'stack' ? [...files, ...stateFiles] : [...stateFiles, ...files];
 
         // Exclude duplicate and those that exceeds the maxsize limit
         const ids = [];
@@ -407,13 +408,14 @@ export function FileUpload(props) {
 
 	const replace_now = !removable && !isEmpty(stateFiles);
 	const is_thumbnail = layout === 'thumbnail' && maxlength===1;
+	const is_multi_image = layout === 'multi_image';
 
-    return  <div className={'upload'.classNames(style)}>
+    return  <div className={`upload`.classNames(style)}>
 		<div
 			onDragOver={(e) => setActionState(e, true)}
 			onDragLeave={(e) => setActionState(e, false)}
 			onClick={openPicker}
-			className={`drop-container ${hoverState ? 'highlight' : ''} ${errorState ? 'error' : ''}`.classNames(
+			className={`drop-container  ${is_multi_image ? 'multi-image' : '' } ${hoverState ? 'highlight' : ''} ${errorState ? 'error' : ''}`.classNames(
 				style
 			)}
 			onDrop={(e) => {
@@ -423,51 +425,109 @@ export function FileUpload(props) {
 				}
 			}}
 		>
-			<div className={'d-flex align-items-center column-gap-15'.classNames()}>
-				{
-					!is_thumbnail ? null :
-					<div style={{width: '150px'}} className={'position-relative'.classNames()}>
-						<img 
-							src={value instanceof File ? URL.createObjectURL(value) : value?.file_url} 
-							className={'width-p-100 height-auto'.classNames()}
-							style={{
-								border: '5px solid white',
-								boxShadow: '2px 2px 7px rgba(0, 0, 0, .3)',
-								borderRadius: '5px'
-							}}
-						/>
-					</div>
-				}
-				<div className={`flex-1 ${!is_thumbnail ? 'text-align-center' : 'text-align-left'}`.classNames()}>
-					<div className={'margin-bottom-5'.classNames()}>
-						<i
-							className={'sicon sicon-folder-add font-size-24 color-text'.classNames()}
-						></i>
-					</div>
-
-					<span
-						className={'d-block font-size-15 font-weight-600 line-height-20 color-text'.classNames()}
-					>
-						{replace_now ? __('Replace File') : __('Browse')}
-					</span>
-					{
-						WpMedia ? null :
-						<span
-							className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
-						>
-							{replace_now ? __('or, Just drop another') : __('or, Just drop it here')}
-						</span>
-					}
-				</div>
-			</div>
-			
 			{
-				is_thumbnail ? null :
-				<ListFile 
-					files={stateFiles} 
-					onRemove={removable ? removeFile : null} 
-					FileControl={FileControl}
-				/>
+				is_multi_image ? 
+				<div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '15px'}}>
+					{
+						new Array(maxlength).fill('').map((v, index)=>{
+							
+							const file = stateFiles[index] || null;
+							const url  = file instanceof File ? URL.createObjectURL(file) : file?.file_url;
+
+							return <div 
+								key={index} 
+								style={{
+									aspectRatio: '9/16', 
+									border: '1px dashed gray', 
+									borderRadius: '5px',
+									overflow: 'hidden',
+									position: 'relative'
+								}}
+							>
+								{
+									!url ? <div className={'width-p-100 height-p-100 d-flex align-items-center justify-content-center'.classNames()}>
+										<span className={'font-size-24 font-weight-700 color-material-50'.classNames()}>
+											+
+										</span>
+									</div> 
+									:
+									<>
+										<img
+											src={url}
+											className={'width-p-100 height-p-100 cursor-default'.classNames()}
+											style={{objectFit: 'cover', objectPosition: 'center center'}}
+											onClick={e=>e.stopPropagation()}
+										/>
+										<span 
+											className={'bg-color-error color-white d-flex align-items-center justify-content-center overflow-hidden cursor-pointer'.classNames()}
+											onClick={e=>{e.stopPropagation(); removeFile(index);}}
+											style={{
+												width: '20px', 
+												height: '20px',
+												position: 'absolute',
+												top: '-2px',
+												right: '-2px',
+												borderRadius: '50%',
+												fontSize: '14px'
+											}}
+										>
+											<i className={'sicon sicon-times'.classNames()}></i>
+										</span>
+									</>
+								}
+							</div>
+						})
+					}
+				</div> 
+				:
+				<>
+					<div className={'d-flex align-items-center column-gap-15'.classNames()}>
+						{
+							!is_thumbnail ? null :
+							<div style={{width: '150px'}} className={'position-relative'.classNames()}>
+								<img 
+									src={value instanceof File ? URL.createObjectURL(value) : value?.file_url} 
+									className={'width-p-100 height-auto'.classNames()}
+									style={{
+										border: '5px solid white',
+										boxShadow: '2px 2px 7px rgba(0, 0, 0, .3)',
+										borderRadius: '5px'
+									}}
+								/>
+							</div>
+						}
+						<div className={`flex-1 ${!is_thumbnail ? 'text-align-center' : 'text-align-left'}`.classNames()}>
+							<div className={'margin-bottom-5'.classNames()}>
+								<i
+									className={'sicon sicon-folder-add font-size-24 color-text'.classNames()}
+								></i>
+							</div>
+
+							<span
+								className={'d-block font-size-15 font-weight-600 line-height-20 color-text'.classNames()}
+							>
+								{replace_now ? __('Replace File') : __('Browse')}
+							</span>
+							{
+								WpMedia ? null :
+								<span
+									className={'font-size-15 font-weight-400 line-height-20 color-text'.classNames()}
+								>
+									{replace_now ? __('or, Just drop another') : __('or, Just drop it here')}
+								</span>
+							}
+						</div>
+					</div>
+					
+					{
+						is_thumbnail ? null :
+						<ListFile 
+							files={stateFiles} 
+							onRemove={removable ? removeFile : null} 
+							FileControl={FileControl}
+						/>
+					}
+				</>
 			}
 		</div>
 	
