@@ -173,7 +173,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_exclude
 		const allowed = [...vendors, 'composer', 'autoload.php'];
 
 		const dir = path.resolve(root_dir, `./build/${project_name}/vendor/`);
-		if ( fs.existsSync(dir) ) {
+		if ( vendors[0] !== '*' && fs.existsSync(dir) ) {
 			fs.readdirSync(dir).forEach(file=>{
 
 				if ( allowed.indexOf(file) > -1 ) {
