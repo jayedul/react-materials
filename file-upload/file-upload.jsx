@@ -198,7 +198,7 @@ export function FileUpload(props) {
 			const file_name = f.name || f.file_name;
 
 			const mime_type = file_mime.toLowerCase();
-			const extension = file_name.toLowerCase().split('.').at(-1);
+			const extension = file_name.toLowerCase()?.split?.('.')?.at?.(-1);
 
 			if ( 
 				! isEmpty( accept ) && 
