@@ -244,7 +244,7 @@ export function TextField(props) {
 	let wrapper_class = !errorState.has_error ? input_class : input_class_error;
 	wrapper_class = type==='textarea' ? wrapper_class.replace('padding-vertical-0', 'padding-vertical-10') : wrapper_class;
     
-	const pass_strength = (type !== 'password' || !password_strength) ? null : evaluatePasswordStrength(value);
+	const pass_strength = !password_strength ? null : evaluatePasswordStrength(value);
 
     return <>
 		<label
