@@ -307,9 +307,9 @@ export function TextField(props) {
 		{
 			pass_strength===null ? null :
 			<div className={"d-flex column-gap-8 align-items-center margin-top-10".classNames()}>
-				<div style={{width: '15%'}} className={`border-1 ${pass_strength>=1 ? 'b-color-text-70' : 'b-color-text-30'}`.classNames()}></div>
-				<div style={{width: '15%'}} className={`border-1 ${pass_strength>=2 ? 'b-color-warning' : 'b-color-text-30'}`.classNames()}></div>
-				<div style={{width: '15%'}} className={`border-1 ${pass_strength>=3 ? 'b-color-success' : 'b-color-text-30'}`.classNames()}></div>
+				<div style={{width: '15%', borderWidth: '1.5px'}} className={`${pass_strength>=1 ? 'b-color-text-70' : 'b-color-text-30'}`.classNames()}></div>
+				<div style={{width: '15%', borderWidth: '1.5px'}} className={`${pass_strength>=2 ? 'b-color-warning' : 'b-color-text-30'}`.classNames()}></div>
+				<div style={{width: '15%', borderWidth: '1.5px'}} className={`${pass_strength>=3 ? 'b-color-success' : 'b-color-text-30'}`.classNames()}></div>
 			</div>
 		}
 	</>
