@@ -423,15 +423,7 @@ export function getUnixTimestamp(date = new Date()) {
 }
 
 export function getLocalFromUnix(unixTimestampInSeconds) {
-
-	// Create a Date object from the Unix timestamp in UTC
-	const utcDate = new Date(unixTimestampInSeconds * 1000);
-
-	// Get the local timezone offset in minutes
-	const timezoneOffsetMinutes = utcDate.getTimezoneOffset();
-
-	// Adjust the Date object for the local timezone offset
-	return new Date(utcDate.getTime() - (timezoneOffsetMinutes * 60 * 1000));
+	return new Date(unixTimestampInSeconds * 1000);
 }
 
 export function areDatesEqual(date1, date2) {
