@@ -41,15 +41,23 @@ export function TagField({
             }
         >
             {options.map((option) => {
-                const { id, label } = option;
+                const { id, label, icon } = option;
                 const is_selected = behavior === 'radio' ? value === id : value.indexOf(id) > -1;
 
                 return (
                     <div
                         key={id}
-                        className={`${is_selected ? 'active' : ''} ${(required && isEmpty(value) && showErrorsAlways) ? 'error' : ''}`.classNames(style)}
+                        className={
+							`${is_selected ? 'active' : ''} ${(required && isEmpty(value) && showErrorsAlways) ? 'error' : ''}`.classNames(style) +
+							'd-flex align-items-center column-gap-8'.classNames()
+						}
                         onClick={() => dispatchChange(id)}
                     >
+						{
+							!icon ? null : <div className={'d-flex'.classNames()}>
+								<i className={icon + `font-size-13`.classNames()}></i>
+							</div>
+						}
                         {!real_control ? null : <input type={behavior} checked={is_selected} onChange={(e) => {}} />} {label}
                     </div>
                 );
