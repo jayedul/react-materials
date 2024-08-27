@@ -1,9 +1,14 @@
+$width: 324;
+
 .toast {
-    width: 325px;
+    width: #{$width}px;
     max-height: 400px;
     overflow-x: hidden;
     overflow: auto;
     z-index: 9994;
+	position: fixed;
+	left: calc( 50% -  #{$width/2}px );
+	bottom: 30px;
 
     & > div {
         background-color: var(--solidie-color-text);

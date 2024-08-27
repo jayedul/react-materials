@@ -31,7 +31,7 @@ export function ToastWrapper({children}) {
             } else {
                 registerCloser(id);
             }
-        }, 5000);
+        }, 3000);
     };
 
     const addToast = (toast) => {
@@ -105,9 +105,7 @@ export function ToastWrapper({children}) {
 			!state.toasts.length ? null :
 			<div
 				ref={ref}
-				className={
-					'toast'.classNames(style) + 'position-fixed right-50 bottom-33'.classNames()
-				}
+				className={'toast'.classNames(style)}
 				onMouseOver={() => setMouseState(true)}
 				onMouseOut={() => setMouseState(false)}
 			>
