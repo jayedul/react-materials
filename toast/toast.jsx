@@ -120,7 +120,7 @@ export function ToastWrapper({children}) {
 								className={'flex-1 d-flex align-items-center row-gap-10 padding-15'.classNames()}
 							>
 								<div
-									className={'d-inline-block'.classNames()}
+									className={'d-inline-flex'.classNames()}
 								>
 									{
 										(!status || !status_icons[status]) ? 
