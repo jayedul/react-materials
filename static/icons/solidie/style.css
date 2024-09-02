@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'solidie';
   src:
-    url('fonts/solidie.ttf?51min5') format('truetype'),
-    url('fonts/solidie.woff?51min5') format('woff'),
-    url('fonts/solidie.svg?51min5#solidie') format('svg');
+    url('fonts/solidie.ttf?ngenq2') format('truetype'),
+    url('fonts/solidie.woff?ngenq2') format('woff'),
+    url('fonts/solidie.svg?ngenq2#solidie') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -81,6 +81,18 @@
 }
 .sicon-drink:before {
   content: "\e91c";
+}
+.sicon-phone:before {
+  content: "\e94a";
+}
+.sicon-skype:before {
+  content: "\e935";
+}
+.sicon-whatsapp:before {
+  content: "\e942";
+}
+.sicon-telegram:before {
+  content: "\e944";
 }
 .sicon-heartbeat:before {
   content: "\e927";
