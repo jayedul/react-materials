@@ -69,7 +69,7 @@ var onError = function (err) {
 	this.emit('end');
 };
 
-module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_excludes=[], delete_build_dir=true}) => {
+module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], delete_build_dir=true}) => {
 
 	function i18n_makepot_init(callback) {
 
@@ -138,7 +138,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_exclude
 				'!./svn-push/**',
 				'!./tests/**',
 
-				(!vendors.length ? '!./vendor/**' : null),
+				(!vendor ? '!./vendor/**' : null),
 
 				'!.github',
 				'!.git',
@@ -158,57 +158,16 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_exclude
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
 	});
 
-	function clear_vendor(file, dir) {
-		if ( 
-			file === 'components' || 
-			file.indexOf( '.' ) === 0 || 
-			['.json', '.js', '.sh', '.xml', '.lock'].indexOf( path.extname( file ) ) >- 1 
-		) {
-			fs.rmSync( path.resolve( dir, `./${file}` ), {recursive: true} );
-		}
-	}
+	function exclude_stuffs(callback) {
 
-	function optimize_vendor(callback) {
+		const build_dir = path.resolve(root_dir, `./build/${project_name}/`);
 
-		const allowed = [...vendors, 'composer', 'autoload.php'];
-
-		const dir = path.resolve(root_dir, `./build/${project_name}/vendor/`);
-		if ( vendors[0] !== '*' && fs.existsSync(dir) ) {
-			fs.readdirSync(dir).forEach(file=>{
-
-				if ( allowed.indexOf(file) > -1 ) {
-
-					// If it solidie, delete unnecessary files
-					if ( ['solidie'].indexOf(file) > -1 ) {
-						
-						const vendor_dir = path.resolve( dir, `./${file}` );
-
-						// Delete components and unnecessary files
-						fs.readdirSync( vendor_dir ).forEach(sub_file=>{
-							
-							clear_vendor( sub_file, vendor_dir );
-
-							const sub_path = path.resolve(vendor_dir, `./${sub_file}`);
-							if ( fs.statSync(sub_path).isDirectory() ) {
-								fs.readdirSync(sub_path).forEach(f=>{
-									clear_vendor(f, sub_path);
-								})
-							}
-						});
-					}
-
-					const exclude = vendor_excludes.filter(path=>path.startsWith(`${file}/`))[0];
-					if ( exclude ) {
-						fs.rmSync(path.resolve(dir, `./${exclude}`), {recursive: true});
-					}
-
-					return;
-				}
-
-				const fullPath = path.join(dir, file);
-				fs.rmSync( fullPath, {recursive: true} );
-			});
-		}
+		exclude.forEach(pth=>{
+			const path_to_del = path.resolve( build_dir, `./${pth}` );
+			if ( fs.existsSync( path_to_del ) ) {
+				fs.rmSync( path_to_del, {recursive: true} );
+			}
+		});
 
 		if (typeof callback==='function') {
 			callback();
@@ -229,7 +188,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendors=[], vendor_exclude
 		'clean-zip',
 		'clean-build',
 		'copy',
-		optimize_vendor,
+		exclude_stuffs,
 		'make-zip'
 	];
 
