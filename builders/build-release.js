@@ -27,10 +27,6 @@ function i18n_makepot(target_dir) {
 	fs.readdirSync(parent_dir).forEach(function (file_name) {
 		var full_path = parent_dir + '/' + file_name;
 
-		if ( full_path.indexOf('node_modules')>-1 || full_path.indexOf('vendor')>-1 ) {
-			return;
-		}
-
 		var stat = fs.lstatSync(full_path);
 		if (stat.isDirectory()) {
 			i18n_makepot(full_path);
@@ -73,7 +69,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 
 	function i18n_makepot_init(callback) {
 
-		text_dirs_js.forEach(dir=>{
+		[...text_dirs_js, './node_modules/solidie-materials/'].forEach(dir=>{
 			i18n_makepot( path.resolve( root_dir, dir ) );
 		});
 
