@@ -134,8 +134,6 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 				'!./svn-push/**',
 				'!./tests/**',
 
-				(!vendor ? '!./vendor/**' : null),
-
 				'!.github',
 				'!.git',
 				
@@ -148,7 +146,9 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 				'!./*.lock',
 				'!./*.js',
 				'!./*.json',
-				'./composer.json',
+
+				(!vendor ? '!./vendor/**' : './composer.json'),
+				
 				'!./*.xml'
 			].filter(f=>f))
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
