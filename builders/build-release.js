@@ -171,10 +171,13 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 	}
 
 	gulp.task('make-zip', function () {
+		
 		// Replace the mode in build folder
 		const index_path = path.resolve( root_dir, `./build/${project_name}/${project_name}.php` );
-		const codes      = fs.readFileSync(index_path).toString().replace( "=> 'development',", "=> 'production'," );
-		fs.writeFileSync(index_path, codes);
+		if ( fs.existsSync(index_path) ) {
+			const codes = fs.readFileSync(index_path).toString().replace( "=> 'development',", "=> 'production'," );
+			fs.writeFileSync(index_path, codes);
+		}
 		
 		return gulp.src(path.resolve(root_dir, './build/**/*.*')).pipe(zip(build_name)).pipe(gulp.dest(root_dir));
 	});
