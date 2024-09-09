@@ -83,7 +83,7 @@ export function RadioCheckbox(props) {
 		return <ToolTip key={id} tooltip={tooltip}>
 			<div style={{paddingLeft: `${level>1 ? indent : 0}px`}}>
 				<label
-					className={`d-inline-flex align-items-center column-gap-10 ${(disabled || locked) ? 'cursor-default' : 'cursor-pointer'}`.classNames() + className}
+					className={`d-flex align-items-center column-gap-10 ${(disabled || locked) ? 'cursor-default' : 'cursor-pointer'}`.classNames() + className}
 				>
 					{
 						locked ? 
