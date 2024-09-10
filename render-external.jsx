@@ -31,27 +31,14 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 
 export function mountExternal( id, el, session, component) {
 
-	// Create place for the element
-	if ( ! window[data_pointer].mountpoints[id]  ) {
-		window[data_pointer].mountpoints[id] = {};
+	const {mountpoints={}} = window[data_pointer];
+	const current_session = el.getAttribute('data-solidie-mountpoint');
+
+	el.setAttribute('data-solidie-mountpoint', id);
+
+	if ( ! current_session || ! mountpoints[id] ) {
+		window[data_pointer].mountpoints[id] = createRoot(el);
 	}
 
-	const m_point = window[data_pointer].mountpoints[id];
-
-	// Unmount older root if session changed
-	if ( m_point.root && m_point.session !== session ) {
-		m_point.root.unmount();
-		m_point.root = null;
-	}
-
-	// Create new root if none exist
-	if ( ! m_point.root ) {
-		m_point.root = createRoot(el);
-	}
-
-	// Rerender if session not same
-	if ( m_point.session !== session ) {
-		m_point.session = session;
-		m_point.root.render(component);
-	}
+	window[data_pointer].mountpoints[id].render(component);
 }
