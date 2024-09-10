@@ -35,9 +35,10 @@ export function mountExternal( id, el, session, component ) {
 
 	el.setAttribute('data-solidie-mountpoint', id);
 
-	if ( ! current_session || ! mountpoints[id] ) {
+	
+	if ( ! current_session ) {
 		window[data_pointer].mountpoints[id] = createRoot(el);
+		window[data_pointer].mountpoints[id].render(component);
 	}
 
-	window[data_pointer].mountpoints[id].render(component);
 }
