@@ -32,7 +32,7 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 export function mountExternal( id, el, session, component) {
 
 	const {mountpoints={}} = window[data_pointer];
-	const current_session = el.getAttribute('data-solidie-mountpoint');
+	const current_session = el.getAttribute('data-solidie-mountpoint') === id;
 
 	el.setAttribute('data-solidie-mountpoint', id);
 
