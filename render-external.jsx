@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 
 import {ErrorBoundary} from './error-boundary.jsx';
-import {getRandomString} from './helpers.jsx';
+import {data_pointer, getRandomString} from './helpers.jsx';
 
 export function RenderExternal({className='', component: Comp, payload={}}) {
 
@@ -31,12 +31,27 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 
 export function mountExternal( id, el, session, component) {
 
-	const att  = 'data-solidie-mountpoint';
-	const _ses = el.getAttribute(att);
+	// Create place for the element
+	if ( ! window[data_pointer].mountpoints[id]  ) {
+		window[data_pointer].mountpoints[id] = {};
+	}
 
-	el.setAttribute('data-solidie-mountpoint', session);
-	
-	if ( _ses !== session ) {
-		createRoot(el).render(component);
+	const m_point = window[data_pointer].mountpoints[id];
+
+	// Unmount older root if session changed
+	if ( m_point.root && m_point.session !== session ) {
+		m_point.root.unmount();
+		m_point.root = null;
+	}
+
+	// Create new root if none exist
+	if ( ! m_point.root ) {
+		m_point.root = createRoot(el);
+	}
+
+	// Rerender if session not same
+	if ( m_point.session !== session ) {
+		m_point.session = session;
+		m_point.root.render(component);
 	}
 }
