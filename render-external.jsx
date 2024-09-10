@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 
 import {ErrorBoundary} from './error-boundary.jsx';
-import {data_pointer, getRandomString} from './helpers.jsx';
+import {getRandomString} from './helpers.jsx';
 
 export function RenderExternal({className='', component: Comp, payload={}}) {
+
 	if ( ! Comp ) {
 		return null;
 	}
@@ -14,10 +15,10 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 
 	useEffect(()=>{
 		// If not internal componenet, call the function, so it can render their contents. 
-		if ( ! is_internal && reff && reff.current) {
+		if ( ! is_internal && reff?.current) {
 			Comp(reff.current, {session: getRandomString(), payload});
 		}
-	}, [Comp, reff.current, payload]);
+	}, [payload]);
 
 	// If internal component, then simply embed as usual. External component can only be called as function through useEffect hook.
 	return is_internal ? 
@@ -28,17 +29,14 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 			<div ref={reff} className={className}></div>
 }
 
-export function mountExternal( id, el, session, component ) {
+export function mountExternal( id, el, session, component) {
 
-	const {mountpoints={}} = window[data_pointer];
-	const current_session = el.getAttribute('data-solidie-mountpoint');
+	const att  = 'data-solidie-mountpoint';
+	const _ses = el.getAttribute(att);
 
-	el.setAttribute('data-solidie-mountpoint', id);
-
+	el.setAttribute('data-solidie-mountpoint', session);
 	
-	if ( ! current_session ) {
-		window[data_pointer].mountpoints[id] = createRoot(el);
-		window[data_pointer].mountpoints[id].render(component);
+	if ( _ses !== session ) {
+		createRoot(el).render(component);
 	}
-
 }
