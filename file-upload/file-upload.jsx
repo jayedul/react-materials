@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from 'react';
 
 import style from './upload.module.scss';
-import { __, getFileId, isEmpty, sprintf } from '../helpers.jsx';
+import { __, downScaleImages, getFileId, isEmpty, sprintf } from '../helpers.jsx';
 import { ListFile } from '../file-list.jsx';
 import { ContextToast } from '../toast/toast.jsx';
 
@@ -57,55 +57,6 @@ function media_frame_image_cal(attachment, controller) {
         y2: yInit + y1,
         aspectRatio: `${xInit}:${yInit}`
     };
-}
-
-function downscaleImage(file, maxWidth) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        
-        reader.onload = function(event) {
-            const img = new Image();
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                
-                let width = img.width;
-                let height = img.height;
-                
-                // Downscale image if necessary
-                if (width > maxWidth) {
-                    height = Math.round(height * (maxWidth / width));
-                    width = maxWidth;
-                }
-                
-                // Set canvas dimensions
-                canvas.width = width;
-                canvas.height = height;
-                
-                // Draw the image on the canvas
-                ctx.drawImage(img, 0, 0, width, height);
-                
-                // Convert canvas to Blob
-                canvas.toBlob((blob) => {
-                    const newFile = new File([blob], file.name, {
-                        type: file.type,
-                        lastModified: Date.now()
-                    });
-                    resolve(newFile);
-                }, file.type, 0.8); // Adjust the quality here (0.9 for 90% quality)
-            };
-            img.onerror = function() {
-                reject(new Error('Failed to load image.'));
-            };
-            img.src = event.target.result;
-        };
-        
-        reader.onerror = function() {
-            reject(new Error('Failed to read file.'));
-        };
-        
-        reader.readAsDataURL(file);
-    });
 }
 
 export function FileUpload(props) {
@@ -228,25 +179,7 @@ export function FileUpload(props) {
         });
 
 		// Downscale image
-		let queue = 0;
-		for ( let i=0; i<files.length; i++ ) {
-			if ( imageMaxWidth && files[i] instanceof File && files[i].type.indexOf('image/')===0 ) {
-				queue++;
-				downscaleImage(files[i], imageMaxWidth).then(file=>{
-
-					files[i] = file;
-					queue--;
-
-					if ( queue === 0 ) {
-						_onChange(files.slice(0, maxlength));
-					}
-				});
-			}
-		}
-
-		if ( queue === 0 ) {
-			_onChange(files.slice(0, maxlength));
-		}
+		downScaleImages(files.slice(0, maxlength), imageMaxWidth, _onChange);
     };
 
     const removeFile = (index) => {
