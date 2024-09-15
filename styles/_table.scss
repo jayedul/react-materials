@@ -176,7 +176,12 @@ $base_color: var(--solidie-color-material-20);
 	thead {
 		color: var(--solidie-color-text-80);
 		font-size: 15px;
+		
 		@include fontWeight(500);
+		
+		th {
+			white-space: nowrap;
+		}
 	}
 	
 	&.no-responsive {
