@@ -109,6 +109,7 @@ export function request(action, payload = {}, callback, progressCallback) {
 				message: size_err
 			}
 		});
+		return;
 	}
 
 
