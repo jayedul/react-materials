@@ -22,7 +22,7 @@ function calculateFormDataSize(formData) {
 			totalSize += value.size;
 
 			if ( value.size > max_filesize ) {
-				return sprintf( __( 'Individual file size can not exceed the limit %s' ), getHighestUnitFromBytes( max_filesize ) );
+				return sprintf( __( 'File size must be less than %s' ), getHighestUnitFromBytes( max_filesize ) );
 			}
 
         } else {
@@ -31,7 +31,7 @@ function calculateFormDataSize(formData) {
         }
     }
 
-    return totalSize > max_post_size ? sprintf( __( 'The total upload size can not exceed the limit %s'), getHighestUnitFromBytes(max_post_size) ) : true;
+    return totalSize > max_post_size ? sprintf( __( 'Total size must be less than %s'), getHighestUnitFromBytes(max_post_size) ) : true;
 }
 
 /**
