@@ -1,4 +1,38 @@
-import { data_pointer } from "./helpers.jsx";
+import { __, data_pointer, getHighestUnitFromBytes, sprintf } from "./helpers.jsx";
+
+
+function calculateFormDataSize(formData) {
+	
+	const {max_filesize, max_post_size} = window[data_pointer].configs || {};
+
+	if ( max_filesize === undefined || max_post_size === undefined ) {
+		return true;
+	}
+
+    let totalSize = 0;
+
+    for (let entry of formData.entries()) {
+
+        const [key, value] = entry;
+
+		totalSize += key.length;
+
+        if ( value instanceof File ) {
+
+			totalSize += value.size;
+
+			if ( value.size > max_filesize ) {
+				return sprintf( __( 'Individual file size can not exceed the limit %s' ), getHighestUnitFromBytes( value.size ) );
+			}
+
+        } else {
+            // Add size of non-file fields (strings, etc.)
+            totalSize += new Blob([value]).size;
+        }
+    }
+
+    return totalSize > max_post_size ? sprintf( __( 'The total upload size can not exceed the limit %s'), getHighestUnitFromBytes(totalSize) ) : true;
+}
 
 /**
  * Ajax request wrapper
@@ -66,6 +100,17 @@ export function request(action, payload = {}, callback, progressCallback) {
 
 	// Flatten the nested JSON and append files to FormData
 	flattenObject(payload, formData);
+
+	const size_err = calculateFormDataSize(formData);
+	if ( typeof size_err === 'string' ) {
+		callback({
+			success: false,
+			data: {
+				message: size_err
+			}
+		});
+	}
+
 
 	window.jQuery.ajax({
 		url: window[data_pointer].permalinks.ajaxurl,

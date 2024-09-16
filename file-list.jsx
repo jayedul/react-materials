@@ -1,16 +1,17 @@
 import React from 'react';
-import { getFileId } from './helpers.jsx';
+import { getFileId, getHighestUnitFromBytes } from './helpers.jsx';
 
 export function ListFile({ files, style = {}, onRemove, FileControl }) {
 	const _files = Array.isArray(files) ? files : [files];
 
 	return _files.map((file, index) => {
-		const file_name = file instanceof File ? file.name : file.file_name;
-		const file_id = getFileId(file);
+		const is_upload = file instanceof File;
+		const file_name = is_upload ? file.name : file.file_name;
+		const file_id   = getFileId(file);
 
 		return <div key={file_id} className={'d-flex align-items-center column-gap-15 margin-top-10'.classNames()}>
 			<div
-				className={'flex-1 d-flex align-items-center column-gap-14 padding-vertical-10 padding-horizontal-20 border-radius-10 border-1 b-color-text-40 bg-color-white'.classNames()}
+				className={'flex-1 d-flex align-items-center column-gap-15 padding-vertical-10 padding-horizontal-20 border-radius-10 border-1 b-color-text-40 bg-color-white'.classNames()}
 				style={{cursor: 'default', ...style}}
 				onClick={e=>e.stopPropagation()}
 			>
@@ -19,6 +20,15 @@ export function ListFile({ files, style = {}, onRemove, FileControl }) {
 				>
 					{file_name}
 				</span>
+
+				{
+					!is_upload ? null :
+					<span
+						className={'font-size-14 font-weight-400 line-height-19 color-text-60'.classNames()}
+					>
+						{getHighestUnitFromBytes(file.size)}
+					</span>
+				}
 
 				{
 					typeof onRemove !== 'function' ? null :
