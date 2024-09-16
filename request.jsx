@@ -5,7 +5,7 @@ function calculateFormDataSize(formData) {
 	
 	const {max_filesize, max_post_size} = window[data_pointer].configs || {};
 
-	if ( max_filesize === undefined || max_post_size === undefined ) {
+	if ( isNaN( max_filesize ) || isNaN( max_post_size ) ) {
 		return true;
 	}
 
