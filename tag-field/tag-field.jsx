@@ -4,13 +4,12 @@ import { isEmpty } from '../helpers.jsx';
 import style from './tag.module.scss';
 
 export function TagField({
-    theme,
+	variant='normal',
     value,
     options,
     onChange = () => {},
     className = '',
     behavior,
-    fullWidth,
 	showErrorsAlways,
 	required
 }) {
@@ -32,12 +31,10 @@ export function TagField({
         onChange(_value);
     };
 
-    const real_control = theme === 'button-control';
-
     return (
         <div
             className={
-                `tag theme-${theme} ${fullWidth ? 'full-width' : ''}`.classNames(style) + className
+                `tag variant-${variant}`.classNames(style) + className
             }
         >
             {options.map((option) => {
@@ -58,7 +55,7 @@ export function TagField({
 								<i className={icon + `font-size-13`.classNames()}></i>
 							</div>
 						}
-                        {!real_control ? null : <input type={behavior} checked={is_selected} onChange={(e) => {}} />} {label}
+                        {label}
                     </div>
                 );
             })}

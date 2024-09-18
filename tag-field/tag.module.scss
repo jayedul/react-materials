@@ -4,77 +4,36 @@
     display: flex;
     column-gap: 20px;
     row-gap: 20px;
+	column-gap: 10px;
+	row-gap: 10px;
+	flex-wrap: wrap;
 
-    & > div {
-        padding: 8px 15px;
-        height: 40px;
-        color: var(--solidie-color-text);
-        border: 1px solid var(--solidie-color-text-40);
-        border-radius: 10px;
+	& > div {
+		border-radius: 50px;
+		border: 1px solid var(--solidie-color-material-20);
+		background-color: var(--solidie-color-material-5);
+		line-height: 24px;
+		color: var(--solidie-color-text);
+		@include fontWeight(500);
         cursor: pointer;
-        font-size: 15px;
-        @include fontWeight(500);
-        line-height: 25px;
         white-space: nowrap;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        column-gap: 8px;
 
-		&.error {
-			border-color: var(--solidie-color-error);
+		&.active {
+			color: white;
+			background-color: var(--solidie-color-material-70);
+			border-color: var(--solidie-color-material-80);
 		}
     }
 
-    &.full-width {
-        & > div {
-            flex: 1;
-        }
-    }
+	&.variant-normal > div {
+		padding: 2px 13px;
+		font-size: 14px;
+		height: 28px;
+	}
 
-    &:not(.full-width) {
-        flex-wrap: wrap;
-    }
-
-    &.theme-button {
-        & > div {
-            &.active,
-            &:hover {
-                background-color: var(--solidie-color-text);
-                border-color: var(--solidie-color-text);
-                color: white;
-            }
-        }
-    }
-
-    &.theme-button-control {
-        & > div {
-            &:hover {
-                border-color: var(--solidie-color-text);
-            }
-        }
-    }
-
-    &.theme-tag {
-        column-gap: 10px;
-        row-gap: 10px;
-
-        & > div {
-            padding: 2px 13px;
-            border-radius: 50px;
-            border: 1px solid var(--solidie-color-material-20);
-            background-color: var(--solidie-color-material-5);
-            font-size: 14px;
-            line-height: 24px;
-            height: 28px;
-            color: var(--solidie-color-text);
-            @include fontWeight(500);
-
-            &.active {
-                color: white;
-                background-color: var(--solidie-color-material-70);
-                border-color: var(--solidie-color-material-80);
-            }
-        }
-    }
+	&.variant-small > div {
+		padding: 0px 8px;
+		font-size: 11px;
+		height: 21px;
+	}
 }
