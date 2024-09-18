@@ -104,7 +104,8 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 			<div style={{width: '70px'}}>
 				<img 
 					src={thumbnail} 
-					className={'width-p-100 height-auto'.classNames()}/>
+					className={'width-p-100 height-auto border-radius-5'.classNames()}
+				/>
 			</div>
 			<div className={'flex-1'.classNames()}>
 				<div 
