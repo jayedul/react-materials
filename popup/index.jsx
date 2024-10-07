@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import ReactDOM from 'react-dom';
 
+import { data_pointer } from './helpers.jsx';
+
 import {
     useOnEscape,
     useRepositionOnResize,
@@ -15,6 +17,8 @@ import style from './popup.module.scss';
 
 let popupIdCounter = 0;
 let root_id = 'solidie-pop-root-id';
+
+const {app_id} = window[data_pointer];
 
 const getRootPopup = () => {
     let PopupRoot = document.getElementById(root_id);
@@ -242,7 +246,7 @@ export const Popup = forwardRef(
                                   .map((c) => `${c}-content`)
                                   .join(' ')
                             : ''
-                    }`.classNames(style) + 'mountpoint'.classNames(),
+                    }`.classNames(style) + 'mountpoint'.classNames() + app_id,
                 style: {
                     ...popupContentStyle,
                     ...contentStyle,
