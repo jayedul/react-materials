@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import ReactDOM from 'react-dom';
 
-import { data_pointer } from './helpers.jsx';
+import { data_pointer } from '../helpers.jsx';
 
 import {
     useOnEscape,
