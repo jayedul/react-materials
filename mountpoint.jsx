@@ -4,9 +4,12 @@ import './prototypes.jsx';
 import { getHooks } from './hooks.jsx';
 import { ToastWrapper } from './toast/toast.jsx';
 import { RenderExternal } from './render-external.jsx';
+import { data_pointer } from './helpers.jsx';
+
+const {app_id} = window[data_pointer];
 
 export function MountPoint({ children }) {
-	return <div className={'mountpoint font-weight-400'.classNames()}>
+	return <div className={'mountpoint font-weight-400'.classNames() + app_id}>
 		<ToastWrapper>
 			{children}
 		</ToastWrapper>
