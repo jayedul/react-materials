@@ -14,7 +14,7 @@ export function MountPoint({ children }) {
 		
 		console.error('MountPoint: app_id is not set');
 
-		return <span className={'color-error'.classNames()}>
+		return <span style={{color: '#aa0000'}}>
 			<i>
 				{__('Looks like the JS script is loaded as part of a combined file. Please disable combining them and load from plugin folder directly.')}
 			</i>
