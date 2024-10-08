@@ -25,6 +25,13 @@
 		}
     }
 
+	&.overlayer {
+		& > div {
+			border-color: white;
+			color: white;
+		}
+	}
+
 	&.variant-normal > div {
 		padding: 2px 13px;
 		font-size: 14px;

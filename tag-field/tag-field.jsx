@@ -5,6 +5,7 @@ import style from './tag.module.scss';
 
 export function TagField({
 	variant='normal',
+	is_overlayer=false,
     value,
     options,
     onChange = () => {},
@@ -34,7 +35,7 @@ export function TagField({
     return (
         <div
             className={
-                `tag variant-${variant}`.classNames(style) + className
+                `tag variant-${variant} ${is_overlayer ? 'overlayer' : ''}`.classNames(style) + className
             }
         >
             {options.map((option) => {

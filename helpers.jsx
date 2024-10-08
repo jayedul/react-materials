@@ -6,6 +6,11 @@ const matches = document.currentScript.src.match(/\/([^/]+)\/wp-content\/(plugin
 const parsedString = `CrewMat_${matches[1]}_${matches[3]}`.toLowerCase().replace(/[^a-zA-Z0-9_]/g, '');
 export const data_pointer = parsedString.endsWith('pro') ? parsedString.slice(0, -'pro'.length) : parsedString;
 
+// Initialize empty data pointer to avaoid crashing, then mountpoint will show error message gracefully.
+if ( ! window[data_pointer] ) {
+	window[data_pointer] = {};
+}
+
 export const currency_symbol = currencySymbol[window[data_pointer].currency_code];
 
 export const months = [
