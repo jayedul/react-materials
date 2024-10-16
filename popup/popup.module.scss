@@ -18,23 +18,17 @@ default style for popup
     }
 
     &.modal {
-        height: auto;
-		max-height: 70%;
 		max-width: 90%;
-        display: flex;
-        align-items: center;
 		overflow: auto;
-		background-color: white;
-		border-radius: 10px;
 		
         & > div {
-            max-height: 80%;
-            overflow: auto;
             background-color: white;
             border-radius: 10px;
             padding: 20px;
 			width: 100%;
 			max-width: 550px;
+			margin-top: 40px;
+			margin-bottom: 40px;
 			
 			@media (min-width: 550px) {
 				min-width: 520px;
@@ -64,6 +58,7 @@ default style for popup
 .popup-overlay {
     background: transparent;
     transition: background 300ms linear;
+	overflow: auto;
 
     &.darken {
         background: rgba(0, 0, 0, 0.2);
