@@ -17,7 +17,7 @@ export function AudioPlayersWrapper({children}) {
 	</ContextAudioPlayer.Provider>
 }
 
-export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, height=40, children}) {
+export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, height=40, children, footer}) {
 
 	const {setID, currentID} = useContext(ContextAudioPlayer);
 	const waveform_ref = useRef();
@@ -101,7 +101,7 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 		}}
 	>
 		<div className={'d-flex column-gap-15'.classNames() + 'padding-15'.classNames()}>
-			<div style={{width: '70px'}}>
+			<div style={{width: '96px'}}>
 				<img 
 					src={thumbnail} 
 					className={'width-p-100 height-auto border-radius-5'.classNames()}
@@ -124,7 +124,7 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 					</div>
 					<div className={'flex-1 d-flex align-items-center justify-content-space-between column-gap-15 row-gap-10'.classNames()}>
 						<div>
-							<span className={'color-white font-weight-500 font-size-18 line-clamp'.classNames()}>
+							<span className={'color-white font-weight-500 font-size-16 line-clamp'.classNames()}>
 								{title}
 							</span>
 						</div>
@@ -143,7 +143,7 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 						}}></div>
 				</div>
 				<div>
-		
+					{footer}
 				</div>
 			</div>
 		</div>
