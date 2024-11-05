@@ -1,9 +1,11 @@
 import React, { useRef, useState, useContext, useEffect } from 'react';
 
-import style from './upload.module.scss';
 import { __, downScaleImages, getFileId, isEmpty, sprintf } from '../helpers.jsx';
 import { ListFile } from '../file-list.jsx';
 import { ContextToast } from '../toast/toast.jsx';
+import { LoadingIcon } from '../loading-icon/loading-icon.jsx';
+
+import style from './upload.module.scss';
 
 /**
  * Returns a set of options, computed from the attached image data and
@@ -84,6 +86,7 @@ export function FileUpload(props) {
 
     const [hoverState, setHoverState] = useState(false);
 	const [errorState, setErrorState] = useState(null);
+	const [imageProcessing, setImageProcessing] = useState(false);
 
 	const highlightError=()=>{
 		setErrorState(minlength>stateFiles.length);
@@ -179,7 +182,15 @@ export function FileUpload(props) {
         });
 
 		// Downscale image
-		downScaleImages(files.slice(0, maxlength), imageMaxWidth, _onChange);
+		setImageProcessing(true);
+		downScaleImages(
+			files.slice(0, maxlength), 
+			imageMaxWidth, 
+			files=>{
+				setImageProcessing(false);
+				_onChange(files);
+			} 
+		);
     };
 
     const removeFile = (index) => {
@@ -196,6 +207,11 @@ export function FileUpload(props) {
     };
 
     const openPicker = () => {
+
+		if ( imageProcessing ) {
+			return;
+		}
+
         // Open file system media picker if notto use WP API
         if (!WpMedia) {
             input_ref.value = '';
@@ -379,9 +395,13 @@ export function FileUpload(props) {
 							>
 								{
 									!url ? <div className={'width-p-100 height-p-100 d-flex align-items-center justify-content-center'.classNames()}>
-										<span className={'font-size-24 font-weight-700 color-material-50'.classNames()}>
-											+
-										</span>
+										{
+											imageProcessing ?
+												<LoadingIcon show={true}/> :
+												<span className={'font-size-24 font-weight-700 color-material-50'.classNames()}>
+													+
+												</span>
+										}
 									</div> 
 									:
 									<>
