@@ -42,7 +42,6 @@ export function RadioCheckbox(props) {
 		options = [],
 		onChange,
 		className,
-		spanClassName,
 		required=false,
 		showErrorsAlways=false,
 		indent=15,
@@ -99,7 +98,9 @@ export function RadioCheckbox(props) {
 							/>
 					}
 					
-					<span className={spanClassName}>{label}</span>
+					<span className={'font-size-15 font-weight-400 line-height-24 letter-spacing--15 color-text-70'.classNames()}>
+						{label}
+					</span>
 				</label>
 
 				{
