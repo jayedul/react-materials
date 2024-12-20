@@ -8,12 +8,47 @@ $width: 324;
     z-index: 9994;
 	position: fixed;
 	left: calc( 50% -  #{$width/2}px );
-	bottom: 30px;
+
+	&.top {
+		top: 54px;
+		animation-name: toDown;
+  		animation-duration: .4s;
+	}
+
+	&:not(.top) {
+		bottom: 54px;
+		animation-name: toUp;
+  		animation-duration: .4s;
+	}
 
     & > div {
-        background-color: var(--solidie-color-text);
+		
+		background-image: linear-gradient(to right, #ffe6f1, #94dae4);
+
         &:not(:last-child) {
             margin-bottom: 20px;
         }
     }
+}
+
+@keyframes toDown {
+	from {
+		opacity: 0;
+		top: 0;
+	}
+	to {
+		opacity: 1;
+		top: 54px;
+	}
+}
+
+@keyframes toUp {
+	from {
+		opacity: 0;
+		bottom: 0;
+	}
+	to {
+		opacity: 1;
+		bottom: 54px;
+	}
 }

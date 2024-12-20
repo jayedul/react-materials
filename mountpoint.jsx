@@ -8,7 +8,7 @@ import { __, data_pointer } from './helpers.jsx';
 
 const {app_id} = window[data_pointer] || {};
 
-export function MountPoint({ children }) {
+export function MountPoint({ children, configs={} }) {
 	
 	if ( ! app_id ) {
 		
@@ -22,7 +22,7 @@ export function MountPoint({ children }) {
 	}
 
 	return <div className={'mountpoint font-weight-400'.classNames() + app_id}>
-		<ToastWrapper>
+		<ToastWrapper configs={configs.toast || {}}>
 			{children}
 		</ToastWrapper>
 	</div>
