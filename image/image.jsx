@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './image.module.scss';
+import * as style from './image.module.scss';
 import { generateBackgroundColor, getInitials } from '../helpers.jsx';
 
 export function CoverImage(props) {

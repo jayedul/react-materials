@@ -7,7 +7,7 @@ import {
 
 import { isEmpty } from '../helpers.jsx';
 
-import style from './text-field.module.scss';
+import * as style from './text-field.module.scss';
 
 function evaluatePasswordStrength(password) {
     const weakPattern = /^.{0,5}$/;

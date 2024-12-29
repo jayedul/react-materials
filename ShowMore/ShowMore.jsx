@@ -1,5 +1,5 @@
 import React from 'react';
-import IndexCss from './index.module.scss';
+import * as IndexCss from './index.module.scss';
 
 // eslint-disable-next-line react/prop-types
 export default function ShowMore({ text = 'Show additional option', expand = false, reverse = false, image = false }) {

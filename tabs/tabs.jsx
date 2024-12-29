@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Conditional } from '../conditional.jsx';
-import style from './tabs.module.scss';
+import * as style from './tabs.module.scss';
 
 export function Tabs(props) {
 	

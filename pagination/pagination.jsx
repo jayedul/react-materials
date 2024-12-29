@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
-import style from './pagination.module.scss';
+import * as style from './pagination.module.scss';
 
 export function Pagination({ onChange, pageNumber = 1, pageCount = 1}) {
     // Invoke when user click to request another page.

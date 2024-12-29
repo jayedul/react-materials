@@ -5,7 +5,7 @@ import { ListFile } from '../file-list.jsx';
 import { ContextToast } from '../toast/toast.jsx';
 import { LoadingIcon } from '../loading-icon/loading-icon.jsx';
 
-import style from './upload.module.scss';
+import * as style from './upload.module.scss';
 
 /**
  * Returns a set of options, computed from the attached image data and

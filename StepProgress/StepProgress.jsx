@@ -1,6 +1,6 @@
 import React from 'react';
 import { __ } from './helpers.jsx';
-import IndexCss from './index.module.scss';
+import * as IndexCss from './index.module.scss';
 
 // eslint-disable-next-line react/prop-types
 export default function StepProgress({ completedStep = 0, currentStep, totalStep, reverse = false }) {

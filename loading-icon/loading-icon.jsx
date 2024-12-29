@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './loading.module.scss';
+import * as style from './loading.module.scss';
 
 export function LoadingIcon({ show, center = false, className }) {
     return !show ? null : <div

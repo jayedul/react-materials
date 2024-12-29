@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useRef, useState } from 'react';
 
 import { __, data_pointer, getRandomString } from '../helpers.jsx';
-import style from './toast.module.scss';
+import * as style from './toast.module.scss';
 import { Ripple } from '../dynamic-svg/ripple.jsx';
 
 import icon_success from '../static/images/Icon-check.svg';

@@ -8,7 +8,7 @@ import { IconAudio } from '../dynamic-svg/icon-audio.jsx';
 import { IconVideo } from '../dynamic-svg/icon-video.jsx';
 import { IconZip } from '../dynamic-svg/icon-zip.jsx';
 
-import style from './media.module.scss';
+import * as style from './media.module.scss';
 
 const thumbnails = {
     image: IconImage,

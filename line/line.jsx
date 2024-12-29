@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './line.module.scss';
+import * as style from './line.module.scss';
 
 export function Line(props) {
     const { orientation = 'horizontal', show = true, className = '' } = props;

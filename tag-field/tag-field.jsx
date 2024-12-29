@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { isEmpty } from '../helpers.jsx';
-import style from './tag.module.scss';
+import * as style from './tag.module.scss';
 
 export function TagField({
 	variant='normal',

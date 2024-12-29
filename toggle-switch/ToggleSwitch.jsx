@@ -1,7 +1,7 @@
 import React from 'react';
 import { getRandomString } from '../helpers.jsx';
 
-import style from './switch.module.scss';
+import * as style from './switch.module.scss';
 
 export function ToggleSwitch(props) {
     const { className = '', disabled = false, onChange, checked = false } = props;

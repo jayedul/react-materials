@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {data_pointer} from '../helpers.jsx';
 
 import WaveSurfer from './wavesurfer.js';
-import style from './player.module.scss';
+import * as style from './player.module.scss';
 
 const ContextAudioPlayer = createContext();
 

@@ -6,7 +6,7 @@ import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import {isEmpty} from '../helpers.jsx';
-import style from './editor.module.scss';
+import * as style from './editor.module.scss';
 
 const createEditorState = (html) => {
     const contentBlock = html ? htmlToDraft(html) : null;

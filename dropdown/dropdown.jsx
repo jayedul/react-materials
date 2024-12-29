@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Popup } from '../popup/index.jsx';
 import { __, isEmpty } from '../helpers.jsx';
 
-import style from './dropdown.module.scss';
+import * as style from './dropdown.module.scss';
 
 const content_style = {
     padding: '0px',

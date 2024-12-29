@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { input_class as className } from '../classes.jsx';
 
-import style from './number-field.module.scss'
+import * as style from './number-field.module.scss'
 
 export function NumberField(props) {
 	

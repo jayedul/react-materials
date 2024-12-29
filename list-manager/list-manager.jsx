@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SortableList } from '../sortable-list.jsx';
 import { __, getRandomString } from '../helpers.jsx';
 
-import style from './list.module.scss';
+import * as style from './list.module.scss';
 
 const getElementId = index => `solidie-item-${index}`;
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { __ } from '../helpers.jsx';
 
-import style from './exp.module.scss';
+import * as style from './exp.module.scss';
 
 export function ExpandableContent(props) {
     const [state, setState] = useState({
