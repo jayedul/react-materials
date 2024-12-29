@@ -1,5 +1,5 @@
-@import './breakpoint';
-@import './mixins';
+@use 'breakpoint';
+@use 'mixins';
 
 $radius: 6px;
 $base_color: var(--solidie-color-material-20);
@@ -12,24 +12,24 @@ $base_color: var(--solidie-color-material-20);
 		&>tr:first-child {
 			/* top-left border-radius */
 			&>th:first-child {
-				border-top-left-radius: $radius;
+				border-top-left-radius: #{$radius};
 			}
 
 			/* top-right border-radius */
 			&>th:last-child {
-				border-top-right-radius: $radius;
+				border-top-right-radius: #{$radius};
 			}
 		}
 
 		&>tr:last-child {
 			/* bottom-left border-radius */
 			&>td:first-child {
-				border-bottom-left-radius: $radius;
+				border-bottom-left-radius: #{$radius};
 			}
 
 			/* bottom-right border-radius */
 			&>td:last-child {
-				border-bottom-right-radius: $radius;
+				border-bottom-right-radius: #{$radius};
 			}
 		}
 
@@ -163,21 +163,21 @@ $base_color: var(--solidie-color-material-20);
 
 .table {
 
-	&, &>*, &>*>*, &>*>*>* {
-		border: none;
-	}
-	
 	border-collapse: separate;
 	border-spacing: 0;
 	min-width: 300px;
 	width: 100%;
-	border-radius: $radius;
+	border-radius: #{$radius};
 
+	&, &>*, &>*>*, &>*>*>* {
+		border: none;
+	}
+	
 	thead {
 		color: var(--solidie-color-text-80);
 		font-size: 15px;
 		
-		@include fontWeight(500);
+		@include mixins.fontWeight(500);
 		
 		th {
 			white-space: nowrap;
@@ -194,7 +194,7 @@ $base_color: var(--solidie-color-material-20);
 
 	&:not(.no-responsive):not(.vertical-head) {
 
-		@include breakpoint-min(desktop-lg) {
+		@include breakpoint.breakpoint-min(desktop-lg) {
 			@include regularStyle();
 		}
 

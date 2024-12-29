@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* Disguised input field */
 .text-field-flat {
     padding: 0 !important;
@@ -35,7 +37,7 @@
 
 /* Hover effects */
 @for $i from 5 through 10 {
-	$downgrade: $i/10;
+	$downgrade: math.div($i, 10);
     .darken-on-hover--#{$i} {
         &:hover {
             filter: brightness(#{$downgrade});

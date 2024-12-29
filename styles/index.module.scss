@@ -1,9 +1,8 @@
-@import './mixins';
-@import './global';
-@import './layout';
-@import './button';
-@import './snippets';
-@import './colors';
-@import './fonts';
-@import './custom-class';
-@import './table';
+@use 'global' as *;
+@use 'layout' as *;
+@use 'button' as *;
+@use 'snippets' as *;
+@use 'colors' as *;
+@use 'fonts' as *;
+@use 'custom-class' as *;
+@use 'table' as *;

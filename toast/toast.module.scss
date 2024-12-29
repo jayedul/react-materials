@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $width: 324;
 
 .toast {
@@ -7,7 +9,7 @@ $width: 324;
     overflow: auto;
     z-index: 9994;
 	position: fixed;
-	left: calc( 50% -  #{$width/2}px );
+	left: calc( 50% -  #{math.div($width, 2)}px );
 
 	&.top {
 		top: 54px;

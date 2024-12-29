@@ -1,3 +1,5 @@
+@use 'mixins';
+
 @font-face {
     font-family: 'Solidie-Figtree-Regular';
     src: url('../static/fonts/Figtree/static/Figtree-Regular.ttf') format('truetype');
@@ -20,17 +22,17 @@
 
 // Font weights
 .font-weight-400 {
-    @include fontWeight(400);
+    @include mixins.fontWeight(400);
 }
 
 .font-weight-500 {
-    @include fontWeight(500);
+    @include mixins.fontWeight(500);
 }
 
 .font-weight-600 {
-    @include fontWeight(600);
+    @include mixins.fontWeight(600);
 }
 
 .font-weight-700 {
-    @include fontWeight(700);
+    @include mixins.fontWeight(700);
 }

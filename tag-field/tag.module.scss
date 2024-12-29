@@ -1,4 +1,4 @@
-@import '../styles/mixins';
+@use '../styles/mixins';
 
 .tag {
     display: flex;
@@ -14,7 +14,7 @@
 		background-color: var(--solidie-color-material-5);
 		line-height: 24px;
 		color: var(--solidie-color-text);
-		@include fontWeight(500);
+		@include mixins.fontWeight(500);
         cursor: pointer;
         white-space: nowrap;
 

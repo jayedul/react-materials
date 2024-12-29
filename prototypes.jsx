@@ -1,5 +1,5 @@
-import style_library from './styles/index.module.scss';
-import icons from './static/icons/solidie/style.module.scss';
+import * as style_library from './styles/index.module.scss';
+import * as icons from './static/icons/solidie/style.module.scss';
 
 const is_production = process.env.NODE_ENV === 'production'
 

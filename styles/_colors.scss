@@ -1,24 +1,27 @@
+@use "sass:list";
+@use "sass:string";
+
 @function split-string($string, $delimiter) {
   $list: ();
-  $delimiter-length: str-length($delimiter);
-  $index: str-index($string, $delimiter);
+  $delimiter-length: string.length($delimiter);
+  $index: string.index($string, $delimiter);
   
   @if $index == null {
     @return ($string);
   }
 
   @while $index != null {
-    $list: append($list, str-slice($string, 1, $index - 1));
-    $string: str-slice($string, $index + $delimiter-length);
-    $index: str-index($string, $delimiter);
+    $list: list.append($list, string.slice($string, 1, $index - 1));
+    $string: string.slice($string, $index + $delimiter-length);
+    $index: string.index($string, $delimiter);
   }
 
-  @return append($list, $string);
+  @return list.append($list, $string);
 }
 
 @function get-first-part($string, $delimiter) {
   $split-list: split-string($string, $delimiter);
-  @return nth($split-list, 1);
+  @return list.nth($split-list, 1);
 }
 
 // Loop through the colors
@@ -49,11 +52,11 @@ $colors: 'text', 'material', 'white', 'error', 'warning', 'success', 'transparen
 
 @for $i from 1 through 9 {
 
-  	$colors: append($colors, 'text-#{$i*10}');
-  	$colors: append($colors, 'material-#{$i*10}');
+  	$colors: list.append($colors, 'text-#{$i*10}');
+  	$colors: list.append($colors, 'material-#{$i*10}');
 
-  	$colors: append($colors, 'text-#{$i}');
-  	$colors: append($colors, 'material-#{$i}');
+  	$colors: list.append($colors, 'text-#{$i}');
+  	$colors: list.append($colors, 'material-#{$i}');
 }
 
 @include colorGenerate('color', 'color', $colors);
