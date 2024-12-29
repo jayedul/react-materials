@@ -145,9 +145,10 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 				'!./LICENSE.txt',
 				'!./*.lock',
 				'!./*.js',
-				'!./*.json',
+				'!./package.json',
+				'!./package-lock.json',
 
-				(!vendor ? '!./vendor/**' : './composer.json'),
+				(!vendor ? '!./vendor/**' : null),
 				
 				'!./*.xml'
 			].filter(f=>f))
@@ -179,9 +180,11 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 			fs.writeFileSync(index_path, codes);
 		}
 		
-		return gulp.src(path.resolve(root_dir, './build/**/*.*')).pipe(zip(build_name)).pipe(gulp.dest(root_dir));
+		return gulp
+				.src(path.resolve(root_dir, './build/**/*.*'))
+				.pipe(zip.default(build_name))
+				.pipe(gulp.dest(root_dir));
 	});
-
 	
 	const series = [
 		'clean-zip',
