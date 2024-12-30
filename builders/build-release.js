@@ -151,7 +151,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 				(!vendor ? '!./vendor/**' : null),
 				
 				'!./*.xml'
-			].filter(f=>f))
+			].filter(f=>f), {encoding: false})
 			.pipe(gulp.dest(path.resolve(root_dir, `./build/${project_name}/`)));
 	});
 
