@@ -70,7 +70,7 @@ export function DropDown(props) {
 			style={{padding: '0 15px', height: '40px'}}
 			data-cylector="trigger-point"
 		>
-			<div className={'flex-1 white-space-nowrap font-size-15 font-weight-400'.classNames() + textClassName}>
+			<div className={'flex-1 white-space-nowrap font-size-15 font-weight-400 overflow-hidden text-overflow-ellipsis'.classNames() + textClassName}>
 				{
 					!search ? 
 						(
