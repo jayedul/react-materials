@@ -174,11 +174,14 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 	gulp.task('make-zip', function () {
 		
 		// Replace the mode in build folder
-		const index_path = path.resolve( root_dir, `./build/${project_name}/${project_name}.php` );
-		if ( fs.existsSync(index_path) ) {
-			const codes = fs.readFileSync(index_path).toString().replace( "=> 'development',", "=> 'production'," );
-			fs.writeFileSync(index_path, codes);
+		const replaceMode = (index_path)=>{
+			if ( fs.existsSync(index_path) ) {
+				const codes = fs.readFileSync(index_path).toString().replace( "=> 'development',", "=> 'production'," );
+				fs.writeFileSync(index_path, codes);
+			}
 		}
+		replaceMode(path.resolve( root_dir, `./build/${project_name}/${project_name}.php` ));
+		replaceMode(path.resolve( root_dir, `./build/${project_name}/functions.php` ));
 		
 		return gulp
 				.src(path.resolve(root_dir, './build/**/*.*'), {encoding: false})
