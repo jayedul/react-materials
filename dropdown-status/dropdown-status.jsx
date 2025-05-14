@@ -5,6 +5,12 @@ import * as style from './style.module.scss';
 const color_map = {
 	publish: 'success',
 	published: 'success',
+	
+	unpublish: 'initial',
+	unpublished: 'initial',
+	private: 'initial',
+	draft: 'incomplete',
+
 	sent: 'success',
 	approved: 'success',
 

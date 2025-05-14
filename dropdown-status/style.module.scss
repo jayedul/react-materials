@@ -19,7 +19,7 @@ $color_scale: 90;
 		opacity: .6;
 	}
 	
-	&.default {
+	&.incomplete, &.initial, &.default {
 		background: rgba($color_scale, $color_scale, $color_scale, $opacity_bg);
 		border: 1px solid rgba($color_scale, $color_scale, $color_scale, $opacity_br);
 		
