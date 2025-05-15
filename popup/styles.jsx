@@ -1,5 +1,4 @@
-// z-index = 9993;
-const zIndex = 9993;
+const zIndex = 1060;
 
 const Style = {
     popupContent: {
