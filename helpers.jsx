@@ -739,28 +739,16 @@ export function downscaleImage(file, maxWidth) {
     });
 }
 
-export function downScaleImages(files, imageMaxWidth, onComplete) {
-
-	// Downscale image
-	let queue = 0;
-	for ( let i=0; i<files.length; i++ ) {
-		if ( imageMaxWidth && files[i] instanceof File && files[i].type.indexOf('image/')===0 ) {
-			queue++;
-			downscaleImage(files[i], imageMaxWidth).then(file=>{
-
-				files[i] = file;
-				queue--;
-
-				if ( queue === 0 ) {
-					onComplete(files);
-				}
-			});
+export async function downScaleImages(files, imageMaxWidth, onComplete) {
+	const promises = files.map(async (file, index) => {
+		if (imageMaxWidth && file instanceof File && file.type.startsWith('image/')) {
+			const downscaled = await downscaleImage(file, imageMaxWidth);
+			files[index] = downscaled;
 		}
-	}
+	});
 
-	if ( queue === 0 ) {
-		onComplete(files);
-	}
+	await Promise.all(promises);
+	onComplete(files);
 }
 
 export function getBack(e){
