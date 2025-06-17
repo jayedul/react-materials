@@ -65,7 +65,7 @@ export function DropDown(props) {
 			className={
 				`select-dropdown ${transparent ? 'transparent' : ''}`.classNames(style) +
 				'cursor-pointer d-flex align-items-center border-radius-10 column-gap-8'.classNames() +
-				`border-1 ${!errorState ? 'b-color-text-40' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
+				`border-1 ${!errorState ? 'b-color-text-20' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
 			}
 			style={{padding: '0 15px', height: '40px'}}
 			data-cylector="trigger-point"
