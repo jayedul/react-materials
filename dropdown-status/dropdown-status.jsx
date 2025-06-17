@@ -3,6 +3,7 @@ import React from "react";
 import * as style from './style.module.scss';
 
 const color_map = {
+	complete: 'success',
 	publish: 'success',
 	published: 'success',
 	
@@ -10,6 +11,7 @@ const color_map = {
 	unpublished: 'initial',
 	private: 'initial',
 	draft: 'incomplete',
+	cancelled: 'incomplete',
 
 	sent: 'success',
 	approved: 'success',
