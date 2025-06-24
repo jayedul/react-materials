@@ -71,6 +71,7 @@ module.exports = react_blueprints => (env, options) => {
     }
 
     var configEditors = [];
+	var now = Date.now();
     for (let i = 0; i < react_blueprints.length; i++) {
 
         let { src_files, dest_path } = react_blueprints[i];
@@ -91,7 +92,7 @@ module.exports = react_blueprints => (env, options) => {
                 entry: src_files,
                 output: {
                     path: path.resolve(dest_path),
-                    filename: `[name].js`
+                    filename: `[name].${now}.js`
                 }
             })
         );
