@@ -755,6 +755,13 @@ export function getBack(e){
 	if ( window.history.state?.idx ) {
 		e?.preventDefault?.();
 		window.history.back();
+
+	} else if (!e.currentTarget.href) {
+		
+		const {pathname} = window.location;
+		const segments = pathname.trim('/').split('/').filter(s=>s);
+
+		window.location.assign(`/${segments.slice(0, -1).join('/')}/`);
 	}
 }
 
