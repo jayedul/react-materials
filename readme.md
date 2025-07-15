@@ -1,1 +1,1 @@
-A reusable material library of raw React components, not transpiled. It is intended to be used in Crew HRM free and pro plugins only. No guarantee how it will work in other cases.
+Reusable react components library, not transpiled. Elements can be imported directly like **import {confirm} from "react-materials/prompts"** 
