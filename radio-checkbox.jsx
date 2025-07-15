@@ -82,7 +82,7 @@ export function RadioCheckbox(props) {
 		return <ToolTip key={id} tooltip={tooltip}>
 			<div style={{paddingLeft: `${level>1 ? indent : 0}px`}}>
 				<label
-					className={`d-flex align-items-center column-gap-10 margin-bottom-8 ${(disabled || locked) ? 'cursor-default' : 'cursor-pointer'}`.classNames() + className}
+					className={`d-flex align-items-center column-gap-10 margin-bottom-8 ${children?.length ? 'margin-bottom-8' : ''} ${(disabled || locked) ? 'cursor-default' : 'cursor-pointer'}`.classNames() + className}
 				>
 					{
 						locked ? 
@@ -98,7 +98,7 @@ export function RadioCheckbox(props) {
 							/>
 					}
 					
-					<span className={'font-size-15 font-weight-400 line-height-24 letter-spacing--15 color-text-70'.classNames()}>
+					<span className={'font-size-15 font-weight-400 line-height-24 letter-spacing--15 color-text-70 white-space-nowrap'.classNames()}>
 						{label}
 					</span>
 				</label>
