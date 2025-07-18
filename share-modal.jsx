@@ -38,7 +38,7 @@ const targets = [
 ];
 
 export function ShareModal(props) {
-	const { url, closeModal } = props;
+	const { hint, url, closeModal } = props;
 	const { addToast } = useContext(ContextToast);
 
 	const openSharer = (url, sharer) => {
@@ -125,6 +125,11 @@ export function ShareModal(props) {
 					</span>
 				</span>
 			</div>
+			{
+				!hint ? null : <span className={'d-block margin-top-10 color-text-70 font-weight-400 font-size-12'.classNames()}>
+					{hint}
+				</span>
+			}
 		</div>
 	</Modal>
 }
