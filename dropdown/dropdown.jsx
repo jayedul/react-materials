@@ -80,7 +80,7 @@ export function DropDown(props) {
 						)
 						:
 						<input
-							className={'text-field-flat font-size-15 font-weight-400'.classNames()}
+							className={'text-field-flat font-size-15 font-weight-400 color-text-80'.classNames()}
 							placeholder={__('Search..')}
 							onChange={(e) => setSearchState(e.currentTarget.value)}
 						/>
