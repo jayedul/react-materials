@@ -1,7 +1,7 @@
 /* Select Drop down and popup */
 .select-dropdown {
     &:not(.transparent) {
-        background-color: white;
+        background-color: var(--solidie-color-white);
     }
 }
 
@@ -37,8 +37,8 @@
         }
 
         &.active {
-            color: white;
-            background-color: var(--solidie-color-text);
+            color: var(--solidie-color-white-90);;
+            background-color: var(--solidie-color-text-90);
         }
     }
 }
