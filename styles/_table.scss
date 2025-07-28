@@ -6,7 +6,7 @@ $base_color: var(--solidie-color-material-20);
 
 @mixin regularStyle() {
 	
-	background-color: white;
+	background-color: var(--solidie-color-white);
 
 	&>* {
 		&>tr:first-child {
