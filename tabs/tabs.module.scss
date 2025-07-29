@@ -12,18 +12,18 @@
     }
 
     &.theme-button {
-        background-color: rgb(252, 252, 252);
+        background-color: var(--solidie-color-white-40);
         border-radius: 6px;
         padding: 2px;
-		color: var(--solidie-color-text-90);
+		color: var(--solidie-color-text-80);
 
         & > div {
             padding-top: 10px;
             padding-bottom: 10px;
 
             &.active {
-                background-color: rgb(255, 255, 255);
-                box-shadow: 0px 1px 3px 0px rgba(16, 39, 68, 0.2);
+                background-color: var(--solidie-color-white);
+                box-shadow: 0px 1px 4px 3px var(--solidie-color-text-10);
                 border-radius: 6px;
             }
         }
@@ -41,176 +41,6 @@
             &.active {
                 color: var(--solidie-color-text-90);
                 border-color: var(--solidie-color-text-90);
-            }
-        }
-    }
-
-    &.theme-sequence {
-        .single-step {
-            .sequence-line-wrapper {
-                display: flex;
-                align-items: center;
-                margin-top: 10px;
-
-                & > div {
-                    &:not(.circle) {
-                        flex: 1;
-
-                        .hr {
-                            display: block;
-                            width: 100%;
-                            height: 1px;
-                            background-color: var(--solidie-color-material-30);
-                        }
-                    }
-
-                    &.circle {
-                        width: 13px;
-                        height: 13px;
-                        border-radius: 50%;
-                        background-color: white;
-                        border: 2px solid var(--solidie-color-text-40);
-                    }
-                }
-
-                &.fill-left {
-                    .hr-1 {
-                        background-color: var(--solidie-color-material) !important;
-                    }
-                }
-
-                &.fill-right {
-                    .hr-2,
-                    .circle {
-                        border-color: var(--solidie-color-material) !important;
-                        background-color: var(--solidie-color-material) !important;
-                    }
-                }
-
-                &.fill-right-gradient {
-                    .circle {
-                        border-color: var(--solidie-color-material) !important;
-                    }
-
-                    .hr-2 {
-                        background-image: linear-gradient(to right, black, transparent) !important;
-                    }
-                }
-            }
-        }
-    }
-    &.theme-sequence-down {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 36px;
-        position: sticky;
-        top: 150px;
-        > div {
-            display: flex;
-        }
-        .single-step {
-            flex-direction: row-reverse;
-            align-items: center;
-            gap: 5px;
-            &.active {
-                .sequence-down-circle {
-                    border: 2px solid var(--solidie-color-text);
-                    border: 0;
-                    &.fill-left {
-                        position: relative;
-                        border: 0;
-                        &:before {
-                            transition: all 0.4s ease-in-out 0.4s;
-                            height: 0px;
-                            background-color: var(--solidie-color-text);
-                        }
-                    }
-                }
-            }
-            .sequence-down-circle {
-                width: 25px;
-                height: 25px;   
-                background-color: transparent;
-                border: 2px solid #BBBFC3;
-                border-radius: 50%;
-                display: block;
-                position: relative;
-                transition: all 0.3s ease-in-out;
-                border: 0;
-                svg:first-child {
-                    transform: rotate(-90deg);
-                    circle {
-                        transition: all 0.4s ease-in-out;
-                        stroke-dasharray: 100;
-                        stroke-dashoffset: 0;
-                        &:first-child {
-                            stroke:#BBBFC3;
-                        }
-                        &:last-child {
-                            stroke : #1a1a1a;
-                            stroke-dasharray: 100;
-                            stroke-dashoffset: 100;
-                        }
-                    }
-                }
-                svg:last-child {
-                    position: absolute;
-                    left: 5.5px;
-                    top: 8px;
-                    path {
-                        transition: all 0.4s ease-in-out 0.3s;
-                        stroke-dasharray: 12;
-                        stroke-dashoffset: 12;
-                    }
-                }
-                &.fill-left {
-                    position: relative;
-                    svg:first-child {
-                        circle {
-                            transition: all 0.4s ease-in-out 0.3s;
-                            &:last-child {
-                                stroke-dasharray: 100;
-                                stroke-dashoffset: 0;
-                            }
-                        }
-                    }
-                    svg:last-child {
-                        path {
-                            transition: all 0.4s ease-in-out 0.7s;
-                            stroke-dasharray: 12;
-                            stroke-dashoffset: 0;
-                        }
-                    }
-                    &:before {
-                        transition: all 0.4s ease-in-out;
-                        content: '';
-                        display: block;
-                        width: 1px;
-                        height: 25px;
-                        background-color: #BBBFC3;
-                        position: absolute;
-                        top: 20px;
-                        left: 48%;
-                        transform: translate(-50%, 10px);
-                        z-index: 1;
-                    }
-                }
-            }
-            &:not(:last-child) {
-                .sequence-down-circle {
-                    &:after {
-                        content: '';
-                        display: block;
-                        width: 1px;
-                        height: 25px;
-                        background-color: #E3E5E8;
-                        position: absolute;
-                        top: 20px;
-                        left: 48%;
-                        transform: translate(-50%, 10px);
-                    }
-                }
             }
         }
     }

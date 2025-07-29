@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Conditional } from '../conditional.jsx';
 import * as style from './tabs.module.scss';
 
 export function Tabs(props) {
@@ -64,36 +63,6 @@ export function Tabs(props) {
                         onClick={() => ((onNavigate && id!=active) ? onNavigate(id) : null)}
                     >
                         {label}
-						<Conditional show={theme == 'sequence'}>
-							<div
-                                className={`sequence-line-wrapper ${fill_class}`.classNames(style)}
-                            >
-                                <div>
-									<Conditional show={index > 0}>
-										<div className={'hr hr-1'.classNames(style)}></div>
-									</Conditional>
-                                </div>
-                                <div className={'circle'.classNames(style)}></div>
-                                <div>
-									<Conditional show={index < tabs.length - 1}>
-										<div className={'hr hr-2'.classNames(style)}></div>
-									</Conditional>
-                                </div>
-                            </div>
-                        </Conditional>
-                        <Conditional show={theme == 'sequence-down'}>
-                            <div
-                                className={`sequence-down-circle ${fill_class}`.classNames(style)}
-                            >
-                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="13" cy="15" r="10" strokeWidth='2' />
-                                    <circle cx="13" cy="15" r="10" strokeWidth='2' />
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
-                                    <path d="M2.70703 6.66911L5.29226 9.20817L10.832 3.7915" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                            </div>
-                        </Conditional>
                     </div>
                 );
             })}
