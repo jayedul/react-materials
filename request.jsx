@@ -47,7 +47,8 @@ export function request(action, payload = {}, callback, progressCallback) {
 		...payload,
 		action: (window[data_pointer]?.app_id || '') + '_' + action,
 		nonce: window[data_pointer]?.nonce || null,
-		nonce_action: window[data_pointer]?.nonce_action || null
+		nonce_action: window[data_pointer]?.nonce_action || null,
+		browser_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 	};
 
 	// Build form data
