@@ -4,7 +4,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = react_blueprints => (env, options) => {
+
     const mode = options.mode || 'development';
+    const now = Date.now();
 
     const config = {
         mode,
@@ -58,7 +60,11 @@ module.exports = react_blueprints => (env, options) => {
                 }
             ]
         },
-        plugins: [],
+		plugins: [
+			new MiniCssExtractPlugin({
+				filename: `[name].${now}.css`
+			})
+		],
         devtool: 'source-map'
     };
 
@@ -80,7 +86,6 @@ module.exports = react_blueprints => (env, options) => {
     }
 
     var configEditors = [];
-    var now = Date.now();
     
     for (let i = 0; i < react_blueprints.length; i++) {
         let { src_files, dest_path } = react_blueprints[i];
