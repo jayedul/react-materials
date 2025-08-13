@@ -148,7 +148,7 @@ export function ToastWrapper({children, configs={}}) {
 							</div>
 
 							<span
-								className={`d-inline-block margin-left-10 font-size-15 font-weight-500 line-height-18 color-text`.classNames()}
+								className={`d-inline-block margin-left-10 font-size-15 font-weight-500 line-height-18 color-white`.classNames()}
 							>
 								{message}
 							</span>
@@ -157,7 +157,7 @@ export function ToastWrapper({children, configs={}}) {
 						{
 							!dismissible ? null :
 							<div
-								className={`d-flex flex-direction-column border-left-1 b-color-text-60`.classNames()}
+								className={`d-flex flex-direction-column border-left-1 b-color-white-60`.classNames()}
 							>
 								{
 									!dismissible ? null :
@@ -165,7 +165,7 @@ export function ToastWrapper({children, configs={}}) {
 										className={'padding-vertical-10 padding-horizontal-20'.classNames()}
 									>
 										<span
-											className={`font-size-13 font-weight-500 line-height-22 color-text cursor-pointer`.classNames()}
+											className={`font-size-13 font-weight-500 line-height-22 color-white cursor-pointer`.classNames()}
 											onClick={e => {
 												e.stopPropagation();
 												dismissToast(id);

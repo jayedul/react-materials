@@ -25,7 +25,8 @@ $width: 324;
 
     & > div {
 		
-		background-image: linear-gradient(150deg, #528b6d, #486283);
+		background-image: linear-gradient(150deg, var(--solidie-color-text-70), var(--solidie-color-text-80));
+		backdrop-filter: blur(4px);
 
         &:not(:last-child) {
             margin-bottom: 20px;
