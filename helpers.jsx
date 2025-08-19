@@ -3,7 +3,7 @@ import { countries_object, patterns } from './data.jsx';
 
 // Determine the unique data pointer
 const matches = document.currentScript.src.match(/\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/);
-const parsedString = `CrewMat_${matches[1]}_${matches[2]}_${matches[3]}`.toLowerCase().replace(/[^a-zA-Z0-9_]/g, '');
+const parsedString = `${matches[1]}_${matches[2]}_${matches[3]}`.toLowerCase().replace(/[^a-zA-Z0-9_]/g, '');
 export const data_pointer = parsedString.endsWith('pro') ? parsedString.slice(0, -'pro'.length) : parsedString;
 
 // Initialize empty data pointer to avaoid crashing, then mountpoint will show error message gracefully.
