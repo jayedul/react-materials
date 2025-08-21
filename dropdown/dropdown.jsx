@@ -28,6 +28,7 @@ export function DropDown(props) {
 		disabled,
 		required=false,
         style: cssStyle={},
+		styleTriggerPoint={},
 		showErrorsAlways=false,
 		clearable=true,
         iconSizeClass = 'font-size-20'.classNames()
@@ -67,7 +68,7 @@ export function DropDown(props) {
 				'cursor-pointer d-flex align-items-center border-radius-10 column-gap-8'.classNames() +
 				`border-1 ${!errorState ? 'b-color-text-20' : 'b-color-error'} width-p-100 d-block font-size-15 font-weight-400 line-height-25 color-text`.classNames()
 			}
-			style={{padding: '0 15px', height: '40px'}}
+			style={{padding: '0 15px', height: '40px', ...styleTriggerPoint}}
 			data-cylector="trigger-point"
 		>
 			<div className={'flex-1 white-space-nowrap font-size-15 font-weight-400 overflow-hidden text-overflow-ellipsis'.classNames() + textClassName}>
