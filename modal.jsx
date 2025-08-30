@@ -9,7 +9,8 @@ export function Modal(props) {
 		open = true,
 		closeOnDocumentClick=false,
 		onClose = () => {},
-		style: cssStyle = {}
+		style: cssStyle = {},
+		overlayStyle
 	} = props;
 
 	return <Popup
@@ -21,6 +22,7 @@ export function Modal(props) {
 		closeOnDocumentClick={closeOnDocumentClick}
 		trigger={trigger}
 		onClose={onClose}
+		overlayStyle={overlayStyle}
 		contentStyle={{ ...cssStyle }}
 	>
 		<div>{children}</div>
