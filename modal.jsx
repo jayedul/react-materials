@@ -10,7 +10,8 @@ export function Modal(props) {
 		closeOnDocumentClick=false,
 		onClose = () => {},
 		style: cssStyle = {},
-		overlayStyle
+		overlayStyle,
+		contentWrapperStyle={}
 	} = props;
 
 	return <Popup
@@ -25,6 +26,6 @@ export function Modal(props) {
 		overlayStyle={overlayStyle}
 		contentStyle={{ ...cssStyle }}
 	>
-		<div>{children}</div>
+		<div style={contentWrapperStyle}>{children}</div>
 	</Popup>
 }
