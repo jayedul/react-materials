@@ -130,10 +130,10 @@ export function request(action, payload = {}, callback, progressCallback) {
 				});
 			}
 		},
-		error: function () {
+		error: function (xhr, status, error) {
 			callback({
 				success: false,
-				data: {}
+				data: {message: error || __('Something went wrong!')}
 			});
 		},
 		xhr: function () {
