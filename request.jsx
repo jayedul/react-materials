@@ -1,5 +1,11 @@
 import { __, data_pointer, getHighestUnitFromBytes, sprintf } from "./helpers.jsx";
 
+const error_message = {
+    'timeout'     : __('The request timed out.'),
+    'error'       : __('Request error'),
+    'abort'       : __('Request aborted.'),
+    'parsererror' : __('Failed to parse the response.')
+};
 
 function calculateFormDataSize(formData) {
 	
@@ -133,7 +139,7 @@ export function request(action, payload = {}, callback, progressCallback) {
 		error: function (xhr, status, error) {
 			callback({
 				success: false,
-				data: {message: error || __('Something went wrong!')}
+				data: {message: error_message[status] || __('Something went wrong!')}
 			});
 		},
 		xhr: function () {
