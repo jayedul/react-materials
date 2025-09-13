@@ -6,6 +6,10 @@ $base_color: var(--solidie-color-material-20);
 
 @mixin regularStyle() {
 	
+	.mobile-only {
+		display: none;
+	}
+
 	background-color: var(--solidie-color-white);
 
 	&>* {
@@ -68,6 +72,10 @@ $base_color: var(--solidie-color-material-20);
 }
 
 @mixin mobileStyle() {
+
+	.desktop-only {
+		display: none;
+	}
 
 	&, &>*, &>*>*, &>*>*>* {
 		display: block;
