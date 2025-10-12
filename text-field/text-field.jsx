@@ -255,6 +255,7 @@ export function TextField(props) {
 				wrapper_class.classNames() + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
 			}
 			style={{
+				height: type === 'textarea' ? 'auto' : undefined,
 				margin: 0,
 				...cssStyle
 			}}
