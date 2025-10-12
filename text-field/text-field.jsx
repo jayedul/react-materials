@@ -50,7 +50,6 @@ export function TextField(props) {
 		required, // If explicitly not specified, then it will be required if there's regex. If false, then regex will be validated only if the value is not empty.
 		style: cssStyle,
 		autofocus,
-		resize='none',
 		showErrorsAlways=false,
 		onBlur,
 		onFocus,
@@ -256,7 +255,6 @@ export function TextField(props) {
 				wrapper_class.classNames() + `${!state.expanded ? 'b-color-transparent': ''}`.classNames()
 			}
 			style={{
-				height: type==='textarea' ? '100px' : undefined,
 				margin: 0,
 				...cssStyle
 			}}
@@ -295,7 +293,6 @@ export function TextField(props) {
 						<textarea 
 							{...attr} 
 							style={{
-								resize, 
 								paddingTop: '15px', 
 								paddingBottom: '15px'
 							}}
