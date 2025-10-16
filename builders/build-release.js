@@ -4,16 +4,19 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     zip = require('gulp-zip'),
     fs = require('fs'),
-    path = require('path');
+    path = require('path'), 
+	minimist = require('minimist');
 
 const root_dir = process.cwd();
+
+const options = minimist(process.argv.slice(2));
 
 const {
 	version: project_version, 
 	name: project_name
 } = require( path.resolve( root_dir, './package.json' ) );
 
-var build_name    = `${project_name}-${project_version}.zip`;
+var build_name    = options.file || `${project_name}-${project_version}.zip`;
 var readable_name = project_name.replace(/(^\w|_\w)/g, s => s.replace('_', '').toUpperCase()).replace(/-/g, ' ');
 
 var added_texts = [];
