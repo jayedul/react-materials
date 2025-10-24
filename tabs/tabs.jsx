@@ -61,6 +61,7 @@ export function Tabs(props) {
                             `${onNavigate ? 'cursor-pointer' : ''}`.classNames()
                         }
                         onClick={() => ((onNavigate && id!=active) ? onNavigate(id) : null)}
+                        data-cylector={"step-" + id}
                     >
                         {label}
                     </div>
