@@ -10,18 +10,18 @@
 
 	& > div {
 		border-radius: 50px;
-		border: 1px solid var(--solidie-color-material-20);
-		background-color: var(--solidie-color-material-5);
+		border: 1px solid var(--devjk-color-material-20);
+		background-color: var(--devjk-color-material-5);
 		line-height: 24px;
-		color: var(--solidie-color-text);
+		color: var(--devjk-color-text);
 		@include mixins.fontWeight(500);
         cursor: pointer;
         white-space: nowrap;
 
 		&.active {
 			color: white;
-			background-color: var(--solidie-color-material-70);
-			border-color: var(--solidie-color-material-80);
+			background-color: var(--devjk-color-material-70);
+			border-color: var(--devjk-color-material-80);
 		}
     }
 

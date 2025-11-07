@@ -32,9 +32,9 @@ export function RenderExternal({className='', component: Comp, payload={}}) {
 export function mountExternal( id, el, component) {
 
 	const {mountpoints={}} = window[data_pointer];
-	const current_session = el.getAttribute('data-solidie-mountpoint') === id;
+	const current_session = el.getAttribute('data-react-materials-mountpoint') === id;
 
-	el.setAttribute('data-solidie-mountpoint', id);
+	el.setAttribute('data-react-materials-mountpoint', id);
 
 	if ( ! current_session || ! mountpoints[id] ) {
 		window[data_pointer].mountpoints[id] = createRoot(el);

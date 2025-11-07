@@ -20,14 +20,14 @@
     line-height: normal;
 
     &.button-primary {
-        background-color: var(--solidie-color-material);
+        background-color: var(--devjk-color-material);
         color: white;
-        border: 1px solid var(--solidie-color-material);
+        border: 1px solid var(--devjk-color-material);
 
         // Set light colors if disabled
         &.disabled, &:disabled {
-            background-color: var(--solidie-color-material-50);
-            border-color: var(--solidie-color-material-50);
+            background-color: var(--devjk-color-material-50);
+            border-color: var(--devjk-color-material-50);
         }
 
         // Make little bit darker on hover
@@ -40,12 +40,12 @@
 
     &.button-outlined {
 
-		border: 1px solid var(--solidie-color-material);
+		border: 1px solid var(--devjk-color-material);
 		background-color: transparent;
 
         // Hovering outlined button is merely showing the primary button colors. When not hovered, it'll who outlined withour primary background color.
         &:not(:hover) {
-            color: var(--solidie-color-material);
+            color: var(--devjk-color-material);
         }
 
         // Set styles for disabled state
@@ -55,8 +55,8 @@
         }
 
 		&:not(:disabled):hover {
-            background-color: var(--solidie-color-material);
-            color: var(--solidie-color-white);
+            background-color: var(--devjk-color-material);
+            color: var(--devjk-color-white);
 		}
     }
 

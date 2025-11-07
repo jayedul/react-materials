@@ -20,10 +20,10 @@
 		width: 35px;
 		height: 35px;
 		border-radius: 50%;
-		background-color: var(--solidie-color-material);
+		background-color: var(--devjk-color-material);
 		cursor: pointer;
 		overflow: hidden;
-		border: 1px solid var(--solidie-color-white);
+		border: 1px solid var(--devjk-color-white);
 
 		&:not(:hover) {
 			opacity: 0.8;
@@ -31,7 +31,7 @@
 		}
 
 		i {
-			color: var(--solidie-color-white);
+			color: var(--devjk-color-white);
 		}
 	}
 }

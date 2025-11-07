@@ -5,6 +5,7 @@ import { countries_object, patterns } from './data.jsx';
 const matches = document.currentScript.src.match(/\/([^/]+)\/wp-content\/(plugins|themes)\/([^/]+)\/.*/);
 const parsedString = `${matches[1]}_${matches[2]}_${matches[3]}`.toLowerCase().replace(/[^a-zA-Z0-9_]/g, '');
 export const data_pointer = `_${parsedString.endsWith('pro') ? parsedString.slice(0, -'pro'.length) : parsedString}`;
+const local_storage_name = `${data_pointer}_localstorage`;
 
 // Initialize empty data pointer to avaoid crashing, then mountpoint will show error message gracefully.
 if ( ! window[data_pointer] ) {
@@ -289,7 +290,7 @@ export function parseParams(searchParam) {
 
 export function storage(name, local = false) {
 	const store = local ? 'localStorage' : 'sessionStorage';
-	const _name = 'solidie_' + name;
+	const _name = `${local_storage_name}_${name}`;
 
 	return {
 		setItem: (value) => {
@@ -655,7 +656,7 @@ export const getDashboardPath=(rel_path)=>{
 
 export const getLocalValue=(name, deflt)=>{
 
-	let values = window.localStorage.getItem('solidie_local_values');
+	let values = window.localStorage.getItem(local_storage_name);
 
 	if ( values ) {
 		try {
@@ -673,7 +674,7 @@ export const getLocalValue=(name, deflt)=>{
 export const setLocalValue=(name, value)=>{
 	const locals = getLocalValue();
 	locals[name] = value;
-	window.localStorage.setItem('solidie_local_values', JSON.stringify(locals));
+	window.localStorage.setItem(local_storage_name, JSON.stringify(locals));
 }
 
 export const purgeBasePath = (str) => {

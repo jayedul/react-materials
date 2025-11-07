@@ -1,22 +1,22 @@
 {
-  "name": "solidie-materials",
+  "name": "react-materials",
   "version": "1.0.0",
-  "description": "Raw React components library, not transpiled. It is intended to be used in Solidie repositories.",
+  "description": "Raw React components library, not transpiled.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Solidie",
+  "author": "DevJK",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Solidie/solidie-materials.git"
+    "url": "git+https://github.com/jayedul/react-materials.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/Solidie/solidie-materials/issues"
+    "url": "https://github.com/jayedul/react-materials/issues"
   },
-  "homepage": "https://github.com/Solidie/solidie-materials#readme",
+  "homepage": "https://github.com/jayedul/react-materials#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
     "path": "^0.12.7"

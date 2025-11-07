@@ -36,7 +36,7 @@ export function PDFViewer({ src, defaultScale }) {
 	return (
 		<div
 			ref={ref_wrapper}
-			className='solidie-pdf-viewer'
+			className='react-materials-pdf-viewer'
 			style={
 				state.error || !state.loaded
 					? {}

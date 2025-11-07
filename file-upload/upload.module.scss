@@ -1,25 +1,25 @@
 .upload {
     .drop-container {
-        border: 1px dashed var(--solidie-color-text-10);
+        border: 1px dashed var(--devjk-color-text-10);
         padding: 30px;
         cursor: pointer;
         border-radius: 10px;
-        background-color: var(--solidie-color-material-3);
+        background-color: var(--devjk-color-material-3);
 
 		&.multi-image {
 			padding: 15px;
 		}
 
 		&.error {
-			border-color: var(--solidie-color-error);
+			border-color: var(--devjk-color-error);
 		}
 
         &:hover {
-            border: 1px dashed var(--solidie-color-text-20);
+            border: 1px dashed var(--devjk-color-text-20);
         }
 
         &.highlight {
-            border: 1px dashed var(--solidie-color-text-60);
+            border: 1px dashed var(--devjk-color-text-60);
         }
     }
 }

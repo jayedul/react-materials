@@ -16,7 +16,7 @@ import styles from './styles.jsx';
 import * as style from './popup.module.scss';
 
 let popupIdCounter = 0;
-let root_id = 'solidie-pop-root-id';
+let root_id = 'react-materials-pop-root-id';
 
 const {app_id} = window[data_pointer];
 
@@ -69,7 +69,7 @@ export const Popup = forwardRef(
         const contentRef = useRef(null);
         const arrowRef = useRef(null);
         const focusedElBeforeOpen = useRef(null);
-        const popupId = useRef(`solidie-popup-${++popupIdCounter}`);
+        const popupId = useRef(`react-materials-popup-${++popupIdCounter}`);
 
         const isModal = modal ? true : !trigger;
         const timeOut = useRef(0);

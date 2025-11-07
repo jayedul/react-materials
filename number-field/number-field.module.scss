@@ -12,11 +12,11 @@
 
 	input, textarea {
 		&::placeholder {
-			color: var(--solidie-color-text-40);
+			color: var(--devjk-color-text-40);
 		}
 
 		&::-ms-input-placeholder {
-			color: var(--solidie-color-text-40);
+			color: var(--devjk-color-text-40);
 		}
 	}
 }

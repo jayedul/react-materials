@@ -1,4 +1,4 @@
-.solidie-pdf-viewer {
+.react-materials-pdf-viewer {
 	
 	.rpv-default-layout__container {
 
@@ -7,7 +7,7 @@
 		border: 1px solid lightgray;
 
 		.rpv-default-layout__toolbar {
-			background-color: var(--solidie-color-quaternary);
+			background-color: var(--devjk-color-quaternary);
 
 			[aria-describedby=rpv-core__tooltip-body-theme-switch],
 			[aria-describedby=rpv-core__tooltip-body-full-screen-enter],
@@ -24,12 +24,12 @@
 				width: 24px;
 				height: 24px;
 				border-radius: 50%;
-				background-color: var(--solidie-color-white);
+				background-color: var(--devjk-color-white);
 				border: 0;
 				font-size: 15px;
-				font-family: Solidie-Figtree-SemiBold;
+				font-family: DevJK-Figtree-SemiBold;
 				text-align: center;
-				color: var(--solidie-color-text);
+				color: var(--devjk-color-text);
 				overflow: hidden;
 				margin: 0;
 				padding: 0;

@@ -5,7 +5,7 @@
         & {
             background-color: white;
             &:hover {
-                background-color: var(--solidie-color-quaternary);
+                background-color: var(--devjk-color-quaternary);
             }
         }
 
@@ -17,8 +17,8 @@
     }
 
     .add-stage {
-        color: var(--solidie-color-material);
-        border: 1.5px solid var(--solidie-color-material);
+        color: var(--devjk-color-material);
+        border: 1.5px solid var(--devjk-color-material);
         border-radius: 10px;
         padding: 10px 15px;
         cursor: pointer;

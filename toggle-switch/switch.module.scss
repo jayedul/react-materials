@@ -8,7 +8,7 @@
         text-indent: -9999px;
         width: 38.9px;
         height: 22px;
-        background-color: var(--solidie-color-material-50);
+        background-color: var(--devjk-color-material-50);
         display: block;
         border-radius: 100px;
         position: relative;
@@ -28,7 +28,7 @@
     }
 
     input:checked + label {
-        background-color: var(--solidie-color-material);
+        background-color: var(--devjk-color-material);
     }
 
     input:checked + label:after {

@@ -4,8 +4,8 @@ const { syncDirectory } = require('./sync-directory');
 
 const to_sync = [
 	{
-		from: path.resolve( process.cwd(), './node_modules/solidie-materials' ),
-		to: path.resolve( process.cwd(), '../solidie-materials' )
+		from: path.resolve( process.cwd(), './node_modules/react-materials' ),
+		to: path.resolve( process.cwd(), '../react-materials' )
 	}
 ];
 

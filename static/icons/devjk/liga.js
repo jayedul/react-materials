@@ -46,7 +46,7 @@
                     break;
                 }
                 classes = el.className;
-                if (/sicon/.test(classes)) {
+                if (/jcon/.test(classes)) {
                     innerHTML = el.innerHTML;
                     if (innerHTML && innerHTML.length > 1) {
                         for (key in icons) {

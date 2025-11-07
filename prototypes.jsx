@@ -1,5 +1,5 @@
 import * as style_library from './styles/index.module.scss';
-import * as icons from './static/icons/solidie/style.module.scss';
+import * as icons from './static/icons/devjk/style.module.scss';
 
 const is_production = process.env.NODE_ENV === 'production'
 
@@ -18,7 +18,7 @@ String.prototype.classNames = function (style) {
 			dump += ' ' + c;
 		}
 
-		return (source[c] || '') + (!is_production ? ' ' + 'solidie-' + c : '');
+		return (source[c] || '') + (!is_production ? ' ' + '__' + c : '');
 	});
 
 	if (dump) {

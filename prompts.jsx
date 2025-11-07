@@ -17,7 +17,7 @@ export function confirm(title, text, callback, configs) {
 		confirmButtonText: "Yes",
 		reverseButtons: true,
 		customClass: {
-			container: 'solidie-swal',
+			container: 'react-materials-swal',
 			title: 'font-weight-600'.classNames()
 		}
 	}

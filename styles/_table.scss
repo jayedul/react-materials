@@ -2,7 +2,7 @@
 @use 'mixins';
 
 $radius: 6px;
-$base_color: var(--solidie-color-material-20);
+$base_color: var(--devjk-color-material-20);
 
 @mixin regularStyle() {
 	
@@ -10,7 +10,7 @@ $base_color: var(--solidie-color-material-20);
 		display: none;
 	}
 
-	background-color: var(--solidie-color-white);
+	background-color: var(--devjk-color-white);
 
 	&>* {
 		&>tr:first-child {
@@ -59,7 +59,7 @@ $base_color: var(--solidie-color-material-20);
 			}
 
 			&>th {
-				background: var(--solidie-color-material-4);
+				background: var(--devjk-color-material-4);
 				text-align: left;
 				padding: 15px 10px;
 			}
@@ -156,7 +156,7 @@ $base_color: var(--solidie-color-material-20);
 				font-weight: 400;
 				font-size: 13px;
 				line-height: 138%;
-				color: var(--solidie-color-text-80);
+				color: var(--devjk-color-text-80);
 			}
 		}
 	}
@@ -182,7 +182,7 @@ $base_color: var(--solidie-color-material-20);
 	}
 	
 	thead {
-		color: var(--solidie-color-text-80);
+		color: var(--devjk-color-text-80);
 		font-size: 15px;
 		
 		@include mixins.fontWeight(500);

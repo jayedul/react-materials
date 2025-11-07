@@ -72,7 +72,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 
 	function i18n_makepot_init(callback) {
 
-		[...text_dirs_js, './node_modules/solidie-materials/'].forEach(dir=>{
+		[...text_dirs_js, './node_modules/react-materials/'].forEach(dir=>{
 			i18n_makepot( path.resolve( root_dir, dir ) );
 		});
 

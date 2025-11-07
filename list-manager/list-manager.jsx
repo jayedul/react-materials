@@ -5,7 +5,7 @@ import { __, getRandomString } from '../helpers.jsx';
 
 import * as style from './list.module.scss';
 
-const getElementId = index => `solidie-item-${index}`;
+const getElementId = index => `devjk-react-materials-item-${index}`;
 
 function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildren, addChild, has_sibling}) {
 	

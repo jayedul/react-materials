@@ -5,13 +5,13 @@ $default_family: '"SF Pro", Arial, Helvetica, sans-serif, "Source Sans Pro"';
 
 @mixin fontWeight($weight) {
     @if $weight == 400 {
-        font-family: Solidie-Figtree-Regular, #{$default_family};
+        font-family: DevJK-Figtree-Regular, #{$default_family};
     } @else if $weight == 500 {
-        font-family: Solidie-Figtree-Medium, #{$default_family};
+        font-family: DevJK-Figtree-Medium, #{$default_family};
     } @else if $weight == 600 {
-        font-family: Solidie-Figtree-SemiBold, #{$default_family};
+        font-family: DevJK-Figtree-SemiBold, #{$default_family};
     } @else if $weight == 700 {
-        font-family: Solidie-Figtree-Bold, #{$default_family};
+        font-family: DevJK-Figtree-Bold, #{$default_family};
     }
 }
 

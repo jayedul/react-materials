@@ -1,7 +1,7 @@
 /* Select Drop down and popup */
 .select-dropdown {
     &:not(.transparent) {
-        background-color: var(--solidie-color-white);
+        background-color: var(--devjk-color-white);
     }
 }
 
@@ -13,7 +13,7 @@
         & > div {
             border: none !important;
             border-radius: 0;
-            border-bottom: 1px solid var(--solidie-color-text-10);
+            border-bottom: 1px solid var(--devjk-color-text-10);
         }
     }
     i.sicon {
@@ -26,19 +26,19 @@
 
         &, .list-item {
             &:not(:last-child) {
-                border-bottom: 1px solid var(--solidie-color-text-10);
+                border-bottom: 1px solid var(--devjk-color-text-10);
             }
         }
     }
 
     .list-item, .add-item {
         &:hover {
-            background-color: var(--solidie-color-text-10);
+            background-color: var(--devjk-color-text-10);
         }
 
         &.active {
-            color: var(--solidie-color-white-90);;
-            background-color: var(--solidie-color-text-90);
+            color: var(--devjk-color-white-90);;
+            background-color: var(--devjk-color-text-90);
         }
     }
 }
@@ -55,7 +55,7 @@
         &,
         .list-item {
             &:not(:last-child) {
-                border-bottom: 1px solid var(--solidie-color-text-10);
+                border-bottom: 1px solid var(--devjk-color-text-10);
             }
         }
     }
@@ -64,7 +64,7 @@
     .add-item {
         &.active,
         &:hover {
-            background-color: var(--solidie-color-text-5);
+            background-color: var(--devjk-color-text-5);
         }
     }
 }
