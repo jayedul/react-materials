@@ -42,6 +42,6 @@ export function DropDownStatus({options=[], value, onChange, disabled, placehold
 				})
 			}
 		</select>
-		<i className={`${'icon2'.classNames(style)} ${'sicon sicon-arrow-down'.classNames()}`}></i>
+		<i className={`${'icon2'.classNames(style)} ${'jcon jcon-arrow-down'.classNames()}`}></i>
 	</div>
 }

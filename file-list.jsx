@@ -33,7 +33,7 @@ export function ListFile({ files, style = {}, onRemove, FileControl }) {
 				{
 					typeof onRemove !== 'function' ? null :
 					<i
-						className={'sicon sicon-times cursor-pointer font-size-15 color-text-40 interactive'.classNames()}
+						className={'jcon jcon-times cursor-pointer font-size-15 color-text-40 interactive'.classNames()}
 						onClick={(e) =>onRemove(index)}
 					></i>
 				}

@@ -20,7 +20,7 @@ export function VideoModal({video_url, thumbnail_url}) {
 				className={'position-absolute left-0 right-0 top-0 bottom-0 d-flex align-items-center justify-content-center cursor-pointer'.classNames()}
 				onClick={()=>setModalState(!showModal)}
 			>
-				<i className={'sicon sicon-play-cropped color-white font-size-24'.classNames()}></i>
+				<i className={'jcon jcon-play-cropped color-white font-size-24'.classNames()}></i>
 			</div>
 		</div>
 	</> 

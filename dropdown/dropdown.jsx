@@ -89,8 +89,8 @@ export function DropDown(props) {
 			</div>
 			<i 
 				className={
-					`sicon 
-					${(!clearable || disabled || !selected_value) ? 'sicon-arrow-down' : 'sicon-times'} 
+					`jcon 
+					${(!clearable || disabled || !selected_value) ? 'jcon-arrow-down' : 'jcon-times'} 
 					${disabled ? 'color-text-40 cursor-not-allowed' : 'color-text-50'}`.classNames() +
 					iconSizeClass
 				}
@@ -178,7 +178,7 @@ export function DropDown(props) {
 								}}
 							>
 								<i
-									className={'sicon sicon-add-square vertical-align-middle d-inline-block margin-right-10'.classNames()}
+									className={'jcon jcon-add-square vertical-align-middle d-inline-block margin-right-10'.classNames()}
 								></i>
 								<span className={'vertical-align-middle'.classNames()}>
 									{addText}

@@ -120,7 +120,7 @@ export function AudioPlayer({id: audio_id, src, permalink, title, thumbnail, hei
 							playPause();
 						}}
 					>
-						<i className={`sicon ${!state.is_playing ? 'sicon-play' : 'sicon-pause'} font-size-14`.classNames()}></i>
+						<i className={`jcon ${!state.is_playing ? 'jcon-play' : 'jcon-pause'} font-size-14`.classNames()}></i>
 					</div>
 					<div className={'flex-1 d-flex align-items-center justify-content-space-between column-gap-15 row-gap-10'.classNames()}>
 						<div>

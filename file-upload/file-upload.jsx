@@ -424,7 +424,7 @@ export function FileUpload(props) {
 												fontSize: '14px'
 											}}
 										>
-											<i className={'sicon sicon-times'.classNames()}></i>
+											<i className={'jcon jcon-times'.classNames()}></i>
 										</span>
 									</>
 								}
@@ -452,7 +452,7 @@ export function FileUpload(props) {
 						<div className={`flex-1 ${!is_thumbnail ? 'text-align-center' : 'text-align-left'}`.classNames()}>
 							<div className={'margin-bottom-5'.classNames()}>
 								<i
-									className={'sicon sicon-folder-add font-size-24 color-text'.classNames()}
+									className={'jcon jcon-folder-add font-size-24 color-text'.classNames()}
 								></i>
 							</div>
 

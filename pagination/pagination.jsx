@@ -15,10 +15,10 @@ export function Pagination({ onChange, pageNumber = 1, pageCount = 1}) {
 
 	return <ReactPaginate
 			previousLabel={
-				<i className={'sicon sicon-arrow-left-2 font-size-24'.classNames()}></i>
+				<i className={'jcon jcon-arrow-left-2 font-size-24'.classNames()}></i>
 			}
 			nextLabel={
-				<i className={'sicon sicon-arrow-right-2 font-size-24'.classNames()}></i>
+				<i className={'jcon jcon-arrow-right-2 font-size-24'.classNames()}></i>
 			}
 			breakLabel={<span>...</span>}
 			containerClassName={'container'.classNames(style) + 'd-flex column-gap-10'.classNames()}

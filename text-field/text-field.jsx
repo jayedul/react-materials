@@ -78,12 +78,12 @@ export function TextField(props) {
 	const presets = {
 		password: {
 			type: state.show_password ? 'text' : 'password',
-			iconClass: `sicon ${state.show_password ? 'sicon-eye' : 'sicon-eye-slash'} font-size-20`.classNames(),
+			iconClass: `jcon ${state.show_password ? 'jcon-eye' : 'jcon-eye-slash'} font-size-20`.classNames(),
 			clickHandler: ()=>setState({...state, show_password: !state.show_password}),
 			icon_position: 'right'
 		},
 		search: {
-			iconClass: `sicon sicon-search-normal-1 font-size-16`.classNames(),
+			iconClass: `jcon jcon-search-normal-1 font-size-16`.classNames(),
 			icon_position: 'right'
 		}
 	}

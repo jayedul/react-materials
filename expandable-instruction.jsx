@@ -32,7 +32,7 @@ export function ExpandableInstruction(props) {
 					</span>
 				</td>
 				<td className={'text-align-right cursor-pointer'.classNames()} onClick={()=>setExpand(!expanded)}>
-					<i className={`sicon ${expanded ? 'sicon-minus-cirlce' : 'sicon-add-circle'} font-size-30 cursor-pointer`.classNames()}></i>
+					<i className={`jcon ${expanded ? 'jcon-minus-cirlce' : 'jcon-add-circle'} font-size-30 cursor-pointer`.classNames()}></i>
 				</td>
 			</tr>
 			<Conditional show={expanded}>

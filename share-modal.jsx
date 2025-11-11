@@ -75,7 +75,7 @@ export function ShareModal(props) {
 				</div>
 				<div>
 					<i
-						className={'sicon sicon-times font-size-18 color-text-50 cursor-pointer'.classNames()}
+						className={'jcon jcon-times font-size-18 color-text-50 cursor-pointer'.classNames()}
 						onClick={closeModal}
 						data-cylector="close-sharer"
 					></i>
@@ -115,7 +115,7 @@ export function ShareModal(props) {
 					onClick={() => copyToClipboard(url, addToast)}
 				>
 					<i
-						className={'sicon sicon-copy font-size-24 color-text-50 margin-right-8 vertical-align-middle'.classNames()}
+						className={'jcon jcon-copy font-size-24 color-text-50 margin-right-8 vertical-align-middle'.classNames()}
 					></i>
 					<span
 						className={'font-size-16 font-weight-400 letter-spacing--3 color-text-50 vertical-align-middle'.classNames()}

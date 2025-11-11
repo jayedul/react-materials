@@ -36,7 +36,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 				{
 					!has_sibling ? null :
-					<i className={'sicon sicon-drag font-size-18 color-text-50 interactive'.classNames()}></i>
+					<i className={'jcon jcon-drag font-size-18 color-text-50 interactive'.classNames()}></i>
 				}
 
 				<div className={'flex-1 color-text-80'.classNames()}>
@@ -60,7 +60,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 
 			<i
 				className={
-					'sicon sicon-trash font-size-18 color-error interactive cursor-pointer'.classNames() +
+					'jcon jcon-trash font-size-18 color-error interactive cursor-pointer'.classNames() +
 					'action-icon'.classNames(style)
 				}
 				title={__('Delete')}
@@ -71,7 +71,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				!onEdit ? null :
 				<i
 					className={
-						'sicon sicon-edit-2 font-size-18 color-material interactive cursor-pointer'.classNames() +
+						'jcon jcon-edit-2 font-size-18 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 					title={__('Edit')}
@@ -83,7 +83,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 				!nested ? null :
 				<i
 					className={
-						'sicon sicon-add-circle font-size-24 color-material interactive cursor-pointer'.classNames() +
+						'jcon jcon-add-circle font-size-24 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 					onClick={addChild}
@@ -98,7 +98,7 @@ function ItemSingle({ payload, list_item, renameStage, deleteItem, updateChildre
 					target='_blank'
 					title={__('Visit')}
 					className={
-						'sicon sicon-arrow-up-right font-size-18 color-material interactive cursor-pointer'.classNames() +
+						'jcon jcon-arrow-up-right font-size-18 color-material interactive cursor-pointer'.classNames() +
 						'action-icon'.classNames(style)
 					}
 				></a>
@@ -262,7 +262,7 @@ export function ListManager(props) {
 					data-cylector="add-list-item"
 					onClick={()=>onAdd ? onAdd() : addStage()}
 				>
-					<i className={'sicon sicon-add-circle font-size-24'.classNames()}></i>
+					<i className={'jcon jcon-add-circle font-size-24'.classNames()}></i>
 					<div className={'flex-1 font-size-15 font-weight-500 margin-left-10'.classNames()}>
 						{addText}
 					</div>
