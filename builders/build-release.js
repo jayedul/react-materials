@@ -128,7 +128,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 	gulp.task('copy', function () {
 		return gulp
 			.src([
-				'./**/*.*',
+				'./**/*',
 				'!./components/**',
 
 				'!./dist/**/*.map',
