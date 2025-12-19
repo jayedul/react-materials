@@ -1,5 +1,7 @@
 import { __, data_pointer, getHighestUnitFromBytes, sprintf } from "./helpers.jsx";
 
+const {_token} = window[data_pointer];
+
 const error_message = {
     'timeout'     : __('The request timed out.'),
     'error'       : __('Request error'),
@@ -59,6 +61,7 @@ export function request(action, payload = {}, callback, progressCallback) {
 
 	// Build form data
 	const formData = new FormData();
+	formData.append('_token', _token);
 
 	// Function to flatten nested JSON into a flat object and append files to FormData.
 	function flattenObject(obj, formData, parentKey = '') {
