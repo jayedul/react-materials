@@ -8,50 +8,46 @@ $color_scale: 90;
 	min-width: 117px;
 	max-width: max-content;
 	position: relative;
-
 	border-radius: 42px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	background: var(--devjk-color-text-20);
+	border: 1px solid  var(--devjk-color-text-30);
+	
+	&, select {
+		color:   var(--devjk-color-text-80);
+	}
 
 	&.disabled {
 		cursor: not-allowed;
 		opacity: .6;
 	}
 	
-	&.incomplete, &.initial, &.default {
-		background: rgba($color_scale, $color_scale, $color_scale, $opacity_bg);
-		border: 1px solid rgba($color_scale, $color_scale, $color_scale, $opacity_br);
-		
-		&, select {
-			color: rgba($color_scale, $color_scale, $color_scale, $opacity_cl);
-		}
-	}
-
 	&.error {
-		background: rgba($color_scale, 0, 0, $opacity_bg);
-		border: 1px solid rgba($color_scale, 0, 0, $opacity_br);
+		background:  var(--devjk-color-error-20);
+		border: 1px solid  var(--devjk-color-error-30);
 		
 		&, select {
-			color: rgba($color_scale, 0, 0, $opacity_cl);
+			color:  var(--devjk-color-error-80);
 		}
 	}
 
 	&.warning {
-		background: rgba($color_scale, $color_scale, 0, $opacity_bg);
-		border: 1px solid rgba($color_scale, $color_scale, 0, $opacity_br);
+		background:  var(--devjk-color-warning-20);
+		border: 1px solid var(--devjk-color-warning-30);
 		
 		&, select {
-			color: rgba($color_scale, $color_scale, 0, $opacity_cl);
+			color: var(--devjk-color-warning-80);
 		}
 	}
 	
 	&.success {
-		background: rgba(0, $color_scale, 0, $opacity_bg);
-		border: 1px solid rgba(0, $color_scale, 0, $opacity_br);
+		background: var(--devjk-color-success-20);
+		border: 1px solid var(--devjk-color-success-30);
 		
 		&, select {
-			color: rgba(0, $color_scale, 0, $opacity_cl);
+			color: var(--devjk-color-success-80);
 		}
 	}
 	
