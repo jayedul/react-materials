@@ -187,7 +187,7 @@ module.exports = ({text_dirs_js=[], text_dirs_php=[], vendor=false, exclude=[], 
 		replaceMode(path.resolve( root_dir, `./build/${project_name}/functions.php` ));
 		
 		return gulp
-				.src(path.resolve(root_dir, './build/**/*.*'), {encoding: false})
+				.src(path.resolve(root_dir, './build/**/*'), {encoding: false})
 				.pipe(zip.default(build_name))
 				.pipe(gulp.dest(root_dir));
 	});
