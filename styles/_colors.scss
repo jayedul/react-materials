@@ -32,8 +32,21 @@
 		.#{$class}-#{$color} {
 
             &, &[type] {
+				
+				@if $attr == background-color {
+					background-color: #fff;
+					position: relative;
 
-				#{$attr}: var(--devjk-color-#{$color});
+					&::before {
+						content: "";
+						position: absolute;
+						inset: 0;
+						background: var(--devjk-color-#{$color});
+						pointer-events: none;
+					}
+				} @else {
+					#{$attr}: var(--devjk-color-#{$color});
+				}
 
 				&.interactive:hover, &.active {
 					#{$attr}: var(--devjk-color-#{get-first-part($color, '-')}-150);
