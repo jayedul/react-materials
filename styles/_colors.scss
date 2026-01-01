@@ -33,7 +33,7 @@
 
             &, &[type] {
 				
-				@if $attr == background-color {
+				@if $class == "bg-color" {
 					background-color: #fff;
 					position: relative;
 
@@ -43,6 +43,10 @@
 						inset: 0;
 						background: var(--devjk-color-#{$color});
 						pointer-events: none;
+					}
+
+					&>* {
+						position: relative;
 					}
 				} @else {
 					#{$attr}: var(--devjk-color-#{$color});
@@ -61,14 +65,14 @@
 }
 
 $colors: 'text', 'material', 'white', 'error', 'warning', 'success', 'transparent';
-
 @for $i from 1 through 9 {
+  $colors: list.append($colors, text-#{$i * 10});
+  $colors: list.append($colors, material-#{$i * 10});
+  $colors: list.append($colors, white-#{$i * 10});
 
-  	$colors: list.append($colors, 'text-#{$i*10}');
-  	$colors: list.append($colors, 'material-#{$i*10}');
-
-  	$colors: list.append($colors, 'text-#{$i}');
-  	$colors: list.append($colors, 'material-#{$i}');
+  $colors: list.append($colors, text-#{$i});
+  $colors: list.append($colors, material-#{$i});
+  $colors: list.append($colors, white-#{$i});
 }
 
 @include colorGenerate('color', 'color', $colors);
