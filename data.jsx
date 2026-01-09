@@ -45,7 +45,7 @@ export const week_days = {
 export const patterns = {
 	date: /^(\d{4})-(\d{2})-(\d{2})$/,
 	email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-	phone: /^[0-9]{10,15}$/,
+	phone: /^[0-9\+\-]{10,15}$/,
 	zip_code: /^[A-Za-z0-9\s-]{4,10}$/,
 	url: /^(http|https):\/\/[A-Za-z0-9.-]+(\.[A-Za-z]{2,})?(:\d+)?(\/\S*)?$/,
 	first_name: /^(?=.*\S).{1,20}$/,
