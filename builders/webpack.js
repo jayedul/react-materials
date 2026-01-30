@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = react_blueprints => (env, options) => {
 
     const mode = options.mode || 'development';
-    const now = Date.now();
 
     const config = {
         mode,
@@ -62,7 +61,7 @@ module.exports = react_blueprints => (env, options) => {
         },
 		plugins: [
 			new MiniCssExtractPlugin({
-				filename: `[name].${now}.css`
+				filename: `[name].css`
 			})
 		],
         devtool: 'source-map'
@@ -119,7 +118,7 @@ module.exports = react_blueprints => (env, options) => {
                     entry: jsEntries,
                     output: {
                         path: path.resolve(dest_path),
-                        filename: `[name].${now}.js`
+                        filename: `[name].js`
                     }
                 })
             );
@@ -132,20 +131,20 @@ module.exports = react_blueprints => (env, options) => {
                 entry: scssEntries,
                 output: {
                     path: path.resolve(dest_path),
-                    filename: `[name].${now}.js` // This won't be used since we're only extracting CSS
+                    filename: `[name].js` // This won't be used since we're only extracting CSS
                 },
                 plugins: [
                     ...config.plugins,
                     new MiniCssExtractPlugin({
-                        filename: `[name].${now}.css`
+                        filename: `[name].css`
                     }),
                     // Remove the JS files and source maps that webpack generates for CSS-only entries
                     {
                         apply: (compiler) => {
                             compiler.hooks.emit.tapAsync('RemoveJSFromCSSOnlyEntries', (compilation, callback) => {
                                 Object.keys(scssEntries).forEach(entryName => {
-                                    const jsFileName = `${entryName}.${now}.js`;
-                                    const jsMapFileName = `${entryName}.${now}.js.map`;
+                                    const jsFileName = `${entryName}.js`;
+                                    const jsMapFileName = `${entryName}.js.map`;
                                     
                                     if (compilation.assets[jsFileName]) {
                                         delete compilation.assets[jsFileName];
